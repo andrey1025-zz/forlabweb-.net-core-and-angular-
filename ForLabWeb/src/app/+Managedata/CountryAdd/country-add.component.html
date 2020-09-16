@@ -1,0 +1,224 @@
+<div class="country_add-modal-header">
+  <a type="button" class="close-button" (click)="onCloseModal()" aria-hidden="true"> </a>
+</div>
+<div class="country_add-modal-body text-center">
+  <span class="country_add-modal-title color-darkblue">Country Form</span>
+  <form class="country_add-form" [formGroup]="CountryForm">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group" [ngClass]="{'has-error':!CountryForm.controls['Name'].valid &&
+            CountryForm.controls['Name'].touched}">
+          <input type="text" class="form-control" name="Name" placeholder="Country Name" formControlName="Name" />
+        </div>
+
+
+        <div class="country-product-select__product">
+          <select class="form-control" formControlName="Period" >
+            <option value="0" selected>--Select Period--</option>
+            <option value="Monthly">Monthly</option>
+            <option value="Bimonthly">Bimonthly</option>
+            <option value="Quarterly">Quarterly</option>
+            <option value="Yearly">Yearly</option>
+          </select>
+        </div>
+        <div class="country_select__list">
+          <ul class="list-group">
+            <li class="list-group-item disabled">Select Global Region</li>
+            <li class="list-group-item" *ngFor="let data of GlobalList" (click)="handleSelectTestArea(data.id)"
+              [ngClass]="{'selected': currentTestArea == data.id}">
+              {{data.name}}</li>
+
+
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-8">
+        <!-- <div class="">
+<div class="row">
+          <div class="col-md-4">
+          <div class="">
+            <select class="form-control" formControlName="Diseaseid">
+              <option value="0" selected>Select disease</option>
+              <option *ngFor="let disease of diseaseList" [value]="disease.id">
+                {{disease.Name}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="">
+            <select class="form-control" formControlName="Year">
+              <option value="0" selected>Select Year</option>
+              <option *ngFor="let Year of YearList" [value]="Year.id">
+                {{Year.Name}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="">
+            <p>Population</p>
+            <div class="left-inner-addon">
+              <!-- <span class="percent-icon">$</span>
+              <input type="text" class="form-control color-darkblue" formControlName="Population"
+              pattern="[0-9]+" minlength="1" maxlength="50" style="text-align: right"    >
+            </div>
+          </div>
+          </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+          <div class="">
+            <p>Incidence </p>
+            <input type="text" class="form-control color-darkblue" formControlName="Incidence"
+            pattern="[0-9]+" minlength="1" maxlength="50" style="text-align: right"    >
+           
+          </div>
+          </div>
+          <div class="col-md-4">
+          <div class="">
+            <p>Incidence per 1000 population </p>
+            <input type="text" class="form-control color-darkblue" formControlName="Incidence1000population"
+            pattern="[0-9]+" minlength="1" maxlength="50" style="text-align: right"    >
+           
+          </div>
+          </div>
+          <div class="col-md-4">
+          <div class="">
+            <p>Incidence per 100k Population</p>
+            <input type="text" class="form-control color-darkblue" formControlName="Incidence1000kpopulation"
+            pattern="[0-9]+" minlength="1" maxlength="50" style="text-align: right"    >
+           
+          </div>
+          </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+          <div class="">
+            <p>Prevalence Rate</p>
+            <input type="text" class="form-control color-darkblue" formControlName="Prevalencerate"
+            pattern="[0-9]+" minlength="1" maxlength="50" style="text-align: right"    >
+           
+          </div>
+          </div>  
+          <div class="col-md-4">
+          <div class="">
+            <p>Prevalence per 1000 population</p>
+            <input type="text" class="form-control color-darkblue" formControlName="Prevalencerate1000"
+            pattern="[0-9]+" minlength="1" maxlength="50" style="text-align: right"    >
+           
+          </div>
+          </div>
+          <div class="col-md-4">
+          <div class="">
+            <p>Prevalence per 100k population</p>
+            <input type="text" class="form-control color-darkblue" formControlName="Prevalencerate1000k"
+            pattern="[0-9]+" minlength="1" maxlength="50" style="text-align: right"    >
+           
+          </div>
+          </div>
+          </div>
+          <button class="btn btn-cyan" (click)="addhistoricaldatas()">Add</button>
+        </div> -->
+        <!-- <button class="btn btn-cyan" (click)="importhistoricaldata()">Import Histroical </button> -->
+      <span>Historical Data</span>
+        <div class="country_detail-content">
+          <table class="table table-striped table-hover" >
+            <thead>
+              <tr>
+                <th>Disease</th>
+                <th>Year</th>
+                <th>Population</th>
+                <th>Incidence </th>
+                <th>Incidence per 1000 population </th>
+                <th>Incidence per 100k Population </th>
+                <th>Prevalence rate </th>
+                <th>Prevalence per 1000 population </th>
+                <th>Prevalence per 100k population </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of Historicaldata; let i = index;">
+                                
+                <!-- <td>
+                    {{item.no}}
+                </td> -->
+                <td >
+                    {{item.disease}}
+                </td>
+                <td >
+                    {{item.year}}
+                </td>
+                <td>
+                    {{item.population}}
+                </td> 
+                <td>
+                    {{item.incidence}}
+                </td>
+                <td>
+                    {{item.incidenceper1000population}}
+                </td>
+                <td>
+                    {{item.incidenceper100kPopulation}}
+                </td> 
+                <td>
+                    {{item.prevalencerate}}
+                </td>
+                <td>
+                    {{item.prevalenceper1000population}}
+                </td> 
+                <td>
+                    {{item.prevalenceper100kpopulation}}
+                </td> 
+                
+            </tr>
+              <!-- <tr *ngFor="let item of CountryForm.get('_histroicalpatientdata')['controls']; let i = index;" [formGroupName]="i">
+                <td>
+                  <input type="text" class="form-control" name="Disease" formControlName="Disease" />
+                </td>
+                <td>
+                  <input type="text" class="form-control" name="Year" formControlName="Year" />
+                </td>
+                <td>
+                  <input type="text" class="form-control color-darkblue" formControlName="Population"
+                  pattern="[0-9]+" minlength="1" maxlength="50" style="text-align: right"    >
+                </td>
+                <td>
+                  <input type="text" class="form-control color-darkblue" formControlName="Incidence"
+                  pattern="[0-9]+" minlength="1" maxlength="50" style="text-align: right"    >
+                </td>
+                <td>
+                  <input type="text" class="form-control color-darkblue" formControlName="Incidence1000population"
+                  pattern="[0-9]+" minlength="1" maxlength="50" style="text-align: right"    >
+                </td>
+                <td>
+                  <input type="text" class="form-control color-darkblue" formControlName="Incidence1000kpopulation"
+                  pattern="[0-9]+" minlength="1" maxlength="50" style="text-align: right"    >
+                </td>
+                <td>
+                  <input type="text" class="form-control color-darkblue" formControlName="Prevalencerate"
+                  pattern="[0-9]+" minlength="1" maxlength="50" style="text-align: right"    >
+                </td>
+                <td>
+                  <input type="text" class="form-control color-darkblue" formControlName="Prevalencerate1000"
+                  pattern="[0-9]+" minlength="1" maxlength="50" style="text-align: right"    >
+                </td>
+                <td>
+                  <input type="text" class="form-control color-darkblue" formControlName="Prevalencerate1000k"
+                  pattern="[0-9]+" minlength="1" maxlength="50" style="text-align: right"    >
+                </td>
+              </tr> -->
+            
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="country_add__buttons">
+    <button type="button" (click)="onCloseModal();" class="btn btn-outline-cyan">Cancel</button>
+    <button type="submit" class="btn btn-cyan"  (click)="save();"  [disabled]="!CountryForm.valid">{{submitBtnName}}</button>
+  </div>
+</div>

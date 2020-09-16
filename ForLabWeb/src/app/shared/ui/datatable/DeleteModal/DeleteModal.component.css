@@ -1,0 +1,29 @@
+.delete-modal-body {
+  position: relative;
+  height: 100%;
+  padding: 54px 64px 47px;
+}
+
+.delete-modal-body .content {
+  position: relative;
+  height: 100%;
+}
+
+.delete-modal-title {
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+
+.delete-modal__buttons {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.delete-modal__buttons .btn {
+  width: 136px;
+  height: 46px;
+}

@@ -1,0 +1,154 @@
+<div id="content">
+  <sa-widgets-grid>
+    <div class="row">
+
+      <!-- NEW COL START -->
+      <article class="col-sm-12 col-md-12 col-lg-12">
+        <div sa-widget [editbutton]="false" [custombutton]="false" [deletebutton]="false">
+
+          <header>
+            <span class="widget-icon">
+              <i class="fa fa-edit"></i>
+            </span>
+
+
+
+          </header>
+
+          <!-- widget div-->
+          <div>
+
+
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+<form  class="smart-form"   [formGroup]="defineforecast" (ngSubmit)="save()">
+  <header>
+    <h3 style="
+    color: gray;
+">
+   HOW WOULD YOU LIKE TO DEFINE YOUR FORECAST?
+   </h3>
+  </header>
+
+  <fieldset>
+      <div class="row">
+         
+      
+      <section  class="col col-3">
+                   
+          <div class="form-group" [ngClass]="{'has-error':!defineforecast.controls['ForecastID'].valid &&  defineforecast.controls['ForecastID'].touched}">
+            <div class="input-group">
+             
+              <label class="input">
+                <input class="form-control" type="text" name="ForecastID" formControlName="ForecastID" placeholder="Name of the Forecast"></label>
+            </div>
+            <div class="note note-error" *ngIf="defineforecast.controls['ForecastID'].hasError('required') && defineforecast.controls['ForecastID'].touched">Forecast ID must not be empty</div>
+            <div class="note note-error" *ngIf="defineforecast.controls['ForecastID'].hasError('maxlength') && defineforecast.controls['ForecastID'].touched">Maximun 32 charaters are allowed</div>
+          </div>
+
+     
+    </section>
+      
+   
+    <section  class="col col-3" >
+
+        <div class="form-group" [ngClass]="{'has-error':!defineforecast.controls['startdate'].valid && defineforecast.controls['startdate'].touched}">
+          <div class="input-group">
+          
+            <label class="input">
+              <input type="text" name="startdate" formControlName="startdate" autocomplete="off" bsDatepicker [bsConfig]="{ dateInputFormat: 'MMMM YYYY'}"
+                class="form-control" readonly placeholder="Forecast Start"   (bsValueChange)="onValueChange($event)" />
+            </label>
+          </div>
+          <div class="note note-error" *ngIf="defineforecast.controls['startdate'].hasError('required') && defineforecast.controls['startdate'].touched">Start Date must not be empty</div>
+        </div>
+    
+  </section>
+          
+      </div>
+      <div class="row">
+      
+          <section class="col col-3">
+            <div class="form-group" [ngClass]="{'has-error':!defineforecast.controls['scopeofforecast'].valid && defineforecast.controls['scopeofforecast'].touched }">
+          
+          
+              
+              <label class="input">
+                <select class="form-control" name="scopeofforecast" formControlName="scopeofforecast"
+                (change)="displaytextscope($event)"  placeholder="Scope of the Forecast">
+                  <option value="NATIONAL">NATIONAL</option>
+                  <option value="CUSTOM">CUSTOM</option>
+                  <option value="GLOBAL">GLOBAL</option>
+
+                </select>
+              </label>
+              </div>
+              <div class="note note-error" *ngIf="defineforecast.controls['scopeofforecast'].hasError('required') && defineforecast.controls['scopeofforecast'].touched">Scope
+                  of Forecast must not be empty</div>
+              </section>
+       
+      
+  <section class="col col-3">
+  
+        <div class="form-group" [ngClass]="{'has-error':!defineforecast.controls['forecastdate'].valid && defineforecast.controls['forecastdate'].touched  }">
+          <div class="input-group">
+           
+            <label class="input">
+              <input type="text" name="forecastdate" formControlName="forecastdate" bsDatepicker [bsConfig]="{ dateInputFormat: 'MMMM YYYY' , viewMode: 'months', 
+          minViewMode: 'months'}" class="form-control" readonly placeholder="Forecast Ends"  [minDate]="minDate"/></label>
+          </div>
+          <div class="note note-error" *ngIf="defineforecast.controls['forecastdate'].hasError('required') && defineforecast.controls['forecastdate'].touched">Foecast Date must not be empty</div>
+        </div>
+    
+  </section>
+      
+      </div>
+      <div class="row">
+       
+            <section  class="col col-3">
+      
+        <div class="form-group" [ngClass]="{'has-error':!defineforecast.controls['Period'].valid && defineforecast.controls['Period'].touched
+      }">
+      <div class="input-group">
+       
+        <label class="input">
+          <select name="Period" formControlName="Period" class="form-control" aria-placeholder="Reporting Period">
+            <option value="Bimonthly">Bimonthly</option>
+            <option value="Monthly">Monthly</option>
+            <option value="Quarterly">Quarterly</option>
+            <option value="Yearly">Yearly</option>
+          </select>
+        </label>
+      </div>
+      <div class="note note-error" *ngIf="defineforecast.controls['Period'].hasError('required') && defineforecast.controls['Period'].touched">Period must not be empty</div>
+    </div>
+      </section>
+      <section class="col col-3">
+        <div class="form-group" [ngClass]="{'has-error':!validtxtscope}">
+          
+      <label class="input"> <input class="form-control" type="text" name="txtscope"
+          formControlName="txtscope" [style.display]="displayaattr"></label>
+          </div>
+          <div class="note note-error" *ngIf="!validtxtscope">Please enter custom scope</div>
+</section>
+</div>
+  </fieldset>
+
+    <footer>
+      <a routerLink="/Forecast/RecentForecast" class="btn btn-default" style="float: left;"><b>
+        << Previous</b> </a> <button class="btn btn-default" type="submit" style="float: right;" [disabled]="!defineforecast.valid" ><b>Next >></b></button>
+    </footer>
+  <!-- </div> -->
+
+</form> 
+</div>
+<!-- end widget content -->
+
+</div>
+<!-- end widget div -->
+
+</div>
+</article>
+</div>
+</sa-widgets-grid>
+</div>

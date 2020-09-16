@@ -1,0 +1,135 @@
+
+<div id="content">
+  <sa-widgets-grid>
+
+
+    <!-- START ROW -->
+
+    <div class="row">
+
+      <!-- NEW COL START -->
+      <article class="col-sm-12 col-md-12 col-lg-12">
+        <div sa-widget [editbutton]="false" [custombutton]="false" [deletebutton]="false">
+
+          <header>
+            <span class="widget-icon">
+              <i class="fa fa-edit"></i>
+            </span>
+
+
+
+          </header>
+
+          <!-- widget div-->
+          <div>
+
+
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+<form class="smart-form" novalidate="novalidate">  
+  <!-- [formGroup]="RecentForecast" -->
+  <header>
+    <h3 style="
+    color: gray;
+">
+    WHAT WOULD YOU LIKE TO DO WITH FORLAB+
+  </h3>
+  </header>
+
+  <fieldset>
+   
+    <div class="row">
+    <section class="col col-4">
+    
+   
+        <a routerLink="/Forecast/Defineforecast" class="btn btn-default btn-lg" style="color: gray;">NEW FORECAST <i class="fa fa-line-chart" style="color: gray;    margin-left: 4%;"></i></a>
+ 
+    </section>
+    <section class="col col-4">
+       
+          <a routerLink="/Forecast/forecastlist" class="btn btn-default btn-lg" style="color: gray;">VIEW FORECAST <i class="fa fa-bar-chart" style="color: gray;    margin-left: 4%;"></i></a>     
+        </section>
+           
+           
+        <section class="col col-3">
+             
+                <a routerLink="/Forecast/ViewReport" class="btn btn-default btn-lg" style="color: gray;">VIEW REPORT <i class="fa fa-file-text" style="color: gray;    margin-left: 4%;"></i></a>
+        
+         
+            
+            </section>
+
+     
+    </div>
+    <div class="row">
+<section class="col col-6">
+  <h3 style="
+  color: gray;
+">
+ RECENT FORECAST
+</h3>
+</section>
+
+    </div>
+    <div class="row">
+    <div class="col-md-12" >
+
+
+
+
+
+        
+            
+              <div class="table-responsive">
+
+                <table class="table table-bordered table-striped table-hover" >
+     
+            <thead>  
+                <tr>  
+                    <th>Forecast Name</th>  
+                    <th>Date of Forecast</th>  
+                    <th>Duration</th> 
+                    <th>Forecasted Value</th> 
+                    <th>Action</th> 
+                </tr>  
+            </thead>  
+            <tbody>  
+                <tr *ngFor="let Forecast of ForecastList">  
+                    <td>{{ Forecast.name}}</td>  
+                    <td>{{ Forecast.dateofforecast}}</td>  
+                    <td>{{ Forecast.duration}}</td>  
+                    <td>{{ Forecast.forecastvalue}}</td>  
+                    <td><a class="btn btn-default btn-sm"  [routerLink]="['/Forecast/Defineforecast', Forecast.id]">View</a>
+                      <a class="btn btn-default btn-sm" style="background-color: gray;color: white;"  (click)="ViewReport(Forecast)">Report</a></td>
+                   
+                </tr>  
+            </tbody>  
+        </table>
+        </div>
+              
+           
+
+         
+     
+       
+          </div>
+    </div>
+  </fieldset>
+
+  <footer>
+     
+        
+        </footer>
+
+</form>
+</div>
+<!-- end widget content -->
+
+</div>
+<!-- end widget div -->
+
+</div>
+</article>
+</div>
+</sa-widgets-grid>
+</div>

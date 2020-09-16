@@ -1,0 +1,58 @@
+<div id="content">
+  <div class="row">
+
+      <span id="extr-page-header-space"> <a routerLink="/Report/Filterproductusge" class="btn btn-primary">Back</a> </span>
+    </div> 
+  
+   <sa-widgets-grid>
+  
+  
+      <div class="row">
+        <article class="col-sm-12">
+  
+  
+  
+  
+          <div sa-widget [editbutton]="false" color="blueDark" [deletebutton]="false">
+            <header>
+              <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+              <h2>Product Usage</h2>
+            </header>
+            <div>
+              <div class="widget-body no-padding">
+  
+        
+          
+                <sa-datatable
+             
+             
+                tableClass="table table-striped table-bordered table-hover Category"
+              >
+                <thead>
+                <tr>
+                
+                  <th data-class="expand">Area</th>
+                  <th data-class="expand">Test</th>                 
+                  <th data-class="expand">Instrument</th>
+                  <th data-class="expand">Product</th>
+                  <th data-class="expand">Usage Rate</th>
+              
+                
+                </tr>
+                </thead>
+              </sa-datatable> 
+              </div>
+            </div>
+          </div>
+  
+        </article>
+  
+  
+      </div>
+  
+    </sa-widgets-grid>
+ 
+  
+  </div>
+  
+  

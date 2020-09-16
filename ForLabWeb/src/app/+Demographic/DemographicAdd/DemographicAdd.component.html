@@ -1,0 +1,210 @@
+<div id="content">
+    <sa-widgets-grid>
+  
+  
+      <!-- START ROW -->
+  
+      <!-- <div class="row">
+  
+        <!-- NEW COL START
+        <article class="col-sm-12 col-md-12 col-lg-12">
+  <div sa-widget [editbutton]="false" [custombutton]="false">
+  
+    <header>
+      <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+  
+     
+  
+    </header>
+  
+    <!-- widget div
+    <div>
+  
+  
+      <!-- widget content 
+      <div class="widget-body no-padding"> -->
+  
+      
+  
+     
+  
+      <form  class="smart-form"   [formGroup]="demosettingadd" (ngSubmit)="save()">
+        <header>
+         Demographic Forecast Defination
+        </header>
+      
+        <fieldset>
+            <div class="row">
+               
+                <div class="col-md-3" style="margin-left: 2%">
+            <section  >
+                         
+                <div class="form-group" [ngClass]="{'has-error':!demosettingadd.controls['ForecastID'].valid &&  demosettingadd.controls['ForecastID'].touched}">
+                  <div class="input-group">
+                    <label class="control-label">Forecast ID
+
+                    </label>
+                    <label class="input">
+                      <input class="form-control" type="text" name="ForecastID" formControlName="ForecastID"></label>
+                  </div>
+                  <div class="note note-error" *ngIf="demosettingadd.controls['ForecastID'].hasError('required') && demosettingadd.controls['ForecastID'].touched">Forecast ID must not be empty</div>
+                  <div class="note note-error" *ngIf="demosettingadd.controls['ForecastID'].hasError('maxlength') && demosettingadd.controls['ForecastID'].touched">Maximun 32 charaters are allowed</div>
+                </div>
+
+           
+          </section>
+          <section >
+      
+              <div class="form-group" [ngClass]="{'has-error':!demosettingadd.controls['startdate'].valid && demosettingadd.controls['startdate'].touched}">
+                <div class="input-group">
+                  <label class="control-label">Start Date
+
+                  </label>
+                  <label class="input">
+                    <input type="text" name="startdate" formControlName="startdate" autocomplete="off" bsDatepicker [bsConfig]="{ dateInputFormat: 'MMMM YYYY'}"
+                      class="form-control" readonly/>
+                  </label>
+                </div>
+                <div class="note note-error" *ngIf="demosettingadd.controls['startdate'].hasError('required') && demosettingadd.controls['startdate'].touched">Start Date must not be empty</div>
+              </div>
+          
+        </section>
+        <section>
+        
+              <div class="form-group" [ngClass]="{'has-error':!demosettingadd.controls['forecastdate'].valid && demosettingadd.controls['forecastdate'].touched  }">
+                <div class="input-group">
+                  <label class="control-label">End Date
+
+                  </label>
+                  <label class="input">
+                    <input type="text" name="forecastdate" formControlName="forecastdate" bsDatepicker [bsConfig]="{ dateInputFormat: 'MMMM YYYY' , viewMode: 'months', 
+                minViewMode: 'months'}" class="form-control" readonly /></label>
+                </div>
+                <div class="note note-error" *ngIf="demosettingadd.controls['forecastdate'].hasError('required') && demosettingadd.controls['forecastdate'].touched">Foecast Date must not be empty</div>
+              </div>
+          
+        </section>
+          <section  >
+            
+              <div class="form-group" [ngClass]="{'has-error':!demosettingadd.controls['Period'].valid && demosettingadd.controls['Period'].touched
+            }">
+            <div class="input-group">
+              <label class="control-label">Reporting Period
+
+              </label>
+              <label class="input">
+                <select name="Period" formControlName="Period" class="form-control">
+                  <option value="Bimonthly">Bimonthly</option>
+                  <option value="Monthly">Monthly</option>
+                  <option value="Quarterly">Quarterly</option>
+                  <option value="Yearly">Yearly</option>
+                </select>
+              </label>
+            </div>
+            <div class="note note-error" *ngIf="demosettingadd.controls['Period'].hasError('required') && demosettingadd.controls['Period'].touched">Period must not be empty</div>
+          </div>
+            </section>
+            </div>
+          <div class="col-md-6" style="margin-top: 2%">
+              <section>
+          
+                  <div class="form-group">
+                    <div class="">
+                      <label>
+                        <input type="radio" class="radiobox style-3" name="sitebysite" formControlName="sitebysite" value="sitebysite" (click)="changeforecsattype()">
+                        <span>I have data for all sites and I would like to do a site by site forecast</span>
+                      </label>
+                     
+                    </div>
+                    <!-- <div class="radio">
+                      <label>
+                        <input type="radio" class="radiobox style-3" name="sitebysite" formControlName="sitebysite" value="Aggregate" (click)="changeforecsattype()">
+                        <span>Aggregate Forecasting</span>
+                      </label>
+                    </div> -->
+  
+                  </div>
+           
+            </section>
+            <section >
+            
+                <div class="form-group" >
+                  <div class="">
+                 
+                    <label>
+                        <input type="radio" class="radiobox style-3" name="sitebysite" formControlName="sitebysite" value="Aggregate" (click)="changeforecsattype()" >
+                        <span>I would like to do an aggregate forecast Eg.National</span>
+                      </label>
+                  </div>
+                  <!-- <div class="radio">
+                    <label>
+                      <input type="radio" class="radiobox style-3" name="sitebysite" formControlName="sitebysite" value="Aggregate" (click)="changeforecsattype()">
+                      <span>Aggregate Forecasting</span>
+                    </label>
+                  </div> -->
+  
+                </div>
+         
+          </section>
+        </div>
+        </div>
+          <!-- <section>
+       
+                <div class="form-group" [ngClass]="{'has-error':!demosettingadd.controls['Period'].valid && demosettingadd.controls['Period'].touched
+                  }">
+                  <div class="input-group">
+                    <label class="control-label">Reporting Period
+
+                    </label>
+                    <label class="input">
+                      <select name="Period" formControlName="Period" class="form-control">
+                        <option value="Bimonthly">Bimonthly</option>
+                        <option value="Monthly">Monthly</option>
+                        <option value="Quarterly">Quarterly</option>
+                        <option value="Yearly">Yearly</option>
+                      </select>
+                    </label>
+                  </div>
+                  <div class="note note-error" *ngIf="demosettingadd.controls['Period'].hasError('required') && demosettingadd.controls['Period'].touched">Period must not be empty</div>
+                </div>
+            
+          </section> -->
+      
+        </fieldset>
+  
+          <footer>
+        <!-- <div class="form-actions"> -->
+          <!-- <div class="row">
+            <div class="col-md-6"> -->
+              <button type="submit" class="btn btn-success" [disabled]="!demosettingadd.valid" >
+                <!-- <i class="fa fa-eye"></i> -->
+                Next
+                <i class="fa fa-arrow-right"></i>
+              </button>
+  
+              <button class="btn btn-primary" [disabled]="true">
+                  <i class="fa fa-arrow-left"></i>
+                <!-- <i class="fa fa-eye"></i> -->
+                Prev
+              </button>
+
+
+
+         
+            <!-- </div>
+          </div> -->
+          </footer>
+        <!-- </div> -->
+      
+      </form> 
+    <!-- </div>
+      <!-- end widget content
+  
+    </div>
+    <!-- end widget div
+  
+  </div>
+  </article>
+      </div>
+  </sa-widgets-grid>
+  </div> -->

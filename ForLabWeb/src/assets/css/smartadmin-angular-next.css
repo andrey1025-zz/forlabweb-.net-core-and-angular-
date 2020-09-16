@@ -1,0 +1,116 @@
+app-root, app-main-layout, app-auth-layout, app-locked, #extr-page{
+  min-height: 100vh;
+  /* background-color: #F4EDDA; */
+}
+
+sa-outlook,
+sa-maps,
+app-root,
+app-main-layout,
+app-auth-layout,
+app-locked,
+sa-ribbon
+{
+  display: block;
+}
+
+#inbox-content{
+  position: relative;
+}
+
+/* .page-footer {
+} */
+
+a:hover{cursor: pointer;}
+
+#extr-page .login-app-icons {
+  vertical-align: top;
+  margin-top: 60px;
+  width: 350px;}
+#shortcut {
+  display: block;
+  overflow: hidden;
+}
+#left-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 904;
+  padding-top: 0px;
+}
+#extr-page h4.paragraph-header {
+  color: #565656;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  margin-top: 15px;
+  width: 400px;
+}
+#map-canvas{
+  min-height: 420px
+}
+
+.parent_li .sa-icon{
+  margin-left: 1rem;
+}
+
+.tab-container>.nav.nav-tabs{
+  display: none;
+}
+
+.colorpicker.colorpicker-hidden {
+  display: none;
+}
+.colorpicker.colorpicker-visible {
+  display: block;
+}
+.colorpicker-inline.colorpicker-visible {
+  display: inline-block;
+}
+
+
+.tabbed-widget-content{
+  position: relative;
+}
+.tabbed-widget-content .nav-tabs.pull-right>li>a{
+  padding: 6px 10px 6px;
+}
+.tabbed-widget-content .nav-tabs.pull-right{
+  position: relative;
+  top: -45px;
+  display: block;
+}
+
+svg {
+  touch-action: none;
+}
+
+#calendar .fc-right, #calendar .fc-center{
+  display: none;
+}
+
+.select2-container-multi .select2-choices, .select2-selection--multiple{
+  border-color: transparent;
+}
+
+.ui-dialog .ui-dialog-titlebar-close .ui-icon-closethick {
+  display: none;
+}
+
+
+.sa-hidden{
+  opacity: 0;
+}
+.sa-cloak.sa-hidden{
+  opacity: 0;
+  transition: opacity .2s;
+}
+.sa-cloak:not(.sa-hidden){
+  opacity: 1;
+}
+
+.smart-accordion-default .panel-title>a.collapsed>.fa,
+.smart-accordion-default .panel-title>a>:first-child {
+  display: inline-block;
+}
+

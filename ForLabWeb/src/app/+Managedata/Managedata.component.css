@@ -1,0 +1,67 @@
+.printButton {
+    background-color: red!important;
+    color: white;
+}
+
+#manage-data-container {
+    padding: 13px 25px;
+}
+
+.jarviswidget>div {
+    border: none;
+}
+
+.nav-tabs {
+    height: 46px;
+    border: 0;
+    background: #F9F9F9;
+}
+
+.nav-tabs>li {
+    height: 100%;
+    margin-right: 18px;
+    padding: 13px 16px;
+}
+
+.nav-tabs>li.active {
+    background: #FFFFFF;
+}
+
+.nav-tabs>li.active:after {
+    width: 36px;
+    height: 46px;
+    content: url(../../assets/img/new/nav-tab-after.png);
+    position: absolute;
+    right: -36px;
+    top: 0;
+}
+
+.nav-tabs>li>a {
+    display: flex;
+    height: 100%;
+    border: none;
+    margin: 0 !important;
+    padding: 0;
+    color: #A9AEB7;
+}
+
+.nav-tabs>li>a .badge {
+    background: #2B394E;
+}
+
+.nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background-color: #F9F9F9;
+}
+
+.nav>li>a.active:focus, .nav>li>a.active:hover {
+    text-decoration: none;
+    background-color: #FFFFFF;
+}
+
+.nav-tabs>li.active>a {
+    box-shadow: none;
+    margin: 0;
+    border: none;
+    color: #2B394E;
+}

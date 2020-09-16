@@ -1,0 +1,85 @@
+<div id="content">
+  <sa-widgets-grid>
+
+
+    <!-- START ROW -->
+
+    <div class="row">
+
+      <!-- NEW COL START -->
+      <article class="col-sm-12 col-md-12 col-lg-12">
+        <div sa-widget [editbutton]="false" [custombutton]="false" [deletebutton]="false">
+
+          <header>
+            <span class="widget-icon">
+              <i class="fa fa-edit"></i>
+            </span>
+
+
+
+          </header>
+
+          <!-- widget div-->
+          <div>
+
+
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+              <form class="smart-form" novalidate="novalidate" [formGroup]="programmethod">
+                <!-- [formGroup]="RecentForecast" -->
+                <header>
+                  <h3 style="
+                color: gray;
+            ">
+                    Determine how you would like to calculate the total number of patient expected to receive the given service.
+                  </h3>
+                </header>
+
+                <fieldset>
+                 <section>
+                  <div class="">
+                    <label>
+
+                      <input type="radio" class="radiobox style-3" name="method"   formControlName="method" value="1" (click)="changeforecsattype($event.target.value,'Target_Based')" >
+                      <span>I have national treatment target</span>
+                    </label>
+                   
+                  </div> 
+                 </section>  
+                 <section>
+                  <div class="">
+                    <label>
+                      <input type="radio" class="radiobox style-3" name="method"  formControlName="method"  value="2"(click)="changeforecsattype($event.target.value,'Population_Based')" >
+                      <span>I dont have national treatment target. I would like to use population based estimate using prevalence rate</span>
+                    </label>
+                   
+                  </div> 
+                 </section>  
+                </fieldset>
+
+                <footer>
+                  <a [routerLink]="['/Forecast/DemographicProgramlist',forecastid]" class="btn btn-default" style="float: left;"><b>
+                     << Previous</b> </a> <a  (click)="saveforecastparameter()" class="btn btn-default" style="float: right;" ><b>Next >></b></a>
+                </footer>
+
+              </form>
+
+            </div>
+            <!-- end widget content -->
+
+          </div>
+          <!-- end widget div -->
+
+        </div>
+      </article>
+    </div>
+  </sa-widgets-grid>
+</div>
+
+<!-- <div class="">
+  <label>
+    <input type="radio" class="radiobox style-3" name="sitebysite" formControlName="sitebysite" value="sitebysite" (click)="changeforecsattype()">
+    <span>I have data for all sites and I would like to do a site by site forecast</span>
+  </label>
+ 
+</div> -->

@@ -1,0 +1,5 @@
+label input[type=checkbox].checkbox.style-3:checked+span:before {
+    color: #fff;
+    border-color: gray!important;
+    background: gray!important;
+}

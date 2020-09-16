@@ -1,0 +1,16 @@
+#conduct-forecast-container {
+  padding: 13px 25px;
+}
+
+#conduct-content {
+  padding: 25px 20px 25px 24px;
+  background-color: #FFFFFF;
+}
+
+.site-test-checkboxes__checkbox {
+  padding: 10px 0 0 10px;
+}
+
+.styled-checkbox {
+  width: auto!important;
+}

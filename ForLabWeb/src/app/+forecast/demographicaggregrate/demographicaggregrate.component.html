@@ -1,0 +1,180 @@
+
+<div id="content">
+  <sa-widgets-grid>
+
+
+    <!-- START ROW -->
+
+    <div class="row">
+
+      <!-- NEW COL START -->
+      <article class="col-sm-12 col-md-12 col-lg-12">
+        <div sa-widget [editbutton]="false" [custombutton]="false" [deletebutton]="false">
+
+          <header>
+            <span class="widget-icon">
+              <i class="fa fa-edit"></i>
+            </span>
+
+
+
+          </header>
+
+          <!-- widget div-->
+          <div>
+
+
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+              <form class="smart-form" novalidate="novalidate"  [formGroup]="demographicaggregrate">
+                <!-- [formGroup]="RecentForecast" -->
+                <header>
+                  <h3 style="
+                color: gray;
+            ">
+                  Review Patient Data
+                  </h3>
+                </header>
+<fieldset>
+<section class="col col-8">
+  <h2>
+
+    </h2>        
+ 
+  <div class="table-responsive"  style="overflow-y: auto;height: 318px;border-style: ridge;margin-top: 4%" formArrayName="_patientnumber">
+
+
+
+      <table class="table table-bordered table-striped table-hover">
+
+          <thead>
+              <tr>
+                  <th></th>
+                  <th>Category Name</th>
+              
+                  <th *ngIf="Show" >Current Patient On Treatment</th>
+                  <th  *ngIf="Show">Target Patient + New Patient</th>
+                  <th  *ngIf="!Show">Population Number</th>
+                  <th  *ngIf="!Show"> Prevalence Rate</th>
+                  <th>Remove</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr  *ngFor="let item of demographicaggregrate.get('_patientnumber')['controls']; let i = index;" [formGroupName]="i" (click)="setClickedRow(i)" >
+               
+                <td>
+                    <a class="fa"
+      
+                    (click)="toggleExpandRow(i)"><i *ngIf="i!=divsubtable || !sitediv"  class="fa fa-plus"></i><i *ngIf="i==divsubtable && sitediv" class="fa fa-minus"></i>
+                  </a>
+                </td>
+                  <td  >
+                    
+                          <div class="form-group" [ngClass]="{'has-error': outsideRange && item.dirty || item.invalid}">
+                      <label class="input">
+                       
+                          <input type="text" name="SiteCategoryName" formControlName="SiteCategoryName" />
+
+                      </label>
+                      </div>
+                      <div *ngIf="i==divsubtable && sitediv" style="height:150px;overflow-y: auto ;">
+                          <table class="table table-bordered table-striped table-hover" >
+  
+                              <thead>
+                                  <tr>
+                                    <th></th>
+                                      <th>Sites</th>
+                                  
+                                     
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr  *ngFor="let item1 of sitecategorylist; let j = index;"  >
+                                      <td>
+                                          <label>
+                                              <input type="checkbox"  name="SiteID"  class="checkbox style-3"  (change)="onsiteChange(item1,$event.target.checked,i)" [checked]="item1.categoryID !=0" /><span></span>
+                                            </label>
+                                      </td>
+                                    <td  >
+                                          <label class="input">
+
+                                            {{item1.siteName}}
+        
+                                          </label>
+                                      </td>
+                                     
+                                     
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </td>
+              
+                  <td  *ngIf="Show">
+                        <div class="form-group" [ngClass]="{'has-error': item.dirty}">
+
+                      <label class="input">
+                          <input type="text" class="form-control" formControlName="Currentpatient"
+                          pattern="[0-9]+" minlength="1" maxlength="10" style="text-align: right"    >
+                       <!--<input type="number" name="Currentpatient" formControlName="Currentpatient" style="text-align: right" maxlength="4" /> -->
+                      </label>
+                      </div>
+                      
+                  </td>
+                  <td  *ngIf="Show">
+                      <label class="input">
+                          <input type="text" class="form-control" formControlName="Targetpatient"
+                          pattern="[0-9]+" minlength="1" maxlength="10" style="text-align: right"    >
+                        <!--   <input type="number" name="Targetpatient" formControlName="Targetpatient" style="text-align: right"  maxlength="4"  /> -->
+                      </label>
+                  </td>
+                  <td  *ngIf="!Show"> 
+                    <label class="input">
+                      <input type="text" class="form-control" formControlName="PopulationNumber"
+                      pattern="[0-9]+" minlength="1" maxlength="10" style="text-align: right"    >
+                        <!-- <input type="number" name="PopulationNumber" formControlName="PopulationNumber" style="text-align: right"  maxlength="4"  /> -->
+                    </label>
+                   
+                </td>
+                <td  *ngIf="!Show">
+                    <label class="input">
+                      <input type="text" class="form-control" formControlName="PrevalenceRate"
+                      pattern="[0-9]+" minlength="1" maxlength="4" style="text-align: right"    >
+                        <!-- <input type="number" name="PrevalenceRate" formControlName="PrevalenceRate" style="text-align: right"  maxlength="4"  /> -->
+                    </label>
+                </td>
+                  <td>
+                      <label class="input">
+                          <a type="button" (click)="delremovepatientno(i)">
+                              <i class="fa fa-trash-o"></i>
+                          </a>
+                      </label>
+                  </td>
+            </tr>
+     
+          </tbody>
+      </table>
+
+
+  </div>
+
+</section>
+</fieldset>
+<footer>
+  <a (click)="Previousclick()"  class="btn btn-default" style="float: left;"><b>
+     << Previous</b> </a> <a  (click)="savesitebycategoryinfo()" class="btn btn-default" style="float: right;" ><b>Next >></b></a>
+</footer>
+
+</form>
+
+</div>
+<!-- end widget content -->
+
+</div>
+<!-- end widget div -->
+
+</div>
+</article>
+</div>
+</sa-widgets-grid>
+</div>

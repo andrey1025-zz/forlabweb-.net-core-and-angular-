@@ -1,0 +1,78 @@
+<div id="content">
+  <sa-widgets-grid>
+    <div class="row">
+
+      <!-- NEW COL START -->
+      <article class="col-sm-12 col-md-12 col-lg-12">
+        <div sa-widget [editbutton]="false" [custombutton]="false" [deletebutton]="false">
+
+          <header>
+            <span class="widget-icon">
+              <i class="fa fa-edit"></i>
+            </span>
+
+
+
+          </header>
+
+          <!-- widget div-->
+          <div>
+
+
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+<form  class="smart-form"   [formGroup]="forecastfactor" (ngSubmit)="save()">
+  <header>
+    <h3 style="
+    color: gray;
+">
+ ARE THERE ANY FACTORS AFFECTING THE FINAL FORECAST OUTPUT
+   </h3>
+  </header>
+<fieldset>
+  <section>
+          
+    <div class="form-group"  [ngClass]="{'has-error':!forecastfactor.controls['WastageRate'].valid && forecastfactor.controls['WastageRate'].touched}">
+      <div class="">
+        <label class="input" style="display: inline-block;">
+          <input class="form-control" type="text"    pattern="[0-9]+" minlength="0" maxlength="4" style="text-align: right"  name="WastageRate" formControlName="WastageRate" ></label>
+          <span>Wastage rate of percentage</span>
+     
+      </div>
+      <div class="note note-error" *ngIf="forecastfactor.controls['WastageRate'].hasError('pattern')  && forecastfactor.controls['WastageRate'].touched" >Character are not allowed in number field</div>  
+    </div>
+
+</section>
+<section>
+          
+  <div class="form-group"  [ngClass]="{'has-error':!forecastfactor.controls['Scaleup'].valid && forecastfactor.controls['Scaleup'].touched}">
+    <div class="" >
+      <label class="input"  style="display: inline-block;">
+        <input class="form-control" type="text"   pattern="[0-9]+" minlength="0" maxlength="4" style="text-align: right"  name="Scaleup" formControlName="Scaleup" ></label>
+        <span>Expected program growth over the forecast period in percentage</span>
+      
+    </div>
+    <div class="note note-error" *ngIf="forecastfactor.controls['Scaleup'].hasError('pattern')  && forecastfactor.controls['Scaleup'].touched" >Character are not allowed in number field</div>  
+  </div>
+
+</section>
+</fieldset>
+
+  <footer>
+    <a  (click)="Previousclick()"  class="btn btn-default" style="float: left;"><b>
+      << Previous</b> </a> <button class="btn btn-default" type="submit" style="float: right;" [disabled]="!forecastfactor.valid" ><b>Next >></b></button>
+  </footer>
+<!-- </div> -->
+
+</form> 
+</div>
+<!-- end widget content -->
+
+</div>
+<!-- end widget div -->
+
+</div>
+</article>
+</div>
+</sa-widgets-grid>
+</div>

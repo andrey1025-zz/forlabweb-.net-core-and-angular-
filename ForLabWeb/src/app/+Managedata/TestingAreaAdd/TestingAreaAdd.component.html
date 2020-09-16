@@ -1,0 +1,28 @@
+<div class="testing-add-modal-header">
+  <a type="button" class="close-button" (click)="onCloseModal();" aria-hidden="true">
+  </a>
+</div>
+<div class="testing-add-modal-body text-center">
+  <span class="testing-add-modal-title color-darkblue">Testing Area Form</span>
+  <form class="testing-add-form" [formGroup]="testAreaForm" (ngSubmit)="save()">
+    <div class="row">
+      <div class="col-md-offset-2 col-md-8">
+        <div class="form-group" [ngClass]="{'has-error':!testAreaForm.controls['areaName'].valid &&
+          testAreaForm.controls['areaName'].touched}">
+          <div class="testing-add-form__inner">
+            <input type="text" class="form-control" name="testingAreaName" placeholder="Testing Area Name"
+              formControlName="areaName" required />
+            <button class="btn btn-cyan" type="submit" [disabled]="!testAreaForm.valid">
+              {{submitBtnName}}</button>
+          </div>
+        </div>
+        <div class="note note-error"
+          *ngIf="testAreaForm.controls['areaName'].hasError('required') && testAreaForm.controls['areaName'].touched">
+          Please Enter Testing Area Name</div>
+        <div class="note note-error"
+          *ngIf="testAreaForm.controls['areaName'].hasError('maxlength') && testAreaForm.controls['areaName'].touched">
+          Maximum 64 characters are allowed</div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,212 @@
+#content {
+  padding: 23px 22px;
+}
+
+.dt-toolbar {
+  height: 69px;
+  background: #FFFFFF;
+  border: 0;
+  padding: 0;
+}
+
+.dt-toolbar .dataTables_filter label {
+  width: 100%;
+  padding-right: 30%;
+}
+
+#construct-content .dt-toolbar .dataTables_filter label {
+  width: 100%;
+  padding-right: 0;
+}
+
+.dt-toolbar .dataTables_filter input {
+  border-radius: 10px !important;
+  border: none;
+  background: #F9F9F9;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  width: 100%;
+  height: 46px;
+  background-image: url(../img/new/icon-search.png);
+  background-repeat: no-repeat;
+  background-position: right 0 top 1px;
+}
+
+.dt-toolbar .dt-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 60px;
+  padding: 0 20px;
+  background: #FDFDFD;
+}
+
+#construct-content .dt-toolbar .dt-buttons {
+  width: 50%;
+  float: right;
+}
+
+.dt-toolbar .dt-buttons a.btn {
+  width: 46px;
+  height: 46px;
+  background: #FFFFFF;
+  border: none;
+  border-radius: 5px !important;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 44px;
+  letter-spacing: 0.1em;
+  padding: 0;
+}
+
+.dt-toolbar .dt-buttons a.btn-view {
+  background-image: url(../img/new/btn_view.png);
+}
+
+.dt-toolbar .dt-buttons a.btn-trash {
+  background-image: url(../img/new/btn_trash.png);
+}
+
+.dt-toolbar .dt-buttons a.btn-rect {
+  background-image: url(../img/new/btn-rect.png);
+}
+
+.dt-toolbar .dt-buttons a.btn-export {
+  background-image: url(../img/new/btn-export.png);
+}
+
+.dt-toolbar .dt-buttons a.btn-pdf {
+  background-image: url(../img/new/btn-pdf.png);
+}
+
+.dt-toolbar .dt-buttons a.btn-print {
+  background-image: url(../img/new/btn-print.png);
+}
+
+.dt-toolbar .dt-buttons a.btn-import {
+  width: 96px;
+  color: #20BDEF;
+  background: #FFFFFF;
+  border: 1px solid #20BDEF;
+}
+
+.dt-toolbar .dt-buttons a.btn-new {
+  width: 154px;
+  color: #FFFFFF;
+  background: #20BDEF;
+}
+
+.dt-toolbar-footer {
+  display: none;
+}
+
+#content div[role="content"] {
+  border: none;
+}
+
+table.dataTable.table {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  padding-left: 25px;
+}
+
+table.dataTable.table.modalTable {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  padding-left: 0;
+}
+
+.dataTables_scrollHead {
+  background-color: #FFFFFF !important;
+}
+
+.dataTables_scrollHeadInner, .dataTables_scrollHeadInner table {
+  width: 100% !important;
+}
+
+.table-striped>tbody>tr, .table-striped>thead>tr {
+  background: #FFFFFF !important;
+  height: 58px;
+}
+
+.table>tbody>tr>td {
+  margin: 0 !important;
+  vertical-align: middle;
+}
+
+.table {
+  color: #2B394E;
+  letter-spacing: 0.1em;
+}
+
+.table>thead {
+  font-weight: 800;
+  opacity: 1;
+}
+
+.table>tbody {
+  font-weight: 600;
+}
+
+.table-bordered, .table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+  border-right: none;
+  text-align: center;
+}
+
+.table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+  vertical-align: middle;
+}
+
+.table>tbody tr td:last-child {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 0;
+}
+
+.table>tbody tr td {
+  color: rgb(43, 57, 78, .7);
+}
+
+.table>tbody tr td:last-child a {
+  margin-top: 24px;
+  width: 20px;
+  height: 22px;
+}
+
+.icon-report {
+  background-image: url(../img/new/icon-report.png);
+}
+
+.icon-edit {
+  background-image: url(../img/new/icon-edit.png);
+}
+
+.icon-trash {
+  background-image: url(../img/new/icon-trash.png);
+}
+
+table.dataTable thead .sorting_asc {
+  background-image: url(../img/new/icon-sorting-up.png);
+  background-size: 13px 13px;
+}
+
+table.dataTable thead .sorting_desc {
+  background-image: url(../img/new/icon-sorting-down.png);
+  background-size: 13px 13px;
+}
+
+table.dataTable thead .sorting {
+  /* background-image: url(../img/new/icon-sorting.png); */
+  background-image: none;
+  background-size: 13px 26px;
+}
+
+table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc {
+  background-color: #FEFEFE;
+}
+
+input[type="number"].mod::-webkit-outer-spin-button, input[type="number"].mod::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  background-image: url(../img/new/icon-sorting-up.png);
+  background-size: 13px 13px;
+}

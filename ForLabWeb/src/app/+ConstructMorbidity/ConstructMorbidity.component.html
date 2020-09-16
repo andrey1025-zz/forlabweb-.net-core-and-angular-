@@ -1,0 +1,28 @@
+<div id="construct-morbidity-container">
+  <div id="construct-content">
+    <div class="row">
+      <article class="col-sm-12">
+        <div sa-widget [editbutton]="false" color="blueDark" [deletebutton]="false">
+          <div class="no-border">
+            <div class="widget-body no-padding">
+              <app-manage-datatable tableClass="table table-striped table-bordered table-hover Category">
+                <thead>
+                  <tr>
+                    <th data-class="expand">Program Name</th>
+                    <th data-class="expand">Forecasting Method</th>
+                    <th data-class="expand">Total Groups</th>
+                    <th data-class="expand">Total Forecasts</th>
+                    <th data-class="expand">Actions</th>
+                  </tr>
+                </thead>
+              </app-manage-datatable>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
+<ng-template #programaddModal>
+  <app-programadd (close)="onProgramAddClose()"></app-programadd>
+</ng-template>

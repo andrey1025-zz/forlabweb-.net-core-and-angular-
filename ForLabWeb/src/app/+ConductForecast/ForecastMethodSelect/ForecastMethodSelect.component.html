@@ -1,0 +1,85 @@
+<div class="forecast-add-modal-header">
+  <a type="button" class="close-button" (click)="onCloseModal()" aria-hidden="true">
+  </a>
+</div>
+<div class="forecast-add-modal-body text-center">
+  <span class="forecast-add-modal-title color-darkblue">Select METHODOLOGY ARE YOU THINKING OF USING FOR THIS
+    FORECAST</span>
+  <form class="forecast-add-form" (ngSubmit)="save()">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="method-container" [ngClass]="{'selected': currentMethod == 0}" (click)="handleSelectMethod(0)">
+          <div class="control-req__buttons--button">
+            Service
+          </div>
+          <p>Serng servevice statistics data are also historical, program-level or facility-level data on the number of
+            patient visits to facilities, the number of services provided, or the number of people who received a
+            specific service or treatment within a given time period. Service statistics data can be found in program
+            monitoring reports, HMIS data, facility-level data on service utilization and attendance rates, or in
+            patient records. In some programs, the LMIS captures a limited number of service statistics. For ARVs,
+            service statistics data would be the total number of ART patients on treatment at a facility, or perhaps the
+            total number of patient visits to a facility at a point in time. For HIV tests, service statistics would be
+            the total number of clients tested during a certain period. For laboratory supplies, service statistics are
+            the total number of tests performed in a certain period (e.g., CD4 count testsperformed in a given quarter).
+          </p>
+          <a>Read More</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="method-container" [ngClass]="{'selected': currentMethod == 1}" (click)="handleSelectMethod(1)">
+          <div class="control-req__buttons--button">
+            Consumption
+          </div>
+          <p>Consumption data are historical data on the actual quantities of a product that have been dispensed to
+            patients or used at a service delivery point within a given time period, and are typically reported per
+            month or per quarter. Daily consumption data can be found in pharmacy dispensing registers, laboratory
+            registers, or other point of service registers. Where a well-functioning LMIS captures and aggregates these
+            data from service delivery points, aggregated consumption data can be found in monthly and annual
+            facility-level and program-level reports. For antiretroviral drugs (ARVs), consumption data would be the
+            actual quantity of each ARV dispensed to ART patients. For HIV tests, consumption data or “usage data” are
+            the actual number of HIV tests used over a given period. For laboratory supplies, consumption data are the
+            actual number of laboratory commodities used.</p>
+          <a>Read More</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="method-container" [ngClass]="{'selected': currentMethod == 2}" (click)="handleSelectMethod(2)">
+          <div class="control-req__buttons--button">
+            Morbidity
+          </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur.</p>
+          <a>Read More</a>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="forecast-add-modal-footer">
+    <div class="forecast-add-modal-footer__container">
+      <button type="button" (click)="openPreviousModal()" class="btn btn-outline-cyan">Back</button>
+
+      <div class="forecast-form-step">
+        <div class="steps">
+          <div class="progressbar-wrapper">
+            <ul class="progressbar">
+              <li class="passed"></li>
+              <li class="passed"></li>
+              <li class="passed"></li>
+              <li class="passed"></li>
+              <li class="passed"></li>
+              <li class="active"></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <button (click)="openNextModal()" class="btn btn-cyan">Next</button>
+    </div>
+  </div>
+</div>

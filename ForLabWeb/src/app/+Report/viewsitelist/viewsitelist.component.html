@@ -1,0 +1,69 @@
+<form >  
+<div id="content">
+    <div class="row">
+  
+        <span id="extr-page-header-space"> <a routerLink="/Report/Filtersite" class="btn btn-primary">Back</a> </span>
+      </div> 
+     
+     <sa-widgets-grid>
+    
+    
+        <div class="row">
+          <article class="col-sm-12">
+    
+    
+           
+    
+            <div sa-widget [editbutton]="false" color="blueDark" [deletebutton]="false">
+              <header>
+                <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                <h2>Site</h2>
+              </header>
+              <div>
+                <div class="widget-body no-padding">
+    
+
+            
+                  <sa-datatable #aa
+               
+           *ngIf="xx" [options]="{  aaData: getdata,  
+            columns:columnname ,     
+             
+              
+            
+         
+             
+               buttons: [
+               'copy', 'csv', 'excel', 'pdf', 'print'
+                 ]}"
+                  tableClass="table table-striped table-bordered table-hover Category"
+                >
+                  <thead>
+                  <tr>
+                  
+                    <th data-class="expand">Region</th>
+                    <th data-class="expand">Category</th>
+                    <th data-class="expand">Site</th>
+                    <th data-class="expand" [style.display]="show === 'true' ? 'block' : 'none'">General Working Days</th>
+                    <th *ngFor="let item of controlArray" [style.display]="show === 'true' ? 'block' : 'none'" >{{item.testingArea}} working Days</th>
+                  
+                  </tr>
+                  </thead>
+                </sa-datatable> 
+                </div>
+              </div>
+            </div>
+         
+    
+          </article>
+    
+    
+        </div>
+    
+      </sa-widgets-grid>
+   
+   
+    </div>
+  </form>
+    
+    

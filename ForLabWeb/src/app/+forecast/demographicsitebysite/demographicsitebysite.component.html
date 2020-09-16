@@ -1,0 +1,152 @@
+<div id="content">
+  <sa-widgets-grid>
+
+
+    <!-- START ROW -->
+
+    <div class="row">
+
+      <!-- NEW COL START -->
+      <article class="col-sm-12 col-md-12 col-lg-12">
+        <div sa-widget [editbutton]="false" [custombutton]="false" [deletebutton]="false">
+
+          <header>
+            <span class="widget-icon">
+              <i class="fa fa-edit"></i>
+            </span>
+
+
+
+          </header>
+
+          <!-- widget div-->
+          <div>
+
+
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+              <form class="smart-form" novalidate="novalidate"  [formGroup]="demographicsitebysite">
+                <!-- [formGroup]="RecentForecast" -->
+                <header>
+                  <h3 style="
+                color: gray;
+            ">
+                  Review Patient Data
+                  </h3>
+                </header>
+<fieldset>
+                <section class="col col-8" >
+                  <h2>
+    
+                    </h2>        
+                 
+                  <div class="table-responsive"  style="overflow-y: auto;height: 318px;border-style: ridge;margin-top: 26px" formArrayName="_patientnumber">
+    
+    
+    
+                      <table class="table table-bordered table-striped table-hover">
+    
+                          <thead>
+                              <tr>
+                                  <th>Site Name</th>
+                              
+                                  <th *ngIf="Show" >Current Patient On Treatment</th>
+                                  <th  *ngIf="Show">Target Patient + New Patient</th>
+                                  <th  *ngIf="!Show">Population Number</th>
+                                  <th  *ngIf="!Show"> Prevalence Rate</th>
+                                  <!-- <th>Remove</th> -->
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr  *ngFor="let item of demographicsitebysite.get('_patientnumber')['controls']; let i = index;" [formGroupName]="i" (click)="setClickedRow(i)" [class.highlight]="i == selectedRow">
+                                  <td  >
+                                      <label class="input">
+    
+                                        {{item.getRawValue().SiteName}}
+                                          <!-- <input type="text" name="SiteName" formControlName="SiteName" /> -->
+    
+                                      </label>
+                                  </td>
+                              
+                                  <td  *ngIf="Show">
+                                        <!-- <div class="form-group" [ngClass]="{'has-error': sitebysiteforecast.controls['_patientnumber'].controls[i].controls.Currentpatient.dirty || sitebysiteforecast.controls['_patientnumber'].controls[i].controls.Currentpatient.invalid}"> -->
+    
+                                      <label class="input">
+                                        <input type="text" class="form-control" formControlName="Currentpatient"
+                                        pattern="[0-9]+" minlength="1" maxlength="10" style="text-align: right"    >
+                                          <!-- <input type="number"  name="Currentpatient" formControlName="Currentpatient" style="text-align: right"   /> -->
+                                      </label>
+                                      <!-- </div> -->
+                                   
+                                      <div class="note note-error" *ngIf="demographicsitebysite.controls['_patientnumber'].controls[i].controls.Currentpatient.invalid">Character are not allowed in number field</div>
+        
+                                      
+                                  </td>
+                                  <td  *ngIf="Show">
+                                        <!-- <div class="form-group" [ngClass]="{'has-error': sitebysiteforecast.controls['_patientnumber'].controls[i].controls.Targetpatient.dirty || sitebysiteforecast.controls['_patientnumber'].controls[i].controls.Targetpatient.invalid}"> -->
+                                      <label class="input">
+                                        <input type="text" class="form-control" formControlName="Targetpatient"
+                                        pattern="[0-9]+" minlength="1" maxlength="10" style="text-align: right"    >
+                                      <!-- ///    <input type="number"  name="Targetpatient" formControlName="Targetpatient" style="text-align: right" /> -->
+                                      </label>
+                                      <!-- </div> -->
+                                      <div class="note note-error" *ngIf="demographicsitebysite.controls['_patientnumber'].controls[i].controls.Targetpatient.invalid">Character are not allowed in number field</div>
+                                  </td>
+                                  <td  *ngIf="!Show"> 
+                                        <!-- <div class="form-group" [ngClass]="{'has-error':  sitebysiteforecast.controls['_patientnumber'].controls[i].controls.PopulationNumber.dirty || sitebysiteforecast.controls['_patientnumber'].controls[i].controls.PopulationNumber.invalid}"> -->
+                                    <label class="input">
+                                        <input type="text" class="form-control" formControlName="PopulationNumber"
+                                        pattern="[0-9]+" minlength="1" maxlength="10" style="text-align: right"    >
+                                        <!-- <input type="number" name="PopulationNumber" formControlName="PopulationNumber" style="text-align: right"  /> -->
+                                    </label>
+                                   <!-- </div> -->
+                                   <div class="note note-error" *ngIf="demographicsitebysite.controls['_patientnumber'].controls[i].controls.PopulationNumber.invalid">Character are not allowed in number field</div>
+                                </td>
+                                <td  *ngIf="!Show">
+                                        <!-- <div class="form-group" [ngClass]="{'has-error': sitebysiteforecast.controls['_patientnumber'].controls[i].controls.PrevalenceRate.dirty || sitebysiteforecast.controls['_patientnumber'].controls[i].controls.PrevalenceRate.invalid}"> -->
+                                    <label class="input">
+                                        <input type="text" class="form-control" formControlName="PrevalenceRate"
+                                        pattern="[0-9]+" minlength="1" maxlength="6" style="text-align: right"    >
+    
+                                        <!-- <input type="number" name="PrevalenceRate" formControlName="PrevalenceRate" style="text-align: right"   /> -->
+                                    </label>
+                                    <!-- </div> -->
+                                    <div class="note note-error" *ngIf="demographicsitebysite.controls['_patientnumber'].controls[i].controls.PrevalenceRate.invalid">Character are not allowed in number field</div>
+                                </td>
+                                  <!-- <td>
+                                      <label class="input">
+                                          <a type="button" (click)="delremovepatientno(i)">
+                                              <i class="fa fa-trash-o"></i>
+                                          </a>
+                                      </label>
+                                  </td> -->
+                                <!-- <div class="note note-error" *ngIf="outsideRange"  >{{outsideRange}}Current Patient should be less than Target patient</div> -->
+                                  <!--   <div class="note note-error" *ngIf="item.invalid">Character are not allowed in number field</div> -->
+                              </tr>
+                          </tbody>
+                      </table>
+    
+    
+                  </div>
+    
+              </section>
+            </fieldset>
+                <footer>
+
+                  <a  (click)="Previousclick()"  class="btn btn-default" style="float: left;"><b>
+                     << Previous</b> </a> <a  (click)="savesitebysiteinfo()" class="btn btn-default" style="float: right;" ><b>Next >></b></a>
+                </footer>
+
+              </form>
+
+            </div>
+            <!-- end widget content -->
+
+          </div>
+          <!-- end widget div -->
+
+        </div>
+      </article>
+    </div>
+  </sa-widgets-grid>
+</div>

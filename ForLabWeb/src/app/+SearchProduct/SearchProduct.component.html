@@ -1,0 +1,158 @@
+<div id="content">
+    <sa-widgets-grid>
+  
+  
+      <!-- START ROW -->
+  
+      <div class="row">
+  
+        <!-- NEW COL START -->
+        <article class="col-sm-12 col-md-12 col-lg-9">
+  <div sa-widget [editbutton]="false" [custombutton]="false">
+  
+    <header>
+      <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+  
+     
+  
+    </header>
+  
+    <!-- widget div-->
+    <div>
+  
+  
+      <!-- widget content -->
+      <div class="widget-body no-padding">
+  
+      <form  class="smart-form"  [formGroup]="Searchproform" >
+        <header>
+         Search
+         
+        </header>
+
+        <fieldset>
+          <section>
+              
+          <div class="form-group">                  
+                <label class="control-label">Search for Product Name                  
+                </label>
+                <div class="col-md-10">
+                        <div class="icon-addon addon-md input-icon-right">
+                <label class="input">
+                <input type="text" class="form-control" name="SerachProduct"  formControlName="SerachProduct"/> 
+                <label class="glyphicon glyphicon-search" rel="tooltip" title="" data-original-title="Product Name"></label>
+              </label>   
+              <button type="button" class=" btn btn-primary btn-lg" (click)="Searchproduct()">Search Now</button>
+            </div> 
+            </div>
+          </div>
+          </section>
+        </fieldset>
+        <fieldset>
+            <section>
+              <div class="row">
+                <div class="form-group">    
+                        <div class="col-md-5" style="
+                        border: 1px ridge;"
+                    >
+                               
+                                         <div class="radio">
+                                    <label>
+                                      <input type="radio" class="radiobox style-3" 
+                                             name="SerachType"  (click)="removeCheckboxes($event)"  checked>
+                                      <span>All Sites</span>
+                                    </label>
+                                  </div>
+                                  <div class="radio">
+                                    <label>
+                                      <input type="radio" class="radiobox style-3"  name="SerachType"  (click)="addCheckboxes($event)">
+                                      <span>Only These Categories</span>
+                                    </label>
+                                  </div>			
+                            
+
+
+                            </div>
+                            <div class="col-md-4" formArrayName="productType" style=" margin-left: 4px; border: 1px ridge;
+                           "
+                         >
+
+                             
+                              <div *ngFor="let order of  ProductTypeList; let i = index">
+                                  <div [formGroupName]="i">
+                                <input type="checkbox"  formControlName="name" (change)="chkchange(order.typeID,i)" >{{order.typeName}}
+                             
+                              </div>
+                            </div>
+                         
+                            </div>
+                           
+                    </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-5" ></div>
+                      <div class="col-md-4" style="text-align: right;" >
+                    <button class="btn btn-primary btn-xs"  [disabled]="buttonstatus" (click)="DeseleectAll()">           
+                        None
+                       </button>  
+                       <button class="btn btn-primary btn-xs" [disabled]="buttonstatus" (click)="seleectAll()">              
+                        All
+                       </button>    
+                      </div>
+                    </div>
+            </section>
+        </fieldset>
+        <section>
+                <div id="content" class="Productlist">
+                  <h1>Products</h1>
+                <div class="table-responsive">
+    
+                    <table class="table table-bordered table-striped table-hover"  *ngIf="ProductList">
+         
+                <thead>  
+                    <tr>  
+                        <th>Product Name</th>  
+                        <th>Product Type</th>  
+                        <th>Catalog#</th>  
+                        <th>Basic Unit</th> 
+                      
+                    </tr>  
+                </thead>  
+                <tbody>  
+                    <tr *ngFor="let Product of ProductList" (click)="editProduct(Product.productID)">  
+                        <td>{{ Product.productName}}</td>  
+                        <td>{{ Product.productType}}</td>  
+                        <td>{{ Product.catalog}}</td>  
+                        <td>{{ Product.basicUnit}}</td>  
+                       
+                        
+                       
+                    </tr>  
+                </tbody>  
+            </table>
+            </div>
+           
+            </div>
+            </section>
+          <footer>      
+              <!-- <button class="btn btn-primary" type="submit">           
+                  Save
+                </button>
+                <button class="btn btn-primary" (click)="clearctrl()">              
+                  Cancel
+                </button> -->
+             
+          </footer>
+        <!-- </div> -->
+      
+      </form> </div>
+      <!-- end widget content -->
+  
+    </div>
+    <!-- end widget div -->
+  
+  </div>
+  </article>
+      </div>
+  </sa-widgets-grid>
+  </div>

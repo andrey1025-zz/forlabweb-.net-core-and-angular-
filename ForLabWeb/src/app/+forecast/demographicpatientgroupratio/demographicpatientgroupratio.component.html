@@ -1,0 +1,134 @@
+<div id="content">
+  <sa-widgets-grid>
+
+
+    <!-- START ROW -->
+
+    <div class="row">
+
+      <!-- NEW COL START -->
+      <article class="col-sm-12 col-md-12 col-lg-12">
+        <div sa-widget [editbutton]="false" [custombutton]="false" [deletebutton]="false">
+
+          <header>
+            <span class="widget-icon">
+              <i class="fa fa-edit"></i>
+            </span>
+
+
+
+          </header>
+
+          <!-- widget div-->
+          <div>
+
+
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+              <form class="smart-form" novalidate="novalidate"  [formGroup]="demographicpatientgroup">
+                <!-- [formGroup]="RecentForecast" -->
+                <header>
+                  <h3 style="
+                color: gray;
+            ">
+                 WHAT % OF THE PATIENTS IN THIS FORECAST ARE IN EACH OF THESE GROUP 
+                  </h3>
+                </header>
+
+                <fieldset>
+<div class="row">
+                  <section class="col col-6">
+                 
+                    <div class="table-responsive"  style="overflow-y: auto;height: 318px;border-style: ridge;margin-top: 26px" formArrayName="_patientgroup">
+      
+      
+      
+                        <table class="table table-bordered table-striped table-hover">
+      
+                            <thead>
+                                <tr>
+                                    <th>Patient Group </th>
+                                
+                                    <th >% of these Group</th>
+                                    <th  style="display: none;" >Calculated Value From Target Patient</th>                            
+                                    <th style="display: none;" >Remove</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr  *ngFor="let item of demographicpatientgroup.get('_patientgroup')['controls']; let i = index;" [formGroupName]="i" >
+        
+                                    <td  >
+                                        <label class="input">
+      
+                                            <input type="text" name="PatientGroupName" formControlName="PatientGroupName" />
+      
+                                        </label>
+                                    </td>
+                                
+                                    <td >
+                                        
+                                        <label class="input">
+                                              <input type="text" class="form-control" formControlName="PatientPercentage"
+                                              pattern="[0-9]+" minlength="0" maxlength="4" style="text-align: right"  (input)="calculatepatientratio($event.target.value,i)"   >
+          
+                                            <!-- <input type="number" name="PatientPercentage" formControlName="PatientPercentage" style="text-align: right" (input)="calculatepatientratio($event.target.value,i)"/> -->
+                                        </label>
+                                       
+                                        <div class="note note-error" *ngIf="demographicpatientgroup.controls['_patientgroup'].controls[i].controls.PatientPercentage.invalid">Character are not allowed in number field</div>
+                                    </td>
+                                    <td style="display: none;" >
+                                        <label class="input">
+                                              <input type="text" class="form-control" formControlName="PatientRatio"
+                                              pattern="[0-9]+" minlength="0" maxlength="4" style="text-align: right"    >
+      
+                                            <!-- <input type="number" name="PatientRatio" formControlName="PatientRatio" style="text-align: right" /> -->
+                                        </label>
+                                    </td>
+                              
+                                    <td style="display: none;" >
+                                        <label class="input">
+                                            <a type="button" (click)="delremovepatientgroup(i)">
+                                                <i class="fa fa-trash-o"></i>
+                                            </a>
+                                        </label>
+                                    </td>
+                               
+                                </tr>
+                            </tbody>
+                        </table>
+      
+      
+                    </div>
+      
+                </section>
+                <section class="col col-6">
+                  <div #container4 >
+                  </div>
+                  </section>
+            </div>
+                </fieldset>
+
+                <footer>
+                  <a  class="btn btn-default"
+                    style="float: left;" (click)="Previousclick()"><b>
+                      << Previous</b> </a> <a (click)="save()" class="btn btn-default" style="float: right;"><b>Next
+                      >></b></a>
+                </footer>
+
+              </form>
+
+            </div>
+            <!-- end widget content -->
+
+          </div>
+          <!-- end widget div -->
+
+        </div>
+      </article>
+    </div>
+  </sa-widgets-grid>
+</div>
+
+
+
+

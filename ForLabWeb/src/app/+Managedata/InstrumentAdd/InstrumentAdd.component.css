@@ -1,0 +1,167 @@
+.close-button {
+  position: absolute;
+  right: 18px;
+  top: 14px;
+  width: 0;
+  height: 0;
+  opacity: 1;
+  z-index: 2;
+}
+
+.close-button:before, .close-button:after {
+  position: absolute;
+  left: 0;
+  content: ' ';
+  height: 13px;
+  width: 3px;
+  background-color: #F35A48;
+}
+
+.close-button:before {
+  transform: rotate(45deg);
+}
+
+.close-button:after {
+  transform: rotate(-45deg);
+}
+
+.inst-add-modal-header {
+  height: 16px;
+}
+
+.inst-add-modal-body {
+  height: calc(100% - 50px);
+  position: relative;
+}
+
+.inst-add-modal-footer {
+  height: 34px;
+  bottom: 0;
+}
+
+.inst-add-modal-title {
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+
+.inst-add-form {
+  margin-top: 40px;
+  font-size: 12px;
+  font-family: 'OpenSans-Semibold';
+}
+
+.inst-add-form input {
+  font-size: 12px;
+  font-family: "OpenSans-Bold";
+  border-radius: 5px !important;
+  border-color: transparent;
+  background-color: #F3F4F5;
+  padding: 12px 14px;
+  height: auto;
+}
+
+.title {
+  font-size: 14px;
+  font-family: "OpenSans-Bold";
+  margin: 20px 0;
+}
+
+.select-test__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.select-test__buttons--button {
+  padding: 13px;
+  font-size: 12px;
+  font-family: 'OpenSans-Semibold';
+  border-radius: 5px;
+  color: rgba(43, 57, 78, .4);
+  background-color: rgba(43, 57, 78, .1);
+  cursor: pointer;
+  border: none;
+}
+
+.control-req {
+  margin-top: 50px;
+}
+
+.control-req__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.control-req__buttons--button {
+  padding: 13px 20px;
+  font-size: 12px;
+  font-family: 'OpenSans-Semibold';
+  border-radius: 5px;
+  color: rgba(43, 57, 78, .4);
+  background-color: rgba(43, 57, 78, .1);
+  cursor: pointer;
+  max-width: 96px;
+}
+
+.selected {
+  color: #fff;
+  background-color: #2B394E;
+}
+
+.other-req {
+  margin-top: 30px;
+}
+
+.other-req__field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.other-req__field p {
+  margin: 0;
+}
+
+.other-req__field input {
+  max-width: 110px;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  cursor: pointer;
+  display: block;
+  width: 8px;
+  color: #20BDEF;
+  text-align: center;
+  position: relative;
+}
+
+input[type=number]:hover::-webkit-inner-spin-button {
+  background: url('../../../assets/img/new/number-arrow.png') no-repeat 50% 50%;
+  width: 14px;
+  height: 14px;
+  padding: 4px;
+  position: relative;
+  right: 4px;
+  border-radius: 28px;
+}
+
+.inst-add__buttons {
+  padding: 0 75px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.inst-add__buttons button {
+  min-width: 145px;
+}
+
+.btn-disabled {
+  opacity: 0.6;
+}

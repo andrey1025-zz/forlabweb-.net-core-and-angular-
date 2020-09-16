@@ -1,0 +1,33 @@
+<div id="content">
+  <div class="row">
+    <article class="col-sm-12">
+      <div sa-widget [editbutton]="false" color="blueDark" [deletebutton]="false">
+        <div>
+          <div class="widget-body no-padding">
+            <app-manage-datatable tableClass="table table-striped table-bordered table-hover Category">
+              <thead>
+                <tr>
+                  <th data-hide="mobile-p">ID</th>
+                  <th data-class="expand">Site Name</th>
+                  <th data-class="expand">Country Name</th>
+                  <th data-class="expand">Region Name</th>
+                  <th data-class="expand">Category Name</th>
+                  <th data-class="expand">Working Days</th>
+                  <th data-class="expand">Action</th>
+                </tr>
+              </thead>
+            </app-manage-datatable>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+
+<ng-template #stepOneModal>
+  <app-site-add-step-one (close)="modalRef1.hide()" (next)="openSecondModal(stepTwoModal)"></app-site-add-step-one>
+</ng-template>
+
+<ng-template #stepTwoModal>
+  <app-site-add-step-two (back)="openFirstModal(stepOneModal)" (close)="modalRef2.hide()"></app-site-add-step-two>
+</ng-template>

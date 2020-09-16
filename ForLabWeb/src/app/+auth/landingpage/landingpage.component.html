@@ -1,0 +1,220 @@
+<div class="main-header">
+  <div class="container">
+    <nav class="navbar">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+          data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-logo" href="#" title=""><img src="assets/img/FørLablogo.jpg" alt=""></a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right" style=" margin-top: 10px;    width: 68%; ">
+          <li><a href="#home12" title="">What is ForLab+</a></li>
+          <li><a href="#aboutus" title="">Who uses ForLab+</a></li>
+          <li><a href="#faq" title="">FAQ</a></li>
+          <li><a href="#resource" title="">Usefull Resource</a></li>
+          <li><a href="#services" title="">Contact</a></li>
+          <!-- 	<li><a href="#blog" title="">Blog</a></li>
+        <li><a href="#contact" title="">Contact</a></li> -->
+
+        </ul>
+      </div><!-- /.navbar-collapse -->
+      <!-- /.container-fluid -->
+    </nav>
+  </div>
+</div>
+<section id="home12">
+  <div class="action-banner">
+    <div class="container">
+      <h3>{{headertext}}</h3>
+      <!-- <h3>ForLab is a standardized, open -source tool with clearly defined requirements, improving programs ability to collect and analyze data to accurately forecast commodity needs.ForLab performs long- and short-term forecasts and guides improvements in diagnostic services.</h3> -->
+
+    </div>
+  </div>
+  <div class="section-area">
+    <div class="container">
+
+      <div class="row features">
+        <div class="col-sm-6 feature">
+          <h3><span>Functionality and features</span></h3>
+          <!-- <ol style="list-style-type: unset;">
+              <li>Analyzes the following data sets to generate informed, evidence -based forecasts:<br>
+              <span style="color: #006094">Service statistics (test numbers)</span><br>
+              <span style="color: #006094">Logistics data (consumption)</span><br>
+              <span style="color: #006094">Demographics (program targets)</span><br>						
+              </li>
+              <li>
+              Imports high volumes of data
+              </li>
+              <li>
+              Compares forecasting methodologies to identify programmatic and commodity gaps
+              </li>
+              <li>
+              Analyzes actual and forecasted instrument utilization, diagnostics contribution, and instrument diversity
+              </li>
+              <li>
+              Models cost estimates associated with guideline shifts
+              </li>
+              </ol> -->
+          <div [innerHtml]="homefunctionality"></div>
+          <br>
+          <img src="assets/img/5.jpg" alt="">
+          <br>
+
+          <h3><span>Benefits of ForLab+ within the quantification process</span></h3>
+          <!-- <ol style="list-style-type: unset;">
+              <li><strong>Planning and preparation: </strong>Focuses data collection efforts to populate a standardized template<br>
+         
+              </li>
+              <li>
+              <strong>Reduce</strong> forecasting analysis time to minutes
+              </li>
+              <li>
+                <strong>Improve </strong>the reliability of the <strong>forecast</strong>
+              </li>
+              <li>
+              <strong>Demand and supply planning: </strong>Promotes development of evidence -based supply plans
+              </li>
+              <li>
+              <strong>Resource analysis: </strong>Provides the opportunity to identify efficiencies within a laboratory network
+              </li>
+              <li>
+              <strong>Validates: </strong>consumption with service rates
+              </li>
+              </ol> -->
+          <div [innerHtml]="homebenefits"></div>
+
+
+          <br>
+          <br>
+          <a href="/#/login" class="btn btn-tranparent">GET STARTED</a>
+        </div>
+        <div class="col-sm-6 feature">
+          <img src="assets/img/1.jpg" alt="">
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+</section>
+<section id="aboutus">
+
+  <div class="action-banner">
+    <div class="container">
+      <!-- <a href="#" class="btn btn-tranparent pull-right hidden-xs">GET STARTED</a> -->
+      <h3>{{aboutusheadertext}}</h3>
+
+    </div>
+  </div>
+  <div class="section-area">
+    <div class="container">
+
+      <div class="row features">
+        <div id="container1">
+          <!-- //style="min-width: 310px; height: 400px; margin: 0 auto" -->
+        </div>
+        <d3-map [data]="data" style="height: 650px"></d3-map>
+        <!-- <div class="col-sm-6 feature" >
+          <h3><span >Functionality and features</span></h3>
+          <ol style="list-style-type: unset;">
+          <li>Analyzes the following data sets to generate informed, evidence -based forecasts:<br>
+          <span style="color: #006094">Service statistics (test numbers)</span><br>
+          <span style="color: #006094">Logistics data (consumption)</span><br>
+          <span style="color: #006094">Demographics (program targets)</span><br>						
+          </li>
+          <li>
+          Imports high volumes of data
+          </li>
+          <li>
+          Compares forecasting methodologies to identify programmatic and commodity gaps
+          </li>
+          <li>
+          Analyzes actual and forecasted instrument utilization, diagnostics contribution, and instrument diversity
+          </li>
+          <li>
+          Models cost estimates associated with guideline shifts
+          </li>
+          </ol>
+          <br>
+            <img src="assets/img/5.jpg" alt="">
+            <br>
+          
+            <h3><span >Benefits of ForLab within the quantification process</span></h3>
+          <ol style="list-style-type: unset;">
+          <li><strong>Planning and preparation: </strong>Focuses data collection efforts to populate a standardized template<br>
+        <!-- 	<span style="color: #006094">Service statistics (test numbers)</span><br>
+          <span style="color: #006094">Logistics data (consumption)</span><br>
+          <span style="color: #006094">Demographics (program targets)</span><br>				
+          </li>
+          <li>
+          <strong>Reduce</strong> forecasting analysis time to minutes
+          </li>
+          <li>
+            <strong>Improve </strong>the reliability of the <strong>forecast</strong>
+          </li>
+          <li>
+          <strong>Demand and supply planning: </strong>Promotes development of evidence -based supply plans
+          </li>
+          <li>
+          <strong>Resource analysis: </strong>Provides the opportunity to identify efficiencies within a laboratory network
+          </li>
+          <li>
+          <strong>Validates: </strong>consumption with service rates
+          </li>
+          </ol>
+          
+          
+          <br>
+          <br>
+            <a routerLink="/login" class="btn btn-tranparent">GET STARTED</a>
+        </div>
+        <div class="col-sm-6 feature">
+          <img src="assets/img/1.jpg" alt="">
+        </div> -->
+        <!-- <div class="col-sm-4 feature"> -->
+        <!-- <h3><span class="fa fa-heart icon-circle"></span> Easy To Launch</h3> -->
+        <!-- <p>Dicant nostrum cum te. An sint choro ius, cibo tractatos usu at, copiosae invenire eu pri.</p> -->
+        <!-- </div> -->
+      </div>
+
+    </div>
+  </div>
+</section>
+<section id="faq">
+
+  <div class="action-banner">
+    <div class="container">
+      <!-- <a href="#" class="btn btn-tranparent pull-right hidden-xs">GET STARTED</a> -->
+      <h3>Frequently Asked Questions</h3>
+
+    </div>
+  </div>
+  <div class="section-area">
+    <div class="container" [innerHtml]="faq">
+    </div>
+  </div>
+</section>
+<section id="resource">
+
+  <div class="action-banner">
+    <div class="container">
+      <!-- <a href="#" class="btn btn-tranparent pull-right hidden-xs">GET STARTED</a> -->
+      <h3>Usefull Resource</h3>
+
+    </div>
+  </div>
+  <div class="section-area">
+    <div class="container" [innerHtml]="resource">
+    </div>
+  </div>
+</section>

@@ -1,0 +1,61 @@
+<div id="content">
+  <div class="row">
+
+      <span id="extr-page-header-space"> <a routerLink="/Report/Filterins" class="btn btn-primary">Back</a> </span>
+    </div> 
+  
+   <sa-widgets-grid>
+  
+  
+      <div class="row">
+        <article class="col-sm-12">
+  
+  
+  
+  
+          <div sa-widget [editbutton]="false" color="blueDark" [deletebutton]="false">
+            <header>
+              <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+              <h2>Instrument</h2>
+            </header>
+            <div>
+              <div class="widget-body no-padding">
+  
+        
+          
+                <sa-datatable #aa
+             
+             
+                tableClass="table table-striped table-bordered table-hover Category"
+              >
+                <thead>
+                <tr>
+                
+                  <th data-class="expand">Testing Area</th>
+                  <th data-class="expand">Instrument</th>
+                  <th data-class="expand">Max Through put</th>
+                  <th data-class="expand">Monthly Through put</th>
+                  <th *ngIf="show=='true'" data-class="expand">After Test No</th>
+                  <th *ngIf="show=='true'" data-class="expand">Daily Control Test</th>
+                  <th *ngIf="show=='true'" data-class="expand">Weekly Control Test</th>
+                  <th *ngIf="show=='true'" data-class="expand">Monthly Control Test</th>
+                  <th *ngIf="show=='true'" data-class="expand">Quarterly Control Test</th>
+                
+                </tr>
+                </thead>
+              </sa-datatable> 
+              </div>
+            </div>
+          </div>
+  
+        </article>
+  
+  
+      </div>
+  
+    </sa-widgets-grid>
+ 
+  
+  </div>
+  
+  

@@ -1,0 +1,60 @@
+<div id="content">
+    <div class="row">
+        <!-- <sa-big-breadcrumbs [items]="['Table', 'Data Tables']" icon="table"
+                            class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></sa-big-breadcrumbs>
+        <sa-stats></sa-stats> -->
+        <!-- <span id="extr-page-header-space"> <a (click)="Addnewforecast()" class="btn btn-primary">Add New</a> </span> -->
+      </div> 
+    
+     <sa-widgets-grid>
+    
+    
+        <div class="row">
+          <article class="col-sm-12">
+    
+    
+    
+    
+            <div sa-widget [editbutton]="false" color="blueDark">
+              <header>
+                <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                <h2>Programs</h2>
+              </header>
+              <div>
+                <div class="widget-body no-padding">
+    
+               
+               
+                 
+                  <sa-datatable
+               
+               
+                  tableClass="table table-striped table-bordered table-hover Category"
+                >
+                  <thead>
+                  <tr>
+                    <!-- <th data-hide="mobile-p">Program ID</th> -->
+                    <th data-class="expand">Program Name</th>
+              
+                    <th data-class="expand">Action</th>
+                  
+                  </tr>
+                  </thead>
+                </sa-datatable> 
+                </div>
+              </div>
+            </div>
+    
+          </article>
+    
+    
+        </div>
+    
+      </sa-widgets-grid>
+   
+  
+    
+    
+    </div>
+    
+    

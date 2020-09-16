@@ -1,0 +1,32 @@
+<div class="category-add-modal-header">
+  <a type="button" class="close-button" (click)="close.emit(true)" aria-hidden="true"></a>
+</div>
+<div class="category-add-modal-body text-center">
+  <span class="category-add-modal-title">Site Category Form</span>
+  <form class="category-add-form" [formGroup]="categoryForm" (ngSubmit)="save()">
+    <div class="row">
+      <div class="col-md-offset-2 col-md-8">
+        <div 
+          class="form-group"
+          [ngClass]="{'has-error':!categoryForm.controls['categoryName'].valid &&
+            categoryForm.controls['categoryName'].touched}">
+          <div class="category-add-form__inner">
+            <input type="text" class="form-control" name="categoryName" placeholder="Site Category Name"
+              formControlName="categoryName" required />
+            <button class="btn btn-cyan" type="submit" [disabled]="!categoryForm.valid">
+              Add Category</button>
+          </div>
+        </div>
+        
+        <div class="note note-error"
+          *ngIf="categoryForm.controls['categoryName'].hasError('required') &&
+          categoryForm.controls['categoryName'].touched">
+          Please enter Category Name</div>
+        <div class="note note-error"
+          *ngIf="categoryForm.controls['categoryName'].hasError('maxlength') &&
+          categoryForm.controls['categoryName'].touched">
+          Maximum 64 characters are allowed</div>
+      </div>
+    </div>
+  </form>
+</div>

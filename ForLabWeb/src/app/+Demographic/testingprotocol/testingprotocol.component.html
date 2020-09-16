@@ -1,0 +1,312 @@
+<!-- <div id="content">
+  <sa-widgets-grid>
+
+
+    <!-- START ROW
+
+    <div class="row">
+
+      <!-- NEW COL START 
+      <article class="col-sm-12 col-md-12 col-lg-12">
+<div sa-widget [editbutton]="false" [custombutton]="false">
+
+  <header>
+    <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+
+   
+
+  </header>
+
+  <!-- widget div
+  <div>
+
+
+
+  <!-- widget content
+  <div class="widget-body no-padding"> -->
+
+
+
+
+
+    <form class="smart-form" [formGroup]="testingprotocol" >
+      <header>
+        Tests and Testing protocol to be included in this forecast
+      </header>
+
+      <fieldset>
+        <div class="row">
+          <section class="col col-3">
+            
+                  <label class="control-label">Testing Area
+
+                  </label>
+                  <label class="input">
+                    <select name="TestingAreaID" class="form-control"  (change)="gettest($event.target.value)">
+                      <option value="0" selected>--Select--</option>
+                      <option *ngFor="let TestingArea of testingAreaList" [value]="TestingArea.testingAreaID">{{TestingArea.areaName}}</option>
+
+                    </select>
+                  </label>
+
+
+
+            <!-- <h2>Testing Areas
+
+            </h2>
+
+            <div class="table-responsive" style="overflow-y: auto;height: 200px;border-style: ridge;"
+            >
+
+
+
+              <table class="table table-bordered table-striped table-hover">
+
+
+                <tbody>
+                  <tr *ngFor="let data of testingAreaList" (click)="gettest(data.testingAreaID)">
+                    <td>
+                      {{data.areaName}}
+                    </td>
+
+
+
+                  </tr>
+                </tbody>
+              </table>
+
+
+            </div> -->
+
+          </section>
+          <section class="col col-3">
+              <label class="control-label">Test
+
+                </label>
+                <label class="input">
+                  <select name="Test" class="form-control"  (change)="ontextchange($event.target.value)">
+                    <option value="0" selected>--Select--</option>
+                    <option *ngFor="let data of TestList" [value]="data.testID">{{data.testName}}</option>
+
+                  </select>
+                </label>
+            <!-- <h2>Tests
+
+            </h2>
+            <div class="form-group" style="margin-left: 4px;
+        border: 1px ridge;
+        height: 200px;
+        overflow-y: auto;
+        padding: 10px;">
+              <label>
+                <input type="checkbox" class="checkbox style-3" (change)="selectalltest($event.target.checked)" /><span>Select
+                  All</span>
+              </label>
+              <div *ngFor="let data of TestList">
+
+                <label>
+                  <input type="checkbox" [checked]="checktest" class="checkbox style-3" (change)="ontextchange(data, $event.target.checked)" /><span>{{data.testName}}</span><br>
+                </label>
+
+              </div>
+            </div> -->
+          </section>
+          <section class="col col-3">
+
+              <label class="control-label">
+
+                </label>
+                <label class="input">
+              <button type="button" class="btn btn-primary btn-sm" (click)="addtestdata()">
+                <!-- <i class="fa fa-eye"></i> -->
+                Add
+              </button>
+
+                </label>
+          </section>
+          <!-- <section class="col col-3">
+            <h2>Selected Test
+
+            </h2>
+
+            <div class="table-responsive" style="overflow-y: auto;height: 200px;border-style: ridge;"
+            >
+
+
+
+              <table class="table table-bordered table-striped table-hover">
+                    
+                <!-- <thead>
+                  <th>&nbsp;Test</th>
+                  <th>&nbsp;Remove</th>
+                </thead> 
+
+                <tbody>
+                  <tr *ngFor="let data of Addtestlist" (click)="addtestdata(data)">
+                    <td>
+                      {{data.testName}}
+                    </td>
+
+                    <td>
+                      <label class="input">
+                          <a type="button" (click)="deltest(data.testID)">
+                              <i class="fa fa-trash-o"></i>
+                          </a>
+                      </label>
+                  </td>
+
+                  </tr>
+                </tbody>
+              </table>
+
+
+            </div>
+
+          </section> -->
+        </div>
+     
+        <section>
+          <h2>
+
+          </h2>
+
+          <div class="table-responsive" style="overflow-y: auto;height: 318px;border-style: ridge;margin-top: 26px" formArrayName="_testingprotocol">
+
+
+
+            <table class="table table-bordered table-striped table-hover" style="width: 1500px;">
+
+              <thead>
+                <tr >
+                   
+                    <th *ngFor="let item of HeaderArray" style="vertical-align: middle">{{item}}</th>
+                
+                    <th  style="vertical-align: middle">Remove</th>
+                </tr>
+            </thead>
+              <tbody>
+                <tr *ngFor="let item1 of testingprotocol.get('_testingprotocol')['controls']; let i = index;" [formGroupName]="i">
+
+                  <td *ngFor="let item of controlArray">
+                   
+                    <label class="input">
+                      <input type="{{item.type}}" name="{{item.name}}" formControlName="{{item.name}}" min="1" [attr.max]="item.datatype === '2' ? '100' : 1000"  [attr.disabled] = "item.type === 'text' ? 'disabled' : null" [style.text-align]="item.type === 'text' ? 'left' : 'right'"  (input)="inputvalue($event,i,item.datatype);"/>
+                    </label>
+
+                 
+                  </td>
+                  <td>
+                      <label class="input">
+                          <a type="button" (click)="deltest(item1,i)">
+                              <i class="fa fa-trash-o"></i>
+                          </a>
+                      </label>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+         
+
+        </section>
+
+      </fieldset>
+      <footer>
+        <!-- <div class="form-actions"> -->
+        <!-- <div class="row">
+<div class="col-md-6"> -->
+        <button type="button" class="btn btn-success" (click)="savetestingprotocol()">
+
+          Next
+          <i class="fa fa-arrow-right"></i>
+        </button>
+
+        <button type="button" class="btn btn-primary" (click)="Previousclick()">
+          <i class="fa fa-arrow-left"></i>
+          Prev
+        </button>
+        <!-- </div>
+</div> -->
+      </footer>
+    </form>
+  <!-- </div>
+</div>
+</div>
+</article>
+</div>
+</sa-widgets-grid>
+</div> -->
+
+
+
+
+<div bsModal #mdModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" (click)="mdModal.hide()" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title">
+                    <img src="assets/img/logo.png" width="150" alt="SmartAdmin">
+                </h4>
+            </div>
+            <div class="modal-body no-padding">
+
+                <form class="smart-form" >
+                    <header style="text-align: right;">
+                        <button type="submit" class="btn btn-primary btn-sm" (click)="Redirecttopatientassumption()">
+                            Ok
+                        </button>
+                        <button type="button" class="btn btn-primary btn-sm" (click)="mdModal.hide()">
+                            Cancel
+                        </button>
+
+                    </header>
+                    <fieldset>
+
+
+                        <section>
+                            <div class="form-group">
+
+                                <table class="table table-bordered table-striped table-hover smart-form has-tickbox">
+
+                                    <thead>
+                                        <tr>
+                                           
+                                            <th>Site Name</th>
+                                            <th>Tests</th>
+
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let Ins of invalidsiteList">
+                                           
+                                            <td>{{ Ins.sitename }}</td>
+                                            <td>{{ Ins.testname }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                        </section>
+                    </fieldset>
+<footer>
+
+  <div>
+    <strong>These Sites doesn't have sufficent instrument for related tests if you wish to continue press-OK</strong>
+    <br>
+   
+  </div>
+</footer>
+                </form>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>

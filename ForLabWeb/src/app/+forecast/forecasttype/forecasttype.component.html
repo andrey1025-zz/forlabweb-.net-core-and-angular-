@@ -1,0 +1,80 @@
+
+
+<div id="content">
+  <sa-widgets-grid>
+
+
+    <!-- START ROW -->
+
+    <div class="row">
+
+      <!-- NEW COL START -->
+      <article class="col-sm-12 col-md-12 col-lg-12">
+        <div sa-widget [editbutton]="false" [custombutton]="false" [deletebutton]="false">
+
+          <header>
+            <span class="widget-icon">
+              <i class="fa fa-edit"></i>
+            </span>
+
+
+
+          </header>
+
+          <!-- widget div-->
+          <div>
+
+
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+              <form class="smart-form" novalidate="novalidate">
+                <!-- [formGroup]="RecentForecast" -->
+                <header>
+                  <h3 style="
+                color: gray;
+            ">
+                   DO YOU WANT TO CONDUCT SITE BY SITE OR AGGREGRATE FORECAST
+                  </h3>
+                </header> 
+
+                <fieldset>
+                  <div class="row">
+                    <section class="col col-6">
+                      <button  class="btn btn-default btn-lg" [ngClass]="{ highlight: isHighlight1 }"  (click)="updateforecast('S')" style="width: 100%;color: gray;" [disabled]="exist !=0">SITE BY SITE </button>
+                      <br>
+                      <p style="padding: 5%;"> 
+                        This means, you have service or consumption data for each site you are going to conduct a forecast for
+                      </p>
+
+                    </section>
+                    <section class="col col-6">
+                      <button  class="btn btn-default btn-lg" [ngClass]="{ highlight: isHighlight2 }"  (click)="updateforecast('C')" style="width: 100%;color: gray;" [disabled]="exist !=0">AGGREGRATE </button>
+                        <br>
+                      <p style="padding: 5%;">
+                        In this approach, you wont need to specify each site.
+                      </p>
+                     
+                    </section>
+                   
+                    </div>
+        
+</fieldset>
+
+<footer>
+  <a  class="btn btn-default" (click)="Previousclick()" style="float: left;"><b>
+     << Previous</b> </a> <a class="btn btn-default" style="float: right;" (click)="Saveforecastproductusage()"><b>Next >></b></a>
+</footer>
+
+</form>
+
+</div>
+<!-- end widget content -->
+
+</div>
+<!-- end widget div -->
+
+</div>
+</article>
+</div>
+</sa-widgets-grid>
+</div>

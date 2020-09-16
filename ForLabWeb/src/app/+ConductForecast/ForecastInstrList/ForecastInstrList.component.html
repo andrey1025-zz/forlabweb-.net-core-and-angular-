@@ -1,0 +1,72 @@
+<div class="forecast-add-modal-header">
+  <a type="button" class="close-button" (click)="onCloseModal()" aria-hidden="true">
+  </a>
+</div>
+<div class="forecast-add-modal-body text-center">
+  <span class="forecast-add-modal-title color-darkblue">LIST OF SELECTED INSTRUMENTS</span>
+  <form class="forecast-add-form" novalidate="novalidate" [formGroup]="selectedins">
+    <div class="forecast-instr-list" formArrayName="_instrument">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Testing Area</th>
+            <th>Instrument Name</th>
+            <th>Quantity</th>
+            <th>% Of Test Contribution</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of selectedins.get('_instrument')['controls']; let i = index;" [formGroupName]="i">
+            <td class="text-align-left">
+              {{item.getRawValue().areaName}}
+            </td>
+            <td class="text-align-left">
+              {{item.getRawValue().instrumentName}}
+            </td>
+            <td>
+              <input type="number" class="form-control" name="quantity" formControlName="quantity" />
+            </td>
+            <td>
+              <div class="left-inner-addon">
+                <span class="percent-icon">$</span>
+                <input type="number" class="form-control color-darkblue percent-type" name="TestRunPercentage"
+                  formControlName="TestRunPercentage">
+              </div>
+            </td>
+            <td>
+              <a type="button" (click)="delproductprice(i)" class='del icon-trash'>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </form>
+
+  <div class="forecast-add-modal-footer">
+    <div class="forecast-add-modal-footer__container">
+      <button type="button" (click)="openPreviousModal()" class="btn btn-outline-cyan">Back</button>
+
+      <div class="forecast-form-step">
+        <div class="steps">
+          <div class="progressbar-wrapper">
+            <ul class="progressbar">
+              <li class="passed"></li>
+              <li class="passed"></li>
+              <li class="passed"></li>
+              <li class="active"></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <button (click)="openNextModal()" class="btn btn-cyan">Next</button>
+    </div>
+  </div>
+</div>

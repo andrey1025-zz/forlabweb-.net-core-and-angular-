@@ -1,0 +1,29 @@
+<div class="forgotpwd-modal-header">
+  <a type="button" class="close-button" (click)="close.emit(true)" aria-hidden="true">
+  </a>
+</div>
+<div class="forgotpwd-modal-body text-center">
+  <span class="forgotpwd-modal-title">Reset Password</span>
+  <div class="forgotpwd-modal-detail">
+    <span>Please check your email</span>
+    <span>We will send email to reset your password</span>
+  </div>
+  <form class="forgotpwd-form" #forgotpwdForm="ngForm" (ngSubmit)="submit()">
+    <div class="form-group" [ngClass]="{'has-error':!email.valid && email.touched}">
+      <input type="email" name="email" [(ngModel)]="model.email" #email="ngModel" class="form-control"
+        placeholder="Email" required email>
+      <!-- <b class="tooltip tooltip-top-right" *ngIf="email.errors && email.touched"> Please enter email address</b> -->
+    </div>
+    <div class="form-submit">
+      <button type="submit" class="btn btn-forgotpwd-submit" [disabled]="forgotpwdForm.invalid">
+        Submit
+      </button>
+      <span class="title-OR">OR</span>
+      <button type="button" class="btn btn-open-login" (click)="onLogin.emit(true);">
+        Sign In
+      </button>
+    </div>
+  </form>
+</div>
+<div class="forgotpwd-modal-footer">
+</div>

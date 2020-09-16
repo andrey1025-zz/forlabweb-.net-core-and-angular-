@@ -1,0 +1,103 @@
+<div id="content">
+  <sa-widgets-grid>
+
+
+    <!-- START ROW -->
+
+    <div class="row">
+
+      <!-- NEW COL START -->
+      <article class="col-sm-12 col-md-12 col-lg-12">
+        <div sa-widget [editbutton]="false" [custombutton]="false" [deletebutton]="false">
+
+          <header>
+            <span class="widget-icon">
+              <i class="fa fa-edit"></i>
+            </span>
+
+
+
+          </header>
+
+          <!-- widget div-->
+          <div>
+
+
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+              <form class="smart-form" novalidate="novalidate"  [formGroup]="traetmentcycle">
+                <!-- [formGroup]="RecentForecast" -->
+                <header>
+                  <h3 style="
+                color: gray;
+            ">
+                  Based on the guideline, laboratory testing options for patients with HIV is defined for lifetime per yearly cycle. TB treatment program lasts for 18 months. What cycle or how long patients stay in the treatment program in this program?
+                  </h3>
+                </header>
+
+                <fieldset>
+                 <section>
+                  <div class="">
+                    <label>
+
+                      <input type="radio" class="radiobox style-3" name="cycle" value="13"  formControlName="cycle"   (click)="changecycle($event.target.value)" >
+                      <span>Life time on a 12 months cycle</span>
+                    </label>
+                   
+                  </div> 
+                 </section>  
+                 <section>
+                  <div class="">
+                    <label>
+                      <input type="radio" class="radiobox style-3" name="cycle" value="12" formControlName="cycle"  (click)="changecycle($event.target.value)" >
+                      <span>12 months only</span>
+                    </label>
+                   
+                  </div> 
+                 </section>  
+                 <section>
+                  <div class="">
+                    <label>
+                      <input type="radio" class="radiobox style-3" name="cycle" value="18" formControlName="cycle"  (click)="changecycle($event.target.value)" >
+                      <span>18 months only</span>
+                    </label>
+                   
+                  </div> 
+                 </section>  
+                 <section>
+                  <div class="">
+                    <label>
+                      <input type="radio" class="radiobox style-3" name="cycle" value="24" formControlName="cycle"  (click)="changecycle($event.target.value)">
+                      <span>24 months only</span>
+                    </label>
+                   
+                  </div> 
+                 </section>  
+                </fieldset>
+
+                <footer>
+                  <a [routerLink]="['/Forecast/Demographicproductassumption',forecastid,programid]" class="btn btn-default" style="float: left;"><b>
+                     << Previous</b> </a> <a  (click)="save()" class="btn btn-default" style="float: right;" ><b>Next >></b></a>
+                </footer>
+
+              </form>
+
+            </div>
+            <!-- end widget content -->
+
+          </div>
+          <!-- end widget div -->
+
+        </div>
+      </article>
+    </div>
+  </sa-widgets-grid>
+</div>
+
+<!-- <div class="">
+  <label>
+    <input type="radio" class="radiobox style-3" name="sitebysite" formControlName="sitebysite" value="sitebysite" (click)="changeforecsattype()">
+    <span>I have data for all sites and I would like to do a site by site forecast</span>
+  </label>
+ 
+</div> -->

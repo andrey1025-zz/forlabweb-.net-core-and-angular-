@@ -1,0 +1,102 @@
+<div id="content">
+  <sa-widgets-grid>
+
+
+    <!-- START ROW -->
+
+    <div class="row">
+
+      <!-- NEW COL START -->
+      <article class="col-sm-12 col-md-12 col-lg-6">
+        <div sa-widget [editbutton]="false" [custombutton]="false" [deletebutton]="false">
+
+          <header>
+            <span class="widget-icon">
+              <i class="fa fa-edit"></i>
+            </span>
+
+
+
+          </header>
+
+          <!-- widget div-->
+          <div>
+
+
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+              <form class="smart-form" >
+                <header>
+                  Filter Forecast Summary
+                </header>
+
+                <fieldset>
+
+
+                  <section *ngIf="show" >
+                    <div class="form-group">
+                      <label class="control-label">Consumption Methodology
+
+                      </label>
+                      <label class="input">
+                        <select name="forecastid" class="form-control" [(ngModel)]="forecastid"  >
+                          <option value="0" disabled>--Select--</option>
+                        <option *ngFor="let forecast of consumptionlist" [value]="forecast.forecastID">{{forecast.forecastNo}}</option>
+
+                        </select>
+                      </label>
+                    </div>
+
+                  </section>
+                 
+
+
+                  <section  *ngIf="show" >
+                    <div class="form-group">
+                      <label class="control-label">Service Statistic Methodology
+
+                      </label>
+                      <label class="input">
+                        <select name="forecastid" class="form-control" [(ngModel)]="forecastid1"  >
+                          <option value="0" disabled>--Select--</option>
+                        <option *ngFor="let forecast of servicelist" [value]="forecast.forecastID">{{forecast.forecastNo}}</option>
+
+                        </select>
+                      </label>
+                    </div>
+
+                  </section>
+                 
+
+                  <section >
+                    <div class="form-group">
+                      <label class="control-label">Demographic Methodology
+
+                      </label>
+                      <label class="input">
+                        <select name="forecastid" class="form-control" [(ngModel)]="forecastid2"  >
+                          <option value="0" disabled>--Select--</option>
+                        <option *ngFor="let forecast of demographiclist" [value]="forecast.forecastID">{{forecast.forecastNo}}</option>
+
+                        </select>
+                      </label>
+                    </div>
+
+                  </section>
+             
+                     <section>
+                        <button class="btn btn-primary btn-sm" type="button" (click)="openreport()">View Report</button>
+                      </section>
+                </fieldset>
+              </form>
+            </div>
+            <!-- end widget content -->
+
+          </div>
+          <!-- end widget div -->
+
+        </div>
+      </article>
+    </div>
+  </sa-widgets-grid>
+</div>

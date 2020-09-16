@@ -1,0 +1,118 @@
+<div class="forecast-add-modal-header">
+  <a type="button" class="close-button" (click)="onCloseModal()" aria-hidden="true">
+  </a>
+</div>
+<div class="forecast-add-modal-body text-center">
+  <span class="forecast-add-modal-title color-darkblue">WHAT TESTS DO YOU WANT TO INCLUDE IN THIS FORECAST</span>
+  <form class="forecast-test-add-form" (ngSubmit)="save()">
+    <div class="forecast-test-add-form__top">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="forecast-test-click">
+            <p class="text-left">Click to open</p>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="forecast-test-search">
+            <div class="custom-search-form">
+              <input type="search" class="form-control" placeholder="Search...">
+            </div>
+            <div class="forecast-test-search__result">
+              <p class="text-right">4 Selected</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="forecast-test-select__list">
+          <ul class="list-group">
+            <li class="list-group-item" (click)="handleSelectForecastTest(1)"
+              [ngClass]="{'selected': currentForecastTest == 1}">
+              Consumable TestingArea12
+            </li>
+            <li class="list-group-item" (click)="handleSelectForecastTest(2)"
+              [ngClass]="{'selected': currentForecastTest == 2}">
+              Moléculaire EID
+            </li>
+            <li class="list-group-item" (click)="handleSelectForecastTest(3)"
+              [ngClass]="{'selected': currentForecastTest == 3}">
+              Hématologie Flow Cytometry
+            </li>
+            <li class="list-group-item" (click)="handleSelectForecastTest(4)"
+              [ngClass]="{'selected': currentForecastTest == 4}">
+              Chimie Hematology
+            </li>
+            <li class="list-group-item" (click)="handleSelectForecastTest(5)"
+              [ngClass]="{'selected': currentForecastTest == 5}">
+              Chimie Hematology
+            </li>
+            <li class="list-group-item" (click)="handleSelectForecastTest(6)"
+              [ngClass]="{'selected': currentForecastTest == 6}">
+              Chimie Hematology
+            </li>
+          </ul>
+        </div>
+     </div>
+
+     <div class="col-md-8">
+       <div class="row">
+         <div class="forecast-test-checkboxes">
+           <div class="col-md-3" *ngFor="let checkbox of checkboxArray; let i = index">
+             <div class="forecast-test-checkboxes__checkbox">
+               <input class="styled-checkbox" id="forecast-checkbox-{{i}}" type="checkbox" value="forecastCheck{{i}}">
+               <label for="forecast-checkbox-{{i}}">test12</label>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="custom-tag-input__field">
+          <div class="custom-tag" *ngFor="let tag of tagArray; let i = index">
+            <div class="tag-wrapper">
+              <div class="tag__text">test12</div>
+              <div class="tag__delete-icon" (click)="deleteTag(i)">
+                <svg viewBox="0 0 32 32" width="12px" height="12px">
+                  <path d="M17.459,16.014l8.239-8.194c0.395-0.391,0.395-1.024,0-1.414c-0.394-0.391-1.034-0.391-1.428,0  l-8.232,8.187L7.73,6.284c-0.394-0.395-1.034-0.395-1.428,0c-0.394,0.396-0.394,1.037,0,1.432l8.302,8.303l-8.332,8.286  c-0.394,0.391-0.394,1.024,0,1.414c0.394,0.391,1.034,0.391,1.428,0l8.325-8.279l8.275,8.276c0.394,0.395,1.034,0.395,1.428,0  c0.394-0.396,0.394-1.037,0-1.432L17.459,16.014z"
+                    fill="#20BDEF"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="forecast-add-modal-footer">
+    <div class="forecast-add-modal-footer__container">
+      <button type="button" (click)="onCloseModal()" class="btn btn-outline-cyan">Cancel</button>
+
+      <div class="forecast-form-step">
+        <div class="steps">
+          <div class="progressbar-wrapper">
+            <ul class="progressbar">
+              <li class="passed"></li>
+              <li class="active"></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn btn-cyan">Next</button>
+    </div>
+  </div>
+</div>

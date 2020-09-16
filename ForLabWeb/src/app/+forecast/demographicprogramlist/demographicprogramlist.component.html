@@ -1,0 +1,95 @@
+<div id="content">
+  <sa-widgets-grid>
+
+
+    <!-- START ROW -->
+
+    <div class="row">
+
+      <!-- NEW COL START -->
+      <article class="col-sm-12 col-md-12 col-lg-12">
+        <div sa-widget [editbutton]="false" [custombutton]="false" [deletebutton]="false">
+
+          <header>
+            <span class="widget-icon">
+              <i class="fa fa-edit"></i>
+            </span>
+
+
+
+          </header>
+
+          <!-- widget div-->
+          <div>
+
+
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+              <form class="smart-form" novalidate="novalidate">
+                <!-- [formGroup]="RecentForecast" -->
+                <header>
+                  <h3 style="
+                color: gray;
+            ">
+                    Demographic morbidity forecast allows of to dynamically define a demographic morbidity model for any disease program. Below are the default demographic morbidity model created by ForLab+. You can review the assumptions used in these default programs and use them if it suits your forecast requirement. If not, you can always create your own by clicking the new button. 
+                  </h3>
+                </header>
+
+                <fieldset>
+                  <!-- <div [innerHtml]="divhtml"></div> -->
+                  <div *ngFor="let data of Programlist" >
+         
+                   <button  class="btn btn-default btn-sm" [ngClass]="{ highlight: Programid === data.id }" (click)="Selectprogram(data.id)" style="color: gray;" [disabled]="Programid !=0">{{data.programName}}</button>
+                  
+                  </div>
+                  <div  >
+               
+                    <a *ngIf="Programid==0" class="btn btn-default btn-sm" (click)="lgModal4.show()" style="background-color: white;color: gray;">New</a>
+                    
+                   </div>
+                </fieldset>
+
+                <footer>
+                  <a (click)="Previousclick()" class="btn btn-default" style="float: left;"><b>
+                     << Previous</b> </a> <a  [routerLink]="['/Forecast/Demographicprogrammethodlist',forecastid,Programid]"  class="btn btn-default" style="float: right;" ><b>Next >></b></a>
+                </footer>
+
+              </form>
+
+            </div>
+            <!-- end widget content -->
+
+          </div>
+          <!-- end widget div -->
+
+        </div>
+      </article>
+    </div>
+  </sa-widgets-grid>
+</div>
+
+
+<div bsModal #lgModal4="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content" style="
+    border-radius: 0%;
+    background-color: white;
+    color: gray;
+">
+     
+        <div class="modal-body">
+          <button type="button" class="close" (click)="lgModal4.hide()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <input type="text" id="programName" name="programName"  [(ngModel)]="model.programName" #programName="ngModel" class="form-control" placeholder="Enter Program Name" required autofocus>
+                 
+         
+        </div>
+
+        <div class="modal-footer">
+          <button type="btn btn-primary" class="close" (click)="Save()" aria-label="Close">Save</button>
+        </div>
+
+    </div>
+  </div>
+</div>

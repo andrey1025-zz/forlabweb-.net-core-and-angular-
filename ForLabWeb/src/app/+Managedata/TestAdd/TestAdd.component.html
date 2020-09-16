@@ -1,0 +1,340 @@
+<div class="test-add-modal-header">
+  <a type="button" class="close-button" (click)="close.emit(true)" aria-hidden="true">
+  </a>
+</div>
+<div class="test-add-modal-body text-center">
+  <span class="test-add-modal-title">Test Form</span>
+  <form class="test-add-form" [formGroup]="testForm" (ngSubmit)="save()">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group test-name-form-group"
+          [ngClass]="{'has-error':!testForm.controls['testName'].valid && testForm.controls['testName'].touched}"
+        >
+          <input type="text" class="form-control" name="testName" placeholder="Test Name"
+            formControlName="testName" required />
+        </div>
+        <div class="note note-error"
+          *ngIf="testForm.controls['testName'].hasError('required') && testForm.controls['testName'].touched">
+          Please Enter Test Name</div>
+        <div class="note note-error"
+          *ngIf="testForm.controls['testName'].hasError('maxlength') && testForm.controls['testName'].touched">
+          Maximum 64 characters are allowed</div>
+
+        <div class="test-area-select__list">
+          <ul class="list-group">
+            <li class="list-group-item disabled">Molecular SURV</li>
+            <li class="list-group-item" 
+              (click)="handleSelectTestArea(1)" 
+              [ngClass]="{'selected': currentTestArea == 1}">Measles IgM</li>
+            <li class="list-group-item" 
+              (click)="handleSelectTestArea(2)"
+              [ngClass]="{'selected': currentTestArea == 2}">Rubella IgM</li>
+            <li class="list-group-item"
+              (click)="handleSelectTestArea(3)"
+              [ngClass]="{'selected': currentTestArea == 3}">Rotavirus</li>
+            <li class="list-group-item disabled">Molecular EID POC</li>
+            <li class="list-group-item"
+              (click)="handleSelectTestArea(4)"
+              [ngClass]="{'selected': currentTestArea == 4}">POC EID</li>
+            <li class="list-group-item disabled">Molecular EID</li>
+            <li class="list-group-item"
+              (click)="handleSelectTestArea(5)"
+              [ngClass]="{'selected': currentTestArea == 5}">EID</li>
+            <li class="list-group-item disabled">Molecular VL</li>
+            <li class="list-group-item"
+              (click)="handleSelectTestArea(6)"
+              [ngClass]="{'selected': currentTestArea == 6}">Viral Load</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-8">
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="active">
+            <a href="#testProduct" role="tab" data-toggle="tab">Test Product Usage Rate</a>
+          </li>
+          <li>
+            <a href="#qcProduct" role="tab" data-toggle="tab">QC Product Usage Rate</a>
+          </li>
+          <li>
+            <a href="#consumeProduct" role="tab" data-toggle="tab">Consumable Product Usage Rate</a>
+          </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div class="tab-pane fade active in" id="testProduct">
+            <div class="test-product-select">
+              <div class="test-product-select__inst">
+                <select class="form-control" (change)="selectTestInstChange($event)">
+                  <option value="0" selected>Select</option>
+                  <option *ngFor="let instrument of instrumentList" [value]="instrument.instrumentID">
+                    {{instrument.instrumentName}}
+                  </option>
+                </select>
+              </div>
+
+              <div class="test-product-select__prodType">
+                <select class="form-control" (change)="getProductList($event)">
+                  <option value="0" selected>Select Product Type</option>
+                  <option *ngFor="let productType of productTypeList" [value]="productType.typeID">
+                    {{productType.typeName}}
+                  </option>
+                </select>
+              </div>
+
+              <div class="test-product-select__product">
+                <select class="form-control" (change)="selectTestProductChange($event)">
+                  <option value="0" selected>Select</option>
+                  <option *ngFor="let product of productList" [value]="product.productID">
+                    {{product.productName}}
+                  </option>
+                </select>
+              </div>
+
+              <button class="btn btn-cyan" type="button" (click)="addTestUsageRate()">
+                Add</button>
+            </div>
+
+            <div class="test-product-content">
+              <app-modal-datatable tableClass="table table-striped table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th data-class="expand">Product Name</th>
+                    <th data-class="expand">Rate</th>
+                    <th data-class="expand">Actions</th>
+                  </tr>
+                </thead>
+              </app-modal-datatable>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="qcProduct">
+            <h2>QC Product Usage Rate</h2>
+          </div>
+
+          <div class="tab-pane fade" id="consumeProduct">
+
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="active">
+                <a href="#perTest" role="tab" data-toggle="tab">Per Test</a>
+              </li>
+              <li>
+                <a href="#perPeriod" role="tab" data-toggle="tab">Per Period</a>
+              </li>
+              <li>
+                <a href="#perInstr" role="tab" data-toggle="tab">Per Instrument Per Period</a>
+              </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div class="tab-pane fade active in" id="perTest">
+                <div class="per-test-select">
+                  <input type="text" class="form-control" name="productName" placeholder="Product Name" required />
+
+                  <div class="per-test-select__prodType">
+                    <select class="form-control" (change)="getProductList($event)">
+                      <option value="0" selected>Select Product Type</option>
+                      <option *ngFor="let productType of productTypeList" [value]="productType.typeID">
+                        {{productType.typeName}}
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="per-test-select__product">
+                    <select class="form-control" (change)="selectTestProductChange($event)">
+                      <option value="0" selected>Select Product</option>
+                      <option *ngFor="let product of productList" [value]="product.productID">
+                        {{product.productName}}
+                      </option>
+                    </select>
+                  </div>
+
+                  <button class="btn btn-cyan" type="button" (click)="addTestUsageRate()">
+                    Add</button>
+                </div>
+
+                <div class="per-test-content">
+                  <table class="table table-striped table-hover">
+                    <thead>
+                      <tr>
+                        <th>Product Name</th>
+                        <th>No of Test</th>
+                        <th>Rate</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="text-align-left">
+                          Rubella Ab IgM (Euroimmun)
+                        </td>
+                        <td>
+                          <input type="number" class="form-control" name="testNumber" />
+                        </td>
+                        <td>
+                          <input type="number" class="form-control" name="rate" />
+                        </td>
+                        <td>
+                          <a type="button" class='del icon-trash'>
+                            <!-- (click)="delproductprice(i)"  -->
+                          </a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text-align-left">
+                          Pipette tips (1000ul, filtered, sterile, long tip)
+                        </td>
+                        <td>
+                          <input type="number" class="form-control" name="testNumber" />
+                        </td>
+                        <td>
+                          <input type="number" class="form-control" name="rate" />
+                        </td>
+                        <td>
+                          <a type="button" class='del icon-trash'>
+                            <!-- (click)="delproductprice(i)"  -->
+                          </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="tab-pane fade in" id="perPeriod">
+                <div class="per-period-select">
+                  <div class="per-period-select__left">
+                    <div class="per-period-select__times">
+                       <div class="control-req__buttons">
+                         <div *ngFor="let period of perPeriodArray; let i = index">
+                           <div class="control-req__buttons--button" [ngClass]="{'selected': currentPerPeriod == i}"
+                             (click)="handleControlPerPeriod(i)">
+                             {{ period }}
+                           </div>
+                         </div>
+                       </div>
+                    </div>
+  
+                    <div class="per-period-select__detail">
+                      <div class="per-period-select__prodType">
+                        <select class="form-control" (change)="getProductList($event)">
+                          <option value="0" selected>Select Product Type</option>
+                          <option *ngFor="let productType of productTypeList" [value]="productType.typeID">
+                            {{ productType.typeName }}
+                          </option>
+                        </select>
+                      </div>
+    
+                      <div class="per-period-select__product">
+                        <select class="form-control" (change)="selectTestProductChange($event)">
+                          <option value="0" selected>Select Product</option>
+                          <option *ngFor="let product of productList" [value]="product.productID">
+                            {{ product.productName }}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="btn btn-cyan" type="button" (click)="addTestUsageRate()">
+                    Add</button>
+                </div>
+
+                <div class="per-test-content">
+                  <table class="table table-striped table-hover">
+                    <thead>
+                      <tr>
+                        <th>Product Name</th>
+                        <th>Period</th>
+                        <th>Rate</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="text-align-left">
+                          Rubella Ab IgM (Euroimmun)
+                        </td>
+                        <td>
+                          Monthly
+                        </td>
+                        <td>
+                          <input type="number" class="form-control" name="rate" />
+                        </td>
+                        <td>
+                          <a type="button" class='del icon-trash'>
+                            <!-- (click)="delproductprice(i)"  -->
+                          </a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text-align-left">
+                          Pipette tips (1000ul, filtered, sterile, long tip)
+                        </td>
+                        <td>
+                          Monthly
+                        </td>
+                        <td>
+                          <input type="number" class="form-control" name="rate" />
+                        </td>
+                        <td>
+                          <a type="button"  class='del icon-trash'>
+                            <!-- (click)="delproductprice(i)" -->
+                          </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="tab-pane fade in" id="perInstr">
+                <!-- <div class="per-instr-select">
+                  <div class="per-instr-select__times">
+                    <div class="control-req__buttons">
+                      <div *ngFor="let instr of perInstrArray; let i = index">
+                        <div class="control-req__buttons--button" [ngClass]="{'selected': currentPerInstr == i}"
+                          (click)="handleControlPerInstr(i)">
+                          {{ instr }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="per-instr-select__detail">
+                    <div class="per-instr-select__prodType">
+                      <select class="form-control" (change)="getProductList($event)">
+                        <option value="0" selected>Select Product Type</option>
+                        <option *ngFor="let productType of productTypeList" [value]="productType.typeID">
+                          {{productType.typeName}}
+                        </option>
+                      </select>
+                    </div>
+
+                    <div class="per-instr-select__product">
+                      <select class="form-control" (change)="selectTestProductChange($event)">
+                        <option value="0" selected>Select Product</option>
+                        <option *ngFor="let product of productList" [value]="product.productID">
+                          {{product.productName}}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <button class="btn btn-cyan" type="button" (click)="addTestUsageRate()">
+                    Add</button>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="test-add__buttons">
+    <button (click)="close.emit(true)" class="btn btn-outline-cyan">Cancel</button>
+    <button (click)="close.emit(true)" class="btn btn-cyan">Add Test</button>
+  </div>
+</div>

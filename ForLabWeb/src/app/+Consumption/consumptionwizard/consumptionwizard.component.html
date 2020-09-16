@@ -1,0 +1,555 @@
+<div id="content">
+  <div class="row">
+    <!-- <sa-big-breadcrumbs [items]="['Forms', 'Wizards']" icon="table" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></sa-big-breadcrumbs>
+    <sa-stats></sa-stats> -->
+  </div>
+
+
+  <!-- widget grid -->
+  <sa-widgets-grid>
+
+    <!-- row -->
+    <div class="row">
+
+      <!-- NEW WIDGET START -->
+      <article class="col-sm-12 col-md-12 col-lg-12">
+
+
+<div sa-widget [editbutton]="false" [deletebutton]="false" color="darken" [deletebutton]="false">
+  <!-- widget options:
+  usage: <div sa-widget [editbutton]="false">
+
+  [colorbutton]="false"
+  [editbutton]="false"
+  [togglebutton]="false"
+  [deletebutton]="false"
+  [fullscreenbutton]="false"
+  [custombutton]="false"
+  [collapsed]="true"
+  [sortable]="false"
+
+  -->
+  <header>
+    <span class="widget-icon"> <i class="fa fa-check"></i> </span>
+
+    <h2>Consumption Forecast </h2>
+
+  </header>
+
+  <!-- widget div-->
+  <div>
+
+    <!-- widget content -->
+    <div class="widget-body">
+      <form novalidate="novalidate">
+        <fieldset>
+        <div class="col-sm-12">
+          <div class="form-bootstrapWizard clearfix">
+            <ul class="bootstrapWizard">
+              <li *ngFor="let pane of steps; let i = index" [class.active]="activeStep == pane">
+                <a (click)="setActiveStep(pane)"> <span class="step">
+                  <span *ngIf="!pane.checked">{{i + 1}}</span>
+                  <i class="fa fa-check" *ngIf="pane.checked"></i>
+                </span> <span class="title">{{pane.title}}</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="tab-content">
+            <div class="tab-pane" [class.active]="activeStep.key == 'step1'">
+                <br>
+              <app-consumption-add  (nextStep)="nextStep($event)" ></app-consumption-add>
+
+            </div>
+            <div class="tab-pane" [class.active]="activeStep.key == 'step2'">
+                <br>
+        <app-consumptiondatausage1 [model1]="lgModal1"  [model]="lgModal"  [model3]="lgModal3" [RecforecastID1]="id"  *ngIf="Forecasttype=='datausage1'" (nextStep)="nextStep($event)"></app-consumptiondatausage1>
+        <app-consumptiondatausage2  [model]="lgModal" [model2]="lgModal2" [model1]="lgModal1"  [model3]="lgModal3" [RecforecastID1]="id"  *ngIf="Forecasttype=='datausage2'" (nextStep)="nextStep($event)"></app-consumptiondatausage2>
+        <app-consumptiondatausage3  [model]="lgModal" [model2]="lgModal2" [model1]="lgModal1"  [model3]="lgModal3"  [RecforecastID1]="id" *ngIf="Forecasttype=='datausage3'" (nextStep)="nextStep($event)"></app-consumptiondatausage3>
+
+       <!-- <app-sitebysiteforecast [RecforecastID]="forecastid" (nextStep)="nextStep($event)"   *ngIf="Forecasttype=='S'"></app-sitebysiteforecast> 
+       <app-aggregrateforecast [RecforecastID1]="forecastid" (nextStep)="nextStep($event)"  *ngIf="Forecasttype=='A'"></app-aggregrateforecast> -->
+ 
+            </div>
+            <div class="tab-pane" [class.active]="activeStep.key == 'step3'">
+<!-- <app-conduct-forecast [RecforecastID1]="id" [datausage]="Forecasttype" (nextStep)="nextStep($event)"></app-conduct-forecast> -->
+
+            </div>
+         
+            <!-- <div class="tab-pane" [class.active]="activeStep.key == 'step3'">
+                <br>
+             <app-patient-group-ratio [RecforecastID]="forecastid" (nextStep)="nextStep($event)"></app-patient-group-ratio>
+            </div>
+           -->
+           
+          </div>
+        </div>
+        </fieldset>
+     
+      </form>
+    </div>
+    <!-- end widget div -->
+
+</div>
+
+</div>
+
+
+
+</article>
+</div>
+</sa-widgets-grid>
+</div>
+<div class="my-container">
+  <ng-template #customLoadingTemplate>
+      <div class="custom-class">
+          <h3>
+              Loading...
+          </h3>
+          <!-- <button (click)="showAlert()">
+              Click me!
+          </button> -->
+      </div>
+  </ng-template>
+  <!-- <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading> -->
+  <ngx-loading [show]="loading" [config]="{animationType: ngxLoadingAnimationTypes.chasingDots,
+     primaryColour: primaryColour, secondaryColour: secondaryColour, backdropBorderRadius: '3px'}"
+  [template]="loadingTemplate"></ngx-loading>
+</div>  
+
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  
+
+  <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="height: 500px">
+            <div class="modal-header">
+                <button type="button" class="close" (click)="lgModal.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Select Product</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="category"> Product Type</label>
+                            <select class="form-control" (change)="getproductlist($event)">
+                                <option value="0" selected>--Select--</option>
+                                <option *ngFor="let Type of ProductTypeList" [value]="Type.typeID">{{Type.typeName}}</option>
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                      
+                    </div>
+                    <div class="col-md-3">
+                        <label for="category"># of Reporting Period</label>
+                        <label class="input">
+                          <input  type="text" name="Period" #Period1="ngModel" [(ngModel)]="Period" maxlength="1" pattern="[0-9]+"/>
+                        </label>
+                        <div class="note note-error" *ngIf="Period1.invalid">Character are not allowed in number field</div>
+                      </div>
+                    
+                    <div class="col-md-4" style="text-align: right;">
+                        <label for="category"></label>
+                        <label class="input">
+                        <button type="button" class="btn btn-primary btn-sm" (click)="select()">
+                            Select
+                        </button>
+                        <button type="button" class="btn btn-primary btn-sm" (click)="lgModal.hide()">
+                           Cancel
+                        </button>
+                        </label>
+                        </div>
+                </div>
+               
+                
+                <div class="row" id="content">
+                    <div class="table-responsive" style="overflow-y: auto;height: 300px;border-style:ridge">
+
+
+
+                        <table class="table table-bordered table-striped table-hover">
+
+                            <thead>
+                                <tr>
+                                    <th>Select</th>
+                                    <th>Product Name</th>
+                                    <th>Serial No</th>
+                                    <th>Basic Unit</th>
+
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr *ngFor="let item of Productlist; let i = index;" >
+                                    <td>
+                                        <label>
+                                     <input type="checkbox" class="checkbox style-3" (change)="selectproduct($event.target.checked,item.productID)"/><span></span><br>
+                                    </label>
+                                    </td>
+                                    <td>
+                                        {{item.productName}}
+                                    </td>
+                                    <td>
+                                        {{item.serialNo}}
+                                    </td>
+                                    <td>
+                                        {{item.basicUnit}}
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div bsModal #lgModal2="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+      <div class="modal-content" style="height: 500px">
+          <div class="modal-header">
+              <button type="button" class="close" (click)="lgModal2.hide()" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-title">Select Site</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row" >
+                <div class="col-md-8"></div>
+            <div class="col-md-4" style="text-align: right;">
+              <label for="category"></label>
+              <label class="input">
+              <button type="button" class="btn btn-primary btn-sm" (click)="getselectedsite()">
+                  Select
+              </button>
+              <button type="button" class="btn btn-primary btn-sm" (click)="lgModal2.hide()">
+                 Cancel
+              </button>
+              </label>
+              </div>
+      </div>
+             
+              
+              <div class="row" id="content">
+                  <div class="table-responsive" style="overflow-y: auto;height: 300px;border-style:ridge">
+
+
+
+                      <table class="table table-bordered table-striped table-hover">
+
+                          <thead>
+                              <tr>
+                                  <th>Select</th>
+                                  <th>Region</th>
+                                  <th>Site</th>
+                                  
+                              </tr>
+                          </thead>
+
+                          <tbody>
+                              <tr *ngFor="let item of Sitelist; let i = index;" >
+                                  <td>
+                                      <label>
+                                   <input type="checkbox"  class="checkbox style-3" (change)="selectsite($event.target.checked,item)"/><span></span><br>
+                                  </label>
+                                  </td>
+                                  <td>
+                                      {{item.regionName}}
+                                  </td>
+                                  <td>
+                                      {{item.siteName}}
+                                  </td>
+                                
+
+                              </tr>
+                          </tbody>
+                      </table>
+
+
+                  </div>
+              </div>
+
+          </div>
+
+      </div>
+  </div>
+</div>
+
+
+
+
+
+<div bsModal #lgModal3="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+
+        <!-- <ngx-spinner
+        bdColor="rgba(51,51,51,0.8)"
+        size="medium"
+        color="#fff"
+        type="ball-scale-multiple">
+       <p style="font-size: 20px; color: white">Loading...</p>
+      </ngx-spinner> -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" (click)="lgModal3.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Import Form</h4>
+            </div>
+            <div class="modal-body">
+                <form class="smart-form">
+<fieldset>
+                <div class="row">
+                    <section class="col col-4">
+                        <label for="category">Forecast ID</label>
+                        <label class="input">
+                          <input  type="text" name="ForecastID"  [(ngModel)]="ForecastID" disabled />
+                        </label>
+                        
+                    </section>
+                   
+                    <section class="col col-4">
+                        <label for="category">Forecast Start Date</label>
+                        <label class="input">
+                          <input  type="text" name="startdate"  [(ngModel)]="startdate" disabled/>
+                        </label>
+                     
+                      </section>
+                    
+                    <section class="col col-4">
+                        <label for="category">Methodology</label>
+                        <label class="input">
+                          <input  type="text" name="methodology"  [(ngModel)]="methodology" disabled/>
+                        </label>
+                        </section>
+                </div>
+               
+                
+                <div class="row">
+                    <section class="col col-4">
+                        <label for="category">Reporting Period</label>
+                        <label class="input">
+                          <input  type="text" name="reportingperiod"  [(ngModel)]="reportingperiod" disabled/>
+                        </label>
+                        
+                    </section>
+                   
+                    <section class="col col-4">
+                        <label for="category">Forecast Period</label>
+                        <label class="input">
+                          <input  type="text" name="forecastperiod"  [(ngModel)]="forecastperiod" disabled/>
+                        </label>
+                     
+                    </section>
+                    
+                    <section class="col col-4">
+                        <label for="category">Data Usages</label>
+                        <label class="input">
+                          <input  type="text" name="datausage"  [(ngModel)]="datausage" disabled/>
+                        </label>
+                        </section>
+                </div>
+                <div class="row">
+                    <section class="col col-6">
+                         <input #file type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx">                           
+                    </section>
+                    <section class="col col-6" style="text-align: right">
+                            <!-- <button type="button" class="btn btn-primary btn-sm" (click)="lgModal4.show();">Import</button>     -->
+                            <button type="button" class="btn btn-primary btn-sm" (click)="clearimportedconsumption();">Clear</button> 
+                            <button type="button" class="btn btn-primary btn-sm" (click)="saveimportedconsumption()">Save</button>   
+                            
+                       </section>
+                </div>
+                <div class="row">
+                        <section >
+                               
+                        <!-- <div class="progress progress-sm progress-striped active">
+                                <div class="progress-bar bg-color-darken" role="progressbar" [style.width.%]="progress"></div>
+                              </div> -->
+                            
+                            </section>
+                </div>
+                <div class="row" id="content">
+                    <div class="table-responsive" style="overflow-y: auto;height: 300px;border-style:ridge">
+
+
+
+                        <table class="table table-bordered table-striped table-hover">
+
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th *ngIf="stringarr[2]=='step23'">Category</th>
+                                    <th *ngIf="stringarr[2]!='step23'">Region</th>
+                                    <th *ngIf="stringarr[2]!='step23'">Site</th>
+                                    <th>Product</th>
+                                    <th>Reporting Period</th>
+                                    <th>Consumption</th>
+                                    <th>Stock out</th>
+                                    <th>Instrument Downtime</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr *ngFor="let item of importedlist; let i = index;">
+                                
+                                    <td>
+                                        {{item.no}}
+                                    </td>
+                                    <td *ngIf="stringarr[2]=='step23'">
+                                        {{item.categoryName}}
+                                    </td>
+                                    <td *ngIf="stringarr[2]!='step23'">
+                                        {{item.regionName}}
+                                    </td>
+                                    <td *ngIf="stringarr[2]!='step23'">
+                                        {{item.siteName}}
+                                    </td> 
+
+                                    <td>
+                                        {{item.proName}}
+                                    </td>
+                                    <td>
+                                        {{item.duration}}
+                                    </td> 
+                                    <td>
+                                        {{item.amount}}
+                                    </td>
+                                    <td>
+                                        {{item.stockOut}}
+                                    </td> 
+                                    <td>
+                                        {{item.instrumentDownTime}}
+                                    </td> 
+                                    <td>
+                                        {{item.description}}
+                                    </td> 
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div bsModal #lgModal4="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" (click)="lgModal4.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Select Sheet</h4>
+            </div>
+            <div class="modal-body">
+                <form class="smart-form">
+<fieldset>
+                
+               
+                <div class="row" id="content">
+                    <div class="table-responsive" style="overflow-y: auto;height: 300px;border-style:ridge">
+
+
+
+                        <table class="table table-bordered table-striped table-hover">
+
+                            <thead>
+                                <tr>
+                                    <th>Sheets</th>
+                                 
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr *ngFor="let item of Sheetarr; let i = index;"  (click)="SelectSheet(item)">
+                                 <td>
+                                        <!--    <label>
+                                     <input type="checkbox" class="checkbox style-3" (change)="selectproduct($event.target.checked,item.productID)"/><span></span><br>
+                                    </label>
+                                    </td>
+                                    <td>
+                                        {{item.productName}}
+                                    </td>
+                                    <td>
+                                        {{item.serialNo}}
+                                    </td>
+                                    <td> -->
+                                        {{item}}
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div bsModal #lgModal1="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+      <div class="modal-content" >
+          <div class="modal-header">
+              <button type="button" class="close" (click)="lgModal1.hide()" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+              
+          </div>
+          <div class="modal-body">
+
+              <div class="row">
+                  
+                  <div class="col-md-6">
+                      <label for="category"># of Period</label>
+                      <label class="input">
+                        <input  type="text" name="Period" #Period2="ngModel" [(ngModel)]="ActualPeriod" maxlength="1" pattern="[0-9]+"/>
+                      </label>
+                      <div class="note note-error" *ngIf="Period2.invalid">Character are not allowed in number field</div>
+                    </div>
+                  
+                  <div class="col-md-6" style="text-align: right;">
+                      <label for="category"></label>
+                      <label class="input">
+                      <button type="button" class="btn btn-primary btn-sm" (click)="addactualconsumprion()">
+                          OK
+                      </button>
+                     
+                      </label>
+                      </div>
+              </div>
+
+          </div>
+
+      </div>
+  </div>
+</div>
+

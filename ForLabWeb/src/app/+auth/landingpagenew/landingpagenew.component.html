@@ -1,0 +1,553 @@
+<div class="main-header">
+  <div class="container">
+    <nav class="navbar">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+          data-target="#bs-example-navbar-collapse-1" (click)="collapsedclas()">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-logo" href="#" title="">
+          <!-- <img src="assets/img/Landingimage/logo.png" alt="site-logo"> -->
+          <img src="assets/img/FørLablogo.jpg" width="181" height="58" alt="site-logo">
+        </a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="{{menucol}} navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a (click)="scroll(home)">Home</a></li>
+          <li><a (click)="scroll(feature)">Features</a></li>
+          <li><a (click)="scroll(video)">Videos</a></li>
+          <li><a (click)="scroll(map)">Users</a></li>
+          <li><a (click)="scroll(faq)">FAQ</a></li>
+          <li><a (click)="scroll(article)">Forum</a></li>
+          <li><a (click)="scroll(resource)">Resources</a></li>
+          <li><a (click)="scroll(contact)">Contact Us</a></li>
+          <li><button (click)="onLogin($event, loginModal)" class="btn btn-cyan">Sign In</button></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+      <!-- /.container-fluid -->
+    </nav>
+  </div>
+</div>
+
+<div class="bg-header-right">
+  <img src="assets/img/Landingimage/bg_header_right.png" alt="bg-header-right">
+</div>
+
+<section #home class="banner-section">
+  <div class="bg-header-left">
+    <img src="assets/img/Landingimage/bg_header_left.png" alt="bg-header-left">
+  </div>
+  <div class="parallax-container">
+    <img src="assets/img/Landingimage/headerimg.png" alt="header-image">
+  </div>
+  <div class="banner-content-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5 col-lg-5">
+          <div class="banner-content">
+            <h1 class="banner-title">{{cms["hometitle"]}}</h1>
+            <!-- //Analyze laboratory <br>products consumption -->
+            <br>
+            <p class="banner-main"> {{cms["homedet"]}}</p>
+            <br>
+            <br>
+            <br>
+            <button (click)="onRegister($event, registerModal)" class="btn btn-cyan">Getting Started</button>
+            <a href="https://storage.googleapis.com/forlabaj.appspot.com/For%20Lab.zip"
+              class="btn btn-outline-cyan">Download Window Version</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section #feature class="next-draw-area">
+  <div class="banner-content-areaf">
+    <span class="slide1"><img src="assets/img/Landingimage/benfit_rightimg.png" alt="banner-shape"></span>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5">
+          <div class="section-title">
+            <p>
+              Benefits of ForLab<br>
+              within the quantification process
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="benefit-content">
+        <div class="row">
+          <div class="col-md-4 col-lg-4">
+            <img class="laptop-img" src="assets/img/Landingimage/benfit_left_img.png" alt="banner-shape">
+          </div>
+          <div class="col-md-4 col-lg-4">
+            <div class="benefit-card">
+              <div>
+                <img src="assets/img/Landingimage/Planning-icon.png" alt="banner-shape">
+              </div>
+              <h3>Planning and preparation</h3>
+              <p>Focuses data collection efforts to populate a standardized template</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-lg-4">
+            <div class="benefit-card">
+              <div> <img src="assets/img/Landingimage/Reliability_icon.png" alt="banner-shape"></div>
+              <h3>Reliability and Reduce Time</h3>
+              <p>Reduce forecasting analysis time to minutes and Improve the reliability of the forecast</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-50">
+          <div class="col-md-4 col-lg-4">
+            <div class="benefit-card">
+              <div class="slideF6"><img src="assets/img/Landingimage/Demand-icon.png" alt="banner-shape"></div>
+              <h3>Demand and supply planning</h3>
+              <p>Promotes development of evidence -based supply plans</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-lg-4">
+            <div class="benefit-card">
+              <span class="slideF8"> <img src="assets/img/Landingimage/Analysis-icon.png" alt="banner-shape"></span>
+              <h3>Resource analysis</h3>
+              <p>Provides the opportunity to identify efficiencies within a laboratory network</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-lg-4">
+            <div class="benefit-card">
+              <span class="slideF10"> <img src="assets/img/Landingimage/Consumptionicon.png" alt="banner-shape"></span>
+              <h3>Validates Consumption</h3>
+              <p>Consumption with service rates</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="clearfix"></div>
+<section #video class="video-section">
+  <div class="banner-content-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-lg-4">
+          <div class="section-title mt-60">
+            <p>Watch Exclusive Videos on our YouTube Channel</p>
+            <div class="channel-intro mt-100">
+              <div class="channel-intro__name">
+                <a href="https://www.youtube.com/channel/UCEq1DodbHiD4wCxvXnGjxMQ?view_as=subscriber"
+                  class="mr-40">Channel Name</a>
+                <img src="assets/img/Landingimage/channel-arrow.png" alt="channel-arrow">
+              </div>
+              <img src="assets/img/Landingimage/videos_img.png" alt="banner-shape" class="desktop-watch">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-8 col-lg-8 video-detail">
+          <div class="col-lg-6 col-md-6">
+            <div class="single-post-item">
+              <div class="thumb">
+                <iframe [src]="domSanitizer.bypassSecurityTrustResourceUrl(cms['videourl1'])"></iframe>
+              </div>
+              <div class="content">
+                <p >{{cms["videotitle1"]}}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-6">
+            <div class="single-post-item">
+              <div class="thumb">
+                <iframe [src]="domSanitizer.bypassSecurityTrustResourceUrl(cms['videourl2'])"></iframe>
+              </div>
+              <div class="content">
+                <p style="font-family: 'OpenSans-Bold';color: black;">{{cms["videotitle2"]}}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-6">
+            <div class="single-post-item">
+              <div class="thumb">
+                <iframe [src]="domSanitizer.bypassSecurityTrustResourceUrl(cms['videourl3'])"></iframe>
+              </div>
+              <div class="content">
+                <p>{{cms["videotitle3"]}}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-6">
+            <div class="single-post-item">
+              <div class="thumb">
+                <iframe [src]="domSanitizer.bypassSecurityTrustResourceUrl(cms['videourl4'])"></iframe>
+              </div>
+              <div class="content">
+                <p>{{cms["videotitle4"]}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section #map class="user-section pt-50">
+  <div class="banner-content-area1">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-lg-3">
+          <div class="user-detail">
+            <div class="yellow">
+              <div class="description">
+                <img src="assets/img/Landingimage/map-pin-training.png">
+                <span>Received Training</span>
+              </div>
+              <p>{{total_trainedarea}}</p>
+            </div>
+            <div class="cyan mt-10">
+              <div class="description">
+                <img src="assets/img/Landingimage/map-pin-used.png">
+                <span>Used ForLab</span>
+              </div>
+              <p>{{total_usedarea}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9 col-lg-9">
+          <div class="section-title text-center mt-70">
+            <p>ForLab's reach continues to grow</p>
+          </div>
+          <!-- <d3-map [data]="data"></d3-map> -->
+          <div id="world-map"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section #faq class="faq-section pt-70">
+  <div class="banner-content-area1">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-lg-4 faq-img">
+          <img src="assets/img/Landingimage/faqimg.png">
+        </div>
+        <div class="col-md-8 col-lg-8">
+          <div id='cd-faq__items'>
+            <ul id="basics" class="cd-faq__group">
+              <li class="section-title mb-20">
+                <p>frequently asked questions</p>
+              </li>
+
+              <li class="cd-faq__item {{faq1}}">
+                <a class="cd-faq__trigger" (click)="clickfaq1();"><span>{{cms["faqq1"]}}</span></a>
+                <div class="cd-faq__content">
+                  <div class="text-component">
+                    <p>{{cms["faqa1"]}}</p>
+                  </div>
+                </div> <!-- cd-faq__content -->
+              </li>
+
+              <li class="cd-faq__item {{faq2}}">
+                <a class="cd-faq__trigger" (click)="clickfaq2();"><span>{{cms["faqq2"]}}</span></a>
+                <div class="cd-faq__content">
+                  <div class="text-component">
+                    <p>{{cms["faqa2"]}}</p>
+                  </div>
+                </div> <!-- cd-faq__content -->
+              </li>
+
+              <li class="cd-faq__item {{faq3}}">
+                <a class="cd-faq__trigger" (click)="clickfaq3();"><span>{{cms["faqq3"]}}</span></a>
+                <div class="cd-faq__content">
+                  <div class="text-component">
+                    <p>{{cms["faqa3"]}}</p>
+                  </div>
+                </div> <!-- cd-faq__content -->
+              </li>
+
+              <li class="cd-faq__item {{faq4}}">
+                <a class="cd-faq__trigger" (click)="clickfaq4();"><span>{{cms["faqq4"]}}</span></a>
+                <div class="cd-faq__content">
+                  <div class="text-component">
+                    <p>{{cms["faqa4"]}}</p>
+                  </div>
+                </div> <!-- cd-faq__content -->
+              </li>
+
+              <li class="cd-faq__item {{faq5}}">
+                <a class="cd-faq__trigger" (click)="clickfaq5();"><span>{{cms["faqq5"]}}</span></a>
+                <div class="cd-faq__content">
+                  <div class="text-component">
+                    <p>{{cms["faqa5"]}}</p>
+                  </div>
+                </div> <!-- cd-faq__content -->
+              </li>
+
+              <li class="cd-faq__item {{faq6}}">
+                <a class="cd-faq__trigger" (click)="clickfaq6();"><span>{{cms["faqq6"]}}</span></a>
+                <div class="cd-faq__content">
+                  <div class="text-component">
+                    <p> {{cms["faqa6"]}}</p>
+                  </div>
+                </div> <!-- cd-faq__content -->
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section #article class="article-section pt-40">
+  <div class="banner-content-area1">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-lg-4">
+          <div class="big-title">
+            <p>Recent Article</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <div class="article-item">
+            <div class="thumb">
+              <img src="assets/img/Landingimage/article-dna.png" alt="banner-shape">
+            </div>
+            <div class="mt-20">
+              <a href="{{cms['aturl1']}}" class="title">
+                <p>{{cms["aT1"]}}</p>
+              </a>
+              <p class="content mb-20">{{cms["atS1"]}}</p>
+              <div class="post-meta mt-10">
+                <div class="post-meta__count">
+                  <a class="meta-author" href=""><i class="fa fa-heart-o"></i>&nbsp;&nbsp;112&nbsp;&nbsp;</a>
+                  <a class="meta-author" href=""><i class="fa fa-comment-o"></i>&nbsp;&nbsp;34&nbsp;&nbsp;</a>
+                </div>
+                <div class="post-meta__writer">
+                  <p>24 Mar - by <span>heshamsqrat</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="article-item">
+            <div class="thumb">
+              <img src="assets/img/Landingimage/article-test-tubes.png" alt="banner-shape">
+            </div>
+            <div class="mt-20">
+              <a href="{{cms['aturl2']}}" class="title">
+                <p>{{cms["aT2"]}}</p>
+              </a>
+              <p class="content mb-20">{{cms["atS2"]}}</p>
+              <div class="post-meta mt-10">
+                <div class="post-meta__count">
+                  <a class="meta-author" href=""><i class="fa fa-heart-o"></i>&nbsp;&nbsp;112&nbsp;&nbsp;</a>
+                  <a class="meta-author" href=""><i class="fa fa-comment-o"></i>&nbsp;&nbsp;34&nbsp;&nbsp;</a>
+                </div>
+                <div class="post-meta__writer">
+                  <p>24 Mar - by <span>heshamsqrat</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="article-item">
+            <div class="thumb">
+              <img src="assets/img/Landingimage/article-glowing.png" alt="banner-shape">
+            </div>
+            <div class="mt-20">
+              <a href="{{cms['aturl3']}}" class="title">
+                <p>{{cms["aT3"]}}</p>
+              </a>
+              <p class="content mb-20">{{cms["atS3"]}}</p>
+              <div class="post-meta mt-10">
+                <div class="post-meta__count">
+                  <a class="meta-author" href=""><i class="fa fa-heart-o"></i>&nbsp;&nbsp;112&nbsp;&nbsp;</a>
+                  <a class="meta-author" href=""><i class="fa fa-comment-o"></i>&nbsp;&nbsp;34&nbsp;&nbsp;</a>
+                </div>
+                <div class="post-meta__writer">
+                  <p>24 Mar - by <span>heshamsqrat</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section #resource class="resource-section pt-40">
+  <div class="banner-content-area1">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-lg-4">
+          <div class="big-title">
+            <p>Useful Resource</p>
+            <img src="assets/img/Landingimage/Resourcesimg.png" class="mt-60" alt="resource-img">
+          </div>
+        </div>
+
+        <div class="col-md-8 col-lg-8">
+          <div div id="cd-resource">
+            <div class="cd-resource__group mt-40">
+              <div class="cd-resource__item" *ngFor="let download of downloads">
+                <span class="title">Document Title name</span>
+                <span class="download">
+                  786 downloads&nbsp;&nbsp;
+                  <a>
+                    <img src="assets/img/Landingimage/download.png" alt="download-img" class="ml-10">
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer #contact class="pt-70">
+  <section class="contact-section mt-70">
+    <div class="main-content">
+      <div class="container">
+        <div class="big-title">
+          <p>Contact us</p>
+        </div>
+
+        <div class="row mt-70">
+          <div class="col-md-offset-2 col-md-8">
+            <form [formGroup]="messageForm" (ngSubmit)="sendmessage()">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <div class="form-group"
+                    [ngClass]="{'has-error':!messageForm.controls['Name'].valid && messageForm.controls['Name'].touched}">
+                    <input type="text" class="form-control" formControlName="Name" placeholder="Full Name"
+                      maxlength="100">
+                  </div>
+                  <div class="note note-error"
+                    *ngIf="messageForm.controls['Name'].hasError('required') && messageForm.controls['Name'].touched">
+                    Please Enter Name
+                  </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                  <div class="form-group"
+                    [ngClass]="{'has-error':!messageForm.controls['Email'].valid && messageForm.controls['Email'].touched}">
+                    <input type="email" class="form-control" formControlName="Email" placeholder="Email"
+                      maxlength="100">
+                  </div>
+                  <div class="note note-error"
+                    *ngIf="messageForm.controls['Name'].hasError('required') && messageForm.controls['Name'].touched">
+                    Please Enter Email
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group col-md-12 mt-20">
+                <div class="form-group"
+                  [ngClass]="{'has-error':!messageForm.controls['Email'].valid && messageForm.controls['Email'].touched}">
+                  <textarea rows="10" class="form-control is-invalid" id="validationTextarea" formControlName="Message"
+                    placeholder="Message" maxlength="550"></textarea>
+                </div>
+                <div class="note note-error"
+                  *ngIf="messageForm.controls['Message'].hasError('required') && messageForm.controls['Message'].touched">
+                  Please Enter Message
+                </div>
+              </div>
+
+              <div class="form-group col-md-offset-4 col-md-4">
+                <button type="submit" class="btn btn-cyan" [disabled]="!messageForm.valid">Send Message</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-bg">
+        <div class="contact-bg__group">
+          <img src="assets/img/Landingimage/contact-left.png" alt="contact-left" class="contact-bg__left">
+          <img src="assets/img/Landingimage/contact-center.png" alt="contact-center" class="contact-bg__center">
+          <img src="assets/img/Landingimage/contact-right.png" alt="contact-right" class="contact-bg__right">
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row mt-100">
+          <div class="col-lg-5 col-md-5">
+            <div class="contact-left">
+              <div class="content">
+                <img src="assets/img/Landingimage/logo-white.png" alt="banner-shape">
+                <p class="mt-30">
+                  It's a standardized, open-source web based tool
+                  ability to collect and analyze data to accurately
+                  forecast commodity needs.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-offset-2 col-md-5 col-lg-offset-2 col-lg-5">
+            <div class="contact-right">
+              <div class="content">
+                <div class="col-md-12 col-lg-6 mt-30">
+                  <div class="contact-right__image">
+                    <img src="assets/img/Landingimage/email.png" alt="">
+                  </div>
+                  <span>{{cms['contemail']}}</span>
+                </div>
+                <div class="col-md-12 col-lg-6 mt-30 ">
+                  <div class="contact-right__image">
+                    <img src="assets/img/Landingimage/phone.png" alt="">
+                  </div>
+                  <span>{{cms['contmobile']}}</span>
+                </div>
+                <div class="col-md-12 mt-30">
+                  <div class="contact-right__image">
+                    <img src="assets/img/Landingimage/map.png" alt="">
+                  </div>
+                  <span>{{cms['contactaddress']}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-100 mb-30">
+          <div class="col-lg-offset-3 col-lg-6 text-center">
+            <span class="copy-right">Copyright © Opian Technology 2020</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</footer>
+<ng-template #loginModal>
+  <login-modal (close)="onLoginClose()" (onForgotpwd)="openForgotpwd(forgotpwdModal)"></login-modal>
+</ng-template>
+<ng-template #registerModal>
+  <register-modal (close)="onRegisterClose()"></register-modal>
+</ng-template>
+<ng-template #forgotpwdModal>
+  <forgotpwd-modal (close)="onForgotpwdClose()" (onLogin)="openLogin(loginModal)"></forgotpwd-modal>
+</ng-template>

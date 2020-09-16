@@ -1,0 +1,196 @@
+<div id="content">
+  <sa-widgets-grid>
+
+
+    <!-- START ROW -->
+
+    <div class="row">
+
+      <!-- NEW COL START -->
+      <article class="col-sm-12 col-md-12 col-lg-12">
+        <div sa-widget [editbutton]="false" [custombutton]="false" [deletebutton]="false">
+
+          <header>
+            <span class="widget-icon">
+              <i class="fa fa-edit"></i>
+            </span>
+
+
+
+          </header>
+
+          <!-- widget div-->
+          <div>
+
+
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+              <form class="smart-form" novalidate="novalidate"  [formGroup]="demographictestingprotocol">
+                <!-- [formGroup]="RecentForecast" -->
+                <header>
+                  <h3 style="
+                color: gray;
+            ">
+                 BASED ON GUIDELINE,HOW OFTEN DO PATIENTS GET THE FOLLOWING TESTS?
+                  </h3>
+                </header>
+
+                <fieldset>
+                  <div class="row" style="display:none">
+
+                    <section class="col col-6">
+                        <label class="control-label">Test
+          
+                          </label>
+                          <label class="input">
+                            <select name="Test" class="form-control"  (change)="ontextchange($event.target.value)">
+                              <option value="0" selected>--Select--</option>
+                              <option *ngFor="let data of TestList" [value]="data.testID">{{data.testName}}</option>
+          
+                            </select>
+                          </label>
+                  
+                    </section>
+                    <section class="col col-6">
+          
+                        <label class="control-label">
+          
+                          </label>
+                          <label class="input">
+                        <button type="button" class="btn btn-primary btn-sm" (click)="addtestdata()" >
+                          <!-- <i class="fa fa-eye"></i> -->
+                          Add
+                        </button>
+          
+                          </label>
+                    </section>
+                  
+                  </div>
+               
+                  <section class="col col-8"> 
+                    <h2>
+          
+                    </h2>
+          
+                    <div class="table-responsive" style="overflow-y: auto;height: 318px;border-style: ridge;margin-top: 26px" formArrayName="_testingprotocol">
+          
+          
+          
+                      <table class="table table-bordered table-striped table-hover" >
+          
+                        <thead>
+                          <tr >
+                             
+                              <th *ngFor="let item of HeaderArray" style="vertical-align: middle">{{item}}</th>
+                              <th  style="vertical-align: middle">Edit</th>
+                              <th  style="vertical-align: middle">Remove</th>
+                          </tr>
+                      </thead>
+                        <tbody>
+                          <tr *ngFor="let item1 of demographictestingprotocol.get('_testingprotocol')['controls']; let i = index;" [formGroupName]="i">
+          
+                            <td *ngFor="let item of controlArray">
+                        
+                              <label class="input">
+                                <input type="{{item.type}}" name="{{item.name}}" formControlName="{{item.name}}" min="1" [attr.max]="item.datatype === '2' ? '100' : 1000"  [attr.disabled] = "item.type === 'text' ? 'disabled' : null" [style.text-align]="item.type === 'text' ? 'left' : 'right'"  (input)="inputvalue($event,i,item.datatype);"/>
+                              </label>
+          
+                           
+                            </td>
+                            <td>
+                              <label class="input">
+                                  <a type="button" (click)="edit(item1,i)">
+                                      <i class="fa fa-pencil"></i>
+                                  </a>
+                              </label>
+                          </td>
+
+                            <td>
+                                <label class="input">
+                                    <a type="button" (click)="deltest(item1,i)">
+                                        <i class="fa fa-trash-o"></i>
+                                    </a>
+                                </label>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+          
+                   
+          
+                  </section>
+                </fieldset>
+
+                <footer>
+                  <a (click)="Previousclick()"  class="btn btn-default"
+                    style="float: left;"><b>
+                      << Previous</b> </a> <a (click)="savetestingprotocol()" class="btn btn-default" style="float: right;"><b>Next
+                      >></b></a>
+                </footer>
+
+              </form>
+
+            </div>
+            <!-- end widget content -->
+
+          </div>
+          <!-- end widget div -->
+
+        </div>
+      </article>
+    </div>
+  </sa-widgets-grid>
+</div>
+
+<div bsModal #lgModal4="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content" style="
+    border-radius: 0%;
+    background-color: white;
+    color: gray;
+">
+
+      <div class="modal-body">
+        <button type="button" class="close" (click)="lgModal4.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+         <form class="smart-form" novalidate="novalidate" [formGroup]="demographictestingprotocolmodel"  >  
+           <!-- [formGroup]="demographictestingprotocolmodel" -->
+
+          <div class="table-responsive" style="overflow-y: auto;height: 318px;border-style: ridge;margin-top: 26px" formArrayName="_testingprotocolVariable">
+          
+          
+          
+            <table  class="table table-bordered table-striped table-hover" >
+
+            <tbody>
+                <tr  *ngFor="let item1 of demographictestingprotocolmodel.get('_testingprotocolVariable')['controls']; let i = index;" [formGroupName]="i">
+                  <th>  {{item1.getRawValue().variable}}</th>
+                  <td >
+                        
+                    <label class="input">
+                      <input type="number" name="value" formControlName="value" min="1"  [style.text-align]="'right'"  (input)="inputvalue($event,i,item.datatype);"/>
+                    </label>
+
+                 
+                  </td>
+                </tr>
+
+                </tbody>
+                </table>
+              </div>
+          </form> 
+       
+      </div>
+
+      <div class="modal-footer">
+        <button type="btn btn-primary" class="close" (click)="addgeneralassumption()" aria-label="Close">Save</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+

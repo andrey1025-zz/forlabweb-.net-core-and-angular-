@@ -1,0 +1,77 @@
+<div class="forecast-add-modal-header">
+  <a type="button" class="close-button" (click)="onCloseModal()" aria-hidden="true">
+  </a>
+</div>
+<div class="forecast-add-modal-body text-center">
+  <span class="forecast-add-modal-title color-darkblue">HOW WOULD YOU LIKE TO DEFINE YOUR FORECAST</span>
+  <form class="forecast-add-form" (ngSubmit)="save()">
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4">
+        <div class="form-group">
+          <input type="text" class="form-control" name="forecastName" placeholder="Name of Forecast" />
+        </div>
+
+        <div class="form-group">
+          <div class="forecast-type__buttons">
+            <div *ngFor="let type of forecastTypeList; let i = index">
+              <div class="forecast-type__buttons--button" [ngClass]="{'selected': myForecastType == i}"
+                (click)="handleForecastType(i)">
+                {{ type }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-5">
+        <div class="form-group">
+          <div class="forecast-time__buttons">
+            <div *ngFor="let forecastTime of forecastTimeList; let i = index">
+              <div class="forecast-time__buttons--button" [ngClass]="{'selected': myForecastTime == i}"
+                (click)="handleForecastTime(i)">
+                {{ forecastTime }}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="forecast-duration">
+          <p>Forecast Duration</p>
+          <p><b>20 Days</b></p>
+          <button container="" type="button" name="AsOfDate" class="datenew" date-format="dd/mmm/yy" bsDatepicker
+            [bsConfig]="{ dateInputFormat: 'DD/MMMM/YYYY'}">
+            <img src="../../../assets/img/new/calendar.png" alt="calendar">
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="forecast-add-modal-footer">
+    <div class="forecast-add-modal-footer__container">
+      <button type="button" (click)="onCloseModal()" class="btn btn-outline-cyan">Cancel</button>
+
+      <div class="forecast-form-step">
+        <div class="steps">
+          <div class="progressbar-wrapper">
+            <ul class="progressbar">
+              <li class="active"></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <button (click)="openNextModal()" class="btn btn-cyan">Next</button>
+    </div>
+  </div>
+</div>

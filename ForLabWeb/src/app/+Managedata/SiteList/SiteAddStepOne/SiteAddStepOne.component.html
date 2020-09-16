@@ -1,0 +1,162 @@
+<div class="site-add-modal-header">
+    <a type="button" class="close-button" (click)="close.emit(true)" aria-hidden="true">
+    </a>
+</div>
+<div class="site-add-modal-body text-center">
+    <span class="site-add-modal-title color-darkblue">Site Form</span>
+    <form class="site-add-form" [formGroup]="siteForm" (ngSubmit)="save()">
+        <div class="first-step">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="site-add-form-group">
+                        <div class="form-group"
+                            [ngClass]="{'has-error':!siteForm.controls['siteName'].valid && siteForm.controls['siteName'].touched}">
+                            <input type="text" class="form-control" name="siteName" placeholder="Site Name"
+                                formControlName="siteName" required />
+                        </div>
+                        <div class="note note-error"
+                            *ngIf="siteForm.controls['siteName'].hasError('required') && siteForm.controls['siteName'].touched">
+                            Please Enter Test Name</div>
+                        <div class="note note-error"
+                            *ngIf="siteForm.controls['siteName'].hasError('maxlength') && siteForm.controls['siteName'].touched">
+                            Maximum 64 characters are allowed</div>
+                    </div>
+
+                    <div class="site-add-select">
+                        <div class="site-add-select__country">
+                            <div class="form-group" [ngClass]="{'has-error':!siteForm.controls['countryId'].valid 
+                                    && siteForm.controls['countryId'].touched}">
+                                <select name="countryId" class="form-control" formControlName="countryId"
+                                    (change)="getRegion($event.target.value)">
+                                    <option value="0" disabled>Select Country</option>
+                                    <option *ngFor="let country of countryList" [value]="country.id">
+                                        {{country.name}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="note note-error" *ngIf="siteForm.controls['countryId'].hasError('required') &&
+                                siteForm.controls['countryId'].touched">
+                                Please Select Country
+                            </div>
+                        </div>
+
+                        <div class="site-add-select__region">
+                            <div class="form-group" [ngClass]="{'has-error':!siteForm.controls['regionId'].valid &&
+                                siteForm.controls['regionId'].touched}">
+                                <select name="regionId" class="form-control" formControlName="regionId">
+                                    <option value="0" disabled>Select Region</option>
+                                    <option *ngFor="let region of regionList" [value]="region.regionID">
+                                        {{Region.regionName}}</option>
+
+                                </select>
+                            </div>
+                            <div class="note note-error" *ngIf="siteForm.controls['regionId'].hasError('required') &&
+                                siteForm.controls['regionId'].touched">
+                                Please Select Region
+                            </div>
+                        </div>
+
+                        <div class="site-add-select__category">
+                            <div class="form-group" [ngClass]="{'has-error':!siteForm.controls['categoryId'].valid &&
+                                siteForm.controls['categoryId'].touched}">
+                                <select name="categoryId" class="form-control" formControlName="categoryId">
+                                    <option value="0" disabled>Select Site Category</option>
+                                    <option *ngFor="let category of categoryList" [value]="category.categoryID">
+                                        {{ category.categoryName }}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="note note-error" *ngIf="siteForm.controls['categoryId'].hasError('required') &&
+                                siteForm.controls['categoryId'].touched">
+                                Please Select Site Category</div>
+                        </div>
+                    </div>
+
+                    <div class="site-add-other__req">
+                        <div class="site-add-other__req--detail">
+                            <div class="form-group">
+                                <p>General Working Days</p>
+                                <input type="number" class="form-control" name="workingDays"
+                                    formControlName="workingDays" />
+                            </div>
+                        </div>
+                        <div class="site-add-other__req--detail">
+                            <div class="form-group">
+                                <p>Latitude</p>
+                                <input type="number" class="form-control" name="latitude" formControlName="latitude" />
+                            </div>
+                        </div>
+                        <div class="site-add-other__req--detail">
+                            <div class="form-group">
+                                <p>Longitude</p>
+                                <input type="number" class="form-control" name="longitude"
+                                    formControlName="longitude" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="site-test-per-month">
+                                <p class="title">Testing Days Per Month</p>
+                                <button class="btn btn-cyan" (click)="addNewTestingDays()">Add Testing Days</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="site-test-checkboxes">
+                                    <div class="col-md-3" *ngFor="let checkbox of checkboxArray; let i = index">
+                                        <div class="site-test-checkboxes__checkbox">
+                                            <input class="styled-checkbox" id="styled-checkbox-{{i}}" type="checkbox"
+                                                value="value{{i}}">
+                                            <label for="styled-checkbox-{{i}}">test12</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="site-test-content">
+                            <app-modal-datatable tableClass="table table-striped table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th data-class="expand">Testing Area</th>
+                                        <th data-class="expand">Days</th>
+                                        <th data-class="expand">Actions</th>
+                                    </tr>
+                                </thead>
+                            </app-modal-datatable>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<div class="site-add-modal-footer">
+    <div class="site-add-modal-footer__container">
+        <button (click)="close.emit(true)" class="btn btn-outline-cyan">Cancel</button>
+
+        <div class="site-form-step">
+            <div class="steps">
+                <div class="progressbar-wrapper">
+                    <ul class="progressbar">
+                        <li class="active"></li>
+                        <li (click)="next.emit(true)"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <button (click)="next.emit(true)" class="btn btn-cyan">Next</button>
+    </div>
+</div>

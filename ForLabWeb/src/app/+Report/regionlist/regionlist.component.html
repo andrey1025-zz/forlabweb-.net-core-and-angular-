@@ -1,0 +1,107 @@
+<div id="content">
+  <sa-widgets-grid>
+
+
+    <!-- START ROW -->
+
+    <div class="row">
+
+      <!-- NEW COL START -->
+      <article class="col-sm-12 col-md-12 col-lg-9">
+<div sa-widget [editbutton]="false" [custombutton]="false" [deletebutton]="false">
+
+  <header>
+    <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+
+   
+
+  </header>
+
+  <!-- widget div-->
+  <div>
+
+
+    <!-- widget content -->
+    <div class="widget-body no-padding">
+
+    <form  class="smart-form" 
+     >
+      <header>
+        Region List
+       
+      </header>
+
+      <fieldset>
+        <div class="row">
+        <section class="col col-4">
+            <div class="form-group">
+
+                <!-- <input type="text" class="form-control" formControlName="CategoryID"/> -->
+
+
+                <label>
+                    <input type="checkbox" class="checkbox style-3" (change)="onchecked( $event.target.checked)" />
+                    <span>include no of sites</span>
+                </label>
+            </div>
+             </section>
+             <section class="col col-2"  *ngIf="Show">
+
+                <div class="form-group">
+
+                    <!-- <input type="text" class="form-control" formControlName="CategoryID"/> -->
+                    <label class="control-label">No of Sites  
+                  
+                      </label>
+    
+                    <label class="input">
+                        <select  class="form-control" (change)="Onchange($event)" >
+                          <option value="0" ></option>
+                          <option value="1" >> </option>
+                          <option value="2" >< </option>
+                          <option value="3" >=</option>
+                        
+                         
+                        </select>
+                        </label>
+                </div>
+
+             </section>
+             <section class="col col-2" *ngIf="Show">
+
+                <div class="form-group">
+    <!-- <input type="text" class="form-control" formControlName="CategoryID"/> -->
+    <label class="control-label">
+                  
+      </label>
+      <label class="input">
+
+          <input name="noofsites"  type="number" class="form-control"  
+          [(ngModel)]="noofsites"
+                                 style="text-align: right"    >
+                   
+                  
+    </label>
+                  
+                </div>
+              
+             </section>
+            </div>
+            <section>
+              <button class="btn btn-primary btn-sm" (click)="openreport()">View Report</button>
+            </section>
+     
+   
+    </fieldset>
+      
+    </form> </div>
+    <!-- end widget content -->
+
+  </div>
+  <!-- end widget div -->
+
+</div>
+</article>
+    </div>
+</sa-widgets-grid>
+</div>

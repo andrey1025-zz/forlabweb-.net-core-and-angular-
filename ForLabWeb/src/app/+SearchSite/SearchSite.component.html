@@ -1,0 +1,157 @@
+<div id="content">
+  <sa-widgets-grid>
+
+
+    <!-- START ROW -->
+
+    <div class="row">
+
+      <!-- NEW COL START -->
+      <article class="col-sm-12 col-md-12 col-lg-9">
+<div sa-widget [editbutton]="false" [custombutton]="false" [deletebutton]="false">
+
+  <header>
+    <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+
+   
+
+  </header>
+
+  <!-- widget div-->
+  <div>
+
+
+    <!-- widget content -->
+    <div class="widget-body no-padding">
+
+    <form  class="smart-form"  [formGroup]="Searchproform" >
+      <header>
+       Search
+       
+      </header>
+
+      <fieldset>
+        <section>
+            
+        <div class="form-group">                  
+         
+              <div class="col-md-10">
+                      <div class="icon-addon addon-md input-icon-right">
+              <label class="input">
+              <input type="text" class="form-control" name="SerachSite"  formControlName="SerachSite" placeholder="Search for Site name"/> 
+              <label class="glyphicon glyphicon-search" rel="tooltip" title="" data-original-title="Product Name"></label>
+            </label>   
+            <button type="button" class=" btn btn-primary btn-lg" (click)="Searchproduct()">Search Now</button>
+          </div> 
+          </div>
+        </div>
+        </section>
+      </fieldset>
+      <fieldset>
+          <section>
+            <div class="row">
+              <div class="form-group">    
+                      <div class="col-md-5" style="
+                      border: 1px ridge;"
+                  >
+                             
+                                       <div class="radio">
+                                  <label>
+                                    <input type="radio" class="radiobox style-3" 
+                                           name="SerachType"  (click)="removeCheckboxes($event)"  checked>
+                                    <span>All Sites</span>
+                                  </label>
+                                </div>
+                                <div class="radio">
+                                  <label>
+                                    <input type="radio" class="radiobox style-3"  name="SerachType"  (click)="addCheckboxes($event)">
+                                    <span>These Region</span>
+                                  </label>
+                                </div>			
+                          
+
+
+                          </div>
+                          <div class="col-md-4" formArrayName="Regions" style=" margin-left: 4px; border: 1px ridge;height: 100px;overflow-y: scroll;
+                         "
+                       >
+
+                           
+                            <div *ngFor="let order of  RegionList; let i = index">
+                                <div [formGroupName]="i">
+                              <input type="checkbox"  formControlName="name" (change)="chkchange(order.regionID,i)" >{{order.regionName}}
+                           
+                            </div>
+                          </div>
+                       
+                          </div>
+                         
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5" ></div>
+                    <div class="col-md-4" style="text-align: right;" >
+                  <button class="btn btn-primary btn-xs"  [disabled]="buttonstatus" (click)="DeseleectAll()">           
+                      None
+                     </button>  
+                     <button class="btn btn-primary btn-xs" [disabled]="buttonstatus" (click)="seleectAll()">              
+                      All
+                     </button>    
+                    </div>
+                  </div>
+          </section>
+      </fieldset>
+      <section>
+              <div id="content" class="SiteList">
+                <h1>Sites</h1>
+              <div class="table-responsive"  style="height: 200px;overflow-y: scroll">
+  
+                <table class="table table-bordered table-striped table-hover"  *ngIf="SiteList">
+     
+                  <thead>  
+                      <tr>  
+                          <th>Site Name</th>  
+                          <th>Region Name</th>  
+                          <th>Category Name</th>  
+                          <th>Currently Open</th>  
+                          
+                      </tr>  
+                  </thead>  
+                  <tbody>  
+                      <tr *ngFor="let Site of SiteList" (click)="editSite(Site.SiteID)">  
+                          <td>{{ Site.siteName }}</td>  
+                          <td>{{ Site.regionName }}</td>  
+                          <td>{{ Site.categoryName }}</td>  
+                          <td>{{ Site.currentlyOpen }}</td>  
+                        
+                          
+                         
+                      </tr>  
+                  </tbody>  
+              </table>
+          </div>
+         
+          </div>
+          </section>
+        <footer>      
+            <!-- <button class="btn btn-primary" type="submit">           
+                Save
+              </button>
+              <button class="btn btn-primary" (click)="clearctrl()">              
+                Cancel
+              </button> -->
+           
+        </footer>
+      <!-- </div> -->
+    
+    </form> </div>
+    <!-- end widget content -->
+
+  </div>
+  <!-- end widget div -->
+
+</div>
+</article>
+    </div>
+</sa-widgets-grid>
+</div>

@@ -1,0 +1,181 @@
+<header id="header" class="animated fadeInDown">
+
+  <div id="logo-group">
+    <span id="logo"> <img src="assets/img/FørLablogo.jpg" alt="SmartAdmin" style="
+      width: 90px;margin-top: -12px;
+  "> </span>
+  </div>
+
+  <span id="extr-page-header-space"> <span class="hidden-mobile hiddex-xs">Need an account?</span> <a
+      routerLink="/Register" class="btn btn-danger">Create account</a> </span>
+
+</header>
+<div id="main" role="main" class="animated fadeInDown">
+  <div class="my-container">
+    <ng-template #customLoadingTemplate>
+      <div class="custom-class">
+        <h3>
+          Loading...
+        </h3>
+        <!-- <button (click)="showAlert()">
+                    Click me!
+                </button> -->
+      </div>
+    </ng-template>
+    <!-- <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading> -->
+    <ngx-loading [show]="loading" [config]="{animationType: ngxLoadingAnimationTypes.chasingDots,
+           primaryColour: primaryColour, secondaryColour: secondaryColour, backdropBorderRadius: '3px'}"
+      [template]="loadingTemplate"></ngx-loading>
+  </div>
+  <div id="content" class="container">
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8 hidden-xs hidden-sm">
+        <h1 class="txt-color-red login-header-big">ForLab+</h1>
+
+        <div class="hero">
+          <div class="pull-left login-desc-box-l">
+            <h4 class="paragraph-header">ForLab+ is a standardized, open-source web based tool with clearly defined
+              requirements, improving programs’ ability to collect and analyze data to accurately forecast commodity
+              needs. ForLab+ performs long-and short-term forecasts and guides improvements in diagnostic services.</h4>
+
+            <h4 class="paragraph-header" style="color: maroon">Note: User can download the window version of ForLab 2.0
+              from this page using the download button below.<br>ForLab+, which is the web based version of the tool is
+              in testing phase and is not ready for use at the moment. We will notify user when the tool is ready.</h4>
+
+            <div class="login-app-icons">
+              <a routerLink="/landing" class="btn btn-danger btn-sm">Read more about ForLab+</a>
+              <a href="https://storage.googleapis.com/forlabaj.appspot.com/For%20Lab.zip"
+                class="btn btn-danger btn-sm">Download window version</a>
+            </div>
+          </div>
+          <img src="https://storage.googleapis.com/forlabaj.appspot.com/dist/assets/img/demo/iphoneview.png"
+            class="pull-right display-image" alt="" style="width:210px">
+
+
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <h5 class="about-heading">Who is ForLab+ for?</h5>
+
+            <p>
+              Organizations ranging from individual laboratories to Ministries of health could use ForLab+ to analyze
+              laboratory product consumption, test performed and demographic morbidity data to create accurate demand
+              forecast for laboratory commodities.<a routerLink="/landing"> Read more…
+              </a>
+            </p>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <h5 class="about-heading">Who are we, Opian Health</h5>
+
+            <p>
+              Creating successful healthcare software differs substantially from traditional software. Healthcare
+              software demands unique domain expertise, project methodology, and software architecture patterns. Opian
+              Health Information Technology Solutions has been founded with the above idea in mind and aims at
+              addressing the critical issues of health IT.
+              <a routerLink="/landing"> Read more…
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
+        <div class="well no-padding">
+          <form class="smart-form client-form" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+            <header>
+              Sign In
+            </header>
+            <fieldset>
+              <section>
+                <label class="label">Email</label>
+                <label class="input"> <i class="icon-append fa fa-user"></i>
+                  <!-- <input type="email" name="email" data-smart-validate-input="" data-required="" data-email="" data-message-required="Please enter your email address" data-message-email="Please enter a VALID email address"> -->
+                  <input type="email" id="username" name="username" ngModel class="form-control" placeholder="Email"
+                    required autofocus>
+                  <b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i>
+                    Please enter email address</b></label>
+              </section>
+              <section>
+                <label class="label">Password</label>
+                <label class="input"> <i class="icon-append fa fa-lock"></i>
+                  <!-- <input type="password" name="password" data-smart-validate-input="" data-required="" data-minlength="3" data-maxnlength="20" data-message="Please enter your email password"> -->
+                  <input type="password" id="password" name="password" ngModel class="form-control"
+                    placeholder="Password" required>
+
+                  <b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> Please enter
+                    password</b> </label>
+
+                <div class="note">
+                  <a routerLink="/forgot-password">Forgot password?</a>
+                </div>
+              </section>
+              <!-- <section>
+                <label class="checkbox">
+                  <input type="checkbox" name="remember" checked>
+                  <i></i>Stay signed in</label>
+              </section> -->
+            </fieldset>
+            <footer>
+              <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">
+
+                Sign in
+              </button>
+            </footer>
+          </form>
+        </div>
+        <h5 class="text-center"> - Or sign in using -</h5>
+        <ul class="list-inline text-center">
+          <li>
+            <a (click)="(null)" class="btn btn-primary btn-circle"><i class="fa fa-facebook"></i></a>
+          </li>
+          <li>
+            <a (click)="(null)" class="btn btn-info btn-circle"><i class="fa fa-twitter"></i></a>
+          </li>
+          <li>
+            <a (click)="(null)" class="btn btn-warning btn-circle"><i class="fa fa-linkedin"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div bsModal #lgModal1="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content" style="background-color: #f1f1f1 ; border-radius: 10%;">
+      <div class="modal-header">
+        <p style=" text-align: center;
+            font-style: normal;
+            font-weight: bolder;
+            font-size: x-large;
+            color: green;">Welcome to ForLab+! </p>
+
+      </div>
+      <div class="modal-body">
+
+        <div class="row">
+
+
+          <p style="
+                font-style: normal;
+                font-weight: bold;                
+               ">As a new user forlab+ will help you populate the basic laboratory data like Master product list,test
+            list, instrument list and many others
+            <br>Would you like to import these data?”</p>
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="Openimportdata()">
+          Ok
+        </button>
+        <button type="button" class="btn btn-default" (click)="lgModal1.hide()">
+          Cancel
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

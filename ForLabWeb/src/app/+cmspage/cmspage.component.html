@@ -1,0 +1,132 @@
+<div id="content">
+    <sa-widgets-grid>
+  
+  
+      <!-- START ROW -->
+  
+      <div class="row">
+  
+        <!-- NEW COL START -->
+        <article class="col-sm-12 col-md-12 col-lg-12">
+          <div sa-widget [editbutton]="false" [custombutton]="false" [deletebutton]="false">
+  
+            <header>
+              <span class="widget-icon">
+                <i class="fa fa-edit"></i>
+              </span>
+  
+  
+  
+            </header>
+  
+            <!-- widget div-->
+            <div>
+  
+  
+              <!-- widget content -->
+              <div class="widget-body no-padding">
+  
+  
+  
+  
+  
+                <form class="smart-form" novalidate="novalidate" [formGroup]="cmspage" (ngSubmit)="save()">
+                  <header>
+                   CMS Page
+                  </header>
+  
+                  <fieldset>
+                     <h1>Home Section</h1><br>
+                    <section>
+                      <label class="control-label"><b>Header</b>
+                
+                      </label>
+                      <label class="input">
+                        <input type="text" class="form-control" formControlName="homeheader"/>
+ 
+                      </label>
+                    </section>
+                    <section>
+                        <label class="control-label"><b>Functionality & Features</b>
+                  
+                        </label>
+                        <label class="input">
+                            <ckeditor formControlName="homefunctionality"></ckeditor>
+   
+                        </label>
+                      </section>
+                      <section>
+                          <label class="control-label"><b>Benefits of ForLab+</b>
+                    
+                          </label>
+                          <label class="input">
+                              <ckeditor formControlName="homebenefits"></ckeditor>
+     
+                          </label>
+                        </section>
+
+
+                        <h1>About Us Section</h1><br>
+
+                        <section>
+                            <label class="control-label"><b>Header</b>
+                      
+                            </label>
+                            <label class="input">
+                              <input type="text" class="form-control" formControlName="aboutusheader"/>
+       
+                            </label>
+                          </section>
+                          <h1>FAQ</h1><br>
+                          <section>
+                              <label class="control-label"><b>FAQ</b>
+                        
+                              </label>
+                              <label class="input">
+                                  <ckeditor formControlName="faq"></ckeditor>
+         
+                              </label>
+                            </section>
+                            <h1>Usefull Resurce</h1><br>
+                            <section>
+                                <label class="control-label"><b>Resouce</b>
+                          
+                                </label>
+                                <label class="input">
+                                    <ckeditor formControlName="resource"></ckeditor>
+           
+                                </label>
+                              </section>
+                  </fieldset>
+  
+                  <footer>
+                    <button type="submit" class="btn btn-primary" >
+                        <!-- <i class="fa fa-eye"></i> -->
+                   
+                       Save
+                      </button>
+    
+                    <!-- <button type="button" class="btn btn-primary" (click)="save()" [disabled]="!consumptionadd.valid || !validtxtscope">
+                      <!-- <i class="fa fa-eye"></i> 
+                 
+                      {{btncaption}}
+                    </button> -->
+  
+  
+                    <!-- </div>
+          </div> -->
+                  </footer>
+                  <!-- </div> -->
+  
+                </form>
+              </div>
+              <!-- end widget content -->
+  
+            </div>
+            <!-- end widget div -->
+  
+          </div>
+        </article>
+      </div>
+    </sa-widgets-grid>
+  </div>

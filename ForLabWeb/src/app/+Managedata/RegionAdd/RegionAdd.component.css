@@ -1,0 +1,91 @@
+.close-button {
+    position: absolute;
+    right: 18px;
+    top: 14px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+}
+
+.close-button:before, .close-button:after {
+    position: absolute;
+    left: 0;
+    content: ' ';
+    height: 13px;
+    width: 3px;
+    background-color: #F35A48;
+}
+
+.close-button:before {
+    transform: rotate(45deg);
+}
+
+.close-button:after {
+    transform: rotate(-45deg);
+}
+
+.region-add-modal-header {
+    height: 16px;
+}
+
+.region-add-modal-body {
+    height: calc(100% - 50px);
+    margin: auto 70px;
+}
+
+.region-add-modal-footer {
+    height: 34px;
+    bottom: 0;
+}
+
+.region-add-modal-title {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+}
+
+.region-add-form__inner {
+    display: flex;
+    align-items: center;
+    margin-top: 60px;
+}
+.region-add-form .form-group {
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+.region-add-form input {
+  font-size: 12px;
+  font-family: "OpenSans-Bold";
+  border-radius: 5px !important;
+  border-color: transparent;
+  background-color: #F3F4F5;
+  padding: 12px 14px;
+  height: auto;
+  margin-right: 32px;
+  min-width: 340px;
+}
+.region-add-form select {
+  color: #2B394E;
+  font-size: 12px;
+  border-radius: 5px !important;
+  border-color: transparent !important;
+  box-shadow: 0 3px 16px rgba(99, 130, 254, .08) !important;
+  padding: 10px 15px;
+  height: auto;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  background-image: url("../../../assets/img/new/arrow-down.png");
+  background-repeat: no-repeat;
+  background-position-x: 95%;
+  background-position-y: 50%;
+  border: 1px solid #dfdfdf;
+  border-radius: 2px;
+  margin-right: 2rem;
+  padding: 1rem;
+  padding-right: 2rem;
+  margin-right: 30px;
+  min-width: 320px;
+}

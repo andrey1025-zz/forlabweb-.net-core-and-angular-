@@ -1,0 +1,100 @@
+#content-graph {
+    padding: 32px 25px 0 25px;
+    position: relative;
+    height: 47vh;
+}
+
+#content-card {
+    padding: 26px 25px 54px 25px;
+    position: relative;
+    height: calc(53vh - 74px);
+}
+
+#content-graph .row {
+    margin: 0;
+    height: 100%;
+    background: white;
+    border-radius: 5px;
+}
+
+#content-card .row {
+    margin: 0;
+    height: 100%;
+}
+
+#content-graph .row .col-md-8, #content-graph .row .col-md-4 {
+    padding: 0;
+    height: 100%;
+}
+
+#content-card .col-md-5 {
+    height: 100%;
+    padding: 0;
+}
+
+#content-card .col-md-7 {
+    height: 100%;
+    padding: 0;
+}
+
+#content-card .col-md-6 {
+    height: 100%;
+    padding: 0 0 0 16px;
+}
+
+.product-card {
+    height: 100%;
+    background: white;
+    border-radius: 5px;
+}
+
+.product-card .card-title {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+}
+
+.col-md-5 .product-card .card-title {
+    padding: 16px 21px 16px 25px;
+}
+
+.col-md-6 .product-card .card-title {
+    padding: 16px 13px 16px 25px;
+}
+
+.product-card .card-body {
+    padding: 0 24px;
+    overflow-y: scroll;
+    height: calc(100% - 52px);
+}
+
+.row-item:first-child {
+    margin: 0;
+}
+
+.row-item {
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+    font-family: "OpenSans-Semibold";
+    color: #2B394E;
+    margin: 8px 0;
+}
+
+.item-num {
+    width: 7%;
+    margin-right: 3%;
+}
+
+.item-graph {
+    width: 15%;
+    margin-right: 3%;
+}
+
+.item-graph dt {
+    background: #20BDEF;
+    height: 2px;
+    float: right;
+}

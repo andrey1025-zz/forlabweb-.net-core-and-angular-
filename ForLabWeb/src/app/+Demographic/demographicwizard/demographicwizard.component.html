@@ -1,0 +1,230 @@
+<div id="content">
+    <div class="row">
+      <!-- <sa-big-breadcrumbs [items]="['Forms', 'Wizards']" icon="table" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></sa-big-breadcrumbs>
+      <sa-stats></sa-stats> -->
+    </div>
+  
+  
+    <!-- widget grid -->
+    <sa-widgets-grid>
+  
+      <!-- row -->
+      <div class="row">
+  
+        <!-- NEW WIDGET START -->
+        <article class="col-sm-12 col-md-12 col-lg-12">
+
+
+<div sa-widget [editbutton]="false" [deletebutton]="false" color="darken" [deletebutton]="false">
+    <!-- widget options:
+    usage: <div sa-widget [editbutton]="false">
+  
+    [colorbutton]="false"
+    [editbutton]="false"
+    [togglebutton]="false"
+    [deletebutton]="false"
+    [fullscreenbutton]="false"
+    [custombutton]="false"
+    [collapsed]="true"
+    [sortable]="false"
+  
+    -->
+    <header>
+      <span class="widget-icon"> <i class="fa fa-check"></i> </span>
+  
+      <h2>Demographic Definition </h2>
+  
+    </header>
+  
+    <!-- widget div-->
+    <div>
+  
+      <!-- widget content -->
+      <div class="widget-body">
+        <form novalidate="novalidate">
+          <fieldset>
+          <div class="col-sm-12">
+            <div class="form-bootstrapWizard clearfix">
+              <ul class="bootstrapWizard">
+                <li *ngFor="let pane of steps; let i = index" [class.active]="activeStep == pane">
+                  <a (click)="setActiveStep(pane)"> <span class="step">
+                    <span *ngIf="!pane.checked">{{i + 1}}</span>
+                    <i class="fa fa-check" *ngIf="pane.checked"></i>
+                  </span> <span class="title">{{pane.title}}</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="tab-content">
+                <!-- <div class="tab-pane" [class.active]="activeStep.key == 'step0'">
+                    <br>
+                    <form id="login-form" #programForm="ngForm" class="smart-form client-form">
+                        <header>
+                        Programs
+                        </header>
+            
+                        <fieldset>
+            
+                          <section>
+                              <div class="row">
+                      
+                         
+                                  <div class="col-md-3" *ngFor="let Program1 of Demographicmenu">
+                                  <div class="radio">
+                                    <label>
+                                      <input type="radio" class="radiobox style-3" 
+                                      name="Program" [(ngModel)]="model.Program"  
+                                      [value]='Program1.id' required Program>
+                                      <span>{{Program1.programName }}</span>
+                                    </label>
+                                  </div>
+                                  </div>
+                                  </div>
+                            </section>
+            
+            
+                          
+                        </fieldset>
+                        <footer>
+                          <button (click)="getlist()"  class="btn btn-primary" [disabled]="programForm.invalid">
+                           Next
+                          </button>
+                        </footer>
+                      </form>
+  
+                </div>
+                <div class="tab-pane" [class.active]="activeStep.key == 'step11'">
+                    <br>
+                  <sa-demographicList [Programid]="model.Program" (nextStep)="nextStep($event)"></sa-demographicList>
+                </div> -->
+              <div class="tab-pane" [class.active]="activeStep.key == 'step1'">
+                  <br>
+                <sa-DemographicAdd [RecforecastID]="forecastid"  (nextStep)="nextStep($event)" ></sa-DemographicAdd>
+
+              </div>
+              <div class="tab-pane" [class.active]="activeStep.key == 'step2'">
+                  <br>
+              
+         <app-sitebysiteforecast [RecforecastID]="forecastid"  [model3]="lgModal3" (nextStep)="nextStep($event)"   *ngIf="Forecasttype=='S'"></app-sitebysiteforecast> 
+         <app-aggregrateforecast [RecforecastID1]="forecastid" (nextStep)="nextStep($event)"  *ngIf="Forecasttype=='A'"></app-aggregrateforecast>
+   
+              </div>
+           
+              <div class="tab-pane" [class.active]="activeStep.key == 'step3'">
+                  <br>
+               <app-patient-group-ratio [RecforecastID]="forecastid"    (nextStep)="nextStep($event)"></app-patient-group-ratio>
+              </div>
+            
+               <div class="tab-pane" [class.active]="activeStep.key == 'step4'">
+                  <br>
+                <app-testingprotocol [RecforecastID]="forecastid"     (nextStep)="nextStep($event)" >  </app-testingprotocol>
+
+               </div>
+               <div class="tab-pane" [class.active]="activeStep.key == 'step5'">
+                  <br>
+                <app-patient-assumption [RecforecastID]="forecastid"   (nextStep)="nextStep($event)"></app-patient-assumption>
+
+               </div>
+               <div class="tab-pane" [class.active]="activeStep.key == 'step6'">
+                  <br>
+                <app-productassumption [RecforecastID]="forecastid"   (nextStep)="nextStep($event)" ></app-productassumption>
+
+               </div>
+               <div class="tab-pane" [class.active]="activeStep.key == 'step7'">
+                  <br>
+               <app-lineargrowth [RecforecastID]="forecastid"    (nextStep)="nextStep($event)" ></app-lineargrowth>
+               </div>
+               <div class="tab-pane" [class.active]="activeStep.key == 'step8'">
+                  <br>
+                <app-forecastchart [RecforecastID]="forecastid"  (nextStep)="nextStep($event)"></app-forecastchart>
+                </div>
+              <!-- <div class="form-actions">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <ul class="pager wizard no-margin">
+                      <li class="previous">
+                        <a (click)="prevStep()" [class.disabled]="steps.indexOf(activeStep) == 0"
+                                class="btn btn-lg btn-default"> Previous
+                        </a>
+                      </li>
+                      <li class="next">
+                        <a (click)="nextStep()" [class.disabled]="activeStep.submitted && !activeStep.valid" class="btn btn-lg txt-color-darken"> Next
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div> -->
+
+            </div>
+          </div>
+          </fieldset>
+       
+        </form>
+      </div>
+      <!-- end widget div -->
+
+  </div>
+
+</div>
+
+
+
+</article>
+</div>
+</sa-widgets-grid>
+</div>
+
+
+
+
+<div bsModal #lgModal3="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+
+        <!-- <ngx-spinner
+        bdColor="rgba(51,51,51,0.8)"
+        size="medium"
+        color="#fff"
+        type="ball-scale-multiple">
+       <p style="font-size: 20px; color: white">Loading...</p>
+      </ngx-spinner> -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" (click)="lgModal3.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Import File</h4>
+            </div>
+            <div class="modal-body">
+                <form class="smart-form">
+<fieldset>
+        
+                
+                <div class="row">
+                    <section class="col col-6">
+                         <input #file type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx">                           
+                    </section>
+                    <section class="col col-6" style="text-align: right">
+                            <!-- <button type="button" class="btn btn-primary btn-sm" (click)="lgModal4.show();">Import</button>     -->
+                            <button type="button" class="btn btn-primary btn-sm" (click)="lgModal3.hide();">Cancel</button> 
+                            <button type="button" class="btn btn-primary btn-sm" (click)="savepatientnumber()">Save</button>   
+                            
+                       </section>
+                </div>
+                <div class="row">
+                        <section >
+                               
+                        <!-- <div class="progress progress-sm progress-striped active">
+                                <div class="progress-bar bg-color-darken" role="progressbar" [style.width.%]="progress"></div>
+                              </div> -->
+                            
+                            </section>
+                </div>
+              
+            </fieldset>
+        </form>
+            </div>
+
+        </div>
+    </div>
+</div>

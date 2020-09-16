@@ -1,0 +1,181 @@
+
+
+<div id="content">
+  <sa-widgets-grid>
+
+
+    <!-- START ROW -->
+
+    <div class="row">
+
+      <!-- NEW COL START -->
+      <article class="col-sm-12 col-md-12 col-lg-12">
+        <div sa-widget [editbutton]="false" [custombutton]="false" [deletebutton]="false">
+
+          <header>
+            <span class="widget-icon">
+              <i class="fa fa-edit"></i>
+            </span>
+
+
+
+          </header>
+
+          <!-- widget div-->
+          <div>
+
+
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+              <form class="smart-form" novalidate="novalidate" [formGroup]="selectedins">
+                <!-- [formGroup]="RecentForecast" -->
+                <header>
+                  <h3 style="
+                color: gray;
+            ">
+                    LIST OF SELECTED INSTRUMENTS
+                  </h3>
+                </header> 
+
+                <fieldset>
+                  <section>
+<div class="table-responsive" style="overflow-y: auto;border-style: ridge" formArrayName="_instrument">
+
+
+
+  <table class="table table-bordered table-striped table-hover">
+
+      <thead>
+          <tr style="
+          COLOR: GRAY;
+      ">
+              <th>Testing Area</th>
+              <th>Instrument Name</th>
+              <th>Quantity</th>
+              <th>% Of Test Contribution</th>
+              <!-- <th>Remove</th>  -->
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let item of selectedins.get('_instrument')['controls']; let i = index;" [formGroupName]="i">
+              <td style="width: 32%;">
+                  <!-- <label class="input">
+
+                      <input type="text" name="areaName" formControlName="areaName" />
+
+                  </label> -->
+                 {{item.getRawValue().areaName}}
+              </td>
+              <td style="width: 32%;">
+                {{item.getRawValue().instrumentName}}
+                  <!-- <label class="input">
+
+
+                      <input type="text" name="instrumentName" formControlName="instrumentName" />
+
+                  </label> -->
+              </td>
+              <td>
+                  <label class="input">
+
+                      <input type="text" name="quantity" formControlName="quantity" style="text-align: right" />
+                  </label>
+              </td>
+              <td>
+                  <label class="input">
+
+                      <input type="text" name="TestRunPercentage" formControlName="TestRunPercentage"  style="text-align: right" />
+                  </label>
+              </td>
+              <!-- <td>
+                  <label class="input">
+                      <a type="button" (click)="delsiteinstrument(i)">
+                          <i class="fa fa-trash-o"></i>
+                      </a>
+                  </label>
+              </td>  -->
+          </tr>
+      </tbody>
+  </table>
+
+  <!-- <sa-datatable
+                   
+                   
+  tableClass="table table-striped table-bordered table-hover Category"
+>
+  <thead>
+  <tr>
+    <th>Testing Area</th>
+    <th>Instrument Name</th>
+    <th>Quantity</th>
+    <th>% Of Test Contribution</th>
+    <!-- <th data-hide="mobile-p">ForecastID</th>
+    <th data-class="expand">ForecastNo.</th>
+    <th data-class="expand">Forecast Start Date</th>
+    <th data-class="expand">Forecast End Date</th>
+    <th data-class="expand">Reporting Period</th>
+    <th data-class="expand">Action</th>
+  
+  </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of selectedins.get('_instrument')['controls']; let i = index;" [formGroupName]="i">
+        <td>
+            <label class="input">
+
+                <input type="text" name="areaName" formControlName="areaName" />
+
+            </label>
+        </td>
+        <td>
+            <label class="input">
+
+
+                <input type="text" name="instrumentName" formControlName="instrumentName" />
+
+            </label>
+        </td>
+        <td>
+            <label class="input">
+
+                <input type="text" name="quantity" formControlName="quantity" style="text-align: right" />
+            </label>
+        </td>
+        <td>
+            <label class="input">
+
+                <input type="text" name="TestRunPercentage" formControlName="TestRunPercentage"  style="text-align: right" />
+            </label>
+        </td>
+        <!-- <td>
+            <label class="input">
+                <a type="button" (click)="delsiteinstrument(i)">
+                    <i class="fa fa-trash-o"></i>
+                </a>
+            </label>
+        </td> 
+    </tr>
+</tbody>
+</sa-datatable>  -->
+</div>
+</section>
+</fieldset>
+
+<footer>
+  <a  class="btn btn-default" (click)="Previousclick()" style="float: left;"><b>
+     << Previous</b> </a> <a class="btn btn-default" style="float: right;" (click)="Saveforecastinstrument()"><b>Next >></b></a>
+</footer>
+
+</form>
+
+</div>
+<!-- end widget content -->
+
+</div>
+<!-- end widget div -->
+
+</div>
+</article>
+</div>
+</sa-widgets-grid>
+</div>

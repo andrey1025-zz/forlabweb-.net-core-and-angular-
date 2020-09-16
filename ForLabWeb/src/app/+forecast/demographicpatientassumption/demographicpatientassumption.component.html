@@ -1,0 +1,128 @@
+<div id="content">
+  <sa-widgets-grid>
+
+
+    <!-- START ROW -->
+
+    <div class="row">
+
+      <!-- NEW COL START -->
+      <article class="col-sm-12 col-md-12 col-lg-12">
+        <div sa-widget [editbutton]="false" [custombutton]="false" [deletebutton]="false">
+
+          <header>
+            <span class="widget-icon">
+              <i class="fa fa-edit"></i>
+            </span>
+
+
+
+          </header>
+
+          <!-- widget div-->
+          <div>
+
+
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+              <form class="smart-form" novalidate="novalidate">
+                <!-- [formGroup]="RecentForecast" -->
+                <header>
+                  <h3 style="
+                color: gray;
+            ">
+                   Attrition rate and related factors decreases the final number of patient to be treated. What factors would you like to consider that may affect the total number of patient?
+                  </h3>
+                </header>
+
+                <fieldset>
+
+                  <div class="table-responsive"
+                    style="overflow-y: auto;height: 250px;border-style: ridge;margin-top: 26px">
+
+                    <table class="table table-bordered table-striped table-hover">
+                      <thead>
+                        <tr>
+                          <th></th>
+                          <th>Factors</th>
+                          <th>How does variable affect the final patient #</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let item of updatedassumption;let i = index" [class.active]="i == selectedRow">
+                          <td> <label><input type="checkbox" [checked]="item.forecastid !=0"   class="checkbox style-3"
+                              (change)="onselectassumption(item, $event.target.checked)" /><span></span></label></td>
+                          <td>{{item.variableName}}</td>
+                          <td> {{item.variableEffect}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div>
+                    <a class="btn btn-default btn-sm" (click)="lgModal4.show()"
+                      style="background-color: white;color: gray;margin-top: 2%;">New</a>
+                  </div>
+                </fieldset>
+
+                <footer>
+                  <a (click)="Previousclick()"  class="btn btn-default"
+
+                    style="float: left;"><b>
+                      << Previous</b> </a> <a (click)="save()" class="btn btn-default" style="float: right;"><b>Next
+                      >></b></a>
+                </footer>
+
+              </form>
+
+            </div>
+            <!-- end widget content -->
+
+          </div>
+          <!-- end widget div -->
+
+        </div>
+      </article>
+    </div>
+  </sa-widgets-grid>
+</div>
+
+
+
+<div bsModal #lgModal4="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content" style="
+    border-radius: 0%;
+    background-color: white;
+    color: gray;
+">
+
+      <div class="modal-body">
+        <button type="button" class="close" (click)="lgModal4.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <section>
+          <div class="form-group">
+            <input type="text" id="variableName" name="variableName" [(ngModel)]="model.variableName"
+              #variableName="ngModel" class="form-control" placeholder="Enter Variable Name"  >
+          </div>
+        </section>
+        <section>
+          <div class="form-group">
+            <select class="form-control" id="effect" name="effect" [(ngModel)]="model.effect" #effect="ngModel">
+              <option value="0" disabled>--Select--</option>
+              <option value="1">INCREASES</option>
+              <option value="2">DECREASES</option>
+
+            </select>
+          </div>
+        </section>
+      </div>
+
+      <div class="modal-footer">
+        <button type="btn btn-primary" class="close" (click)="addgeneralassumption()" aria-label="Close">Save</button>
+      </div>
+
+    </div>
+  </div>
+</div>

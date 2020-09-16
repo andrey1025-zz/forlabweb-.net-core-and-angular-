@@ -1,0 +1,168 @@
+<!-- <div id="content">
+  <sa-widgets-grid>
+
+
+    <!-- START ROW
+
+    <div class="row">
+
+      <!-- NEW COL START 
+      <article class="col-sm-12 col-md-12 col-lg-12">
+        <div sa-widget [editbutton]="false" [custombutton]="false">
+
+          <header>
+            <span class="widget-icon"> <i class="fa fa-edit"></i></span>
+
+            <h2> Product Assumptions</h2>
+
+          </header>
+
+          <!-- widget div-
+          <div>
+
+
+            <!-- widget content 
+            <div class="widget-body no-padding"> -->
+
+
+
+
+
+              <form class="smart-form" [formGroup]="productassumption">
+                <header>
+                  Product related assumptions per ProductType
+                </header>
+
+                <fieldset>
+<div class="row">
+                    <section class="col col-10" > 
+                            <div class="form-group">
+                                <label class="control-label">Product Type
+    
+                                </label>
+                                <label class="input">
+                                    <select name="typeID" class="form-control" formControlName="typeID"  (change)="Gettype($event)">
+                                        <option value="0" disabled>--Select--</option>
+                                        <option *ngFor="let type of ProductTypeList" [value]="type.typeID">{{type.typeName}}</option>
+    
+                                    </select>
+                                </label>
+                            </div>
+                        </section>
+    
+                        <section class="col col-2" > 
+                            <label class="control-label">
+    
+                              </label>
+                              <label class="input">
+                            <button type="button" class="btn btn-primary btn-sm" (click)="AddnewproductAssumption()">
+                              Add
+                              </button>
+                              </label>
+                          </section>
+
+                      </div>
+
+                  <section>
+                    <h2>
+
+                    </h2>
+
+                    <div class="table-responsive" style="overflow-y: auto;height: 318px;border-style: ridge;margin-top: 26px" formArrayName="_productassumption">
+
+
+
+                      <table class="table table-bordered table-striped table-hover">
+
+                        <thead>
+                          <tr >
+                             
+                              <th *ngFor="let item of controlArray">{{item.name}}</th>
+                          
+                              
+                          </tr>
+                      </thead>
+                        <tbody>
+                          <tr *ngFor="let item1 of productassumption.get('_productassumption')['controls']; let i = index;" [formGroupName]="i">
+
+                            <td *ngFor="let item of controlArray">
+                             
+                              <label class="input">
+                                <input type="{{item.type}}"  name="{{item.name}}"  min="1" [attr.max]="item.datatype === '2' ? '100' : 1000"  formControlName="{{item.name}}" [attr.disabled] = "item.type === 'text' ? 'disabled' : null" [style.text-align]="item.type === 'text' ? 'left' : 'right'"  (input)="inputvalue($event,i,item.datatype);"/>
+                              </label>
+
+                           
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <!--  <td >
+                                  
+                                  <label class="input">
+
+                                      <input type="number" name="PatientPercentage" formControlName="PatientPercentage" style="text-align: right" (input)="calculatepatientratio($event.target.value,i)"/>
+                                  </label>
+                                 
+                                  
+                              </td>
+                              <td >
+                                  <label class="input">
+
+                                      <input type="number" name="PatientRatio" formControlName="PatientRatio" style="text-align: right" />
+                                  </label>
+                              </td>
+                        
+                              <td>
+                                  <label class="input">
+                                      <a type="button" (click)="delremovepatientgroup(i)">
+                                          <i class="fa fa-trash-o"></i>
+                                      </a>
+                                  </label>
+                              </td>
+                         
+                          </tr> 
+                      </tbody>
+                  </table>
+
+
+              </div> -->
+
+                  </section>
+
+
+
+                </fieldset>
+
+                <footer>
+                  <!-- <div class="form-actions"> -->
+                  <!-- <div class="row">
+          <div class="col-md-6"> -->
+                  <button type="button" class="btn btn-success" (click)="saveproductassumption()" [disabled]="outsideRange">
+
+                    Next
+                    <i class="fa fa-arrow-right"></i>
+                  </button>
+
+                  <button type="button" class="btn btn-primary" (click)="Previousclick()">
+                    <i class="fa fa-arrow-left"></i>
+                    Prev
+                  </button>
+                  <!-- </div>
+        </div> -->
+                </footer>
+                <!-- </div> -->
+
+              </form>
+            <!-- </div>
+            <!-- end widget content 
+
+          </div>
+          <!-- end widget div 
+
+        </div>
+      </article>
+    </div>
+  </sa-widgets-grid>
+</div> -->

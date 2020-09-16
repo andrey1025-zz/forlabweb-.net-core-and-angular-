@@ -1,0 +1,28 @@
+<div class="prod-type-add-modal-header">
+  <a type="button" class="close-button" (click)="onCloseModal();" aria-hidden="true">
+  </a>
+</div>
+<div class="prod-type-add-modal-body text-center">
+  <span class="prod-type-add-modal-title color-darkblue">Product Type Form</span>
+  <form class="prod-type-add-form" [formGroup]="productTypeForm" (ngSubmit)="save()">
+    <div class="row">
+      <div class="col-md-offset-2 col-md-8">
+        <div class="form-group" [ngClass]="{'has-error':!productTypeForm.controls['typeName'].valid &&
+          productTypeForm.controls['typeName'].touched}">
+          <div class="prod-type-add-form__inner">
+            <input type="text" class="form-control" name="productTypeName" placeholder="Product Type Name"
+              formControlName="typeName" required />
+            <button class="btn btn-cyan" type="submit" [disabled]="!productTypeForm.valid">
+              {{submitBtnName}}</button>
+          </div>
+        </div>
+        <div class="note note-error"
+          *ngIf="productTypeForm.controls['typeName'].hasError('required') && productTypeForm.controls['typeName'].touched">
+          Please Enter Product Type Name</div>
+        <div class="note note-error"
+          *ngIf="productTypeForm.controls['typeName'].hasError('maxlength') && productTypeForm.controls['typeName'].touched">
+          Maximum 64 characters are allowed</div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,139 @@
+.close-button {
+  position: absolute;
+  right: 18px;
+  top: 14px;
+  width: 0;
+  height: 0;
+  opacity: 1;
+}
+
+.close-button:before, .close-button:after {
+  position: absolute;
+  left: 0;
+  content: ' ';
+  height: 13px;
+  width: 3px;
+  background-color: #F35A48;
+  z-index: 1;
+}
+
+.close-button:before {
+  transform: rotate(45deg);
+}
+
+.close-button:after {
+  transform: rotate(-45deg);
+}
+
+.forecast-add-modal-header {
+  height: 16px;
+}
+
+.forecast-add-modal-body {
+  height: calc(100% - 50px);
+  margin: auto 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.forecast-add-modal-footer {
+  height: 34px;
+  bottom: 0;
+}
+
+.forecast-add-modal-title {
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+
+.forecast-add-form {
+  width: 100%;
+}
+.forecast-add-form input {
+  font-size: 12px;
+  font-family: "OpenSans-Bold";
+  border-radius: 5px !important;
+  border-color: transparent;
+  background-color: #F3F4F5;
+  padding: 12px 14px;
+  height: auto;
+}
+.forecast-add-form .form-group {
+  margin-bottom: 35px;
+}
+.forecast-add-form .row:nth-child(2) {
+  display: flex;
+  justify-content: center;
+}
+
+.forecast-type__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.forecast-type__buttons--button {
+  padding: 13px;
+  font-size: 12px;
+  font-family: 'OpenSans-Semibold';
+  border-radius: 5px;
+  color: rgba(43, 57, 78, .4);
+  background-color: rgba(43, 57, 78, .1);
+  cursor: pointer;
+}
+
+.forecast-time__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.forecast-time__buttons--button {
+  padding: 13px;
+  font-size: 12px;
+  font-family: 'OpenSans-Semibold';
+  border-radius: 5px;
+  color: rgba(43, 57, 78, .4);
+  background-color: rgba(43, 57, 78, .1);
+  cursor: pointer;
+}
+
+.selected {
+  color: #fff;
+  background-color: #2B394E;
+}
+
+.forecast-duration {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.forecast-duration button {
+  box-shadow: 0 3px 16px rgba(99, 130, 254, .08);
+  border-color: transparent;
+  background: #fff;
+  width: 46px;
+  height: 46px;
+}
+.forecast-duration  p{
+  font-size: 14px;
+  font-family: "OpenSans";
+  margin: 0;
+}
+
+.forecast-add-modal-footer {
+  display: flex;
+  width: 100%;
+}
+.forecast-add-modal-footer__container {
+  margin: 0 40px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.forecast-add-modal-footer button{
+  min-width: 130px;
+}

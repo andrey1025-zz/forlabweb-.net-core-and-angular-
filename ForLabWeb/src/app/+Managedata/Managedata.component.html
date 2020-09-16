@@ -1,0 +1,70 @@
+<div id="manage-data-container">
+  <sa-widgets-grid>
+    <!-- START ROW -->
+    <div class="row">
+      <!-- NEW COL START -->
+      <div sa-widget [editbutton]="false" [custombutton]="false" [deletebutton]="false">
+        <!-- widget div-->
+        <div>
+          <!-- widget content -->
+          <div class="widget-body no-padding">
+            <div>
+              <ul id="myTab1" class="nav nav-tabs">
+                <li [class.active]="state.tabs.demo1 == 0">
+                  <a (click)="state.tabs.demo1 = 0">Instrument <span class="badge">{{totalcount["totalins"]}}</span></a>
+                </li>
+                <li [class.active]="state.tabs.demo1 == 1">
+                  <a (click)="state.tabs.demo1 = 1">Testing Area<span class="badge">{{totalcount["totaltestarea"]}}</span></a>
+                </li>
+                <li [class.active]="state.tabs.demo1 == 2">
+                  <a (click)="state.tabs.demo1 = 2">Test<span class="badge">{{totalcount["totaltest"]}}</span></a>
+                </li>
+                <li [class.active]="state.tabs.demo1 == 3">
+                  <a (click)="state.tabs.demo1 = 3">Product Type<span class="badge">{{totalcount["totalproducttype"]}}</span></a>
+                </li>
+                <li [class.active]="state.tabs.demo1 == 4">
+                  <a (click)="state.tabs.demo1 = 4">Product<span class="badge">{{totalcount["totalproduct"]}}</span></a>
+                </li>
+                <li [class.active]="state.tabs.demo1 == 5">
+                  <a (click)="state.tabs.demo1 = 5">Region<span class="badge">{{totalcount["totalregion"]}}</span></a>
+                </li>
+                <li [class.active]="state.tabs.demo1 == 6">
+                  <a (click)="state.tabs.demo1 = 6">Category<span class="badge">{{totalcount["totalsitecategory"]}}</span></a>
+                </li>
+                <li [class.active]="state.tabs.demo1 == 7">
+                  <a (click)="state.tabs.demo1 = 7">Site<span class="badge">{{totalcount["totalsite"]}}</span></a>
+                </li>
+              </ul>
+              <tabset>
+                <tab [active]="state.tabs.demo1 == 0">
+                  <app-InsList></app-InsList>
+                </tab>
+                <tab [active]="state.tabs.demo1 == 1">
+                  <app-TestingAreaList #CompTestingAreaList></app-TestingAreaList>
+                </tab>
+                <tab [active]="state.tabs.demo1 == 2">
+                  <app-TestList></app-TestList>
+                </tab>
+                <tab [active]="state.tabs.demo1 == 3">
+                  <app-ProductTypeList></app-ProductTypeList>
+                </tab>
+                <tab [active]="state.tabs.demo1 == 4">
+                  <app-ProductList></app-ProductList>
+                </tab>
+                <tab [active]="state.tabs.demo1 == 5">
+                  <app-RegionList></app-RegionList>
+                </tab>
+                <tab [active]="state.tabs.demo1 ==6 ">
+                  <app-CategoryList></app-CategoryList>
+                </tab>
+                <tab [active]="state.tabs.demo1 ==7 ">
+                  <app-SiteList></app-SiteList>
+                </tab>
+              </tabset>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sa-widgets-grid>
+</div>

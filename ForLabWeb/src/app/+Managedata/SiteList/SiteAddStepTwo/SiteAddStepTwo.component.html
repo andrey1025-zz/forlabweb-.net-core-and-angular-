@@ -1,0 +1,74 @@
+<div class="site-add-modal-header">
+    <a type="button" class="close-button" (click)="close.emit(true)" aria-hidden="true">
+    </a>
+</div>
+<div class="site-add-modal-body text-center">
+    <span class="site-add-modal-title color-darkblue">Site Form</span>
+    <form class="site-add-form" [formGroup]="siteForm" (ngSubmit)="save()">
+        <div class="first-step">
+            <div class="row">    
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="site-test-per-month">
+                                <p class="title">Site Instrument</p>
+                                <button class="btn btn-cyan" (click)="addNewTestingDays()">Add Instrument</button>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="site-test-checkboxes">
+                                <div class="site-test-checkboxes__checkbox"
+                                    *ngFor="let checkbox of checkboxArray; let i = index">
+                                    <input class="styled-checkbox" id="styled-checkbox-{{i}}" type="checkbox"
+                                        value="value{{i}}">
+                                    <label for="styled-checkbox-{{i}}">Molecular SURV</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="row">
+                        <div class="site-test-content">
+                            <app-modal-datatable tableClass="table table-striped table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th data-class="expand">Testing Area</th>
+                                        <th data-class="expand">Instrument Name</th>
+                                        <th data-class="expand">Quantity</th>
+                                        <th data-class="expand">Instrument's % Of Test Contribution</th>
+                                        <th data-class="expand">Actions</th>
+                                    </tr>
+                                </thead>
+                            </app-modal-datatable>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<div class="site-add-modal-footer">
+    <div class="site-add-modal-footer__container">
+        <button (click)="back.emit(true)" class="btn btn-outline-cyan">Back</button>
+    
+        <div class="site-form-step">
+            <div class="steps">
+                <div class="progressbar-wrapper">
+                    <ul class="progressbar">
+                        <li class="passed" (click)="back.emit(true)"></li>
+                        <!-- <li class="passed"></li> -->
+                        <li class="active"></li>
+                        <!-- <li></li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    
+        <button (click)="close.emit(true)" class="btn btn-cyan">Add Site</button>
+    </div>
+</div>

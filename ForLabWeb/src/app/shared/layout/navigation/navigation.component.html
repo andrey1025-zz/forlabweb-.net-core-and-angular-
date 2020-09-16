@@ -1,0 +1,37 @@
+<aside id="left-panel">
+  <div class="sa-logo" style="height: 74px">
+    <!-- <img src="assets/img/new/Logo.png" class="nav-logo" alt="logo"> -->
+    <img src="assets/img/new/FørLablogo-small.png" width="128" height="35" class="nav-logo" alt="logo">
+    <sa-minify-menu></sa-minify-menu>
+  </div>
+
+  <nav>
+    <ul saSmartMenu>
+      <li routerLinkActive="active">
+        <a routerLink="/Dashboard" title="Home">
+          <i class="fa fa-lg fa-fw fa-bar-chart"></i>
+          <span class="menu-item-parent">{{'Dashboard' | i18n}}</span>
+        </a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/Managedata" title="Create Global Admin">
+          <i class="fa fa-lg fa-fw fa-folder"></i>
+          <span class="menu-item-parent">{{'Manage Data' | i18n}}</span>
+        </a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/ConstructMorbidity" title="Construct Morbidity">
+          <i class="fa fa-lg fa-fw fa-wrench"></i>
+          <span class="menu-item-parent">Construct Morbidity</span>
+        </a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/ConductForecast">
+          <i class="fa fa-lg fa-fw fa-line-chart"></i>
+          <span class="menu-item-parent">{{'Conduct Forecast' | i18n}}</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <span class="copy-right">Copyright&copy; 2020 Opiantech.</span>
+</aside>

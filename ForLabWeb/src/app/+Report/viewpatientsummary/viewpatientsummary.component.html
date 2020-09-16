@@ -1,0 +1,257 @@
+<!-- <div id="content">
+    <sa-widgets-grid>
+  
+  
+      <!-- START ROW 
+  
+      <div class="row">
+  
+        <!-- NEW COL START 
+        <article class="col-sm-12 col-md-12 col-lg-12">
+  <div sa-widget [editbutton]="false" [custombutton]="false">
+  
+    <header>
+      <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+  
+     
+  
+    </header>
+  
+    <!-- widget div
+      
+    <div>
+  
+  
+      <!-- widget content 
+      <div class="widget-body no-padding">
+  
+      
+  
+     
+  
+      <form  class="smart-form"  >
+        <header>
+        <div class="row">
+        <div class="col-md-6" style="
+    margin-left: 10px;
+  ">
+        Demographic No. of patient Summary
+        </div>
+        <div class="col-md-5" style="
+    text-align: right;
+  "><button class="btn btn-primary btn-sm" type="button" (click)="Print()" >Print</button></div>
+    </div>
+        </header>
+      
+        <fieldset id="print-section">
+       
+<section >
+<span style="font-weight: bold">Title :</span>
+<label>{{forecastdescription[0]}}</label>
+
+</section>
+<section >
+    <span style="font-weight: bold">Duration :</span>
+    <label>{{forecastdescription[1]}}</label>
+    
+    </section>
+      
+        <section> 
+       
+            <div class="table-responsive" style="overflow-y: auto;height: 318px;border-style: ridge;margin-top: 26px" >
+  
+  
+  
+                <table class="table table-bordered table-hover">
+
+                  <thead>
+                    <tr >
+                       
+                        <th *ngFor="let item of header">{{item}}</th>
+                    
+                        
+                    </tr>
+                </thead>
+                  <tbody>
+                    <tr *ngFor="let item1 of comparisiondata; let i = index;">
+
+                      <td *ngFor="let item of controlArray; let j = index;">
+                      
+                        {{comparisiondata[i][item.data]}}
+                        <!-- <label class="input">
+                         <input type="{{item.type}}" formControlName="{{item.name}}" [attr.disabled] = "item.type === 'text' ? 'disabled' : null" [style.text-align]="item.type === 'text' ? 'left' : 'right'" /> 
+                        </label> 
+
+                     
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+ 
+        
+        
+        </section>
+        </fieldset>
+  
+        
+      
+      </form> </div>
+      <!-- end widget content 
+  
+    </div>
+    <!-- end widget div 
+  
+  </div>
+  </article>
+      </div>
+  </sa-widgets-grid>
+  </div> -->
+
+
+
+
+  
+  <div id="content">
+    <!-- widget grid -->
+    <sa-widgets-grid>
+      <!-- row -->
+      <div class="row">
+        <!-- NEW WIDGET START -->
+        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <!-- Widget ID (each widget will need unique ID)-->
+          <div sa-widget class="well" [colorbutton]="false" [editbutton]="false" [deletebutton]="false" [sortable]="false" color="darken">
+            <!-- widget options:
+                            usage: <div sa-widget id="wid-id-0" [editbutton]="false">
+                            [colorbutton]="false"
+                            [editbutton]="false"
+                            [togglebutton]="false"
+                            [deletebutton]="false"
+                            [fullscreenbutton]="false"
+                            [custombutton]="false"
+                            [collapsed]="true"
+                            [sortable]="false"
+                            -->
+            <header>
+              <span class="widget-icon"> <i class="fa fa-barcode"></i> </span>
+              <h2>Item #44761 </h2>
+            </header>
+            <!-- widget div-->
+            <div >
+              <!-- widget content -->
+              <div class="widget-body no-padding">
+                <div class="widget-body-toolbar">
+                  <div class="row">
+                    <div class="col-sm-4">
+                     
+                    </div>
+                    <div class="col-sm-8 text-align-right">
+                      <div class="btn-group">
+                        <a (click)="Print()" class="btn btn-sm btn-primary"> <i class="fa fa-print"></i>Print</a>
+                      </div>
+                     
+                    </div>
+                  </div>
+                </div>
+                <div class="padding-10" id="print-section">
+                  
+                  <div class="row">
+                    <div class="col-sm-7">
+                      <img src="assets/img/logo.png" width="200" height="50" alt="invoice icon">
+                      <address>
+                        <br>
+                        <span style="
+                        font-size: x-large;                      
+                    ">Forecast Title  -{{forecastdescription[0]}}</span>
+                       
+                        <br>
+                        Forecast Duration  -{{forecastdescription[1]}}
+                        <br>
+                      
+                      </address>
+                    </div>
+                    <div class="col-sm-5">
+                      <div>
+                        <div style="
+                        text-align: right;
+                    ">
+                                         <span style="
+                        font-size: x-large;
+                        text-align: right;
+                    ">Demographic No. of patient Summary</span>
+                                            </div>
+                      </div>
+                    
+                      <br>
+                      <!-- <div class="well well-sm  bg-color-darken txt-color-white no-border">
+                        <div class="fa-lg">
+                          Total Due :
+                          <span class="pull-right"> {{Finalcost }} USD** </span>
+                        </div>
+                      </div> -->
+                      <br>
+                      <br>
+                    </div>
+                  </div>
+                  <table class="table table-hover">
+                    <thead>
+                      <tr >
+                         
+                          <th *ngFor="let item of header">{{item}}</th>
+                      
+                          
+                      </tr>
+                  </thead>
+                    <tbody>
+                      <tr *ngFor="let item1 of comparisiondata; let i = index;">
+  
+                        <td *ngFor="let item of controlArray; let j = index;">
+                        
+                          {{comparisiondata[i][item.data]}}
+                          <!-- <label class="input">
+                           <input type="{{item.type}}" formControlName="{{item.name}}" [attr.disabled] = "item.type === 'text' ? 'disabled' : null" [style.text-align]="item.type === 'text' ? 'left' : 'right'" /> 
+                          </label> -->
+  
+                       
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="invoice-footer">
+                    <div class="row">
+                      <div class="col-sm-7">
+                        <!-- <div class="payment-methods">
+                          <h5>Payment Methods</h5>
+                          <img src="assets/img/invoice/paypal.png" width="64" height="64" alt="paypal">
+                          <img src="assets/img/invoice/americanexpress.png" width="64" height="64" alt="american express">
+                          <img src="assets/img/invoice/mastercard.png" width="64" height="64" alt="mastercard">
+                          <img src="assets/img/invoice/visa.png" width="64" height="64" alt="visa">
+                        </div> -->
+                      </div>
+                      <div class="col-sm-5">
+                        <!-- <div class="invoice-sum-total pull-right">
+                          <h3><strong>Total: <span class="text-success">${{Finalcost}} USD</span></strong></h3>
+                        </div> -->
+                      </div>
+                    </div>
+                    <!-- <div class="row">
+                      <div class="col-sm-12">
+                        <p class="note">**To avoid any excess penalty charges, please make payments within 30 days of the
+                          due date. There will be a 2% interest charge per month on all late invoices.</p>
+                      </div>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+              <!-- end widget content -->
+            </div>
+            <!-- end widget div -->
+          </div>
+          <!-- end widget -->
+        </article>
+        <!-- WIDGET END -->
+      </div>
+      <!-- end row -->
+    </sa-widgets-grid>
+    <!-- end widget grid -->
+  </div>

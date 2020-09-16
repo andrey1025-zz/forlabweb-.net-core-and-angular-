@@ -1,0 +1,171 @@
+<form class="smart-form" novalidate="novalidate" [formGroup]="datausage1">
+    <fieldset>
+        <div class="my-container">
+            <ng-template #customLoadingTemplate>
+                <div class="custom-class">
+                    <h3>
+                        Loading...
+                    </h3>
+                    <!-- <button (click)="showAlert()">
+                        Click me!
+                    </button> -->
+                </div>
+            </ng-template>
+            <!-- <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading> -->
+            <ngx-loading [show]="loading" [config]="{animationType: ngxLoadingAnimationTypes.chasingDots,
+               primaryColour: primaryColour, secondaryColour: secondaryColour, backdropBorderRadius: '3px'}"
+            [template]="loadingTemplate"></ngx-loading>
+        </div>
+      <div class="row">
+        <section class="col col-4">
+          <strong>List of sites</strong>
+          <div class="form-group" style="    margin-left: 4px;
+            border: 1px ridge;
+            height: 245px;
+            overflow-y: auto;
+            padding: 10px;">
+            <label>
+              <input type="checkbox" class="checkbox style-3" (change)="selectallsites($event.target.checked)" /><span>Select
+                All</span>
+            </label>
+            <div *ngFor="let data of SiteList">
+  
+              <label>
+                <input type="checkbox" [checked]="checksite" class="checkbox style-3" (change)="onsiteChange(data, $event.target.checked)" /><span>{{data.siteName}}</span><br>
+              </label>
+  
+            </div>
+          </div>
+  
+       
+          <!-- <div class="form-group" style="    margin-left: 4px;
+  border: 1px ridge;
+  height: 300px;
+  overflow-y: auto;
+  padding: 10px;">
+          
+            <ul>
+  
+              <li *ngFor="let item of Selectedsite" class="dd-item dd-handle" style="font-size: 12px;
+           margin: 0px 0;
+          padding: 2px 15px;"
+                ng-class="{item.selected: selected}" (click)="selectsitefordatausage(item);">
+                {{item.siteName}}
+              </li>
+  
+            </ul>
+          </div> -->
+          <div class="table-responsive" style="overflow-y: auto;height: 250px;border-style: ridge;margin-top: 26px" formArrayName="_datausage" >
+              <strong>&nbsp;&nbsp;&nbsp;&nbsp; selected sites</strong>
+            <table  class="table table-bordered table-striped table-hover">
+              <tbody>
+                <tr *ngFor="let item of Selectedsite;let i = index"  [class.active]="i == selectedRow"> 
+                  <td (click)="selectsitefordatausage(item,i);">{{item.siteName}}</td>
+                  <td>  <label class="input">
+                      <a type="button" (click)="deleteseletedsitedatausage(item)">
+                          <i class="fa fa-trash-o"></i>
+                      </a>
+                  </label></td>
+                </tr>
+              </tbody>
+              </table>
+              </div>
+  
+        </section>
+        <section class="col col-8">
+          <div class="row">
+       
+              <strong>Testing Volume&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+            
+          
+          
+              <button type="button" class="btn btn-primary btn-sm" (click)="openimportmodel()" >Import</button>
+       
+              <button type="button" class="btn btn-primary btn-sm" (click)="openmodel()" [disabled]="disaddproduct">Add
+                by Test</button>
+          <button type="button" class="btn btn-primary btn-sm" (click)="openconsumption()" [disabled]="disactualconsumption">Add
+                Actual Test Volumn</button>
+            <button type="button" class="btn btn-primary btn-sm" [disabled]="disremoveconsumption" (click)="removeconsumption()">
+                Remove Test Volumn</button>
+          </div>
+  
+  
+          <div class="table-responsive" style="overflow-y: auto;height: 500px;border-style: ridge;margin-top: 26px" formArrayName="_datausage" >
+              <table  class="table table-bordered table-striped table-hover">
+           <thead>
+             <th>
+                <span  style="font-weight: bolder;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+             </th>
+             <th *ngFor="let item of controlArray" >   <span  style="font-weight: bolder;">{{item.duration}}  </span> </th>
+           </thead>
+        
+              </table>
+       
+            <table  class="table table-bordered table-striped table-hover">
+           
+            <tbody *ngFor="let comp of datausage1.get('_datausage')['controls']; let i=index"  [formGroupName]="i">
+  
+                <tr >
+                    <td [attr.colspan]="colspan">
+                     <span  style="font-weight: bold;color: maroon">
+                        {{comp.get("productname").value}}
+                      </span>
+                      <!-- <input type="text" formControlName="productname"/> -->
+                      
+                    </td>
+                  </tr>
+                  <tr formArrayName="value" >
+                    
+  
+    <!-- <tbody >-->
+      <div *ngFor="let project of comp.get('value').controls; let j=index"[formGroupName]="j"  > 
+          <td>
+              <label class="input">
+              <input type="text" formControlName="column1" [attr.disabled]="disabled"/>
+            </label>
+            </td>
+  
+  
+            <td *ngFor="let item of controlArray">
+              <label class="input">
+                <input type="text" formControlName="{{item.duration}}" [attr.maxlength]="8" [style.text-align]="right" (click)="Enableconsumptionbtn(i,j,item.duration)" (input)="getadjustedvolumn(i,j,item.duration)"/>
+              </label>
+            </td>
+      </div>
+  
+                  </tr>
+  
+             
+              </tbody>
+  
+  
+          </table>
+          </div>
+      
+           
+  
+  
+  
+             
+       
+        </section>
+      </div>
+    </fieldset>
+    <footer>
+      <!-- <div class="form-actions"> -->
+        <!-- <div class="row">
+          <div class="col-md-6"> -->
+            <button type="button" class="btn btn-success" (click)="nextclick()" >
+             
+              Next
+              <i class="fa fa-arrow-right"></i>
+            </button>
+  
+            <button type="button" class="btn btn-primary"  (click)="Previousclick()">
+                <i class="fa fa-arrow-left"></i>
+              Prev
+            </button>
+          <!-- </div>
+        </div> -->
+        </footer>
+  </form>

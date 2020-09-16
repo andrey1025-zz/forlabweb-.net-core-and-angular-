@@ -1,0 +1,621 @@
+<div id="content">
+  <sa-widgets-grid>
+
+
+    <!-- START ROW -->
+
+    <div class="row">
+
+      <!-- NEW COL START -->
+      <article class="col-sm-12 col-md-12 col-lg-6">
+        <div sa-widget [editbutton]="false" [custombutton]="false" [deletebutton]="false">
+
+          <header>
+            <span class="widget-icon">
+              <i class="fa fa-edit"></i>
+            </span>
+
+
+
+          </header>
+
+          <!-- widget div-->
+          <div>
+
+
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+
+
+
+
+
+              <form class="smart-form" novalidate="novalidate" [formGroup]="cmspagenew" (ngSubmit)="save()" >
+                <header>
+                  CMS Page
+                </header>
+
+                <fieldset>
+           
+
+                  <h1>Home Section</h1><br>
+                  <section>
+                    <label class="control-label">Home Title
+
+                    </label>
+                    <label class="input">
+
+                      <input type="text" class="form-control" formControlName="hometitle" maxlength="200" />
+                    </label>
+                  </section>
+                  <section>
+                    <label class="control-label">Home Detail
+
+                    </label>
+                    <label class="textarea">
+                      <textarea formControlName="Homedet" maxlength="600"></textarea>
+                    </label>
+                  </section>
+
+                  <!-- <h1>Feature Section</h1><br>
+                  <section>
+                    <label class="control-label">Feature Title
+
+                    </label>
+                    <label class="input">
+
+                      <input type="text" class="form-control" formControlName="featuretitle" maxlength="200" />
+                    </label>
+                  </section>
+                
+               
+                  
+                    <section >
+                      <label class="control-label">Feature Img Title
+
+                      </label>
+                      <label class="input">
+
+                        <input type="text" class="form-control" formControlName="featureImgtitle1" maxlength="100" />
+                      </label>
+                    </section>
+                
+                    <section >
+                      <label class="control-label">Feature Img Detail
+
+                      </label>
+                      <label class="textarea">
+                        <textarea formControlName="featureImgdetail1" maxlength="500"></textarea>
+
+                      </label>
+                    </section>
+
+               
+
+              
+                    <section>
+                      <label class="control-label">Feature Img Title2
+
+                      </label>
+                      <label class="input">
+
+                        <input type="text" class="form-control" formControlName="featureImgtitle2" maxlength="100" />
+                      </label>
+                    </section>
+            
+                    <section>
+                      <label class="control-label">Feature Img Detail2
+
+                      </label>
+                      <label class="textarea">
+                        <textarea formControlName="featureImgdetail2" maxlength="500"></textarea>
+
+                      </label>
+                    </section>
+
+                 
+                
+                    <section>
+                      <label class="control-label">Feature Img Title3
+
+                      </label>
+                      <label class="input">
+
+                        <input type="text" class="form-control" formControlName="featureImgtitle3" maxlength="100" />
+                      </label>
+                    </section>
+                
+                    <section>
+                      <label class="control-label">Feature Img Detail3
+
+                      </label>
+                      <label class="textarea">
+                        <textarea formControlName="featureImgdetail3" maxlength="500"></textarea>
+
+                      </label>
+                    </section>
+
+                
+
+
+              
+                  
+                    <section >
+                      <label class="control-label">Feature Img Title4
+
+                      </label>
+                      <label class="input">
+
+                        <input type="text" class="form-control" formControlName="featureImgtitle4" maxlength="100" />
+                      </label>
+                    </section>
+             
+                    <section >
+                      <label class="control-label">Feature Img Detail4
+
+                      </label>
+                      <label class="textarea">
+                        <textarea formControlName="featureImgdetail4" maxlength="500"></textarea>
+
+                      </label>
+                    </section>
+
+              
+
+
+    
+              
+                    <section >
+                      <label class="control-label">Feature Img Title5
+
+                      </label>
+                      <label class="input">
+
+                        <input type="text" class="form-control" formControlName="featureImgtitle5" maxlength="100" />
+                      </label>
+                    </section>
+                
+                    <section>
+                      <label class="control-label">Feature Img Detail5
+
+                      </label>
+                      <label class="textarea">
+                        <textarea formControlName="featureImgdetail5" maxlength="500"></textarea>
+
+                      </label>
+                    </section> -->
+
+                 
+
+                  <h1>Video Section</h1><br>
+
+
+           
+                  
+                    <section >
+                      <label class="control-label">Video Url1
+
+                      </label>
+                      <label class="input">
+
+                        <input type="text" class="form-control" formControlName="videourl1" maxlength="300" />
+                      </label>
+                    </section>
+                 
+                    <section >
+                      <label class="control-label">Video Title1
+
+                      </label>
+                      <label class="textarea">
+                        <textarea formControlName="videotitle1" maxlength="400"></textarea>
+
+                      </label>
+                    </section>
+
+           
+
+            
+                 
+                    <section >
+                      <label class="control-label">Video Url2
+
+                      </label>
+                      <label class="input">
+
+                        <input type="text" class="form-control" formControlName="videourl2" maxlength="300" />
+                      </label>
+                    </section>
+                
+                    <section >
+                      <label class="control-label">Video Title2
+
+                      </label>
+                      <label class="textarea">
+                        <textarea formControlName="videotitle2" maxlength="400"></textarea>
+
+                      </label>
+                    </section>
+
+             
+                  
+                    <section >
+                      <label class="control-label">Video Url3
+
+                      </label>
+                      <label class="input">
+
+                        <input type="text" class="form-control" formControlName="videourl3" maxlength="300" />
+                      </label>
+                    </section>
+               
+                    <section>
+                      <label class="control-label">Video Title3
+
+                      </label>
+                      <label class="textarea">
+                        <textarea formControlName="videotitle3" maxlength="400"></textarea>
+
+                      </label>
+                    </section>
+
+              
+                    <section >
+                      <label class="control-label">Video Url4
+
+                      </label>
+                      <label class="input">
+
+                        <input type="text" class="form-control" formControlName="videourl4" maxlength="300" />
+                      </label>
+                    </section>
+               
+                    <section >
+                      <label class="control-label">Video Title4
+
+                      </label>
+                      <label class="textarea">
+                        <textarea formControlName="videotitle4" maxlength="400"></textarea>
+
+                      </label>
+                    </section>
+
+
+
+
+                  <h1>FAQ Section</h1><br>
+
+                  <section>
+                    <label class="control-label">FAQ Question1
+
+                    </label>
+                    <label class="input">
+                      <input type="text" class="form-control" formControlName="faqq1" maxlength="200" />
+
+                    </label>
+                  </section>
+
+                  <section>
+                    <label class="control-label">FAQ Answer1
+
+                    </label>
+                    <label class="textarea">
+
+                      <textarea class="form-control" formControlName="faqa1" maxlength="600"></textarea>
+                    </label>
+                  </section>
+
+
+                  <section>
+                    <label class="control-label">FAQ Question2
+
+                    </label>
+                    <label class="input">
+                      <input type="text" class="form-control" formControlName="faqq2" maxlength="200" />
+
+                    </label>
+                  </section>
+
+                  <section>
+                    <label class="control-label">FAQ Answer2
+
+                    </label>
+                    <label class="textarea">
+
+                      <textarea class="form-control" formControlName="faqa2" maxlength="600"></textarea>
+                    </label>
+                  </section>
+
+                  <section>
+                    <label class="control-label">FAQ Question3
+
+                    </label>
+                    <label class="input">
+                      <input type="text" class="form-control" formControlName="faqq3" maxlength="200" />
+
+                    </label>
+                  </section>
+
+                  <section>
+                    <label class="control-label">FAQ Answer3
+
+                    </label>
+                    <label class="textarea">
+
+                      <textarea class="form-control" formControlName="faqa3" maxlength="600"></textarea>
+                    </label>
+                  </section>
+
+
+                  <section>
+                    <label class="control-label">FAQ Question4
+
+                    </label>
+                    <label class="input">
+                      <input type="text" class="form-control" formControlName="faqq4" maxlength="200" />
+
+                    </label>
+                  </section>
+
+                  <section>
+                    <label class="control-label">FAQ Answer4
+
+                    </label>
+                    <label class="textarea">
+
+                      <textarea class="form-control" formControlName="faqa4" maxlength="600"></textarea>
+                    </label>
+                  </section>
+
+                  <section>
+                    <label class="control-label">FAQ Question5
+
+                    </label>
+                    <label class="input">
+                      <input type="text" class="form-control" formControlName="faqq5" maxlength="200" />
+
+                    </label>
+                  </section>
+
+                  <section>
+                    <label class="control-label">FAQ Answer5
+
+                    </label>
+                    <label class="textarea">
+
+                      <textarea class="form-control" formControlName="faqa5" maxlength="600"></textarea>
+                    </label>
+                  </section>
+
+                  <section>
+                    <label class="control-label">FAQ Question6
+
+                    </label>
+                    <label class="input">
+                      <input type="text" class="form-control" formControlName="faqq6" maxlength="200" />
+
+                    </label>
+                  </section>
+
+                  <section>
+                    <label class="control-label">FAQ Answer6
+
+                    </label>
+                    <label class="textarea">
+
+                      <textarea class="form-control" formControlName="faqa6" maxlength="600"></textarea>
+                    </label>
+                  </section>
+
+        
+                  <h1>Articles</h1><br>
+                  <section>
+                    <label class="control-label">Article Url1
+
+                    </label>
+                    <label class="input">
+                      <input type="text" class="form-control" formControlName="aturl1" maxlength="200" />
+
+                    </label>
+                  </section>
+                  <section>
+                    <label class="control-label">Article Title1
+
+                    </label>
+                    <label class="input">
+                      <input type="text" class="form-control" formControlName="AT1" maxlength="200" />
+
+                    </label>
+                  </section>
+                  <section>
+                    <label class="control-label">Article subtitile1
+
+                    </label>
+                    <label class="textarea">
+                      <textarea class="form-control" formControlName="ATS1" maxlength="600"></textarea>
+
+                    </label>
+                  </section>
+
+                  <section>
+                    <label class="control-label">Article Url2
+
+                    </label>
+                    <label class="input">
+                      <input type="text" class="form-control" formControlName="aturl2" maxlength="200" />
+
+                    </label>
+                  </section>
+                  <section>
+                    <label class="control-label">Article Title2
+
+                    </label>
+                    <label class="input">
+                      <input type="text" class="form-control" formControlName="AT2" maxlength="200" />
+
+                    </label>
+                  </section>
+                  <section>
+                    <label class="control-label">Article subtitile2
+
+                    </label>
+                    <label class="textarea">
+                      <textarea class="form-control" formControlName="ATS2" maxlength="600"></textarea>
+
+                    </label>
+                  </section>
+                  <section>
+                    <label class="control-label">Article Url3
+
+                    </label>
+                    <label class="input">
+                      <input type="text" class="form-control" formControlName="aturl3" maxlength="200" />
+
+                    </label>
+                  </section>
+                  <section>
+                    <label class="control-label">Article Title3
+
+                    </label>
+                    <label class="input">
+                      <input type="text" class="form-control" formControlName="AT3" maxlength="200" />
+
+                    </label>
+                  </section>
+                  <section>
+                    <label class="control-label">Article subtitile3
+
+                    </label>
+                    <label class="textarea">
+                      <textarea class="form-control" formControlName="ATS3" maxlength="600"></textarea>
+
+                    </label>
+                  </section>
+
+                  <h1>Conatact Section</h1><br>
+                  <section>
+                    <label class="control-label">Contact Email
+
+                    </label>
+                    <label class="input">
+                      <input type="text" class="form-control" formControlName="Contemail" maxlength="100" />
+
+                    </label>
+                  </section>
+                  <section>
+                    <label class="control-label">Contact Mobile
+
+                    </label>
+                    <label class="input">
+                      <input type="text" class="form-control" formControlName="Contmobile" maxlength="20" />
+
+                    </label>
+                  </section>
+                  <section>
+                    <label class="control-label">Contact Address
+
+                    </label>
+                    <label class="textarea">
+                      <textarea class="form-control" formControlName="contactaddress" maxlength="600"></textarea>
+
+                    </label>
+                  </section>
+                  <h1>Usefull resource</h1>
+
+                  <div class="row">
+                    <section class="col col-4" >
+                      <label class="control-label">Title
+  
+                      </label>
+                      <label class="input">
+                        <input type="text" class="form-control" formControlName="doctitle1" maxlength="30" />
+  
+                      </label>
+                    </section>
+                    <section class="col col-8" style="padding-left: 3%;">
+                    <div class="input input-file">
+                      <span class="button" style="
+                    
+                      font-weight: bold;
+                  "><input type="file" id="file" name="file"
+                        (change)="incomingfile($event,'1')" >Import</span><input type="text"
+                        formControlName="filename1">
+                    </div>
+                  </section>
+                  </div>
+
+                  <div class="row">
+                    <section class="col col-4" >
+                      <label class="control-label">Title
+  
+                      </label>
+                      <label class="input">
+                        <input type="text" class="form-control" formControlName="doctitle2" maxlength="30" />
+  
+                      </label>
+                    </section>
+                    <section class="col col-8" style="padding-left: 3%;">
+                    <div class="input input-file">
+                     
+                      <span class="button" style="
+                    
+                      font-weight: bold;
+                  "><input type="file" id="file" name="file"
+                        (change)="incomingfile($event,'2')" >Import</span><input type="text"
+                        formControlName="filename2" >
+                    </div>
+                  </section>
+                  </div>
+                  <div class="row">
+                    <section class="col col-4" >
+                      <label class="control-label">Title
+  
+                      </label>
+                      <label class="input">
+                        <input type="text" class="form-control" formControlName="doctitle3" maxlength="30" />
+  
+                      </label>
+                    </section>
+                    <section class="col col-8" style="padding-left: 3%;">
+                    <div class="input input-file">
+                      <span class="button" style="
+                    
+                      font-weight: bold;
+                  "><input type="file" id="file" name="file"
+                        (change)="incomingfile($event,'3')" >Import</span><input type="text"
+                        formControlName="filename3" >
+                    </div>
+                  </section>
+                  </div>
+                </fieldset>
+
+                <footer>
+                  <button type="submit" class="btn btn-primary">
+                    <!-- <i class="fa fa-eye"></i> -->
+
+                    Save
+                  </button>
+
+                  <!-- <button type="button" class="btn btn-primary" (click)="save()" [disabled]="!consumptionadd.valid || !validtxtscope">
+                    <!-- <i class="fa fa-eye"></i> 
+               
+                    {{btncaption}}
+                  </button> -->
+
+
+                  <!-- </div>
+        </div> -->
+                </footer>
+                <!-- </div> -->
+
+              </form>
+            </div>
+            <!-- end widget content -->
+
+          </div>
+          <!-- end widget div -->
+
+        </div>
+      </article>
+    </div>
+  </sa-widgets-grid>
+</div>

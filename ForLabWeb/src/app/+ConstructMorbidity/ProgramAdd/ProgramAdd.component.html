@@ -1,0 +1,354 @@
+<div class="programadd-modal-header">
+  <a type="button" class="close-button" (click)="close.emit(true)" aria-hidden="true">
+  </a>
+</div>
+<div class="programadd-modal-body text-center">
+  <form class="programadd-form" (ngSubmit)="save()" [formGroup]="demosettingform">
+    <div class="step-form active step1">
+      <span class="programadd-modal-title">Define Program</span>
+      <div class="select-test">
+        <div class="title color=darkblue">Select from Suggestions Provided</div>
+        <div class="row">
+          <div class="col-md-offset-3 col-md-6">
+            <div class="select-test__buttons">
+              <div *ngFor="let suggestArea of suggestionAreaList; let i = index">
+                <button type="button" *ngIf="i<5" class="select-test__buttons--button"
+                  [ngClass]="{'selected': idxsuggestionArea == i}" (click)="handlesuggestionArea(i)">
+                  {{suggestArea.areaName}}
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-offset-3 col-md-6 border-block">
+            <div class="border-line">
+              <p></p>
+              <label>OR</label>
+            </div>
+          </div>          
+          <div class="col-md-offset-3 col-md-6">
+            <div class="row">
+              <div class="col-md-9" [ngClass]="{'has-error':!demosettingform.controls['Programname'].valid && demosettingform.controls['Programname'].touched}">
+                <input type="text" class="form-control" name="Programname" formControlName="Programname" placeholder="Program Name" />
+                <div class="note note-error"
+                *ngIf="demosettingform.controls['Programname'].hasError('required') && demosettingform.controls['Programname'].touched">
+                Please enter Program Name.</div>
+                <div class="note note-error"
+                *ngIf="demosettingform.controls['Programname'].hasError('maxlength') && demosettingform.controls['Programname'].touched">
+                Maximun 64 charaters are allowed</div>
+              </div>
+              <div class="col-md-3">
+                <button type="button" class="btn btn-cyan btn-half-round" [disabled]="!demosettingform.controls['Programname'].valid" (click)="addnewprogram()">Add</button>
+              </div>
+            </div>
+          </div>    
+        </div>
+      </div>
+    </div>
+    <div class="step-form step2">
+      <span class="programadd-modal-title">Forecasting Method</span>
+      <div class="select-test">
+        <div class="title color=darkblue">Select Forecast Method</div>
+        <div class="row">
+          <div class="col-md-offset-3 col-md-6">
+            <div class="select-test__buttons">
+              <div *ngFor="let forecastMethod of forecastMethodList; let i = index">
+                <button type="button" *ngIf="i<5" class="select-test__buttons--button"
+                  [ngClass]="{'selected': idxforecastMethod == i}" (click)="handleForecastMethod(i)">
+                  {{forecastMethod.methodName}}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="title color=darkblue" [ngStyle]="{'margin-top': '80px'}">Select Variable Name</div>
+        <div class="row">
+          <div class="col-md-offset-3 col-md-6">
+            <div class="select-test__buttons" [ngClass]="{'hidden': targetDisabled}">
+              <div *ngFor="let variable of variableTargetList; let i = index">
+                <button type="button" *ngIf="i<5" class="select-test__buttons--button"
+                  [ngClass]="{'selected': idxVariableTarget == i}" (click)="handleVariableTarget(i)">
+                  {{variable.Name}}
+                </button>
+              </div>
+            </div>
+            <div class="select-test__buttons" [ngClass]="{'hidden' : populationDisabled}">
+              <div *ngFor="let variable of variablePopulationList; let i = index">
+                <button type="button" *ngIf="i<5" class="select-test__buttons--button"
+                  [ngClass]="{'selected': idxVariablePopulation == i}" (click)="handleVariablePopulation(i)">
+                  {{variable.Name}}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step-form step3">
+      <span class="programadd-modal-title">Patient/Population Group</span>
+      <div class="select-test">
+        <div class="title color=darkblue" [ngStyle]="{'margin-top': '40px'}">Create patient groups based on their disease progression</div>
+        <div class="row">
+          <div class="col-md-offset-3 col-md-6">
+            <div class="row">
+              <div class="col-md-9" [ngClass]="{'has-error':!demosettingform.controls['groupName'].valid && demosettingform.controls['groupName'].touched}">
+                <input type="text" class="form-control" name="groupName" formControlName="groupName" placeholder="Group Name" />
+                <div class="note note-error"
+                *ngIf="demosettingform.controls['groupName'].hasError('required') && demosettingform.controls['groupName'].touched">
+                Please enter group Name.</div>
+                <div class="note note-error"
+                *ngIf="demosettingform.controls['groupName'].hasError('maxlength') && demosettingform.controls['groupName'].touched">
+                Maximun 200 charaters are allowed</div>
+              </div>
+              <div class="col-md-3">
+                <button type="button" class="btn btn-cyan btn-half-round" (click)="addnewgroup()" [disabled]="!demosettingform.controls['groupName'].valid">Add</button>
+              </div>
+            </div>
+          </div> 
+        </div>
+        <div class="row" [ngStyle]="{'margin-top': '10px'}">
+          <div class="custom-group-input__field">
+            <div class="custom-group" *ngFor="let item of patientgroup; let i = index">
+              <div class="group-wrapper">
+                <div class="group__text">{{item.groupName}}</div>
+                <div class="group__delete-icon" (click)="smartModEg2(item)">
+                  <svg viewBox="0 0 32 32" width="12px" height="12px">
+                    <path d="M17.459,16.014l8.239-8.194c0.395-0.391,0.395-1.024,0-1.414c-0.394-0.391-1.034-0.391-1.428,0  l-8.232,8.187L7.73,6.284c-0.394-0.395-1.034-0.395-1.428,0c-0.394,0.396-0.394,1.037,0,1.432l8.302,8.303l-8.332,8.286  c-0.394,0.391-0.394,1.024,0,1.414c0.394,0.391,1.034,0.391,1.428,0l8.325-8.279l8.275,8.276c0.394,0.395,1.034,0.395,1.428,0  c0.394-0.396,0.394-1.037,0-1.432L17.459,16.014z"
+                      fill="#a70202"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>         
+    <div class="step-form step4">
+      <span class="programadd-modal-title">Patient Assumption</span>
+      <div class="select-test">
+        <div class="row" [ngStyle]="{'margin-bottom': '50px'}">
+          <div class="col-md-6">
+            <div class="sub-title color=darkblue">Select Variable Type</div>
+            <div class="select-test__buttons">
+              <div *ngFor="let variableType of variableTypeList; let i = index">
+                <button type="button" *ngIf="i<5" class="select-test__buttons--button"
+                  [ngClass]="{'selected': idxvariableType == i}" (click)="handleVariableType(i)">
+                  {{variableType.name}}
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="sub-title color=darkblue">Select Variable Effect</div>
+            <div class="select-test__buttons">
+              <div *ngFor="let variableEffict of variableEffectList; let i = index">
+                <button type="button" *ngIf="i<5" class="select-test__buttons--button"
+                  [ngClass]="{'selected': idxvariableEffect == i}" (click)="handleVariableEffect(i)">
+                  {{variableEffict.name}}
+                </button>
+              </div>
+            </div>
+          </div>          
+        </div>
+        <div class="row" [ngStyle]="{'margin-bottom': '10px'}">
+          <div class="col-md-offset-3 col-md-6">
+            <div class="row">
+              <div class="col-md-9" [ngClass]="{'has-error':!demosettingform.controls['variablenamepatient'].valid && demosettingform.controls['variablenamepatient'].touched}">
+                <input type="text" class="form-control" name="variablenamepatient" formControlName="variablenamepatient" placeholder="Variable Name" />
+                <div class="note note-error"
+                *ngIf="demosettingform.controls['variablenamepatient'].hasError('required') && demosettingform.controls['variablenamepatient'].touched">
+                Please enter Variable Name.</div>
+                <div class="note note-error"
+                *ngIf="demosettingform.controls['variablenamepatient'].hasError('maxlength') && demosettingform.controls['variablenamepatient'].touched">
+                Maximun 200 charaters are allowed</div>
+              </div>
+              <div class="col-md-3">
+                <button type="button" class="btn btn-cyan btn-half-round" (click)="addAssumption(1)" [disabled]="!demosettingform.controls['variablenamepatient'].valid || !demosettingform.controls['variabletypepatient'].valid">Add</button>
+              </div>
+            </div>
+          </div> 
+        </div>
+        <div class="row" [ngStyle]="{'margin-top': '10px'}">
+          <div class="custom-group-input__field">
+            <div class="custom-group" *ngFor="let item of patientassumption; let i = index">
+              <div class="group-wrapper">
+                <div class="group__text">{{item.variableName}}</div>
+                <div class="group__delete-icon" (click)="smartModEg1(item,'Patient')">
+                  <svg viewBox="0 0 32 32" width="12px" height="12px">
+                    <path d="M17.459,16.014l8.239-8.194c0.395-0.391,0.395-1.024,0-1.414c-0.394-0.391-1.034-0.391-1.428,0  l-8.232,8.187L7.73,6.284c-0.394-0.395-1.034-0.395-1.428,0c-0.394,0.396-0.394,1.037,0,1.432l8.302,8.303l-8.332,8.286  c-0.394,0.391-0.394,1.024,0,1.414c0.394,0.391,1.034,0.391,1.428,0l8.325-8.279l8.275,8.276c0.394,0.395,1.034,0.395,1.428,0  c0.394-0.396,0.394-1.037,0-1.432L17.459,16.014z"
+                      fill="#a70202"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step-form step5">
+      <span class="programadd-modal-title">Testing Assumption</span>
+      <div class="select-test">
+        <div class="row" [ngStyle]="{'margin-bottom': '50px'}">
+          <div class="col-md-6">
+            <div class="sub-title color=darkblue">Select Variable Type</div>
+            <div class="select-test__buttons">
+              <div *ngFor="let variableType of variableTypeList; let i = index">
+                <button type="button" *ngIf="i<5" class="select-test__buttons--button"
+                  [ngClass]="{'selected': idxvariableType == i}" (click)="handleVariableType(i)">
+                  {{variableType.name}}
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="sub-title color=darkblue">Select Variable Effect</div>
+            <div class="select-test__buttons">
+              <div *ngFor="let variableEffict of variableEffectList; let i = index">
+                <button type="button" *ngIf="i<5" class="select-test__buttons--button"
+                  [ngClass]="{'selected': idxvariableEffect == i}" (click)="handleVariableEffect(i)">
+                  {{variableEffict.name}}
+                </button>
+              </div>
+            </div>
+          </div>          
+        </div>
+        <div class="row" [ngStyle]="{'margin-bottom': '10px'}">
+          <div class="col-md-offset-3 col-md-6">
+            <div class="row">
+              <div class="col-md-9" [ngClass]="{'has-error':!demosettingform.controls['variablenametesting'].valid && demosettingform.controls['variablenametesting'].touched}">
+                <input type="text" class="form-control" name="variablenametesting" formControlName="variablenametesting" placeholder="Variable Name" />
+                <div class="note note-error"
+                *ngIf="demosettingform.controls['variablenametesting'].hasError('required') && demosettingform.controls['variablenametesting'].touched">
+                Please enter Variable Name.</div>
+                <div class="note note-error"
+                *ngIf="demosettingform.controls['variablenametesting'].hasError('maxlength') && demosettingform.controls['variablenametesting'].touched">
+                Maximun 200 charaters are allowed</div>
+              </div>
+              <div class="col-md-3">
+                <button type="button" class="btn btn-cyan btn-half-round" (click)="addAssumption(3)" [disabled]="!demosettingform.controls['variablenametesting'].valid || !demosettingform.controls['variabletypetesting'].valid">Add</button>
+              </div>
+            </div>
+          </div> 
+        </div>
+        <div class="row" [ngStyle]="{'margin-top': '10px'}">
+          <div class="custom-group-input__field">
+            <div class="custom-group" *ngFor="let item of testingassumption; let i = index">
+              <div class="group-wrapper">
+                <div class="group__text">{{item.variableName}}</div>
+                <div class="group__delete-icon" (click)="smartModEg1(item,'Test')">
+                  <svg viewBox="0 0 32 32" width="12px" height="12px">
+                    <path d="M17.459,16.014l8.239-8.194c0.395-0.391,0.395-1.024,0-1.414c-0.394-0.391-1.034-0.391-1.428,0  l-8.232,8.187L7.73,6.284c-0.394-0.395-1.034-0.395-1.428,0c-0.394,0.396-0.394,1.037,0,1.432l8.302,8.303l-8.332,8.286  c-0.394,0.391-0.394,1.024,0,1.414c0.394,0.391,1.034,0.391,1.428,0l8.325-8.279l8.275,8.276c0.394,0.395,1.034,0.395,1.428,0  c0.394-0.396,0.394-1.037,0-1.432L17.459,16.014z"
+                      fill="#a70202"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step-form step6">
+      <span class="programadd-modal-title">Product Assumption</span>
+      <div class="select-test">
+        <div class="row" [ngStyle]="{'margin-bottom': '50px'}">
+          <div class="col-md-6">
+            <div class="sub-title color=darkblue">Select Variable Type</div>
+            <div class="select-test__buttons">
+              <div *ngFor="let variableType of variableTypeList; let i = index">
+                <button type="button" *ngIf="i<5" class="select-test__buttons--button"
+                  [ngClass]="{'selected': idxvariableType == i}" (click)="handleVariableType(i)">
+                  {{variableType.name}}
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="sub-title color=darkblue">Select Variable Effect</div>
+            <div class="select-test__buttons">
+              <div *ngFor="let variableEffict of variableEffectList; let i = index">
+                <button type="button" *ngIf="i<5" class="select-test__buttons--button"
+                  [ngClass]="{'selected': idxvariableEffect == i}" (click)="handleVariableEffect(i)">
+                  {{variableEffict.name}}
+                </button>
+              </div>
+            </div>
+          </div>          
+        </div>
+        <div class="row" [ngStyle]="{'margin-bottom': '10px'}">
+          <div class="col-md-offset-3 col-md-6">
+            <div class="row">
+              <div class="col-md-9" [ngClass]="{'has-error':!demosettingform.controls['variablenameproduct'].valid && demosettingform.controls['variablenameproduct'].touched}">
+                <input type="text" class="form-control" name="variablenameproduct" formControlName="variablenameproduct" placeholder="Variable Name" />
+                <div class="note note-error"
+                *ngIf="demosettingform.controls['variablenameproduct'].hasError('required') && demosettingform.controls['variablenameproduct'].touched">
+                Please enter Variable Name.</div>
+                <div class="note note-error"
+                *ngIf="demosettingform.controls['variablenameproduct'].hasError('maxlength') && demosettingform.controls['variablenameproduct'].touched">
+                Maximun 200 charaters are allowed</div>
+              </div>
+              <div class="col-md-3">
+                <button type="button" class="btn btn-cyan btn-half-round" (click)="addAssumption(2)" [disabled]="!demosettingform.controls['variablenameproduct'].valid || !demosettingform.controls['variabletypeproduct'].valid">Add</button>
+              </div>
+            </div>
+          </div> 
+        </div>
+        <div class="row" [ngStyle]="{'margin-top': '10px'}">
+          <div class="custom-group-input__field">
+            <div class="custom-group" *ngFor="let item of productassumption; let i = index">
+              <div class="group-wrapper">
+                <div class="group__text">{{item.variableName}}</div>
+                <div class="group__delete-icon" (click)="smartModEg1(item,'Product')">
+                  <svg viewBox="0 0 32 32" width="12px" height="12px">
+                    <path d="M17.459,16.014l8.239-8.194c0.395-0.391,0.395-1.024,0-1.414c-0.394-0.391-1.034-0.391-1.428,0  l-8.232,8.187L7.73,6.284c-0.394-0.395-1.034-0.395-1.428,0c-0.394,0.396-0.394,1.037,0,1.432l8.302,8.303l-8.332,8.286  c-0.394,0.391-0.394,1.024,0,1.414c0.394,0.391,1.034,0.391,1.428,0l8.325-8.279l8.275,8.276c0.394,0.395,1.034,0.395,1.428,0  c0.394-0.396,0.394-1.037,0-1.432L17.459,16.014z"
+                      fill="#a70202"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step-form step7">
+      <span class="programadd-modal-title">Testing Protocol</span>
+      <div class="select-test">
+        <div class="title color=darkblue">How many years/does this testing Protocol cycle have? 1/2</div>
+        <div class="row" [ngStyle]="{'margin-top': '40px'}">
+          <div class="col-md-offset-2 col-md-8">
+            <div class="select-test__buttons">
+              <div *ngFor="let testingYear of testingYearList; let i = index">
+                <button type="button" *ngIf="i<5" class="select-test__buttons--button"
+                  [ngClass]="{'selected': idxtestingYear == i}" (click)="handletestingYear(i)">
+                  {{testingYear.name}}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>                  
+  </form>
+  <div class="programadd-modal-footer">
+    <div class="program-add-modal-footer__container">
+      <button type="button" class="btn btn-outline-cyan prevForm-btn" (click)="prevForm()" disabled>Back</button>
+  
+      <div class="program-form-step">
+        <div class="steps">
+          <div class="progressbar-wrapper">
+            <ul class="progressbar">
+              <li class="active"></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+  
+      <button class="btn btn-cyan nextForm-btn" (click)="nextForm()">Next</button>
+    </div>
+  </div>
+</div>
+

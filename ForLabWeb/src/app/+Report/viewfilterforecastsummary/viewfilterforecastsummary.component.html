@@ -1,0 +1,242 @@
+<!-- <div id="content"  >
+  <div class="row">
+
+      <span id="extr-page-header-space"> <a routerLink="/Report/Filtersite" class="btn btn-primary">Back</a> </span>
+    </div> 
+  
+   <sa-widgets-grid>
+  
+  
+      <div class="row" style="overflow: auto">
+        <article class="col-sm-12">
+  
+  
+  
+  
+          <div sa-widget [editbutton]="false" color="blueDark" style="overflow: auto">
+            <header>
+              <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+              <h2>Forecast Summary</h2>
+            </header>
+            <div style="overflow: auto">
+              <div class="widget-body no-padding" style="overflow: auto">
+  
+        
+          
+                <sa-datatable #aa
+             
+         *ngIf="xx" [options]="{  aaData: getdata,  
+          columns:columnname ,     
+           
+            
+          
+       
+           
+             buttons: [
+             'copy', 'csv', 'excel', 'pdf', 'print'
+               ]}"
+                tableClass="table table-striped table-bordered table-hover Category"
+              >
+                <thead>
+                <tr>
+                
+               
+                  <th *ngFor="let item of controlArray" >{{item}}</th>
+                
+                </tr>
+                </thead>
+              </sa-datatable> 
+              </div>
+            </div>
+          </div>
+  
+        </article>
+  
+  
+      </div>
+  
+    </sa-widgets-grid>
+ 
+  
+  </div> -->
+
+
+  <div id="content">
+    <!-- widget grid -->
+    <sa-widgets-grid>
+      <!-- row -->
+      <div class="row">
+        <!-- NEW WIDGET START -->
+        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <!-- Widget ID (each widget will need unique ID)-->
+          <div sa-widget class="well" [colorbutton]="false" [editbutton]="false" [deletebutton]="false" [sortable]="false" color="darken">
+      
+            <header>
+              <span class="widget-icon"> <i class="fa fa-barcode"></i> </span>
+              <h2>Item #44761 </h2>
+            </header>
+            <!-- widget div-->
+            <div >
+              <!-- widget content -->
+              <div class="widget-body no-padding">
+                <div class="widget-body-toolbar">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <!-- <div class="input-group">
+                        <input class="form-control" type="text" placeholder="Type invoice number or date...">
+                        <div class="input-group-btn">
+                          <button class="btn btn-default" type="button">
+                            <i class="fa fa-search"></i> Search
+                          </button>
+                        </div>
+                      </div> -->
+                    </div>
+                    <div class="col-sm-8 text-align-right">
+                      <div class="btn-group">
+                        <a (click)="Print()" class="btn btn-sm btn-primary"> <i class="fa fa-print"></i>Print</a>
+                      </div>
+                     
+                    </div>
+                  </div>
+                </div>
+                <div class="padding-10" id="print-section">
+                  
+                  <div class="row">
+                      <!-- <span id="logo"> <img src="assets/img/FørLablogo.jpg" alt="SmartAdmin" style="
+                        width: 90px;margin-top: -12px;
+                    "> </span> -->
+                    <div class="col-sm-8">
+                      <img src="assets/img/FørLablogo.jpg" width="100" height="50" alt="invoice icon">
+                      <address>
+                        <br>
+                        <span style="
+                        font-size: x-large;">Forecast Title  - {{title}}</span>
+                       
+                        <br>
+                        Forecast Period    - {{Period}}
+                        <br>
+                      
+                      </address>
+                    </div>
+                    <div class="col-sm-4">
+                      <div>
+                        <div style="
+                        text-align: right;
+                    ">
+                                         <span style="
+                        font-size: xx-large;
+                        text-align: right;
+                    ">Forecast Summary</span>
+                                            </div>
+                      </div>
+                    
+                      <br>
+                      <div class="well well-sm  bg-color-darken txt-color-white no-border">
+                        <div class="fa-lg">
+                          Total :
+                          <span class="pull-right"> {{Finalcost }} USD** </span>
+                        </div>
+                      </div>
+                      <br>
+                      <br>
+                    </div>
+                  </div>
+                  <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>{{Name}}</th>
+<!-- //<th *ngFor="let item of controlArray" >{{item}}</th> -->
+                <th>Product Name</th>
+                <th>Total quantity needed in pack</th>
+                <th *ngIf="xx">Unit Price</th>
+                <th>Total Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item1 of getdata; let i = index;">
+  
+                            <td *ngFor="let item of columnname">
+                              {{getdata[i][item.data]}}
+                              <!-- <label class="input">
+                               <input type="{{item.type}}" formControlName="{{item.name}}" [attr.disabled] = "item.type === 'text' ? 'disabled' : null" [style.text-align]="item.type === 'text' ? 'left' : 'right'" /> 
+                              </label> -->
+
+                           
+                            </td>
+                          </tr>
+                    <!-- <tr>
+                      <td class="text-center"><strong>1</strong></td>
+                      <td><a (click)="(null)">Print and Web Logo Design</a></td>
+                      <td>Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam
+                        rem aperiam xplicabo.
+                      </td>
+                      <td>$1,300.00</td>
+                      <td>$1,300.00</td>
+                    </tr>
+                    <tr>
+                      <td class="text-center"><strong>1</strong></td>
+                      <td><a (click)="(null)">SEO Management</a></td>
+                      <td>Sit voluptatem accusantium doloremque laudantium inventore veritatis et quasi architecto beatae
+                        vitae dicta sunt explicabo.
+                      </td>
+                      <td>$1,400.00</td>
+                      <td>$1,400.00</td>
+                    </tr>
+                    <tr>
+                      <td class="text-center"><strong>1</strong></td>
+                      <td><a (click)="(null)">Backend Support and Upgrade</a></td>
+                      <td>Inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</td>
+                      <td>$1,700.00</td>
+                      <td>$1,700.00</td>
+                    </tr>
+                    <tr>
+                      <td colspan="4">Total</td>
+                      <td><strong>$4,400.00</strong></td>
+                    </tr>
+                    <tr>
+                      <td colspan="4">HST/GST</td>
+                      <td><strong>13%</strong></td>
+                    </tr> -->
+                    </tbody>
+                  </table>
+                  <div class="invoice-footer">
+                    <div class="row">
+                      <div class="col-sm-7">
+                        <!-- <div class="payment-methods">
+                          <h5>Payment Methods</h5>
+                          <img src="assets/img/invoice/paypal.png" width="64" height="64" alt="paypal">
+                          <img src="assets/img/invoice/americanexpress.png" width="64" height="64" alt="american express">
+                          <img src="assets/img/invoice/mastercard.png" width="64" height="64" alt="mastercard">
+                          <img src="assets/img/invoice/visa.png" width="64" height="64" alt="visa">
+                        </div> -->
+                      </div>
+                      <div class="col-sm-5">
+                        <div class="invoice-sum-total pull-right">
+                          <h3><strong>Total: <span class="text-success">${{Finalcost}} USD</span></strong></h3>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- <div class="row">
+                      <div class="col-sm-12">
+                        <p class="note">**To avoid any excess penalty charges, please make payments within 30 days of the
+                          due date. There will be a 2% interest charge per month on all late invoices.</p>
+                      </div>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+              <!-- end widget content -->
+            </div>
+            <!-- end widget div -->
+          </div>
+          <!-- end widget -->
+        </article>
+        <!-- WIDGET END -->
+      </div>
+      <!-- end row -->
+    </sa-widgets-grid>
+    <!-- end widget grid -->
+  </div>
+  
+  
+  

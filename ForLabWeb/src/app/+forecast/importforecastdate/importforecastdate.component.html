@@ -1,0 +1,232 @@
+<div id="content">
+  <sa-widgets-grid>
+
+
+    <!-- START ROW -->
+
+    <div class="row">
+
+      <!-- NEW COL START -->
+      <article class="col-sm-12 col-md-12 col-lg-12">
+        <div sa-widget [editbutton]="false" [custombutton]="false" [deletebutton]="false">
+
+          <header>
+            <span class="widget-icon">
+              <i class="fa fa-edit"></i>
+            </span>
+
+
+
+          </header>
+
+          <!-- widget div-->
+          <div>
+
+
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+              <form class="smart-form" novalidate="novalidate">
+                <!-- [formGroup]="RecentForecast" -->
+                <header>
+                  <h3 style="
+                color: gray;
+            ">
+            {{title}}
+                  
+                  </h3>
+                </header>
+
+                <fieldset>
+                  <!-- <div [innerHtml]="divhtml"></div> -->
+                  <div class="row">
+                    <section class="col col-10" style="padding-left: 3%;">
+                    <div class="input input-file">
+                      <span class="button" style="
+                      background-color: lightgray;
+                      color: black;
+                      font-weight: bold;
+                  "><input type="file" id="file" name="file"
+                        (change)="incomingfile($event)" >Import</span><input type="text"
+                        [(ngModel)] = 'Filenamenew' [ngModelOptions]="{standalone: true}" >
+                    </div>
+                  </section>
+                  </div>
+                  <div class="row">
+                    <section class="col col-5">
+                      <p style="padding-left: 5%;"> 
+                      If you chose Site by site in the previous screen, organize your historical or service data by site
+                      in your excel template
+                      </p>
+                    </section>
+                    <section class="col col-5">
+                      <p style="padding-left: 5%;"> 
+                      If you chose aggregate in the previous screen, add the name of your aggregates or group in place
+                      of Site, organize your historical consumption
+                      </p>
+                    </section>
+                  </div>
+                  <div class="row" id="content" *ngIf="importedlist.length>0">
+                    <div class="table-responsive" style="overflow-y: auto;height: 300px;border-style:ridge">
+
+
+
+                        <table class="table table-bordered table-striped table-hover">
+
+                            <thead>
+                                <tr>
+                             
+                                    <!-- <th>No.</th> -->
+                                    <th *ngIf="stringarr==C">Category</th>
+                                    <th *ngIf="stringarr!=S">Region</th>
+                                    <th *ngIf="stringarr!=S">Site</th>
+                                    <th *ngIf="methodology=='SERVICE STATSTICS'">Test</th>
+                                    <th *ngIf="methodology=='CONSUMPTION'">Product</th>
+                                    <th>Reporting Period</th>
+                                    <th>Consumption</th>
+                                    <th>Stock out</th>
+                                    <th>Instrument Downtime</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr *ngFor="let item of importedlist; let i = index;">
+                                
+                                    <!-- <td>
+                                        {{item.no}}
+                                    </td> -->
+                                    <td *ngIf="stringarr==C">
+                                        {{item.categoryName}}
+                                    </td>
+                                    <td *ngIf="stringarr!=S">
+                                        {{item.regionName}}
+                                    </td>
+                                    <td *ngIf="stringarr!=S">
+                                        {{item.siteName}}
+                                    </td> 
+                                    <td *ngIf="methodology=='SERVICE STATSTICS'">
+                                        {{item.testName}}
+                                    </td>
+                                    <td *ngIf="methodology=='CONSUMPTION'">
+                                        {{item.proName}}
+                                    </td>
+                                    <td>
+                                        {{item.duration}}
+                                    </td> 
+                                    <td>
+                                        {{item.amount}}
+                                    </td>
+                                    <td>
+                                        {{item.stockOut}}
+                                    </td> 
+                                    <td>
+                                        {{item.instrumentDownTime}}
+                                    </td> 
+                                    <td>
+                                        {{item.description}}
+                                    </td> 
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                </div>
+           
+            </fieldset>
+
+            <footer>
+              <a (click)="Previousclick()" class="btn btn-default" style="float: left;"><b>
+                  << Previous</b> </a> <a class="btn btn-default" style="float: right;" (click)="Saveforecastimportdata()">
+                    <b>Next >></b></a>
+            </footer>
+
+            </form>
+
+          </div>
+          <!-- end widget content -->
+
+        </div>
+        <!-- end widget div -->
+
+    </div>
+    </article>
+</div>
+</sa-widgets-grid>
+</div>
+<div class="my-container">
+  <ng-template #customLoadingTemplate>
+      <div class="custom-class">
+          <h3>
+              Loading...
+          </h3>
+          <!-- <button (click)="showAlert()">
+              Click me!
+          </button> -->
+      </div>
+  </ng-template>
+  <!-- <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading> -->
+  <ngx-loading [show]="loading" [config]="{animationType: ngxLoadingAnimationTypes.chasingDots,
+     primaryColour: primaryColour, secondaryColour: secondaryColour, backdropBorderRadius: '3px'}"
+  [template]="loadingTemplate"></ngx-loading>
+</div> 
+
+<div bsModal #lgModal4="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" (click)="lgModal4.hide()" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-title">Select Sheet</h4>
+          </div>
+          <div class="modal-body">
+              <form class="smart-form">
+<fieldset>
+              
+             
+              <div class="row" id="content">
+                  <div class="table-responsive" style="overflow-y: auto;height: 300px;border-style:ridge">
+
+
+
+                      <table class="table table-bordered table-striped table-hover">
+
+                          <thead>
+                              <tr>
+                                  <th>Sheets</th>
+                               
+                              </tr>
+                          </thead>
+
+                          <tbody>
+                              <tr *ngFor="let item of Sheetarr; let i = index;"  (click)="SelectSheet(item)">
+                               <td>
+                                      <!--    <label>
+                                   <input type="checkbox" class="checkbox style-3" (change)="selectproduct($event.target.checked,item.productID)"/><span></span><br>
+                                  </label>
+                                  </td>
+                                  <td>
+                                      {{item.productName}}
+                                  </td>
+                                  <td>
+                                      {{item.serialNo}}
+                                  </td>
+                                  <td> -->
+                                      {{item}}
+                                  </td>
+
+                              </tr>
+                          </tbody>
+                      </table>
+
+
+                  </div>
+              </div>
+          </fieldset>
+      </form>
+          </div>
+
+      </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="login-modal-header">
+  <a type="button" class="close-button" (click)="close.emit(true)" aria-hidden="true">
+  </a>
+</div>
+<div class="login-modal-body text-center">
+  <span class="login-modal-title">Welcome Back</span>
+  <form class="login-form" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+    <div class="form-group">
+      <input type="email" id="username" name="username" ngModel class="form-control" placeholder="Email" required
+        autofocus>
+      <b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i>
+        Please enter email address</b> </div>
+    <div class="form-group">
+      <input type="password" id="password" name="password" ngModel class="form-control" placeholder="Password" required>
+      <b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> Please enter
+        password</b>
+    </div>
+    <div class="forgot-password">
+      <a type="button" (click)="onForgotpwd.emit(true);">Forgot password?</a>
+    </div>
+    <div class="form-submit">
+      <button type="submit" class="btn btn-login-submit" [disabled]="loginForm.invalid">
+        Sign In
+      </button>
+      <span class="title-OR">OR</span>
+    </div>
+  </form>
+  <div class="social-login">
+    <a (click)="(null)" class="btn btn-primary btn-circle btn-facebook"><i class="fa fa-facebook"></i></a>
+    <a (click)="(null)" class="btn btn-primary btn-circle btn-twitter"><i class="fa fa-twitter"></i></a>
+    <a (click)="(null)" class="btn btn-primary btn-circle btn-linkedin"><i class="fa fa-linkedin"></i></a>
+  </div>
+
+</div>
+<div class="login-modal-footer">
+</div>
+<ngx-loading [show]="loading"
+  [config]="{ backdropBorderRadius: '3px', primaryColour: '#20BDEF', secondaryColour: '#20BDEF', tertiaryColour: '#20BDEF' }">
+</ngx-loading>

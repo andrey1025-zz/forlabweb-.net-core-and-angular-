@@ -1,0 +1,1986 @@
+<div id="content">
+
+        <div class="my-container">
+                <ng-template #customLoadingTemplate>
+                    <div class="custom-class">
+                        <h3>
+                            Loading...
+                        </h3>
+                        <!-- <button (click)="showAlert()">
+                            Click me!
+                        </button> -->
+                    </div>
+                </ng-template>
+                <!-- <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading> -->
+                <ngx-loading [show]="loading" [config]="{animationType: ngxLoadingAnimationTypes.chasingDots,
+                   primaryColour: primaryColour, secondaryColour: secondaryColour, backdropBorderRadius: '3px'}"
+                [template]="loadingTemplate"></ngx-loading>
+            </div>
+
+    <div class="row">
+        <!-- <sa-big-breadcrumbs [items]="['Forms', 'Wizards']" icon="table" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></sa-big-breadcrumbs>
+      <sa-stats></sa-stats> -->
+    </div>
+
+
+    <!-- widget grid -->
+    <sa-widgets-grid>
+
+        <!-- row -->
+        <div class="row">
+
+            <!-- NEW WIDGET START -->
+            <article class="col-sm-12 col-md-12 col-lg-12">
+
+
+                <div sa-widget [editbutton]="false" [deletebutton]="false" color="darken">
+                    <!-- widget options:
+    usage: <div sa-widget [editbutton]="false">
+  
+    [colorbutton]="false"
+    [editbutton]="false"
+    [togglebutton]="false"
+    [deletebutton]="false"
+    [fullscreenbutton]="false"
+    [custombutton]="false"
+    [collapsed]="true"
+    [sortable]="false"
+  
+    -->
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-check"></i> </span>
+
+                        <h2>Demographic Settings </h2>
+
+                    </header>
+
+                    <!-- widget div-->
+                    <div>
+
+                        <!-- widget content -->
+                        <div class="widget-body">
+
+
+
+
+
+
+
+                            <form class="smart-form" novalidate="novalidate" [formGroup]="demosettingform">
+
+                                <fieldset>
+
+                                    <div class="col-sm-12">
+                                        <!-- <ul>
+                                                <li>
+                                                    <a #defineprogram1 href="#defineprogram" (click)="defineprogramclick()">Define Program</a>
+                                                </li>
+                                                <li>
+                                                    <a #Method1 href="#Method" (click)="Methodclick()">Forecasting Method</a>
+                                                </li>
+                                                <li>
+                                                    <a #patientgroup1 href="#patientgroup" (click)="patientgroupclick()">Patient/Population Group</a>
+                                                </li>
+                                                <li>
+                                                    <a #patientassumption1 href="#patientassumption" (click)="patientassumptionclick()">Patient Assumption</a>
+                                                </li>
+                                                <li>
+                                                    <a #testingAssumption1 href="#testingAssumption" (click)="testingAssumptionclick()">Testing Asssumption</a>
+                                                </li>
+                                                <li>
+                                                    <a #productassumption1 href="#productassumption" (click)="productassumptionclick()">Product Assumption</a>
+                                                </li>
+                                                <li>
+                                                    <a #testingprotocol1 href="#testingprotocol" (click)="testingprotocolclick()">Testing Protocol</a>
+                                                </li>
+                                                <li>
+                                                    <a #Review1 href="#Review" (click)="Reviewclick()">Review</a>
+                                                </li>
+                                            </ul> -->
+
+                                        <div class="form-bootstrapWizard clearfix">
+                                            <ul class="bootstrapWizard">
+                                                <li *ngFor="let pane of steps; let i = index"
+                                                    [class.active]="activeStep == pane">
+                                                    <a (click)="setActiveStep(pane)"> <span class="step">
+                                                            <span *ngIf="!pane.checked">{{i + 1}}</span>
+                                                            <i class="fa fa-check" *ngIf="pane.checked"></i>
+                                                        </span> <span class="title">{{pane.title}}</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+
+                                        <div class="tab-content">
+
+                                            <div class="tab-pane" [class.active]="activeStep.key == 'step1'">
+                                                <br>
+
+                                                <!-- / <h3><strong>Step 1 </strong> - Define Program</h3> -->
+                                                <br>
+
+                                                <div class="row">
+                                                    <section class="col col-6">
+
+                                                        <div class="form-group"
+                                                            [ngClass]="{'has-error':!demosettingform.controls['Programname'].valid && demosettingform.controls['Programname'].touched}">
+                                                            <label class="control-label">Program Name
+
+                                                            </label>
+                                                            <label class="input">
+                                                                <input type="text" class="form-control"
+                                                                    name="Programname" formControlName="Programname" />
+                                                            </label>
+
+                                                        </div>
+                                                        <div class="note note-error"
+                                                            *ngIf="demosettingform.controls['Programname'].hasError('required') && demosettingform.controls['Programname'].touched">
+                                                            Please enter Program Name.</div>
+
+                                                        <div class="note note-error"
+                                                            *ngIf="demosettingform.controls['Programname'].hasError('maxlength') && demosettingform.controls['Programname'].touched">
+                                                            Maximun 64 charaters are allowed</div>
+
+                                                    </section>
+                                                    <section class="col col-6">
+
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+
+                                                            </label>
+                                                            <label class="input">
+                                                                <button type="button" class="btn btn-primary btn-sm"
+                                                                    [disabled]="!demosettingform.controls['Programname'].valid"
+                                                                    (click)="addnewprogram()">
+                                                                    Add
+                                                                </button>
+                                                            </label>
+
+                                                        </div>
+                                                    </section>
+                                                </div>
+                                                <div class="row">
+                                                    <section class="col col-6">
+
+                                                        <div class="table-responsive"
+                                                            style="overflow-y: auto;height: 140px;border-style:ridge">
+
+
+
+                                                            <table
+                                                                class="table table-bordered table-striped table-hover">
+
+                                                                <thead>
+                                                                    <tr>
+                                                                        <!-- <th>No.</th> -->
+                                                                        <th>Program Name</th>
+
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr *ngFor="let item of ProgramList; let i = index;"
+                                                                        (click)="getprogram(i)">
+                                                                        <!-- <td>
+                                                                            {{item.id}}
+                                                                        </td> -->
+                                                                        <td>
+                                                                            {{item.programName}}
+                                                                        </td>
+
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+
+
+                                                        </div>
+
+                                                    </section>
+                                                    <section class="col col-6">
+                                                        <!-- <table >
+                                                                <thead>
+                                                                <tr>
+                                                                  <th >Suggusted Variables</th>
+                                                                 
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <tr>
+                                                                  <td> -->
+                                                        <p><b> Suggestions. Click on the buttons to add the suggestions
+                                                                to the model</b></p>
+
+                                                        <div class="btn-group-vertical">
+                                                            <button class="btn btn-primary btn-sm bg-color-pink"
+                                                                *ngFor="let item of filtersuggustionlist; let i = index;"
+                                                                type="button" (click)="addnewprogram(item.name)">
+                                                                {{item.name}}
+                                                            </button>
+                                                            <!-- <button type="button" class="btn btn-default">
+                                                                        Middle
+                                                                      </button>
+                                                                      <button type="button" class="btn btn-default">
+                                                                        Bottom
+                                                                      </button> -->
+                                                        </div>
+                                                        <!-- </td>
+                                                                
+                                                                  </tr>
+                                                                  </tbody>
+                                                                  </table> -->
+                                                    </section>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" [class.active]="activeStep.key == 'step2'">
+                                                <br>
+
+                                                <!-- / <h3><strong>Step 1 </strong> - Define Program</h3> -->
+                                                <br>
+
+
+                                                <div class="row">
+                                                    <section class="col col-6">
+
+                                                        <div class="form-group">
+                                                            <label class="control-label">Forecast Method
+
+                                                            </label>
+                                                            <label class="input">
+                                                                <select class="form-control"
+                                                                    (change)="setparametername($event)"
+                                                                    [disabled]="methodstatus">
+                                                                    <option value="0" disabled>--Select--</option>
+                                                                    <option value="1">Target_Based</option>
+                                                                    <option value="2">Population_Based</option>
+
+                                                                </select>
+                                                            </label>
+                                                        </div>
+                                                    </section>
+                                                    <section class="col col-6">
+                                                            <label class="control-label">
+
+                                                                </label>
+                                                                <label class="input">
+                                                            <a 
+                                                            tooltip="Target based forecast uses these variables to calculate the patient number which will be put on treatment for the forecast period. Later in the forecast process, you will be asked to provide # current patient on treatment during the start of the forecast and what the target will be at the end of the forecast">
+                                                            <i class="fa fa-info-circle" style="font-size: xx-large;color: darkolivegreen"></i>
+                                                    </a>
+                                                    </label>
+                                                    </section>
+                                                </div>
+                                                <div class="row">
+                                                    <section class="col col-6">
+
+                                                        <div class="table-responsive"
+                                                            style="overflow-y: auto;height: 140px;border-style:ridge">
+
+
+
+                                                            <table
+                                                                class="table table-bordered table-striped table-hover">
+
+                                                                <thead>
+                                                                    <tr>
+                                                                        <!-- <th>No.</th>
+                                                                        <th>Method</th>
+                                                                        <th>Data Type</th> -->
+                                                                        <th>Variable Name</th>
+
+                                                                        <!-- <th>Use On</th>
+                                                                        <th>Active</th> -->
+                                                                    </tr>
+                                                                </thead>
+
+                                                                <tbody>
+                                                                    <tr
+                                                                        *ngFor="let item of MMforcastparameter; let i = index;">
+                                                                        <!-- <td>
+                                                                            {{i+1}}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{item.forecastMethodname}}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{item.variableDataTypename}}
+                                                                        </td> -->
+                                                                        <td>
+                                                                            {{item.variableName}}
+                                                                        </td>
+                                                                        <!-- <td>
+                                                                            {{item.useOn}}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{item.isActive}}
+                                                                        </td> -->
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+
+
+                                                        </div>
+
+                                                    </section>
+                                                      <!-- <section class="col col-6">
+                                                      <table >
+                                                                    <thead>
+                                                                    <tr>
+                                                                      <th >Suggusted Variables</th>
+                                                                     
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <tr>
+                                                                      <td> 
+                                                        <p><b> Suggestions. Click on the buttons to add the suggestions
+                                                                to the model</b></p>
+
+                                                        <div class="btn-group-vertical">
+                                                            <button class="btn btn-primary btn-sm bg-color-pink"
+                                                                *ngFor="let item of filtersuggustionlist; let i = index;"
+                                                                type="button" (click)="addnewprogram(item.name)">
+                                                                {{item.name}}
+                                                            </button>
+                                                            <!-- <button type="button" class="btn btn-default">
+                                                                            Middle
+                                                                          </button>
+                                                                          <button type="button" class="btn btn-default">
+                                                                            Bottom
+                                                                          </button>
+                                                        </div>
+                                                        <!-- </td>
+                                                                    
+                                                                      </tr>
+                                                                      </tbody>
+                                                                      </table>
+                                                    </section> -->
+                                                </div>
+
+                                            </div>
+
+                                            <div class="tab-pane" [class.active]="activeStep.key == 'step3'">
+                                                <br>
+
+                                                <!-- / <h3><strong>Step 1 </strong> - Define Program</h3> -->
+                                                <br>
+
+                                                <span>Patient/Population group name</span>
+                                                <div class="row">
+                                                    <section class="col col-6">
+
+                                                        <div class="form-group"
+                                                            [ngClass]="{'has-error':!demosettingform.controls['groupName'].valid && demosettingform.controls['groupName'].touched}">
+
+                                                            <!-- <input type="text" class="form-control" formControlName="CategoryID"/> -->
+
+
+                                                            <label class="input">
+                                                                <input type="text" class="form-control" name="groupName"
+                                                                    formControlName="groupName" />
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="note note-error"
+                                                            *ngIf="demosettingform.controls['groupName'].hasError('required') && demosettingform.controls['groupName'].touched">
+                                                            Please enter group Name.</div>
+                                                        <div class="note note-error"
+                                                            *ngIf="demosettingform.controls['groupName'].hasError('maxlength') && demosettingform.controls['groupName'].touched">
+                                                            Maximun 200 charaters are allowed</div>
+                                                    </section>
+
+                                                    <section class="col col-1">
+                                                        <div class="form-group">
+
+                                                            <label class="input">
+                                                                <button type="button" class="btn btn-primary btn-sm"
+                                                                    (click)="addnewgroup()"
+                                                                    [disabled]="!demosettingform.controls['groupName'].valid">
+                                                                    Add
+                                                                </button>
+                                                               
+                                                            </label>
+
+                                                           
+
+                                                        </div>
+
+                                                    </section>
+                                                    <section class="col col-2">
+                                                            <a 
+                                                            tooltip="Patient/Population Group is how you categorize patient population. Example will be Adult vs Pediatric. You can also further categorize patient population based on your program requirement. These Patient/Population Group will then be used alter to determine what test in what frequency will be done for these groups" containerClass="grouptip">
+                                                            <i class="fa fa-info-circle" style="font-size: xx-large;color: darkolivegreen" ></i>
+                                                    </a>
+                                                    </section>
+                                                </div>
+
+                                                <section>
+                                                    <div class="form-group">
+
+                                                        <!-- <input type="text" class="form-control" formControlName="CategoryID"/> -->
+
+
+                                                        <label>
+                                                            <input type="checkbox" class="checkbox style-3"
+                                                                checked="checked" name="Isactivegroup"
+                                                                formControlName="Isactivegroup" />
+                                                            <span>Is Active</span>
+                                                        </label>
+                                                    </div>
+                                                </section>
+                                                <div class="row">
+                                                    <section class="col col-6">
+
+                                                        <div class="table-responsive"
+                                                            style="overflow-y: auto;height: 140px;border-style:ridge">
+
+
+
+                                                            <table
+                                                                class="table table-bordered table-striped table-hover">
+
+                                                                <thead>
+                                                                    <tr>
+                                                                        <!-- <th>No.</th> -->
+
+                                                                        <th>Patient/Population group name</th>
+
+
+                                                                        <!-- <th>Active</th> -->
+                                                                    </tr>
+                                                                </thead>
+
+                                                                <tbody>
+                                                                    <tr *ngFor="let item of patientgroup; let i = index;"
+                                                                        (click)="smartModEg2(item)">
+                                                                        <!-- <td>
+                                                                            {{i+1}}
+                                                                        </td> -->
+                                                                        <td>
+                                                                            {{item.groupName}}
+                                                                        </td>
+
+                                                                        <!-- <td>
+                                                                            {{item.isActive}}
+                                                                        </td> -->
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+
+
+                                                        </div>
+
+                                                    </section>
+                                                    <section class="col col-6">
+                                                        <!-- <table >
+                                                                <thead>
+                                                                <tr>
+                                                                  <th >Suggusted Variables</th>
+                                                                 
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <tr>
+                                                                  <td> -->
+                                                        <p><b> Suggestions. Click on the buttons to add the suggestions
+                                                                to the model</b></p>
+
+                                                        <div class="btn-group-vertical">
+                                                            <button class="btn btn-primary btn-sm bg-color-pink"
+                                                                *ngFor="let item of filtersuggustionlist; let i = index;"
+                                                                type="button" (click)="addnewgroup(item.name)">
+                                                                {{item.name}}
+                                                            </button>
+                                                            <!-- <button type="button" class="btn btn-default">
+                                                                        Middle
+                                                                      </button>
+                                                                      <button type="button" class="btn btn-default">
+                                                                        Bottom
+                                                                      </button> -->
+                                                        </div>
+                                                        <!-- </td>
+                                                                
+                                                                  </tr>
+                                                                  </tbody>
+                                                                  </table> -->
+                                                    </section>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" [class.active]="activeStep.key == 'step4'">
+                                                <br>
+
+                                                <!-- / <h3><strong>Step 1 </strong> - Define Program</h3> -->
+                                                <br>
+                                                <div class="row">
+                                                    <section class="col col-6">
+
+                                                        <div class="form-group"
+                                                            [ngClass]="{'has-error':!demosettingform.controls['variablenamepatient'].valid && demosettingform.controls['variablenamepatient'].touched}">
+
+                                                            <!-- <input type="text" class="form-control" formControlName="CategoryID"/> -->
+
+                                                            <label class="control-label">Variable Name
+
+                                                            </label>
+                                                            <label class="input">
+                                                                <input type="text" class="form-control"
+                                                                    name="variablenamepatient"
+                                                                    formControlName="variablenamepatient" />
+                                                            </label>
+
+                                                        </div>
+
+                                                        <div class="note note-error"
+                                                            *ngIf="demosettingform.controls['variablenamepatient'].hasError('required') && demosettingform.controls['variablenamepatient'].touched">
+                                                            Please enter Variable Name.</div>
+                                                        <div class="note note-error"
+                                                            *ngIf="demosettingform.controls['variablenamepatient'].hasError('maxlength') && demosettingform.controls['variablenamepatient'].touched">
+                                                            Maximun 200 charaters are allowed</div>
+                                                    </section>
+                                                    <section class="col col-6">
+                                                        <div class="form-group">
+
+                                                            <label class="control-label">
+
+                                                            </label>
+                                                            <label class="input">
+                                                                <button type="button" class="btn btn-primary btn-sm"
+                                                                    (click)="addAssumption(1)"
+                                                                    [disabled]="!demosettingform.controls['variablenamepatient'].valid || !demosettingform.controls['variabletypepatient'].valid">
+                                                                    Add
+                                                                </button>
+                                                            </label>
+
+                                                        </div>
+                                                    </section>
+                                                </div>
+                                                <!-- <div class="row">
+                                                    <section class="col col-8">
+
+                                                        <div class="form-group" [ngClass]="{'has-error':!demosettingform.controls['variabletypepatient'].valid && demosettingform.controls['variabletypepatient'].touched}">
+                                                            <label class="control-label">Variable Type
+
+                                                            </label>
+                                                            <label class="input">
+                                                                <select class="form-control" name="variabletypepatient" formControlName="variabletypepatient">
+                                                                    <option value="0" disabled>--Select--</option>
+                                                                    <option value="1">Numeric</option>
+                                                                    <option value="2">Percentage</option>
+
+                                                                </select>
+
+                                                            </label>
+                                                        </div>
+                                                        <div class="note note-error" *ngIf="!demosettingform.controls['variabletypepatient'].valid && demosettingform.controls['variabletypepatient'].touched">Please Select Variable Type.</div>
+                                                    </section>
+                                                    <section class="col col-3" style="display:none;">
+                                                        <label class="control-label">
+
+                                                        </label>
+                                                        <label class="input">
+                                                            <button type="button" class="btn btn-primary btn-sm" (click)="createformula()">
+                                                                Formula
+                                                            </button>
+                                                        </label>
+
+                                                    </section>
+                                                </div> -->
+                                                <div class="row">
+                                                        <div class="col-md-3" style="
+                                                          border: 1px ridge;margin-left: 2%"
+                                                    >
+
+
+                                                                <section>
+                                                                    <div class="col-md-12">
+                                                                        <label style="font-weight: bold;
+                                    font-size: larger;
+                                ">Variable Type
+        
+                                                                        </label>
+                                                                    </div>
+                                                                </section>
+                                                                <section>
+                                                                    <div class="col-md-12">
+        
+                                                                        <div class="form-group">
+                                                                            <div class="radio">
+                                                                                <label>
+                                                                                    <input type="radio" class="radiobox style-3"
+                                                                                        name="variabletypepatient"
+                                                                                        formControlName="variabletypepatient"
+                                                                                        value="1">
+                                                                                    <span>Numeric</span>
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="radio">
+                                                                                <label>
+                                                                                    <input type="radio" class="radiobox style-3"
+                                                                                        name="variabletypepatient"
+                                                                                        formControlName="variabletypepatient"
+                                                                                        value="2">
+                                                                                    <span>Percentage</span>
+                                                                                </label>
+                                                                            </div>
+        
+                                                                        </div>
+                                                                        <!-- <div class="alert alert-danger" *ngIf="!demosettingform.controls['patienteffect'].valid && demosettingform.controls['patienteffect'].touched">Please Select Variable Effect.</div> -->
+                                                                    </div>
+                                                                </section>
+        
+        
+                                                            </div>
+                                                    <div class="col-md-3" style="   border: 1px ridge;margin-left: 2%">
+                                                        <section>
+                                                            <div class="col-md-12">
+                                                                <label style="font-weight: bold;
+                                                                font-size: larger;margin-left: 5%
+                                                            ">Variable Effect
+
+                                                                </label>
+                                                            </div>
+                                                        </section>
+                                                        <section>
+                                                            <div class="col-md-12">
+
+                                                                <div class="form-group">
+                                                                    <div class="radio">
+                                                                        <label>
+                                                                            <input type="radio" class="radiobox style-3"
+                                                                                name="patienteffect"
+                                                                                formControlName="patienteffect"
+                                                                                value="Positive">
+                                                                            <span>Positive</span>
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="radio">
+                                                                        <label>
+                                                                            <input type="radio" class="radiobox style-3"
+                                                                                name="patienteffect"
+                                                                                formControlName="patienteffect"
+                                                                                value="Negative">
+                                                                            <span>Negative</span>
+                                                                        </label>
+                                                                    </div>
+
+                                                                </div>
+                                                                <!-- <div class="alert alert-danger" *ngIf="!demosettingform.controls['patienteffect'].valid && demosettingform.controls['patienteffect'].touched">Please Select Variable Effect.</div> -->
+                                                            </div>
+                                                        </section>
+                                                    </div>
+                                                
+                                                </div>
+                                                <section>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+
+                                                            <!-- <input type="text" class="form-control" formControlName="CategoryID"/> -->
+
+
+                                                            <label>
+                                                                <input type="checkbox" class="checkbox style-3"
+                                                                    name="Isactivepatient"
+                                                                    formControlName="Isactivepatient" />
+                                                                <span>Is Active</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </section>
+
+                                                <div class="row">
+                                                    <section class="col col-6">
+
+                                                        <div class="table-responsive"
+                                                            style="overflow-y: auto;height: 140px;border-style:ridge">
+
+
+
+                                                            <table
+                                                                class="table table-bordered table-striped table-hover">
+
+                                                                <thead>
+                                                                    <tr>
+                                                                        <!-- <th>No.</th> -->
+                                                                        <th>Variable</th>
+                                                                        <!-- <th>Data Type</th>
+                                                                        <th>Type</th>
+
+
+
+                                                                        <th>Use On</th>
+
+                                                                        <th>Formula</th>
+                                                                        <th>Active</th> -->
+                                                                    </tr>
+                                                                </thead>
+
+                                                                <tbody>
+                                                                    <tr *ngFor="let item of patientassumption; let i = index;"
+                                                                        (click)="smartModEg1(item,'Patient')">
+                                                                        <!-- <td>
+                                                                            {{i+1}}
+                                                                        </td> -->
+                                                                        <td>
+                                                                            {{item.variableName}}
+                                                                        </td>
+                                                                        <!-- <td>
+                                                                            {{item.variableDataTypeName}}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{item.assumptionTypename}}
+                                                                        </td>
+
+
+                                                                        <td>
+                                                                            {{item.useOn}}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{item.variableFormula}}
+                                                                        </td>
+
+
+                                                                        <td>
+                                                                            {{item.isActive}}
+                                                                        </td> -->
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+
+
+                                                        </div>
+
+                                                    </section>
+                                                    <section class="col col-6">
+                                                        <!-- <table >
+                                                                <thead>
+                                                                <tr>
+                                                                  <th >Suggusted Variables</th>
+                                                                 
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <tr>
+                                                                  <td> -->
+                                                        <p><b> Suggestions. Click on the buttons to add the suggestions
+                                                                to the model</b></p>
+
+                                                        <div class="btn-group-vertical">
+                                                            <button class="btn btn-primary btn-sm bg-color-pink"
+                                                                *ngFor="let item of filtersuggustionlist; let i = index;"
+                                                                type="button" (click)="addAssumption(1,item.name)">
+                                                                {{item.name}}
+                                                            </button>
+                                                            <!-- <button type="button" class="btn btn-default">
+                                                                        Middle
+                                                                      </button>
+                                                                      <button type="button" class="btn btn-default">
+                                                                        Bottom
+                                                                      </button> -->
+                                                        </div>
+                                                        <!-- </td>
+                                                                
+                                                                  </tr>
+                                                                  </tbody>
+                                                                  </table> -->
+                                                    </section>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" [class.active]="activeStep.key == 'step5'">
+                                                <br>
+
+                                                <!-- / <h3><strong>Step 1 </strong> - Define Program</h3> -->
+                                                <br>
+                                                <div class="row">
+                                                <section class="col col-6">
+
+                                                    <div class="form-group"
+                                                        [ngClass]="{'has-error':!demosettingform.controls['variablenametesting'].valid && demosettingform.controls['variablenametesting'].touched}">
+
+                                                        <!-- <input type="text" class="form-control" formControlName="CategoryID"/> -->
+
+                                                        <label class="control-label">Variable Name
+
+                                                        </label>
+                                                        <label class="input">
+                                                            <input type="text" class="form-control"
+                                                                name="variablenametesting"
+                                                                formControlName="variablenametesting" />
+                                                        </label>
+                                                    </div>
+                                                    <div class="note note-error"
+                                                        *ngIf="demosettingform.controls['variablenametesting'].hasError('required') && demosettingform.controls['variablenametesting'].touched">
+                                                        Please enter Variable Name.</div>
+                                                    <div class="note note-error"
+                                                        *ngIf="demosettingform.controls['variablenametesting'].hasError('maxlength') && demosettingform.controls['variablenametesting'].touched">
+                                                        Maximun 200 charaters are allowed</div>
+                                                </section>
+                                                <section class="col col-6">
+
+                                                        <div class="form-group">
+    
+                                                            <label class="control-label">
+    
+                                                            </label>
+                                                            <label class="input">
+                                                                <button type="button" class="btn btn-primary btn-sm"
+                                                                    (click)="addAssumption(3)"
+                                                                    [disabled]="!demosettingform.controls['variablenametesting'].valid || !demosettingform.controls['variabletypetesting'].valid">
+                                                                    Add
+                                                                </button>
+                                                            </label>
+    
+                                                        </div>
+    
+                                                    </section>
+                                                </div>
+                                                <!-- <div class="row">
+                                                <section class="col col-8">
+                                                   
+                                                        <div class="form-group" [ngClass]="{'has-error':!demosettingform.controls['variabletypetesting'].valid && demosettingform.controls['variabletypetesting'].touched}">
+                                                            <label class="control-label">Variable Type
+
+                                                            </label>
+                                                            <label class="input">
+                                                                <select class="form-control" name="variabletypetesting" formControlName="variabletypetesting">
+                                                                    <option value="0" disabled>--Select--</option>
+                                                                    <option value="1">Numeric</option>
+                                                                    <option value="2">Percentage</option>
+
+                                                                </select>
+
+                                                            </label>
+                                                        </div>
+                                                        <div class="note note-error" *ngIf="!demosettingform.controls['variabletypetesting'].valid && demosettingform.controls['variabletypetesting'].touched">Please select Variable Type.</div>
+                                                </section>
+                                                <section class="col col-3">
+                                                        <label class="control-label">
+
+                                                        </label>
+                                                        <label class="input">
+                                                            <button type="button" class="btn btn-primary btn-sm" (click)="createformula()">
+                                                                Formula
+                                                            </button>
+                                                        </label>
+                                                  
+                                                </section>
+                                                </div> -->
+                                                <div class="row">
+                                                        <div class="col-md-3" style="
+                                                          border: 1px ridge;margin-left: 2%
+                                                    ">
+
+
+                                                                <section>
+                                                                    <div class="col-md-12">
+                                                                        <label style="font-weight: bold;
+                                                                                    font-size: larger;
+                                                                                ">Variable Type
+        
+                                                                        </label>
+                                                                    </div>
+                                                                </section>
+                                                                <section>
+                                                                    <div class="col-md-12">
+        
+                                                                        <div class="form-group">
+                                                                            <div class="radio">
+                                                                                <label>
+                                                                                    <input type="radio" class="radiobox style-3"
+                                                                                        name="variabletypetesting"
+                                                                                        formControlName="variabletypetesting"
+                                                                                        value="1">
+                                                                                    <span>Numeric</span>
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="radio">
+                                                                                <label>
+                                                                                    <input type="radio" class="radiobox style-3"
+                                                                                        name="variabletypetesting"
+                                                                                        formControlName="variabletypetesting"
+                                                                                        value="2">
+                                                                                    <span>Percentage</span>
+                                                                                </label>
+                                                                            </div>
+        
+                                                                        </div>
+                                                                        <!-- <div class="alert alert-danger" *ngIf="!demosettingform.controls['patienteffect'].valid && demosettingform.controls['patienteffect'].touched">Please Select Variable Effect.</div> -->
+                                                                    </div>
+                                                                </section>
+        
+        
+                                                            </div>
+                                                    <div class="col-md-3" style="   border: 1px ridge;margin-left: 2%">
+                                                        <section>
+                                                            <div class="col-md-12">
+                                                                <label style="font-weight: bold;
+                                                                    font-size: larger;margin-left: 5%
+                                                                ">Variable Effect
+
+                                                                </label>
+                                                            </div>
+                                                        </section>
+                                                        <section>
+                                                            <div class="col-md-12">
+
+                                                                <div class="form-group">
+                                                                    <div class="radio">
+                                                                        <label>
+                                                                            <input type="radio" class="radiobox style-3"
+                                                                                name="testingeffect"
+                                                                                formControlName="testingeffect"
+                                                                                value="Positive">
+                                                                            <span>Positive</span>
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="radio">
+                                                                        <label>
+                                                                            <input type="radio" class="radiobox style-3"
+                                                                                name="testingeffect"
+                                                                                formControlName="testingeffect"
+                                                                                value="Negative">
+                                                                            <span>Negative</span>
+                                                                        </label>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </section>
+                                                    </div>
+                                                
+                                                </div>
+
+                                                <section>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+
+                                                            <!-- <input type="text" class="form-control" formControlName="CategoryID"/> -->
+
+
+                                                            <label>
+                                                                <input type="checkbox" class="checkbox style-3"
+                                                                    name="Isactivetesting"
+                                                                    formControlName="Isactivetesting" />
+                                                                <span>Is Active</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </section>
+                                            
+                                                <div class="row">
+                                                    <section class="col col-6">
+
+                                                        <div class="table-responsive"
+                                                            style="overflow-y: auto;height: 140px;border-style:ridge">
+
+
+
+                                                            <table
+                                                                class="table table-bordered table-striped table-hover">
+
+                                                                <thead>
+                                                                    <tr>
+                                                                        <!-- <th>No.</th> -->
+                                                                        <th>Variable</th>
+                                                                        <!-- <th>Data Type</th>
+                                                                        <th>Type</th>
+
+
+
+                                                                        <th>Use On</th>
+
+                                                                        <th>Formula</th>
+                                                                        <th>Active</th> -->
+                                                                    </tr>
+                                                                </thead>
+
+                                                                <tbody>
+                                                                    <tr *ngFor="let item of testingassumption; let i = index;"
+                                                                        (click)="smartModEg1(item,'Test')">
+                                                                        <!-- <td>
+                                                                            {{i+1}}
+                                                                        </td> -->
+                                                                        <td>
+                                                                            {{item.variableName}}
+                                                                        </td>
+                                                                        <!-- <td>
+                                                                            {{item.variableDataTypeName}}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{item.assumptionTypename}}
+                                                                        </td>
+
+
+                                                                        <td>
+                                                                            {{item.useOn}}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{item.variableFormula}}
+                                                                        </td>
+
+
+                                                                        <td>
+                                                                            {{item.isActive}}
+                                                                        </td> -->
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+
+
+                                                        </div>
+
+                                                    </section>
+                                                    <section class="col col-6">
+                                                        <!-- <table >
+                                                                <thead>
+                                                                <tr>
+                                                                  <th >Suggusted Variables</th>
+                                                                 
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <tr>
+                                                                  <td> -->
+                                                        <p><b> Suggestions. Click on the buttons to add the suggestions
+                                                                to the model</b></p>
+
+                                                        <div class="btn-group-vertical">
+                                                            <button class="btn btn-primary btn-sm bg-color-pink"
+                                                                *ngFor="let item of filtersuggustionlist; let i = index;"
+                                                                type="button" (click)="addAssumption(3,item.name)">
+                                                                {{item.name}}
+                                                            </button>
+                                                            <!-- <button type="button" class="btn btn-default">
+                                                                        Middle
+                                                                      </button>
+                                                                      <button type="button" class="btn btn-default">
+                                                                        Bottom
+                                                                      </button> -->
+                                                        </div>
+                                                        <!-- </td>
+                                                                
+                                                                  </tr>
+                                                                  </tbody>
+                                                                  </table> -->
+                                                    </section>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" [class.active]="activeStep.key == 'step6'">
+                                                <br>
+
+                                                <!-- / <h3><strong>Step 1 </strong> - Define Program</h3> -->
+                                                <br>
+                                                <div class="row">
+                                                <section class="col col-6">
+
+                                                    <div class="form-group"
+                                                        [ngClass]="{'has-error':!demosettingform.controls['variablenameproduct'].valid && demosettingform.controls['variablenameproduct'].touched}">
+
+                                                        <!-- <input type="text" class="form-control" formControlName="CategoryID"/> -->
+
+                                                        <label class="control-label">Variable Name
+
+                                                        </label>
+                                                        <label class="input">
+                                                            <input type="text" class="form-control"
+                                                                name="variablenameproduct"
+                                                                formControlName="variablenameproduct" />
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="note note-error"
+                                                        *ngIf="demosettingform.controls['variablenameproduct'].hasError('required') && demosettingform.controls['variablenameproduct'].touched">
+                                                        Please enter Variable Name.</div>
+                                                    <div class="note note-error"
+                                                        *ngIf="demosettingform.controls['variablenameproduct'].hasError('maxlength') && demosettingform.controls['variablenameproduct'].touched">
+                                                        Maximun 200 charaters are allowed</div>
+                                                </section>
+                                                <section class="col col-6">
+
+                                                        <div class="form-group">
+    
+                                                            <label class="control-label">
+    
+                                                            </label>
+                                                            <label class="input">
+                                                                <button type="button" class="btn btn-primary btn-sm"
+                                                                    (click)="addAssumption(2)"
+                                                                    [disabled]="!demosettingform.controls['variablenameproduct'].valid || !demosettingform.controls['variabletypeproduct'].valid">
+                                                                    Add
+                                                                </button>
+                                                            </label>
+    
+                                                        </div>
+    
+    
+                                                    </section>
+                                                </div>
+                                                <!-- <div class="row">
+                                                    <section class="col col-8">
+
+                                                        <div class="form-group"
+                                                            [ngClass]="{'has-error':!demosettingform.controls['variabletypeproduct'].valid && demosettingform.controls['variabletypeproduct'].touched}">
+                                                            <label class="control-label">Variable Type
+
+                                                            </label>
+                                                            <label class="input">
+                                                                <select class="form-control" name="variabletypeproduct"
+                                                                    formControlName="variabletypeproduct">
+                                                                    <option value="0" disabled>--Select--</option>
+                                                                    <option value="1">Numeric</option>
+                                                                    <option value="2">Percentage</option>
+
+                                                                </select>
+
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="note note-error"
+                                                            *ngIf="!demosettingform.controls['variabletypeproduct'].valid && demosettingform.controls['variabletypeproduct'].touched">
+                                                            Please Select Variable Type.</div>
+                                                    </section>
+                                                    <section class="col col-3">
+                                                        <label class="control-label">
+
+                                                        </label>
+                                                        <label class="input">
+                                                            <button type="button" class="btn btn-primary btn-sm"
+                                                                (click)="createformula()">
+                                                                Formula
+                                                            </button>
+                                                        </label>
+
+                                                    </section>
+                                                </div> -->
+                                                <div class="row">
+                                                        <div class="col-md-3" style="
+                                                         border: 1px ridge;margin-left: 2%">
+                                                                <section>
+                                                                        <div class="col-md-12">
+                                                                            <label style="font-weight: bold;
+                                                                                        font-size: larger;
+                                                                                    ">Variable Type
+            
+                                                                            </label>
+                                                                        </div>
+                                                                    </section>
+                                                        <section>
+                                                                <div class="col-md-12">
+        
+                                                                    <div class="form-group">
+                                                                        <div class="radio">
+                                                                            <label>
+                                                                                <input type="radio" class="radiobox style-3"
+                                                                                    name="variabletypeproduct"
+                                                                                    formControlName="variabletypeproduct"
+                                                                                    value="1">
+                                                                                <span>Numeric</span>
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="radio">
+                                                                            <label>
+                                                                                <input type="radio" class="radiobox style-3"
+                                                                                    name="variabletypeproduct"
+                                                                                    formControlName="variabletypeproduct"
+                                                                                    value="2">
+                                                                                <span>Percentage</span>
+                                                                            </label>
+                                                                        </div>
+        
+                                                                    </div>
+                                                                    <!-- <div class="alert alert-danger" *ngIf="!demosettingform.controls['patienteffect'].valid && demosettingform.controls['patienteffect'].touched">Please Select Variable Effect.</div> -->
+                                                                </div>
+                                                            </section>
+                                                            </div>
+                                                    <div class="col-md-3" style="   border: 1px ridge;margin-left: 2%">
+                                                <section>
+                                                    <div class="col-md-12">
+                                                        <label style="font-weight: bold;
+                                                                        font-size: larger;margin-left: 5%
+                                                                    ">Variable Effect
+
+                                                        </label>
+                                                    </div>
+                                                </section>
+                                                <section>
+                                                    <div class="col-md-12">
+
+                                                        <div class="form-group">
+                                                            <div class="radio">
+                                                                <label>
+                                                                    <input type="radio" class="radiobox style-3"
+                                                                        name="producteffect"
+                                                                        formControlName="producteffect"
+                                                                        value="Positive">
+                                                                    <span>Positive</span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="radio">
+                                                                <label>
+                                                                    <input type="radio" class="radiobox style-3"
+                                                                        name="producteffect"
+                                                                        formControlName="producteffect"
+                                                                        value="Negative">
+                                                                    <span>Negative</span>
+                                                                </label>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </section>
+                                          
+                                                </div>
+                                               
+                                                </div>
+                                                <section>
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+    
+                                                                <!-- <input type="text" class="form-control" formControlName="CategoryID"/> -->
+    
+    
+                                                                <label>
+                                                                    <input type="checkbox" class="checkbox style-3"
+                                                                        name="Isactiveproduct"
+                                                                        formControlName="Isactiveproduct" />
+                                                                    <span>Is Active</span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </section>
+                                               
+                                                <div class="row">
+                                                    <section class="col col-6">
+
+                                                        <div class="table-responsive"
+                                                            style="overflow-y: auto;height: 140px;border-style:ridge">
+
+
+
+                                                            <table
+                                                                class="table table-bordered table-striped table-hover">
+
+                                                                <thead>
+                                                                    <tr>
+                                                                        <!-- <th>No.</th> -->
+                                                                        <th>Variable</th>
+                                                                        <!-- <th>Data Type</th>
+                                                                        <th>Type</th>
+
+
+
+                                                                        <th>Use On</th>
+
+                                                                        <th>Formula</th>
+                                                                        <th>Active</th> -->
+                                                                    </tr>
+                                                                </thead>
+
+                                                                <tbody>
+                                                                    <tr *ngFor="let item of productassumption; let i = index;"
+                                                                        (click)="smartModEg1(item,'Product')">
+                                                                        <!-- <td>
+                                                                            {{i+1}}
+                                                                        </td> -->
+                                                                        <td>
+                                                                            {{item.variableName}}
+                                                                        </td>
+                                                                        <!-- <td>
+                                                                            {{item.variableDataTypeName}}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{item.assumptionTypename}}
+                                                                        </td>
+
+
+                                                                        <td>
+                                                                            {{item.useOn}}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{item.variableFormula}}
+                                                                        </td>
+
+
+                                                                        <td>
+                                                                            {{item.isActive}}
+                                                                        </td> -->
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+
+
+                                                        </div>
+
+                                                    </section>
+                                                    <section class="col col-6">
+                                                        <!-- <table >
+                                                                <thead>
+                                                                <tr>
+                                                                  <th >Suggusted Variables</th>
+                                                                 
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <tr>
+                                                                  <td> -->
+                                                        <p><b> Suggestions. Click on the buttons to add the suggestions
+                                                                to the model</b></p>
+
+                                                        <div class="btn-group-vertical">
+                                                            <button class="btn btn-primary btn-sm bg-color-pink"
+                                                                *ngFor="let item of filtersuggustionlist; let i = index;"
+                                                                type="button" (click)="addAssumption(2,item.name)">
+                                                                {{item.name}}
+                                                            </button>
+                                                            <!-- <button type="button" class="btn btn-default">
+                                                                        Middle
+                                                                      </button>
+                                                                      <button type="button" class="btn btn-default">
+                                                                        Bottom
+                                                                      </button> -->
+                                                        </div>
+                                                        <!-- </td>
+                                                                
+                                                                  </tr>
+                                                                  </tbody>
+                                                                  </table> -->
+                                                    </section>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" [class.active]="activeStep.key == 'step7'">
+                                                <br>
+
+                                                <!-- / <h3><strong>Step 1 </strong> - Define Program</h3> -->
+                                                <br>
+                                                <section>
+                                                    <div class="form-group">
+                                                        <label style="font-weight: bold;
+                                                                            font-size: larger;
+                                                                        ">How many years/does this testing Protocol
+                                                            cycle have?1/2
+
+                                                        </label>
+                                                    </div>
+                                                </section>
+                                                <section>
+
+                                                    <div class="form-group" style="display:none">
+                                                        <div class="radio">
+                                                            <label class="control-label">
+
+                                                            </label>
+                                                            <label>
+                                                                <input type="radio" class="radiobox style-3"
+                                                                    name="effest" checked>
+                                                                <span>General Testing Protocol</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </section>
+                                                <div class="row">
+                                                    <section class="col col-4">
+
+                                                        <div class="form-group"
+                                                            [ngClass]="{'has-error':!demosettingform.controls['Years'].valid && demosettingform.controls['Years'].touched}">
+                                                            <label class="control-label">Years
+
+                                                            </label>
+                                                            <label class="input">
+                                                                <select class="form-control" name="Years"
+                                                                    formControlName="Years">
+                                                                    <option value="0" disabled>--Select--</option>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+
+                                                                </select>
+
+                                                            </label>
+                                                        </div>
+                                                        <div class="note note-error"
+                                                            *ngIf="!demosettingform.controls['Years'].valid && demosettingform.controls['Years'].touched">
+                                                            Please Select Years.</div>
+
+                                                    </section>
+                                                    <section class="col col-4">
+                                                        <div class="form-group">
+
+                                                            <label class="control-label">
+
+                                                            </label>
+                                                            <label class="input">
+                                                                <button type="button" class="btn btn-primary btn-sm"
+                                                                    (click)="updateprogramyears()"
+                                                                    [disabled]="!demosettingform.controls['Years'].valid">
+                                                                    Add
+                                                                </button>
+                                                            </label>
+
+                                                        </div>
+
+
+                                                    </section>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="tab-pane" [class.active]="activeStep.key == 'step8'">
+                                                <br>
+
+                                                <!-- / <h3><strong>Step 1 </strong> - Define Program</h3> -->
+                                                <br>
+                                                <section>
+                                                    <div class="form-group">
+                                                        <label style="font-weight: bold;
+                                                                            font-size: larger;
+                                                                        ">Program Name :
+
+                                                        </label>
+                                                        <label>{{programname}}</label>
+                                                    </div>
+                                                </section>
+                                                <section>
+
+                                                    <div class="form-group">
+                                                        <label style="font-weight: bold;
+                                                                            font-size: larger;
+                                                                        ">Forecasting Method Variable
+
+                                                        </label>
+                                                    </div>
+                                                </section>
+                                                <section>
+                                                    <div class="row" id="content">
+                                                        <div class="table-responsive"
+                                                            style="overflow-y: auto;height: 140px;border-style:ridge">
+
+
+
+                                                            <table
+                                                                class="table table-bordered table-striped table-hover">
+
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>No.</th>
+                                                                        <th>Method</th>
+                                                                        <th>Data Type</th>
+                                                                        <th>Variable Name</th>
+
+                                                                        <th>Use On</th>
+                                                                        <th>Active</th>
+                                                                    </tr>
+                                                                </thead>
+
+                                                                <tbody>
+                                                                        <ng-container *ngFor="let item of MMforcastparameter; let i = index;">  
+                                                                    <tr  *ngIf="item.isActive=='Yes'">
+                                                                        <td>
+                                                                            {{i+1}}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{item.forecastMethodname}}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{item.variableDataTypename}}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{item.variableName}}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{item.useOn}}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{item.isActive}}
+                                                                        </td>
+                                                                    </tr>
+                                                                    </ng-container>
+                                                                </tbody>
+                                                            </table>
+
+
+                                                        </div>
+                                                    </div>
+                                                </section>
+
+                                                <section>
+
+                                                    <div class="form-group">
+                                                        <label style="font-weight: bold;
+                                                                            font-size: larger;
+                                                                        ">Patient/Population Group
+                                                        </label>
+                                                    </div>
+                                                </section>
+                                                <section>
+                                                    <div class="row" id="content">
+                                                        <div class="table-responsive"
+                                                            style="overflow-y: auto;height: 140px;border-style:ridge">
+
+
+
+                                                            <table
+                                                                class="table table-bordered table-striped table-hover">
+
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>No.</th>
+
+                                                                        <th>Group Name</th>
+
+
+                                                                        <th>Active</th>
+                                                                    </tr>
+                                                                </thead>
+
+                                                                <tbody>
+                                                                        <ng-container  *ngFor="let item of patientgroup; let i = index;">  
+                                                                    <tr *ngIf="item.isActive=='Yes'"  >
+                                                                        <td>
+                                                                            {{i+1}}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{item.groupName}}
+                                                                        </td>
+
+                                                                        <td>
+                                                                            {{item.isActive}}
+                                                                        </td>
+                                                                    </tr>
+                                                                    </ng-container>
+                                                                </tbody>
+                                                            </table>
+
+
+                                                        </div>
+                                                    </div>
+                                                </section>
+
+                                                <section>
+
+                                                    <div class="form-group">
+                                                        <label style="font-weight: bold;
+                                                                            font-size: larger;
+                                                                        ">Patient Assumptions
+                                                        </label>
+                                                    </div>
+                                                </section>
+                                                <section>
+                                                    <div class="row" id="content">
+                                                        <div class="table-responsive"
+                                                            style="overflow-y: auto;height: 140px;border-style:ridge">
+
+
+
+                                                            <table
+                                                                class="table table-bordered table-striped table-hover">
+
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>No.</th>
+                                                                        <th>Variable</th>
+                                                                        <th>Data Type</th>
+                                                                        <th>Type</th>
+
+
+
+                                                                        <th>Use On</th>
+
+                                                                        <th>Formula</th>
+                                                                        <th>Active</th>
+                                                                    </tr>
+                                                                </thead>
+
+                                                                <tbody>
+                                                                        <ng-container  *ngFor="let item of patientassumption; let i = index;">
+                                                                    <tr
+                                                                    *ngIf="item.isActive=='Yes'">
+                                                                        <td>
+                                                                            {{i+1}}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{item.variableName}}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{item.variableDataTypeName}}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{item.assumptionTypename}}
+                                                                        </td>
+
+
+                                                                        <td>
+                                                                            {{item.useOn}}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{item.variableFormula}}
+                                                                        </td>
+
+
+                                                                        <td>
+                                                                            {{item.isActive}}
+                                                                        </td>
+                                                                    </tr>
+                                                                </ng-container>
+                                                                </tbody>
+                                                            </table>
+
+
+                                                        </div>
+                                                    </div>
+                                                </section>
+
+                                                <section>
+
+                                                    <div class="form-group">
+                                                        <label style="font-weight: bold;
+                                                                            font-size: larger;
+                                                                        ">Testing Assumptions
+                                                        </label>
+                                                    </div>
+                                                </section>
+                                                <section>
+                                                    <div class="row" id="content">
+                                                        <div class="table-responsive"
+                                                            style="overflow-y: auto;height: 140px;border-style:ridge">
+
+
+
+                                                            <table
+                                                                class="table table-bordered table-striped table-hover">
+
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>No.</th>
+                                                                        <th>Variable</th>
+                                                                        <th>Data Type</th>
+                                                                        <th>Type</th>
+
+
+
+                                                                        <th>Use On</th>
+
+                                                                        <th>Formula</th>
+                                                                        <th>Active</th>
+                                                                    </tr>
+                                                                </thead>
+
+                                                                <tbody>
+                                                                    <ng-container   *ngFor="let item of testingassumption; let i = index;" >
+                                                                    <tr *ngIf="item.isActive=='Yes'">
+                                                                        <td>
+                                                                            {{i+1}}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{item.variableName}}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{item.variableDataTypeName}}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{item.assumptionTypename}}
+                                                                        </td>
+
+
+                                                                        <td>
+                                                                            {{item.useOn}}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{item.variableFormula}}
+                                                                        </td>
+
+
+                                                                        <td>
+                                                                            {{item.isActive}}
+                                                                        </td>
+                                                                    </tr>
+                                                                </ng-container>
+                                                                </tbody>
+                                                            </table>
+
+
+                                                        </div>
+                                                    </div>
+                                                </section>
+
+                                                <section>
+
+                                                    <div class="form-group">
+                                                        <label style="font-weight: bold;
+                                                                            font-size: larger;
+                                                                        ">Product Assumptions
+                                                        </label>
+                                                    </div>
+                                                </section>
+                                                <section>
+                                                    <div class="row" id="content">
+                                                        <div class="table-responsive"
+                                                            style="overflow-y: auto;height: 140px;border-style:ridge">
+
+
+
+                                                            <table
+                                                                class="table table-bordered table-striped table-hover">
+
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>No.</th>
+                                                                        <th>Variable</th>
+                                                                        <th>Data Type</th>
+                                                                        <th>Type</th>
+
+
+
+                                                                        <th>Use On</th>
+
+                                                                        <th>Formula</th>
+                                                                        <th>Active</th>
+                                                                    </tr>
+                                                                </thead>
+
+                                                                <tbody>
+                                                                        <ng-container  *ngFor="let item of productassumption; let i = index;">
+                                                                        <tr *ngIf="item.isActive=='Yes'">
+                                                                  
+                                                                        <td>
+                                                                            {{i+1}}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{item.variableName}}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{item.variableDataTypeName}}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{item.assumptionTypename}}
+                                                                        </td>
+
+
+                                                                        <td>
+                                                                            {{item.useOn}}
+                                                                        </td>
+                                                                        <td>
+                                                                            {{item.variableFormula}}
+                                                                        </td>
+
+
+                                                                        <td>
+                                                                            {{item.isActive}}
+                                                                        </td>
+                                                                    </tr>
+                                                                    </ng-container>
+                                                                </tbody>
+                                                            </table>
+
+
+                                                        </div>
+                                                    </div>
+                                                </section>
+                                            </div>
+
+
+                                            <!-- <div class="form-actions">
+                                               
+                                                  <div class="col-sm-12">
+                                                    <ul class="pager wizard no-margin">
+                                                      <li class="previous">
+                                                        <a (click)="backtotabs()" [class.disabled]="steps.indexOf(activeStep) == 0"
+                                                                class="btn btn-lg btn-default"> Previous
+                                                        </a>
+                                                      </li>
+                                                      <li class="next">
+                                                        <a (click)="Fillforecastparameter()" [class.disabled]="activeStep.submitted && !activeStep.valid" class="btn btn-lg txt-color-darken"> Next
+                                                        </a>
+                                                      </li>
+                                                    </ul>
+                                                 
+                                                </div>
+                                              </div> -->
+
+                                        </div>
+                                    </div>
+
+                                </fieldset>
+                                <footer>
+
+                                    <button type="button" class="btn btn-primary" (click)="backtotabs()"
+                                        [disabled]="backstatus" style="float: left;">
+
+                                        Previous
+                                    </button>
+
+                                    <button class="btn btn-primary" (click)="Fillforecastparameter()"
+                                        [disabled]="nextstatus">
+
+                                        Next
+                                    </button>
+
+                                </footer>
+                                <!-- </div> -->
+
+                            </form>
+
+                            <!-- end widget content -->
+
+                        </div>
+                        <!-- end widget div -->
+
+                    </div>
+
+                </div>
+
+
+
+            </article>
+        </div>
+    </sa-widgets-grid>
+</div>
+
+
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" (click)="lgModal.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Add Variable Formula</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="category"> Define For</label>
+                            <select class="form-control" (change)="getdefinevariable($event)">
+                                <option value="0" selected>--Select--</option>
+                                <option *ngFor="let Definefor of Defineforlist" [value]="Definefor.id">
+                                    {{Definefor.variableName}}</option>
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="padding: 8px;">
+                    <div class="col-md-7">
+                        <label for="category1">Click on the variable list below to add them in. ( ) characters are
+                            allowed</label>
+                    </div>
+                    <div class="col-md-5" style="text-align: right;">
+
+                        <button type="button" class="btn btn-primary" (click)="Addoperators('+')">
+                            +
+                        </button>
+                        <button type="button" class="btn btn-primary" (click)="Addoperators('-')">
+                            -
+                        </button>
+                        <button type="button" class="btn btn-primary" (click)="Addoperators('X')">
+                            X
+                        </button>
+                        <button type="button" class="btn btn-primary" (click)="Addoperators('÷')">
+                            ÷
+                        </button>
+                        <button type="button" class="btn btn-primary" (click)="Addoperators('∑')">
+                            ∑
+                        </button>
+                        <button type="button" class="btn btn-primary" (click)="Addoperators('√')">
+                            √
+                        </button>
+                        <button type="button" class="btn btn-primary" (click)="Addoperators('^')">
+                            ^
+                        </button>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="form-group">
+                            <textarea #formulatext class="form-control" placeholder="Formula" rows="4"
+                                required></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary" (click)="saveformula()">
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="content">
+                    <div class="table-responsive" style="overflow-y: auto;height: 140px;border-style:ridge">
+
+
+
+                        <table class="table table-bordered table-striped table-hover">
+
+                            <thead>
+                                <tr>
+                                    <th>Variable Code</th>
+                                    <th>Data Type</th>
+                                    <th>Variable Name</th>
+                                    <th>Formula</th>
+
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr *ngFor="let item of Variablelist; let i = index;"
+                                    (click)="addvarcodeinformula(item.varCode)">
+                                    <td>
+                                        {{item.varCode}}
+                                    </td>
+                                    <td>
+                                        {{item.variableDataTypeName}}
+                                    </td>
+                                    <td>
+                                        {{item.variableName}}
+                                    </td>
+                                    <td>
+                                        {{item.variableFormula}}
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div bsModal #lgModal1="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content" >
+                <div class="modal-header">
+                    <strong>Confirmation</strong>
+                    <button type="button" class="close" (click)="lgModal1.hide()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    
+                </div>
+                <div class="modal-body">
+      
+                    <div class="row">
+                        
+                   
+                          Do you want to add as Suggestion variable?
+      
+                
+                </div>
+                </div>
+                <div class="modal-footer">
+                        <button type="button" class="btn btn-primary btn-sm" (click)="savesugguestion()">
+                                Yes
+                            </button>
+                            <button type="button" class="btn btn-default btn-sm" (click)="lgModal1.hide()">
+                                    No
+                                </button>
+                    </div>
+      
+            </div>
+        </div>
+      </div>

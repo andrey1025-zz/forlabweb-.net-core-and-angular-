@@ -1,0 +1,309 @@
+<header id="header" class="animated fadeInDown">
+
+  <div id="logo-group">
+    <span id="logo"> <img src="assets/img/FørLablogo.jpg" alt="SmartAdmin" style="
+      width: 90px;margin-top: -12px;
+  "> </span>
+  </div>
+
+  <span id="extr-page-header-space">
+    <span class="hidden-mobile hiddex-xs">Already registered?</span> <a routerLink="/login" class="btn btn-danger">Sign
+      In</a> </span>
+
+</header>
+<div id="main" role="main" class="animated fadeInDown">
+
+  <!-- MAIN CONTENT -->
+  <div id="content" class="container">
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 hidden-xs hidden-sm">
+        <h1 class="txt-color-red login-header-big">ForLab+</h1>
+
+        <div class="hero">
+          <div class="pull-left login-desc-box-l">
+            <h4 class="paragraph-header">ForLab+ is a standardized, open-source web based tool with clearly defined
+              requirements, improving programs’ ability to collect and analyze data to accurately forecast commodity
+              needs. ForLab+ performs long-and short-term forecasts and guides improvements in diagnostic services.</h4>
+
+            <div class="login-app-icons">
+              <a routerLink="/landing" class="btn btn-danger btn-sm">Read more about ForLab+</a>
+              <a href="https://storage.googleapis.com/forlabaj.appspot.com/For%20Lab.zip"
+                class="btn btn-danger btn-sm">Download window version</a>
+            </div>
+          </div>
+          <img src="https://storage.googleapis.com/forlabaj.appspot.com/dist/assets/img/demo/iphoneview.png"
+            class="pull-right display-image" alt="" style="width:210px">
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <h5 class="about-heading">Who is ForLab+ for?</h5>
+
+            <p>
+              Organizations ranging from individual laboratories to Ministries of health could use ForLab+ to analyze
+              laboratory product consumption, test performed and demographic morbidity data to create accurate demand
+              forecast for laboratory commodities.<a routerLink="/landing"> Read more…
+              </a>
+            </p>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <h5 class="about-heading">Who are we, Opian Health</h5>
+
+            <p>
+              Creating successful healthcare software differs substantially from traditional software. Healthcare
+              software demands unique domain expertise, project methodology, and software architecture patterns. Opian
+              Health Information Technology Solutions has been founded with the above idea in mind and aims at
+              addressing the critical issues of health IT.
+              <a routerLink="/landing"> Read more…
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+        <div class="well no-padding">
+
+          <form class="smart-form client-form" #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+            <header>
+              Registration
+            </header>
+            <fieldset>
+              <div class="row">
+                <section class="col col-6">
+                  <label class="input">
+                    <input type="text" name="firstname" [(ngModel)]="model.firstname" #firstname="ngModel"
+                      class="form-control" placeholder="First name" required>
+                  </label>
+                  <div class="note note-error" *ngIf="firstname.errors && firstname.touched">Please Enter Firstname
+                  </div>
+                </section>
+                <section class="col col-6">
+                  <label class="input">
+                    <input type="text" name="lastname" [(ngModel)]="model.lastname" #lastname="ngModel"
+                      class="form-control" placeholder="Last name" required>
+                  </label>
+                  <div class="note note-error" *ngIf="lastname.errors && lastname.touched">Please Enter lastname</div>
+                </section>
+              </div>
+
+              <section>
+                <label class="input"> <i class="icon-append fa fa-user"></i>
+                  <input type="text" name="username" [(ngModel)]="model.username" #username="ngModel"
+                    class="form-control" placeholder="Username" required>
+                  <b class="tooltip tooltip-bottom-right">Needed to enter Username</b> </label>
+                <div class="note note-error" *ngIf="username.errors && username.touched">Please Enter UserName</div>
+              </section>
+
+              <section>
+                <div class="form-group" [ngClass]="{'has-error':!email.valid && email.touched}">
+                  <label class="input"> <i class="icon-append fa fa-envelope"></i>
+                    <input type="email" name="email" [(ngModel)]="model.email" #email="ngModel" class="form-control"
+                      placeholder="Email address" required email>
+                    <b class="tooltip tooltip-bottom-right">Needed to verify your account</b> </label>
+                </div>
+                <div class="note note-error" *ngIf="email.errors && email.touched">Please enter valid email address
+                </div>
+
+              </section>
+
+              <section>
+                <label class="input"> <i class="icon-append fa fa-lock"></i>
+                  <input type="password" name="password" [(ngModel)]="model.password" #password="ngModel"
+                    class="form-control" placeholder="Password" id="password" required validateEqual="confirmPassword"
+                    reverse="true"
+                    pattern="(?=^.{6,10}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?!.*\s).*$">
+                  <b class="tooltip tooltip-bottom-right"> Password Should atleast have 1 small-case letter, 1 Capital
+                    letter, 1 digit, 1 special character and the length should be between 6-10 characters. The sequence
+                    of the characters is not important.</b> </label>
+                <div class="note note-error" *ngIf="password.errors && password.touched">Please enter valid password
+                </div>
+              </section>
+
+              <section>
+                <label class="input"> <i class="icon-append fa fa-lock"></i>
+                  <input type="password" name="passwordConfirm" class="form-control" placeholder="Confirm password"
+                    [(ngModel)]="model.passwordConfirm" #passwordConfirm="ngModel" validateEqual="password">
+                  <b class="tooltip tooltip-bottom-right">Don't forget your password</b> </label>
+                <div class="note note-error" *ngIf="passwordConfirm.errors && passwordConfirm.touched">Password Mismatch
+                </div>
+              </section>
+              <section>
+                <label class="input"> <i class="icon-append fa fa-user"></i>
+                  <input type="text" name="organization" class="form-control" [(ngModel)]="model.organization"
+                    #organization="ngModel" placeholder="Organization" required>
+                  <b class="tooltip tooltip-bottom-right">Needed to enter the organization</b> </label>
+                <div class="note note-error" *ngIf="organization.errors && organization.touched">Please enter
+                  organization</div>
+              </section>
+
+              <section>
+
+                <label class="select">
+                  <select name="countryid" placeholder="country" [(ngModel)]="model.countryid" #countryid="ngModel"
+                    class="form-control" (change)="Getregion($event.target.value)" required>
+                    <option value="" disabled selected>--Select Country--</option>
+                    <option *ngFor="let country of countrylist" [value]="country.id">{{country.name}}</option>
+
+                  </select>
+                </label>
+                <div class="note note-error" *ngIf="countryid.errors && countryid.touched">Please Select Country</div>
+              </section>
+              <section>
+                <label class="input"> <i class="icon-append fa fa-user"></i>
+                  <input type="text" name="globalregion" class="form-control" [(ngModel)]="model.globalregion"
+                    #globalregion="ngModel" placeholder="Globalregion" disabled="true">
+                </label>
+              </section>
+
+
+              <section>
+                <label>
+                  <input type="checkbox" class="checkbox style-3" name="subscription" [(ngModel)]="model.subscription"
+                    #subscription="ngModel" />
+                  <span>I want to receive news and special offers</span></label>
+              </section>
+              <section>
+                <label>
+                  <input type="checkbox" class="checkbox style-3" name="terms" [(ngModel)]="model.terms"
+                    #terms="ngModel" required>
+                  <span>I agree with the <a href="#" (click)="openModal($event, termsModal)"> Terms and Conditions
+                    </a></span></label>
+
+
+                <div class="note note-error" *ngIf="terms.errors && terms.touched">Please Accept Terms & Conditions
+                </div>
+              </section>
+              <section *ngIf="false">
+                <label>
+                  <input type="checkbox" class="checkbox style-3" name="importdata" [(ngModel)]="model.importdata" />
+                  <span>Import Default Data</span>
+                </label>
+              </section>
+              <div *ngIf="model.importdata==true" class="row">
+                <section class="col col-4">
+                  <label>
+                    <input type="checkbox" class="checkbox style-3" name="chktest" [(ngModel)]="model.chktest" />
+                    <span>Tests</span>
+                  </label>
+
+                </section>
+                <section class="col col-4">
+                  <label>
+                    <input type="checkbox" class="checkbox style-3" name="chkproduct" [(ngModel)]="model.chkproduct" />
+                    <span>Products</span>
+                  </label>
+
+                </section>
+                <section class="col col-4">
+                  <label>
+                    <input type="checkbox" class="checkbox style-3" name="chkproductusage"
+                      [(ngModel)]="model.chkproductusage" />
+                    <span>Product Usages</span>
+                  </label>
+
+                </section>
+              </div>
+              <section *ngIf="model.importdata==true">
+                <label>
+                  <input type="checkbox" class="checkbox style-3" name="chkdemosettings"
+                    [(ngModel)]="model.chkdemosettings" />
+                  <span>Demographic Settings</span>
+                </label>
+              </section>
+              <div class="row">
+                <section *ngIf="model.chktest==true" class="col col-4">
+                  <h2>Testing Area
+
+                  </h2>
+                  <div class="form-group" style="    margin-left: 4px;
+                      border: 1px ridge;
+                      height: 300px;
+                      overflow-y: auto;
+                      padding: 10px;">
+                    <!-- <label>
+                            <input type="checkbox" class="checkbox style-3" (change)="selectallsites($event.target.checked)"/><span>Select All</span>
+                           </label> -->
+                    <div *ngFor="let data of Testingarealist">
+                      <label>
+                        <input type="checkbox" class="checkbox style-3"
+                          (change)="onChange(data.testingAreaID, $event.target.checked)" /><span>{{data.areaName}}</span>
+                        <br></label>
+                    </div>
+                  </div>
+
+
+                </section>
+                <section *ngIf="model.chkproduct==true" class="col col-4">
+                  <h2>Product Type
+
+                  </h2>
+                  <div class="form-group" style="    margin-left: 4px;
+                    border: 1px ridge;
+                    height: 300px;
+                    overflow-y: auto;
+                    padding: 10px;">
+                    <!-- <label>
+                          <input type="checkbox" class="checkbox style-3" (change)="selectallsites($event.target.checked)"/><span>Select All</span>
+                        </label> -->
+                    <div *ngFor="let data of ProductTypeList">
+                      <label>
+                        <input type="checkbox" class="checkbox style-3"
+                          (change)="ontypeChange(data.typeID, $event.target.checked)" /><span>{{data.typeName}}</span>
+                        <br></label>
+                    </div>
+                  </div>
+
+
+                </section>
+                <section *ngIf="model.chkdemosettings==true" class="col col-4">
+                  <h2>Program
+
+                  </h2>
+                  <div class="form-group" style="    margin-left: 4px;
+                    border: 1px ridge;
+                    height: 300px;
+                    overflow-y: auto;
+                    padding: 10px;">
+                    <!-- <label>
+                          <input type="checkbox" class="checkbox style-3" (change)="selectallsites($event.target.checked)"/><span>Select All</span>
+                        </label> -->
+                    <div *ngFor="let data of ProgramList">
+                      <label>
+                        <input type="checkbox" class="checkbox style-3"
+                          (change)="onprogramChange(data.id, $event.target.checked)" /><span>{{data.programName}}</span>
+                        <br></label>
+                    </div>
+                  </div>
+
+
+                </section>
+              </div>
+            </fieldset>
+
+
+            <footer>
+              <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">
+                Register
+              </button>
+            </footer>
+
+            <div class="message">
+              <i class="fa fa-check"></i>
+              <p>
+                Thank you for your registration! Verification link has been send to your email id Please activate your
+                account
+              </p>
+            </div>
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<ng-template #termsModal>
+  <smart-terms-modal (agree)="onTermsAgree()" (close)="onTermsClose()"></smart-terms-modal>
+</ng-template>

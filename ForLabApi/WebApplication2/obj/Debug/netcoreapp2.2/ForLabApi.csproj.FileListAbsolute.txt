@@ -1,0 +1,15 @@
+E:\Jyoti\Zelalem_web\Zelalem_web21122019\Zelalem_web17112018\ForLabApi\WebApplication2\bin\Debug\netcoreapp2.2\ForLabApi.deps.json
+E:\Jyoti\Zelalem_web\Zelalem_web21122019\Zelalem_web17112018\ForLabApi\WebApplication2\bin\Debug\netcoreapp2.2\ForLabApi.runtimeconfig.json
+E:\Jyoti\Zelalem_web\Zelalem_web21122019\Zelalem_web17112018\ForLabApi\WebApplication2\bin\Debug\netcoreapp2.2\ForLabApi.runtimeconfig.dev.json
+E:\Jyoti\Zelalem_web\Zelalem_web21122019\Zelalem_web17112018\ForLabApi\WebApplication2\bin\Debug\netcoreapp2.2\ForLabApi.dll
+E:\Jyoti\Zelalem_web\Zelalem_web21122019\Zelalem_web17112018\ForLabApi\WebApplication2\bin\Debug\netcoreapp2.2\ForLabApi.pdb
+E:\Jyoti\Zelalem_web\Zelalem_web21122019\Zelalem_web17112018\ForLabApi\WebApplication2\obj\Debug\netcoreapp2.2\ForLabApi.csprojResolveAssemblyReference.cache
+E:\Jyoti\Zelalem_web\Zelalem_web21122019\Zelalem_web17112018\ForLabApi\WebApplication2\obj\Debug\netcoreapp2.2\ForLabApi.csproj.CoreCompileInputs.cache
+E:\Jyoti\Zelalem_web\Zelalem_web21122019\Zelalem_web17112018\ForLabApi\WebApplication2\obj\Debug\netcoreapp2.2\ForLabApi.RazorAssemblyInfo.cache
+E:\Jyoti\Zelalem_web\Zelalem_web21122019\Zelalem_web17112018\ForLabApi\WebApplication2\obj\Debug\netcoreapp2.2\ForLabApi.RazorAssemblyInfo.cs
+E:\Jyoti\Zelalem_web\Zelalem_web21122019\Zelalem_web17112018\ForLabApi\WebApplication2\obj\Debug\netcoreapp2.2\ForLabApi.AssemblyInfoInputs.cache
+E:\Jyoti\Zelalem_web\Zelalem_web21122019\Zelalem_web17112018\ForLabApi\WebApplication2\obj\Debug\netcoreapp2.2\ForLabApi.AssemblyInfo.cs
+E:\Jyoti\Zelalem_web\Zelalem_web21122019\Zelalem_web17112018\ForLabApi\WebApplication2\obj\Debug\netcoreapp2.2\ForLabApi.RazorTargetAssemblyInfo.cache
+E:\Jyoti\Zelalem_web\Zelalem_web21122019\Zelalem_web17112018\ForLabApi\WebApplication2\obj\Debug\netcoreapp2.2\ForLabApi.dll
+E:\Jyoti\Zelalem_web\Zelalem_web21122019\Zelalem_web17112018\ForLabApi\WebApplication2\obj\Debug\netcoreapp2.2\ForLabApi.pdb
+E:\Jyoti\Zelalem_web\Zelalem_web21122019\Zelalem_web17112018\ForLabApi\WebApplication2\bin\Debug\netcoreapp2.2\app.yaml

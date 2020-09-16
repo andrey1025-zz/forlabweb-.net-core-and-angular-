@@ -1,0 +1,296 @@
+<div id="content">
+    <div class="my-container">
+        <ng-template #customLoadingTemplate>
+            <div class="custom-class">
+                <h3>
+                    Loading...
+                </h3>
+                <!-- <button (click)="showAlert()">
+                    Click me!
+                </button> -->
+            </div>
+        </ng-template>
+        <!-- <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading> -->
+        <ngx-loading [show]="loading" [config]="{animationType: ngxLoadingAnimationTypes.chasingDots,
+           primaryColour: primaryColour, secondaryColour: secondaryColour, backdropBorderRadius: '3px'}"
+            [template]="loadingTemplate"></ngx-loading>
+    </div>
+    <sa-widgets-grid>
+
+
+        <div class="row">
+            <article class="col-sm-12">
+
+
+
+
+                <div sa-widget [editbutton]="false" color="blueDark" [deletebutton]="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-file"></i> </span>
+                        <h2>Import Data</h2>
+                    </header>
+                    <div>
+                        <div class="widget-body no-padding">
+                            <form class="smart-form" [formGroup]="Importform">
+
+                                <fieldset>
+                                    <div class="row">
+                                        <section class="col col-6">
+                                            <input #file type="file" style="display: inline-block;"
+                                                (change)="incomingfile($event)" placeholder="Upload file"
+                                                accept=".xlsx">
+                                        </section>
+                                        <section class="col col-6" style="text-align: right">
+                                            <button type="button" class="btn btn-primary btn-sm"
+                                                (click)="Downloadsample()">Download Sample File</button>
+                                        
+                                        <!-- //lgModal1.show() -->
+                                            </section>
+                                    </div>
+                                    <!-- <div class="progress progress-sm progress-striped active">
+                                      <div class="progress-bar bg-color-darken" role="progressbar" [style.width.%]="progress"></div>
+                                    </div> -->
+                                </fieldset>
+                                <fieldset *ngIf="Show">
+                                    <section>
+                                        <div class="table-responsive"
+                                            style="overflow-y: auto;height: 250px;border-style: ridge">
+
+
+
+                                            <table class="table table-bordered table-striped table-hover">
+
+                                                <thead>
+                                                    <tr>
+                                                        <th>Import Details</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                    <tr *ngFor="let item of messagearr; let i = index;">
+                                                        <td>
+                                                            {{item}}
+                                                        </td>
+
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+
+                                        </div>
+                                    </section>
+
+
+
+                                </fieldset>
+                                <footer>
+
+                                    <button type="button" class="btn btn-primary"
+                                        (click)="Upload()">{{btntext}}</button>
+                                </footer>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </sa-widgets-grid>
+
+
+</div>
+<div bsModal #lgModal4="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" (click)="lgModal4.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Select Sheet</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-md-8"></div>
+                    <div class="col-md-4" style="text-align: right;">
+                        <label for="category"></label>
+                        <label class="input">
+                            <button type="button" class="btn btn-primary btn-sm" (click)="selectsheetcls()">
+                                Select
+                            </button>
+
+                        </label>
+                    </div>
+                </div>
+                <div class="row" id="content">
+                    <div class="table-responsive" style="overflow-y: auto;height: 300px;border-style:ridge">
+
+
+
+                        <table class="table table-bordered table-striped table-hover">
+
+                            <thead>
+                                <tr>
+                                    <th> <label><input type="checkbox" class="checkbox style-3"
+                                                (change)="Selectall($event.target.checked)" /><span></span><br></label>
+                                    </th>
+                                    <th>Sheets</th>
+
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr *ngFor="let item of Sheetarr; let i = index;">
+                                    <td> <label> <input type="checkbox" class="checkbox style-3"
+                                                (change)="SelectSheet($event.target.checked,item)"
+                                                [checked]="checkstatus" /><span></span><br></label></td>
+                                    <td>
+
+                                        {{item}}
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div bsModal #lgModal1="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" (click)="lgModal1.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+
+            </div>
+            <div class="modal-body">
+                <form class="smart-form" [formGroup]="importoption">
+                    <div class="row" style="margin-left: 25px;">
+
+                        <div>
+                            <label>
+                                <input type="radio" class="radiobox style-3" formControlName="downloadoption" value="b"
+                                    (click)="showdiv($event.target.value)" checked>
+                                <span>Download a blank import template </span>
+                            </label>
+                        </div>
+
+
+                    </div>
+                    <div class="row" style="margin-left: 25px;display: none;">
+
+                        <div>
+                            <label>
+                                <input type="radio" class="radiobox style-3" formControlName="downloadoption" value="d"
+                                    (click)="showdiv($event.target.value)">
+                                <span>Download import template with default data</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-left: 25px;" *ngIf="Shoediv">
+
+                        <div>
+                            <!-- widget content -->
+                            <div class="widget-body">
+                                <div class="tree smart-form">
+                                    <!-- <sa-tree-view [items]="demo2" ></sa-tree-view> -->
+
+                                    <div class="sa-tree-view tree">
+                                        <ul class="">
+                                            <li class=" parent_li" (click)="togglelist()">
+                                                <span>Select default Data <i [ngClass]="showclass ? 'sa-icon fa fa-lg fa-minus-circle' : 'sa-icon fa fa-lg fa-plus-circle'" ></i></span>
+                                                <ul [ngClass]="showclass ? ' ' : 'hidden'" >
+                                                    <li class=" parent_li">
+                                                        <span>
+                                                            <label class="checkbox inline-block">
+                                                                <input type="checkbox" 
+                                                                    name="checkbox-inline" (change)="checkedoption($event,'Test')" [checked]="checkedteststatus" >
+                                                                <i   ></i>Test
+                                                            </label>
+                                                            </span>
+                                                        <ul>
+                                                            <li  *ngFor="let data of Testingarealist">
+                                                           <span> <label class="checkbox inline-block"><input
+                                                                            type="checkbox" name="checkbox-inline"
+                                                                            value="data.testingAreaID" (change)="changeLstener($event,'testingArea')" 
+                                                                            [checked]="checkedtestarea"                                                                            
+                                                                            ><i></i>{{data.areaName}}</label>
+                                                                </span></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class=" parent_li"><span> <label
+                                                                class="checkbox inline-block"><input type="checkbox"
+                                                                    name="checkbox-inline"
+                                                                    (change)="checkedoption($event,'Product')" [checked]="checkedproductstatus"><i></i>Product</label>
+                                                           </span>
+                                                        <ul>
+                                                                <li  *ngFor="let data of ProductTypeList">
+                                                                        <span> <label class="checkbox inline-block"><input
+                                                                                         type="checkbox" name="checkbox-inline"
+                                                                                         value="data.typeID" (change)="changeLstener($event,'Producttype')" 
+                                                                                         [checked]="checkedproducttype"                                                                            
+                                                                                         ><i></i>{{data.typeName}}</label>
+                                                                             </span></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><span> <label class="checkbox inline-block"><input
+                                                                    type="checkbox" 
+                                                                    name="checkbox-inline"
+                                                                    (change)="checkedoption($event,'Instrument')"  [checked]="checkedinstrumentstatus"><i></i>Instrument</label>
+                                                        </span></li>
+                                                    <li><span> <label class="checkbox inline-block"><input
+                                                                    type="checkbox" 
+                                                                    name="checkbox-inline"
+                                                                    (change)="checkedoption($event,'Site')"  [checked]="checkedsitestatus"><i></i>Site</label>
+                                                        </span></li>
+                                                    <li><span> <label class="checkbox inline-block"><input
+                                                                    type="checkbox" 
+                                                                    name="checkbox-inline"
+                                                                    (change)="checkedoption($event,'Site Instrument')"  [checked]="checkedsiteinsstatus"><i></i>Site
+                                                                Instrument</label> </span></li>
+                                                    <li><span> <label class="checkbox inline-block"><input
+                                                                    type="checkbox" 
+                                                                    name="checkbox-inline"
+                                                                    (change)="checkedoption($event,'Test Product Usage Rate')"  [checked]="checkedtestproductusagestatus"><i></i>Test Product Usage Rate</label> </span></li>
+                                                    <li><span> <label class="checkbox inline-block"><input
+                                                                    type="checkbox" 
+                                                                    name="checkbox-inline"
+                                                                    (change)="checkedoption($event,'Consumables')"  [checked]="checkedconsumblesstatus"><i></i>Consumables</label>
+                                                        </span></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <!-- end widget content -->
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)=downloadfile()>{{btnprocess}}</button>
+            </div>
+
+        </div>
+    </div>
+</div>

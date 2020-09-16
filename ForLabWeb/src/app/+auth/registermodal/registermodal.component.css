@@ -1,0 +1,225 @@
+.close-button {
+  position: absolute;
+  right: 18px;
+  top: 14px;
+  width: 0;
+  height: 0;
+  opacity: 1;
+}
+
+.close-button:before, .close-button:after {
+  position: absolute;
+  left: 0;
+  content: ' ';
+  height: 13px;
+  width: 3px;
+  background-color: #F35A48;
+}
+
+.close-button:before {
+  transform: rotate(45deg);
+}
+
+.close-button:after {
+  transform: rotate(-45deg);
+}
+
+.h-100 {
+  height: 100% !important;
+}
+
+.w-100 {
+  height: 100% !important;
+}
+
+.m-0 {
+  margin: 0 !important;
+}
+
+.mt-24 {
+  margin-top: 24px !important;
+}
+
+.mt-8 {
+  margin-top: 8px !important;
+}
+
+.signup-img {
+  margin: 55px auto 0 17px;
+}
+
+.signup-modal-header {
+  height: 55px;
+}
+
+.signup-modal-body {
+  height: calc(100% - 85px);
+  margin: auto 24px;
+}
+
+.signup-modal-footer {
+  height: 30px;
+  bottom: 0;
+}
+
+.sign-in-with {
+  display: flex;
+  flex-direction: column;
+}
+
+.sign-in-with .top-title {
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+
+.signup-form {
+  margin-top: 36px;
+}
+
+.signup-form .row {
+  margin: 0;
+}
+
+.signup-form .row .col-md-6:first-child {
+  padding: 0;
+  padding-right: 12px;
+}
+
+.signup-form .row .col-md-6:nth-child(2) {
+  padding: 0;
+  padding-left: 12px;
+}
+
+.signup-form .form-group {
+  margin-bottom: 14px;
+}
+
+.signup-form .form-group input, .signup-form .btn-country {
+  height: 42px;
+  margin: 0 auto;
+  border: none;
+  border-radius: 5px !important;
+  background: #F3F4F5;
+  color: #2B394E;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  padding-left: 16px;
+  text-align: left;
+  width: 100%
+}
+
+.news-checkbox, .terms-checkbox {
+  text-align: left;
+}
+
+.news-checkbox label {
+  margin: 36px 0 0 0;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+}
+
+.terms-checkbox label {
+  margin: 16px 0 0 0;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+}
+
+.terms-checkbox label a {
+  color: #20BDEF;
+}
+
+.form-submit {
+  width: 100%;
+  text-align: right;
+}
+
+.btn-signup-submit {
+  background-color: #20BDEF;
+  border-color: #20BDEF;
+  margin: 0;
+  color: white;
+  width: 136px;
+  height: 46px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+.social-login {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.social-login .btn-circle {
+  width: 42px;
+  height: 42px;
+  padding: 10px 0;
+  font-size: 22px;
+  line-height: 22px;
+  margin: 0 8px;
+}
+
+.social-login .btn-facebook {
+  background-color: #275BAF;
+  border-color: #275BAF;
+}
+
+.social-login .btn-twitter {
+  background-color: #36A3E0;
+  border-color: #36A3E0;
+}
+
+.social-login .btn-linkedin {
+  background-color: #1770FF;
+  border-color: #1770FF;
+}
+
+.caret {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+  background-color: #FFF;
+}
+
+.btn-group.open .dropdown-toggle {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6)
+}
+
+.btn-group {
+  width: 100%
+}
+
+.dropdown-menu {
+  width: 100%;
+}
+
+#dropdown-country {
+  height: 140px;
+  overflow-y: scroll;
+}
+
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {
+  background-color: #20BDEF;
+}
+
+label input[type=checkbox].checkbox.style-3:checked+span:before {
+  color: #fff;
+  border-color: #20BDEF;
+  background: #20BDEF;
+}
+
+label:hover input[type=checkbox].checkbox.style-3+span:before {
+  color: #fff;
+  border-color: #20BDEF;
+}
+
+.ng-invalid.ng-touched:not(form) {
+  border: solid 1px #c70f0f !important;
+}

@@ -1,0 +1,102 @@
+<div id="content">
+  <sa-widgets-grid>
+
+
+    <!-- START ROW -->
+
+    <div class="row">
+
+      <!-- NEW COL START -->
+      <article class="col-sm-12 col-md-12 col-lg-12">
+        <div sa-widget [editbutton]="false" [custombutton]="false" [deletebutton]="false">
+
+          <header>
+            <span class="widget-icon">
+              <i class="fa fa-edit"></i>
+            </span>
+
+
+
+          </header>
+
+          <!-- widget div-->
+          <div>
+
+
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+              <form class="smart-form" novalidate="novalidate"  [formGroup]="demographiclineargrowth">
+                <!-- [formGroup]="RecentForecast" -->
+                <header>
+                  <h3 style="
+                color: gray;
+            ">
+                   Patient during the forecasting Period
+                  </h3>
+                </header>
+
+                <fieldset>
+                  <section>
+                    <h2>
+
+                    </h2>
+
+                    <div class="table-responsive" style="overflow-y: auto;height: 318px;border-style: ridge;margin-top: 26px" >
+
+
+
+                      <table class="table table-bordered table-hover">
+
+                        <thead>
+                          <tr >
+                             
+                              <th *ngFor="let item of controlArray">{{item.name}}</th>
+                          
+                              
+                          </tr>
+                      </thead>
+                        <tbody>
+                          <tr *ngFor="let item1 of parameterlist; let i = index;">
+
+                            <td *ngFor="let item of controlArray">
+                              {{parameterlist[i][item.name]}}
+                              <!-- <label class="input">
+                               <input type="{{item.type}}" formControlName="{{item.name}}" [attr.disabled] = "item.type === 'text' ? 'disabled' : null" [style.text-align]="item.type === 'text' ? 'left' : 'right'" /> 
+                              </label> -->
+
+                           
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+
+                  </section>
+
+
+
+
+                  
+                </fieldset>
+
+                <footer>
+                  <a [routerLink]="['/Forecast/Demographicproduct',forecastid,programid]" class="btn btn-default"
+                    style="float: left;"><b>
+                      << Previous</b> </a> <a (click)="savepatientlineargrowth()" class="btn btn-default" style="float: right;"><b>Next
+                      >></b></a>
+                </footer>
+
+              </form>
+
+            </div>
+            <!-- end widget content -->
+
+          </div>
+          <!-- end widget div -->
+
+        </div>
+      </article>
+    </div>
+  </sa-widgets-grid>
+</div>

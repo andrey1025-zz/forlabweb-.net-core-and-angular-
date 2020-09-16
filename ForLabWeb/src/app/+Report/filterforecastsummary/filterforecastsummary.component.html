@@ -1,0 +1,90 @@
+<div id="content">
+  <sa-widgets-grid>
+
+
+    <!-- START ROW -->
+
+    <div class="row">
+
+      <!-- NEW COL START -->
+      <article class="col-sm-12 col-md-12 col-lg-6">
+        <div sa-widget [editbutton]="false" [custombutton]="false" [deletebutton]="false">
+
+          <header>
+            <span class="widget-icon">
+              <i class="fa fa-edit"></i>
+            </span>
+
+
+
+          </header>
+
+          <!-- widget div-->
+          <div>
+
+
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+              <form class="smart-form" >
+                <header>
+                  Filter Forecast Summary
+                </header>
+
+                <fieldset>
+
+
+                  <section >
+                    <div class="form-group">
+                      <label class="control-label">Methodology
+
+                      </label>
+                      <label class="input">
+                        <select name="Methodtype" class="form-control"  [(ngModel)]="Methodtype" (change)="getforecastbymethod($event.target.value)"  >
+                          <option value="0" disabled>--Select--</option>
+                          <option value="CONSUMPTION" >CONSUMPTION</option>
+                          <option value="SERVICE_STATISTIC" >SERVICE_STATISTIC</option>
+                          <option value="DEMOGRAPHIC" >DEMOGRAPHIC</option>
+
+                        </select>
+                      </label>
+                    </div>
+
+                  </section>
+                 
+
+
+                  <section >
+                    <div class="form-group">
+                      <label class="control-label">Forecast
+
+                      </label>
+                      <label class="input">
+                        <select name="forecastid" class="form-control" [(ngModel)]="forecastid"  >
+                          <option value="0" disabled>--Select--</option>
+                        <option *ngFor="let forecast of ForecastList" [value]="forecast.forecastID">{{forecast.forecastNo}}</option>
+
+                        </select>
+                      </label>
+                    </div>
+
+                  </section>
+                 
+
+
+             
+                     <section>
+                        <button class="btn btn-primary btn-sm" type="button" (click)="openreport()">View Report</button>
+                      </section>
+                </fieldset>
+              </form>
+            </div>
+            <!-- end widget content -->
+
+          </div>
+          <!-- end widget div -->
+
+        </div>
+      </article>
+    </div>
+  </sa-widgets-grid>
+</div>

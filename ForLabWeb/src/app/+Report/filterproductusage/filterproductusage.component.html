@@ -1,0 +1,87 @@
+<div id="content">
+  <sa-widgets-grid>
+
+
+    <!-- START ROW -->
+
+    <div class="row">
+
+      <!-- NEW COL START -->
+      <article class="col-sm-12 col-md-12 col-lg-6">
+        <div sa-widget [editbutton]="false" [custombutton]="false" [deletebutton]="false">
+
+          <header>
+            <span class="widget-icon">
+              <i class="fa fa-edit"></i>
+            </span>
+
+
+
+          </header>
+
+          <!-- widget div-->
+          <div>
+
+
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+              <form class="smart-form" >
+                <header>
+                  Filter Product Usage
+                </header>
+
+                <fieldset>
+
+
+
+                <section>
+                  <div class="form-group" >
+                    <label class="control-label">Testing Area
+
+                    </label>
+                    <label class="input">
+                      <select name="TestingAreaID" class="form-control" [(ngModel)]="model.Areaid">
+                        <option value="0" selected>--Select--</option>
+                        <option *ngFor="let TestingArea of testingAreaList" [value]="TestingArea.testingAreaID">{{TestingArea.areaName}}</option>
+
+                      </select>
+                    </label>
+
+                  </div>
+                
+                </section>
+
+                <section >
+                  <div class="form-group">
+                    <label class="control-label">Product Type
+
+                    </label>
+                    <label class="input">
+                      <select name="typeId" class="form-control"     [(ngModel)]="model.typeId" >
+                        <option value="0" disabled>--Select--</option>
+                        <option *ngFor="let Type of ProductTypeList" [value]="Type.typeID">{{Type.typeName}}</option>
+
+                      </select>
+                    </label>
+                  </div>
+
+                </section>
+               
+                     <section>
+                        <button class="btn btn-primary btn-sm" (click)="openreport()">View Report</button>
+                      </section>
+                </fieldset>
+
+
+              </form>
+            </div>
+            <!-- end widget content -->
+
+          </div>
+          <!-- end widget div -->
+
+        </div>
+      </article>
+    </div>
+  </sa-widgets-grid>
+</div>

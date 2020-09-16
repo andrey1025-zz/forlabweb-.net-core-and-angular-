@@ -1,0 +1,69 @@
+<div id="content">
+  <sa-widgets-grid>
+
+
+    <!-- START ROW -->
+
+    <div class="row">
+
+      <!-- NEW COL START -->
+      <article class="col-sm-12 col-md-12 col-lg-12">
+        <div sa-widget [editbutton]="false" [custombutton]="false" [deletebutton]="false">
+
+          <header>
+            <span class="widget-icon">
+              <i class="fa fa-edit"></i>
+            </span>
+
+
+
+          </header>
+
+          <!-- widget div-->
+          <div>
+
+
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+              <form class="smart-form" novalidate="novalidate">
+                <!-- [formGroup]="RecentForecast" -->
+                <header>
+                  <h3 style="
+                color: gray;
+            ">
+                    WHAT INSTRUMENT DO YOU WANT TO INCLUDE IN THIS FORECAST
+                  </h3>
+                </header> 
+
+                <fieldset>
+                  <div class="col-md-2"  *ngFor="let data of testAreaList">
+                    <span style="color: gray;padding-top: 4%;"><b>{{data.testareaname}} </b></span>
+                   <!-- (change)="onChange(data.regionID, $event.target.checked)" -->
+                    <div *ngFor="let data1 of data.instruments">
+                      <label style="padding: 2%;margin-left: 2%;">
+                        <input type="checkbox" class="checkbox style-3" [checked]="data1.type=='A'"
+                        (change)="onChange(data1.instrumentID, $event.target.checked)"   /><span>{{data1.instrumentName}}</span>
+                        <br></label>
+                        
+                    </div>
+                  </div>
+                </fieldset>
+
+                <footer>
+                  <a  class="btn btn-default" (click)="Previousclick()" style="float: left;"><b>
+                     << Previous</b> </a> <a class="btn btn-default" style="float: right;" (click)="Saveforecasttest()"><b>Next >></b></a>
+                </footer>
+
+              </form>
+
+            </div>
+            <!-- end widget content -->
+
+          </div>
+          <!-- end widget div -->
+
+        </div>
+      </article>
+    </div>
+  </sa-widgets-grid>
+</div>

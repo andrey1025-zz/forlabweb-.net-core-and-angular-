@@ -1,0 +1,97 @@
+<div class="row m-0 h-100">
+  <div class="col-md-4">
+    <img class="signup-img" src="assets/img/new/signup.png" alt="signup">
+  </div>
+  <div class="col-md-8 h-100">
+    <div class="signup-modal-header">
+      <a type="button" class="close-button" (click)="close.emit(true)" aria-hidden="true">
+      </a>
+    </div>
+    <div class="signup-modal-body text-center">
+      <div class="sign-in-with">
+        <span class="top-title">Sign In With</span>
+        <div class="social-login">
+          <a (click)="(null)" class="btn btn-primary btn-circle btn-facebook"><i class="fa fa-facebook"></i></a>
+          <a (click)="(null)" class="btn btn-primary btn-circle btn-twitter"><i class="fa fa-twitter"></i></a>
+          <a (click)="(null)" class="btn btn-primary btn-circle btn-linkedin"><i class="fa fa-linkedin"></i></a>
+        </div>
+        <span class="top-title mt-24">OR</span>
+        <span class="top-title mt-8">Create New Accout</span>
+      </div>
+      <form class="signup-form" #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="text" name="fullname" [(ngModel)]="model.fullname" #fullname="ngModel" class="form-control"
+                placeholder="Full Name" required>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group" [ngClass]="{'has-error':!email.valid && email.touched}">
+              <input type="email" name="email" [(ngModel)]="model.email" #email="ngModel" class="form-control"
+                placeholder="Email" required email>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="text" name="password" [(ngModel)]="model.password" #password="ngModel" class="form-control"
+                type="password" placeholder="Password" id="password" required>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="text" name="organization" [(ngModel)]="model.organization" #organization="ngModel"
+                class="form-control" placeholder="Organization" required>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="btn-group" dropdown>
+              <button id="button-country" dropdownToggle type="button"
+                class="btn btn-primary dropdown-toggle btn-country" aria-controls="dropdown-animated">
+                {{selectedCountry}} <span class="caret"></span>
+              </button>
+              <ul id="dropdown-country" *dropdownMenu class="dropdown-menu" role="menu"
+                aria-labelledby="button-animated">
+                <li role="menuitem" *ngFor="let country of countrylist"><a class="dropdown-item" href="#"
+                    (click)="Getregion(country.id, country.name)">{{country.name}}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group m-0">
+              <input type="text" name="globalregion" [(ngModel)]="model.globalregion" #globalregion="ngModel"
+                class="form-control" placeholder="Global Region" disabled="true" required>
+            </div>
+          </div>
+        </div>
+        <div class="row news-checkbox">
+          <label>
+            <input type="checkbox" class="checkbox style-3" name="subscription" [(ngModel)]="model.subscription"
+              #subscription="ngModel" />
+            <span>I want to receive news and special offers</span>
+          </label>
+        </div>
+        <div class="row terms-checkbox">
+          <label>
+            <input type="checkbox" class="checkbox style-3" name="terms" [(ngModel)]="model.terms" #terms="ngModel"
+              required />
+            <span>I agree with the <a href="#" (click)="(null)"> Terms and Conditions</a></span>
+          </label>
+        </div>
+        <div class="form-submit">
+          <button type="submit" class="btn btn-signup-submit" [disabled]="registerForm.invalid">
+            Create Account
+          </button>
+        </div>
+      </form>
+
+    </div>
+    <div class="signup-modal-footer">
+    </div>
+  </div>
+</div>

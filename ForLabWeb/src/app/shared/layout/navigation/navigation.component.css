@@ -1,0 +1,57 @@
+aside {
+  background: #2B394E;
+}
+
+.nav-logo {
+  position: absolute;
+  left: 28px;
+  top: 30px;
+}
+
+nav li:first-child {
+  margin-top: 36px;
+}
+
+nav li {
+  margin-bottom: 15px;
+}
+
+nav ul a {
+  color: #FEFEFE;
+  height: 46px;
+  letter-spacing: 0.1em;
+  font-size: 13px;
+  line-height: 22px;
+  padding-top: 12px;
+  padding-left: 20px;
+}
+
+nav ul .active>a {
+  color: #20BDEF!important;
+  background-color: #273346;
+  position: relative;
+}
+
+nav ul li.active>a:before {
+  content: "";
+  display: block;
+  height: 46px;
+  line-height: normal;
+  width: 4px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: #20BDEF;
+  border-radius: 10px;
+}
+
+.copy-right {
+  position: absolute;
+  left: 20px;
+  bottom: 17px;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  line-height: 14px;
+  font-weight: 600;
+  color: #FEFEFE;
+}

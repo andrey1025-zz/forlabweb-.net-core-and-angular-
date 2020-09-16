@@ -1,0 +1,122 @@
+
+
+<div id="content">
+  <sa-widgets-grid>
+
+
+    <!-- START ROW -->
+
+    <div class="row">
+
+      <!-- NEW COL START -->
+      <article class="col-sm-12 col-md-12 col-lg-12">
+        <div sa-widget [editbutton]="false" [custombutton]="false" [deletebutton]="false">
+
+          <header>
+            <span class="widget-icon">
+              <i class="fa fa-edit"></i>
+            </span>
+
+
+
+          </header>
+
+          <!-- widget div-->
+          <div>
+
+
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+              <form class="smart-form" novalidate="novalidate">
+                <!-- [formGroup]="RecentForecast" -->
+                <header>
+                  <h3 style="
+                color: gray;
+            ">
+                 Forecast Output
+                  </h3>
+                </header> 
+
+                <fieldset>
+                
+                  <div class="row">
+                    <section class="col col-3" style="
+                    margin-left: 3%;
+                ">
+                  <b> TOTAL COST</b> <br>
+                   {{Totalcost}}
+                    </section>
+                    <section class="col col-3">
+                     <b> QC COST</b> <br>
+                      {{QCcost}}
+                       </section>
+                    <section class="col col-1">
+                    
+                    </section>
+                    <section class="col col-4">
+                    <b>  CONSUMABLE COST</b> <br>
+                      {{Ccost}}
+                    </section>                  
+                </div>
+
+                <div class="row">
+                  <section class="col col-6">
+                    <div id="container1"></div>
+                  </section>
+                  <section class="col col-1">
+                    <div ></div>
+                  </section>
+                  <section class="col col-4">
+                    <div id="container2"></div>
+                  </section>                  
+              </div>
+            
+                <section >
+                  <table class="table table-hover table-bordered">
+                    <thead>
+                    <tr>
+                   
+                <th>Product Name</th>
+                <th>Forecasted Quantity</th>
+                <th >Unit Cost</th>
+                <th>Total Cost</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item1 of getdata; let i = index;">
+  
+                            <td>{{item1["product name"]}}</td>
+                            <td>{{item1["total quantity in pack"]}}</td>
+                            <td>{{item1["cost"]}}</td>
+                            <td>{{item1["total cost"]}}</td>
+                          </tr>
+                
+                    </tbody>
+                  </table>
+                </section>
+                            
+          
+        
+</fieldset>
+
+<footer>
+  <a [routerLink]="['/Forecast/Demographiclineargrowth',forecastid,programid]" class="btn btn-default"  style="float: left;"><b>
+     Previous</b> </a> <a class="btn btn-default" style="float: right;"   (click)="nextclick()"><b>View Forecast Summary</b></a>
+</footer>
+
+</form>
+
+</div>
+<!-- end widget content -->
+
+</div>
+<!-- end widget div -->
+
+</div>
+</article>
+</div>
+</sa-widgets-grid>
+</div>
+
+
+

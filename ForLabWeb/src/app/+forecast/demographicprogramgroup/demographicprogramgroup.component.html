@@ -1,0 +1,97 @@
+<div id="content">
+  <sa-widgets-grid>
+
+
+    <!-- START ROW -->
+
+    <div class="row">
+
+      <!-- NEW COL START -->
+      <article class="col-sm-12 col-md-12 col-lg-12">
+        <div sa-widget [editbutton]="false" [custombutton]="false" [deletebutton]="false">
+
+          <header>
+            <span class="widget-icon">
+              <i class="fa fa-edit"></i>
+            </span>
+
+
+
+          </header>
+
+          <!-- widget div-->
+          <div>
+
+
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+              <form class="smart-form" novalidate="novalidate">
+                <!-- [formGroup]="RecentForecast" -->
+                <header>
+                  <h3 style="
+                color: gray;
+            ">
+                   Some programs defferentiate laboratory testing and treatment options based on patient characteristics. In order to do that, patients will be grouped based on their disease progression. How would you like to group patient population in this forecast?
+                  </h3>
+                </header>
+
+                <fieldset>
+
+
+<div *ngFor="let data of patientgroup">
+
+  <label>
+    <input type="checkbox" [checked]="data.forecastid !=0" class="checkbox style-3" (change)="onselectgroup(data, $event.target.checked)" /><span>{{data.groupName}}</span><br>
+  </label>
+
+</div>
+<div>
+<a  class="btn btn-default btn-sm" (click)="lgModal4.show()" style="background-color: white;color: gray;margin-top: 2%;">New</a>
+</div>               
+</fieldset>
+
+<footer>
+  <a [routerLink]="['/Forecast/Demographicprogrammethodlist',forecastid,programid]" class="btn btn-default" style="float: left;"><b>
+     << Previous</b> </a> <a  (click)="save()"  class="btn btn-default" style="float: right;" ><b>Next >></b></a>
+</footer>
+
+</form>
+
+</div>
+<!-- end widget content -->
+
+</div>
+<!-- end widget div -->
+
+</div>
+</article>
+</div>
+</sa-widgets-grid>
+</div>
+
+
+
+<div bsModal #lgModal4="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content" style="
+    border-radius: 0%;
+    background-color: white;
+    color: gray;
+">
+     
+        <div class="modal-body">
+          <button type="button" class="close" (click)="lgModal4.hide()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <input type="text" id="groupName" name="groupName"  [(ngModel)]="model.groupName" #groupName="ngModel" class="form-control" placeholder="Enter Group Name" required autofocus>
+                 
+         
+        </div>
+
+        <div class="modal-footer">
+          <button type="btn btn-primary" class="close" (click)="addnewgroup()" aria-label="Close">Save</button>
+        </div>
+
+    </div>
+  </div>
+</div>

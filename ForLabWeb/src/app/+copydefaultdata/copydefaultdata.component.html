@@ -1,0 +1,177 @@
+<div id="content">
+  <div class="row">
+    <!-- <sa-big-breadcrumbs [items]="['Forms', 'Wizards']" icon="table" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></sa-big-breadcrumbs>
+    <sa-stats></sa-stats> -->
+  </div>
+
+
+  <!-- widget grid -->
+  <sa-widgets-grid>
+
+    <!-- row -->
+    <div class="row">
+
+      <!-- NEW WIDGET START -->
+      <article class="col-sm-12 col-md-12 col-lg-12">
+
+
+<div sa-widget [editbutton]="false" [deletebutton]="false" color="darken" [deletebutton]="false">
+  <!-- widget options:
+  usage: <div sa-widget [editbutton]="false">
+
+  [colorbutton]="false"
+  [editbutton]="false"
+  [togglebutton]="false"
+  [deletebutton]="false"
+  [fullscreenbutton]="false"
+  [custombutton]="false"
+  [collapsed]="true"
+  [sortable]="false"
+
+  -->
+  <header>
+    <span class="widget-icon"> <i class="fa fa-check"></i> </span>
+
+    <h2>Import Deafult Data </h2>
+
+  </header>
+
+  <!-- widget div-->
+  <div>
+
+    <!-- widget content -->
+    <div class="widget-body">
+
+          <form  class="smart-form client-form"  #importForm="ngForm" (ngSubmit)="importdata(importForm)">
+            <header>
+             Import Deafult Data
+            </header>
+               <fieldset>
+         
+                <section>
+                    <label>
+                  <input type="checkbox" class="checkbox style-3" name="importdata" [(ngModel)]="model.importdata"/>
+                  <span>Import Default Data</span>
+                  </label>
+                </section>
+                <div *ngIf="model.importdata==true"class="row">
+                <section class="col col-4">
+                    <label>
+                  <input type="checkbox" class="checkbox style-3" name="chktest"  [(ngModel)]="model.chktest"  />
+                  <span>Tests</span>
+                  </label>
+
+                </section>
+                <section class="col col-4">
+<label>
+                  <input type="checkbox" class="checkbox style-3" name="chkproduct"  [(ngModel)]="model.chkproduct"   />
+                  <span>Products</span>
+                </label>
+
+                </section>
+                <section class="col col-4">
+                    <label>
+                  <input type="checkbox" class="checkbox style-3" name="chkproductusage"  [(ngModel)]="model.chkproductusage"    />
+                  <span>Product Usages</span>
+</label>
+
+                </section>
+              </div>
+              <section *ngIf="model.importdata==true">
+                <label>
+                  <input type="checkbox" class="checkbox style-3" name="chkdemosettings"  [(ngModel)]="model.chkdemosettings"  />
+                  <span>Demographic Settings</span>
+                  </label>
+              </section>
+              <div class="row">
+                  <section  *ngIf="model.chktest==true" class="col col-4">
+                      <h2>Testing Area
+        
+                        </h2>        
+                      <div class="form-group" style="    margin-left: 4px;
+                      border: 1px ridge;
+                      height: 300px;
+                      overflow-y: auto;
+                      padding: 10px;" >
+                         <!-- <label>
+                            <input type="checkbox" class="checkbox style-3" (change)="selectallsites($event.target.checked)"/><span>Select All</span>
+                           </label> -->
+                      <div *ngFor="let data of Testingarealist">
+                        <label>
+            <input type="checkbox" class="checkbox style-3"  (change)="onChange(data.testingAreaID, $event.target.checked)"/><span>{{data.areaName}}</span> <br></label>
+          </div>
+                      </div>
+        
+                 
+                  </section>
+                  <section   *ngIf="model.chkproduct==true" class="col col-4">
+                    <h2>Product Type
+      
+                      </h2>        
+                    <div class="form-group" style="    margin-left: 4px;
+                    border: 1px ridge;
+                    height: 300px;
+                    overflow-y: auto;
+                    padding: 10px;" >
+                      <!-- <label>
+                          <input type="checkbox" class="checkbox style-3" (change)="selectallsites($event.target.checked)"/><span>Select All</span>
+                        </label> -->
+                    <div *ngFor="let data of ProductTypeList">
+                      <label>
+          <input type="checkbox" class="checkbox style-3"  (change)="ontypeChange(data.typeID, $event.target.checked)"/><span>{{data.typeName}}</span> <br></label>
+        </div>
+                    </div>
+      
+              
+                  </section>
+                  <section   *ngIf="model.chkdemosettings==true" class="col col-4">
+                    <h2>Program
+      
+                      </h2>        
+                    <div class="form-group" style="    margin-left: 4px;
+                    border: 1px ridge;
+                    height: 300px;
+                    overflow-y: auto;
+                    padding: 10px;" >
+                      <!-- <label>
+                          <input type="checkbox" class="checkbox style-3" (change)="selectallsites($event.target.checked)"/><span>Select All</span>
+                        </label> -->
+                    <div *ngFor="let data of ProgramList">
+                      <label>
+          <input type="checkbox" class="checkbox style-3"  (change)="onprogramChange(data.id, $event.target.checked)"/><span>{{data.programName}}</span> <br></label>
+        </div>
+                    </div>
+      
+              
+                  </section>
+              </div>
+            </fieldset>
+
+          
+            <footer>
+              <button type="submit" class="btn btn-primary" [disabled]="importForm.invalid">
+                Copy Data
+              </button>
+            </footer>
+
+            <div class="message">
+              <i class="fa fa-check"></i>
+              <p>
+                Thank you for your registration!
+              </p>
+            </div>
+          </form>
+
+        </div>
+        <!-- end widget div -->
+
+    </div>
+
+</div>
+
+
+
+</article>
+</div>
+</sa-widgets-grid>
+</div>

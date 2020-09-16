@@ -1,0 +1,79 @@
+<div class="inst-add-modal-header">
+  <a type="button" class="close-button" (click)="onCloseModal();" aria-hidden="true"></a>
+</div>
+
+<div class="inst-add-modal-body text-center">
+  <span class="inst-add-modal-title color-darkblue">Instrument Form</span>
+  <form class="inst-add-form" [formGroup]="instrumentForm" (ngSubmit)="save()">
+    <div class="form-group"
+      [ngClass]="{'has-error':!instrumentForm.controls['InstrumentName'].valid && instrumentForm.controls['InstrumentName'].touched}">
+      <div class="row">
+        <div class="col-md-offset-4 col-md-4">
+          <input type="text" class="form-control" name="instructionName" placeholder="Instrument Name"
+            formControlName="InstrumentName" />
+        </div>
+      </div>
+    </div>
+
+    <div class="select-test">
+      <div class="title color=darkblue">Select Testing Area</div>
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <div class="select-test__buttons" [ngClass]="{'btn-disabled': testAreaDisabled}">
+            <div *ngFor="let testArea of testingAreaList; let i = index">
+              <button type="button" *ngIf="i<5" class="select-test__buttons--button"
+                [ngClass]="{'selected': idxTestArea == i}" (click)="handleTestingArea(i)" [disabled]="testAreaDisabled">
+                {{testArea.areaName}}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-req">
+      <div class="title color=darkblue">Control Requirement</div>
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <div class="control-req__buttons">
+            <div *ngFor="let req of controlReqArray; let i = index">
+              <div class="control-req__buttons--button" [ngClass]="{'selected': idxControlReq == i}"
+                (click)="handleControlReq(i)">
+                {{ req }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="other-req">
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="other-req__field">
+                <p class="color-darkblue">Max Through Put</p>
+                <input type="number" class="form-control color-darkblue" formControlName="MaxThroughPut"
+                  pattern="[0-9]+" minlength="0" maxlength="4" required>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="other-req__field">
+                <p class="color-darkblue"># of Run</p>
+                <input type="number" class="form-control color-darkblue" formControlName="noofrun" pattern="[1-9]+"
+                  minlength="0" maxlength="4" required>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="inst-add__buttons">
+      <button type="button" (click)="onCloseModal();" class="btn btn-outline-cyan">Cancel</button>
+      <button type="submit" class="btn btn-cyan" [disabled]="!instrumentForm.valid">{{submitBtnName}}</button>
+    </div>
+  </form>
+</div>

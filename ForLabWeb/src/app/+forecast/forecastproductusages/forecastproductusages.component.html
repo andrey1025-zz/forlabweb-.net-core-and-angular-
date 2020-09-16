@@ -1,0 +1,842 @@
+<div id="content">
+  <sa-widgets-grid>
+
+
+    <!-- START ROW -->
+
+    <div class="row">
+
+      <!-- NEW COL START -->
+      <article class="col-sm-12 col-md-12 col-lg-12">
+        <div sa-widget [editbutton]="false" [custombutton]="false" [deletebutton]="false">
+
+          <header>
+            <span class="widget-icon">
+              <i class="fa fa-edit"></i>
+            </span>
+
+
+
+          </header>
+
+          <!-- widget div-->
+          <div>
+
+
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+              <form class="smart-form" novalidate="novalidate" [formGroup]="forecastproductusages">
+                <!-- [formGroup]="RecentForecast" -->
+                <header>
+                  <h3 style="
+                color: gray;
+            ">
+                    BASED ON YOUR TESTS AND INSTRUMENT SELECTION ,BELOW ARE PRODUCTS AND CONSUMABLES NEED TO RUN THE
+                    SELECTED TESTS
+                  </h3>
+                </header>
+
+                <fieldset>
+                  <div class="row">
+                    <section class="col col-3">
+                      <select name="TestingAreaID" class="form-control"
+                        (change)="Filterselectedtestarea($event.target.value)">
+                        <option value="0" selected>Filter by Testing Area</option>
+                        <option *ngFor="let TestingArea of testingAreaList" [value]="TestingArea.testingAreaID">
+                          {{TestingArea.areaName}}</option>
+
+                      </select>
+                  
+
+                    </section>
+                    <section class="col col-9">
+                      <label style="    font-weight: bold;">
+                        {{testname}}
+                     
+
+                      </label>
+                      </section>
+                  </div>
+                  <div class="row">
+                    <section class="col col-3">
+                      <ul style="border: 1px solid #f1f1f1;">
+                        <li>
+                          <ul *ngFor="let data of completelist1">
+
+                            <span style="color: gray;padding: 4%;"><b>{{data.testareaname}} </b></span>
+
+                            <li *ngFor="let data1 of data.tests" >
+                              <a (click)="onlstclick(data1,data.testareaid)" [class.highlight]="data1.testID == selectedtest">{{data1.testName}}</a>
+                          
+
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </section>
+                    <section class="col col-9">
+                      <div>
+                        <ul id="myTab1" class="nav nav-tabs bordered">
+
+                          <li [class.active]="state.tabs.demo1 == 0">
+                            <a (click)="state.tabs.demo1 = 0">Test Product Usage Rate</a>
+                          </li>
+                          <li [class.active]="state.tabs.demo1 == 1">
+                            <a (click)="state.tabs.demo1 = 1">QC Product Usage Rate</a>
+                          </li>
+                          <li [class.active]="state.tabs.demo1 == 2">
+                            <a (click)="state.tabs.demo1 = 2">Consumable Product Usage Rate</a>
+                          </li>
+                        </ul>
+                        <tabset class="padding-10">
+                          <tab [active]="state.tabs.demo1 == 0">
+                            <div class="row">
+                              <div class="form-group col col-3">
+                            <label >
+                              <select class="form-control" (change)="selecttestInschange($event)">
+                                <option value="0" selected>--Select--</option>
+                                <option *ngFor="let Instrument of Instrumentlist" [value]="Instrument.instrumentID">{{Instrument.instrumentName}}</option>
+
+                              </select>
+                            </label>
+                            </div>
+                            <div class="form-group col col-3">
+                            <label>
+                              <select class="form-control" (change)="getproductlist($event)">
+                                <option value="0" selected>--Select Product Type--</option>
+                                <option *ngFor="let ProductType of ProductTypeList" [value]="ProductType.typeID">{{ProductType.typeName}}</option>
+
+                              </select>
+                            </label>
+                            </div>
+                            <div class="form-group col col-3">
+                            <label >
+                              <select class="form-control" (change)="selecttestProductchange($event)">
+                                <option value="0" selected>--Select Product--</option>
+                                <option *ngFor="let Product of Productlist" [value]="Product.productID">{{Product.productName}}</option>
+
+                              </select>
+                            </label>
+                            </div>
+                            <div class="form-group col col-3">
+
+                            <a class="btn btn-default btn-sm" style=" 
+       
+          background-color: lightgrey;
+          font-weight: bold;" (click)="AddTestUsageRate()">Add </a>
+
+                            </div>
+                            </div>
+                            <br>
+                            <div style="height: 300px;overflow-y: auto">
+                              <ng-template ngFor let-box
+                                [ngForOf]="forecastproductusages.controls.ProductUsageArray['controls']"
+                                let-boxIndex="index">
+                                <div class="tab-content" formArrayName="ProductUsageArray">
+
+
+
+                                  <div [formGroup]="box">
+
+                              
+                                 
+                                    <div class="table-responsive" style="overflow-y: auto" formArrayName="values">
+                                      <label style="    font-weight: bold;">
+                                        {{box.getRawValue().name}}
+                                        <!-- <input type="text" class="form-control" formControlName="name" > -->
+  
+                                      </label>
+                                      <table class="table table-bordered table-striped table-hover">
+
+                                        <thead>
+                                          <tr style="
+                        COLOR: GRAY;
+                    ">
+                                            <th>Product Name</th>
+                                            <th>Rate</th>
+
+                                            <!-- <th>Remove</th> -->
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+
+                                          <tr *ngFor="let pack of box.controls.values.controls; let packIndex=index"
+                                            [formGroupName]="packIndex">
+                                            <td>
+                                              <label class="input">
+                                                {{pack.getRawValue().productName}}
+                                                <!-- <input type="text" class="form-control" formControlName="productName" > -->
+
+                                              </label>
+                                            </td>
+                                            <td>
+                                              <label class="input">
+
+
+                                                <input type="number" class="form-control" formControlName="rate"
+                                                  style="text-align: right">
+
+                                              </label>
+                                            </td>
+
+
+                                          </tr>
+                                          <!-- <div formArrayName="values">
+                        <div *ngFor="let pack of box.controls.values.controls; let packIndex=index" class="panel panel-default">
+                          <div class="panel-body" [formGroupName]="packIndex">
+                            <div [formGroup]="pack">
+                              <div class="col-md-8">
+                                <label class="input">
+                                  <input type="text" class="form-control" formControlName="productName" >
+                                </label>
+                              </div>
+                              <div class="col-md-2">
+                                <label class="input">
+                                  <input type="number" class="form-control" formControlName="rate" style="text-align: right">
+                              
+    
+                                  <!-- <input type="text" class="form-control" formControlName="rate"
+                                  pattern="[0-9]+" minlength="1" maxlength="4" style="text-align: right"    > 
+    
+                                </label>
+                              </div>
+                              <div class="note note-error" *ngIf="box.controls.values.controls[packIndex].controls.rate.invalid">Character are not allowed in number field</div>
+    
+                              <!-- <div class="col-md-1"style="padding: 6px;">
+                                  <label class="input">
+                                <a  type="button"  (click)="deltest(boxIndex,packIndex)"><i class="fa fa-trash-o"></i></a>
+                              </label>
+                              </div> 
+                            </div>
+                          </div>
+                        </div>
+                      </div> -->
+                                        </tbody>
+                                      </table>
+
+
+
+                                    </div>
+
+                                  </div>
+                               
+
+
+
+                                </div>
+                              </ng-template>
+                            </div>
+
+                            <!-- <div class="table-responsive" style="overflow-y: auto;border-style: ridge" formArrayName="_instrument">
+
+
+
+            <table class="table table-bordered table-striped table-hover">
+          
+                <thead>
+                    <tr style="
+                    COLOR: GRAY;
+                ">
+                        <th>Product Name</th>
+                      
+                        <th>Rate</th>
+                        <!-- <th>Remove</th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of selectedins.get('_productarray')['controls']; let i = index;" [formGroupName]="i">
+                        <td>
+                            <label class="input">
+          
+                                <input type="text" name="productname" formControlName="productname" />
+          
+                            </label>
+                        </td>
+                       
+                        <td>
+                            <label class="input">
+          
+                                <input type="text" name="Rate" formControlName="Rate" style="text-align: right" />
+                            </label>
+                        </td>
+                     
+                    </tr>
+                </tbody>
+            </table>
+          
+          
+          </div> -->
+                          </tab>
+                          <tab [active]="state.tabs.demo1 == 1">
+
+
+                            <div class="row">
+                              <div class="form-group col col-3">
+                            <label >
+                              <select class="form-control" (change)="selectcontrolInschange($event)">
+                                <option value="0" selected>--Select--</option>
+                                <option *ngFor="let Instrument of Instrumentlist" [value]="Instrument.instrumentID">{{Instrument.instrumentName}}</option>
+
+                              </select>
+                            </label>
+                            </div>
+                            <div class="form-group col col-3">
+                            <label>
+                              <select class="form-control" (change)="getproductlist($event)">
+                                <option value="0" selected>--Select Product Type--</option>
+                                <option *ngFor="let ProductType of ProductTypeList" [value]="ProductType.typeID">{{ProductType.typeName}}</option>
+
+                              </select>
+                            </label>
+                            </div>
+                            <div class="form-group col col-3">
+                            <label >
+                              <select class="form-control" (change)="selectcontrolProductchange($event)">
+                                <option value="0" selected>--Select--</option>
+                                <option *ngFor="let Product of Productlist" [value]="Product.productID">{{Product.productName}}</option>
+
+                              </select>
+                            </label>
+                            </div>
+                            <div class="form-group col col-3">
+
+                            <a class="btn btn-default btn-sm" style=" 
+       
+          background-color: lightgrey;
+          font-weight: bold;" (click)="AddControlUsageRate()">Add </a>
+
+                            </div>
+                            </div>
+                            <br>
+
+
+                            <div style="height: 300px;overflow-y: auto">
+                              <ng-template ngFor let-box
+                                [ngForOf]="forecastproductusages.controls.ControlUsageArray['controls']"
+                                let-boxIndex="index">
+                                <div class="tab-content" formArrayName="ControlUsageArray">
+
+
+
+                                  <div [formGroup]="box">
+
+
+                                   
+                                  
+                                  
+                                    <div class="table-responsive" style="overflow-y: auto" formArrayName="values">
+
+                                      <table class="table table-bordered table-striped table-hover">
+
+                                        <thead>
+                                          <tr style="
+                        COLOR: GRAY;
+                    ">
+                                            <th>Product Name</th>
+                                            <th>Rate</th>
+
+                                            <!-- <th>Remove</th> -->
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+
+                                          <tr *ngFor="let pack of box.controls.values.controls; let packIndex=index"
+                                            [formGroupName]="packIndex">
+                                            <td>
+                                              <label class="input">
+                                                {{pack.getRawValue().productName}}
+                                                <!-- <input type="text" class="form-control" formControlName="productName" > -->
+
+                                              </label>
+                                            </td>
+                                            <td>
+                                              <label class="input">
+
+
+                                                <input type="number" class="form-control" formControlName="rate"
+                                                  style="text-align: right">
+
+                                              </label>
+                                            </td>
+
+
+                                          </tr>
+                                          <!-- <div formArrayName="values">
+                        <div *ngFor="let pack of box.controls.values.controls; let packIndex=index" class="panel panel-default">
+                          <div class="panel-body" [formGroupName]="packIndex">
+                            <div [formGroup]="pack">
+                              <div class="col-md-8">
+                                <label class="input">
+                                  <input type="text" class="form-control" formControlName="productName" >
+                                </label>
+                              </div>
+                              <div class="col-md-2">
+                                <label class="input">
+                                  <input type="number" class="form-control" formControlName="rate" style="text-align: right">
+                              
+    
+                                  <!-- <input type="text" class="form-control" formControlName="rate"
+                                  pattern="[0-9]+" minlength="1" maxlength="4" style="text-align: right"    > 
+    
+                                </label>
+                              </div>
+                              <div class="note note-error" *ngIf="box.controls.values.controls[packIndex].controls.rate.invalid">Character are not allowed in number field</div>
+    
+                              <!-- <div class="col-md-1"style="padding: 6px;">
+                                  <label class="input">
+                                <a  type="button"  (click)="deltest(boxIndex,packIndex)"><i class="fa fa-trash-o"></i></a>
+                              </label>
+                              </div> 
+                            </div>
+                          </div>
+                        </div>
+                      </div> -->
+                                        </tbody>
+                                      </table>
+
+
+
+                                    </div>
+
+
+                                  </div>
+
+
+
+                                </div>
+                              </ng-template>
+                            </div>
+                          </tab>
+                          <tab [active]="state.tabs.demo1 == 2">
+                            <ul id="myTab2" class="nav nav-tabs bordered">
+
+                              <li [class.active]="state1.tabs.demo1 == 0">
+                                <a (click)="state1.tabs.demo1 = 0">Per Test</a>
+                              </li>
+                              <li [class.active]="state1.tabs.demo1 == 1">
+                                <a (click)="state1.tabs.demo1 = 1">Per Period</a>
+                              </li>
+                              <li [class.active]="state1.tabs.demo1 == 2">
+                                <a (click)="state1.tabs.demo1 = 2">Per Instrument Per Period</a>
+                              </li>
+                            </ul>
+                            <tabset class="padding-10">
+                              <tab [active]="state1.tabs.demo1 == 0">
+
+                                <div class="row">
+                                  <div class="form-group col col-3">
+                                 
+                                    <label class="input">
+                                      <input type="text" class="form-control" formControlName="nooftest"
+                                                  pattern="[0-9]+" minlength="1" maxlength="4" style="text-align: right"    >
+              
+                                                </label>
+                                  </div>
+                                  <div class="form-group col col-3">
+                                  
+                                    <label>
+                                      <select class="form-control" (change)="getproductlist($event)">
+                                        <option value="0" selected>--Select Product Type--</option>
+                                        <option *ngFor="let ProductType of ProductTypeList" [value]="ProductType.typeID">{{ProductType.typeName}}</option>
+        
+                                      </select>
+                                    </label>
+    
+                                  </div>
+    
+                                  <div class="form-group col col-3">
+                                  
+                                    <label>
+                                      <select class="form-control" (change)="selectconsumtestproductchange($event)">
+                                        <option value="0" selected>--Select Product--</option>
+                                        <option *ngFor="let Product of Productlist" [value]="Product.productID">{{Product.productName}}</option>
+        
+                                      </select>
+                                    </label>
+    
+                                  </div>
+                                  <div class="form-group col col-3" >
+               
+                                    <a class="btn btn-default btn-sm" style=" 
+                                    background-color: lightgrey;
+                                    font-weight: bold;"  (click)="AddconsumtestUsageRate()">Add </a>
+                  
+                                 
+                                  </div>
+                                </div>
+                                <br>
+
+
+
+                                <div style="height: 300px;overflow-y: auto">
+                                  <ng-template ngFor let-box
+                                    [ngForOf]="forecastproductusages.controls.ConsumableTestArray['controls']"
+                                    let-boxIndex="index">
+                                    <div class="tab-content" formArrayName="ConsumableTestArray">
+    
+    
+    
+                                      <div [formGroup]="box">
+    
+    
+                                        <div class="table-responsive" style="overflow-y: auto" formArrayName="values">
+    
+                                          <label style="    font-weight: bold;">
+                                            {{box.getRawValue().name}}
+                                         
+      
+                                          </label>
+                                          <table class="table table-bordered table-striped table-hover">
+    
+                                            <thead>
+                                              <tr style="
+                            COLOR: GRAY;
+                        ">
+                                                <th>Product Name</th>
+                                                <th>No of Test</th>
+                                                <th>Rate</th>
+    
+                                                <!-- <th>Remove</th> -->
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+    
+                                              <tr *ngFor="let pack of box.controls.values.controls; let packIndex=index"
+                                                [formGroupName]="packIndex">
+                                                <td>
+                                                  <label class="input">
+                                                    {{pack.getRawValue().productName}}
+                                                    <!-- <input type="text" class="form-control" formControlName="productName" > -->
+    
+                                                  </label>
+                                                </td>
+                                                <td>
+                                                  <label class="input">
+    
+    
+                                                    <input type="number" class="form-control" formControlName="noOfTest"
+                                                      style="text-align: right">
+    
+                                                  </label>
+                                                </td>
+    
+                                                <td>
+                                                  <label class="input">
+    
+    
+                                                    <input type="number" class="form-control" formControlName="usageRate"
+                                                      style="text-align: right">
+    
+                                                  </label>
+                                                </td>
+    
+    
+                                              </tr>
+                          
+                                            </tbody>
+                                          </table>
+    
+    
+    
+                                        </div>
+    
+    
+                                      </div>
+    
+    
+    
+                                    </div>
+                                  </ng-template>
+                                </div>
+
+                              </tab>
+                              <tab [active]="state1.tabs.demo1== 1">
+                                <div class="row">
+                                  <div class="form-group col col-3">
+                                    <label >
+                                      <select class="form-control" (change)="selectconsumperiodchange($event)">
+                                        <option value="0" selected>--Select--</option>
+                                        <option value="1">Daily</option>
+                                        <option value="2">Weekly</option>
+                                        <option value="3">Monthly</option>
+                                        <option value="4">Quarterly</option>
+                                        <option value="4">Yearly</option>
+                                      </select>
+                                    </label>
+                                    </div>
+                                    <div class="form-group col col-3">
+                                      <select class="form-control" (change)="getproductlist($event)">
+                                        <option value="0" selected>--Select Product Type--</option>
+                                        <option *ngFor="let ProductType of ProductTypeList" [value]="ProductType.typeID">{{ProductType.typeName}}</option>
+        
+                                      </select>
+                                    </div>
+                                    <div class="form-group col col-3">
+                                      <select class="form-control" (change)="selectconsumperiodproductchange($event)">
+                                        <option value="0" selected>--Select Product--</option>
+                                        <option *ngFor="let Product of Productlist" [value]="Product.productID">{{Product.productName}}</option>
+        
+                                      </select>
+                                    </div>
+                                    <div class="form-group col col-3">
+                                      <a class="btn btn-default btn-sm" style="    
+                                      background-color: lightgrey;
+                                      font-weight: bold;"  (click)="AddconsumperiodUsageRate()">Add </a>
+                                    </div>
+                                </div>
+                                <div style="height: 300px;overflow-y: auto">
+                                  <ng-template ngFor let-box
+                                    [ngForOf]="forecastproductusages.controls.ConsumablePeriodArray['controls']"
+                                    let-boxIndex="index">
+                                    <div class="tab-content" formArrayName="ConsumablePeriodArray">
+    
+    
+    
+                                      <div [formGroup]="box">
+    
+    
+                                     
+    
+    
+                                        <div class="table-responsive" style="overflow-y: auto" formArrayName="values">
+                                          <label style="    font-weight: bold;">
+                                            {{box.getRawValue().name}}
+                                            <!-- <input type="text" class="form-control" formControlName="name" > -->
+      
+                                          </label>
+                                          <table class="table table-bordered table-striped table-hover">
+    
+                                            <thead>
+                                              <tr style="
+                            COLOR: GRAY;
+                        ">
+                                                <th>Product Name</th>
+                                                <th>Period</th>
+                                                <th>Rate</th>
+    
+                                                <!-- <th>Remove</th> -->
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+    
+                                              <tr *ngFor="let pack of box.controls.values.controls; let packIndex=index"
+                                                [formGroupName]="packIndex">
+                                                <td>
+                                                  <label class="input">
+                                                    {{pack.getRawValue().productName}}
+                                                    <!-- <input type="text" class="form-control" formControlName="productName" > -->
+    
+                                                  </label>
+                                                </td>
+                                                <td>
+                                                
+    
+    
+                                                    <label class="input">
+                                                      {{pack.getRawValue().period}}
+                                                      <!-- <input type="text" class="form-control" formControlName="productName" > -->
+      
+                                                    </label>
+    
+                                                  
+                                                </td>
+    
+                                                <td>
+                                                  <label class="input">
+    
+    
+                                                    <input type="number" class="form-control" formControlName="usageRate"
+                                                      style="text-align: right">
+    
+                                                  </label>
+                                                </td>
+    
+    
+                                              </tr>
+                          
+                                            </tbody>
+                                          </table>
+    
+    
+    
+                                        </div>
+    
+    
+                                      </div>
+    
+    
+    
+                                    </div>
+                                  </ng-template>
+                                </div>
+
+                              </tab>
+                              <tab [active]="state1.tabs.demo1== 2">
+
+<div class="row">
+  <div class="form-group col col-3">
+  <select class="form-control" (change)="selectconsuminschange($event)">
+    <option value="0" selected>--Select--</option>
+    <option *ngFor="let Instrument of Instrumentlist" [value]="Instrument.instrumentID">{{Instrument.instrumentName}}</option>
+
+  </select>
+  </div>
+  <div class="form-group col col-3">
+    <label >
+      <select class="form-control" (change)="selectconsuminsperiodchange($event)">
+        <option value="0" disabled>--Select--</option>
+        <option value="1">Daily</option>
+        <option value="2">Weekly</option>
+        <option value="3">Monthly</option>
+        <option value="4">Quarterly</option>
+        <option value="4">Yearly</option>
+      </select>
+    </label>
+
+    </div>
+    <div class="form-group col col-3">
+      <label >
+        <select class="form-control" (change)="getproductlist($event)">
+          <option value="0" selected>--Select Product Type--</option>
+          <option *ngFor="let ProductType of ProductTypeList" [value]="ProductType.typeID">{{ProductType.typeName}}</option>
+
+        </select>
+      </label>
+      </div>
+</div>
+
+<br>
+                                <div class="row">
+                                 
+                                   
+                                      <div class="form-group col col-3">
+                                        <label >
+                                        <select class="form-control" (change)="selectconsuminsprochange($event)">
+                                          <option value="0" selected>--Select Product--</option>
+                                          <option *ngFor="let Product of Productlist" [value]="Product.productID">{{Product.productName}}</option>
+          
+                                        </select>
+                                        </label>
+                                        </div>
+                                        <div class="form-group col col-3">
+                                          <a class="btn btn-default btn-sm" style=" 
+                                          background-color: lightgrey;
+                                          font-weight: bold;" (click)="AddconsuminsUsageRate()">Add </a>
+                        
+                                          </div>
+                                </div>
+                                <br>
+                                <div style="height: 300px;overflow-y: auto">
+                                  <ng-template ngFor let-box
+                                    [ngForOf]="forecastproductusages.controls.ConsumableInsArray['controls']"
+                                    let-boxIndex="index">
+                                    <div class="tab-content" formArrayName="ConsumableInsArray">
+    
+    
+    
+                                      <div [formGroup]="box">
+    
+                                       
+    
+                                        <div class="table-responsive" style="overflow-y: auto" formArrayName="values">
+                                          <label style="    font-weight: bold;">
+                                            {{box.getRawValue().name}}
+                                            <!-- <input type="text" class="form-control" formControlName="name" > -->
+      
+                                          </label>
+                                          <table class="table table-bordered table-striped table-hover">
+    
+                                            <thead>
+                                              <tr style="
+                            COLOR: GRAY;
+                        ">
+                                                <th>Product Name</th>
+                                                <th>Period</th>
+                                                <th>Rate</th>
+    
+                                                <!-- <th>Remove</th> -->
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+    
+                                              <tr *ngFor="let pack of box.controls.values.controls; let packIndex=index"
+                                                [formGroupName]="packIndex">
+                                                <td>
+                                                  <label class="input">
+                                                    {{pack.getRawValue().productName}}
+                                                    <!-- <input type="text" class="form-control" formControlName="productName" > -->
+    
+                                                  </label>
+                                                </td>
+                                                <td>
+                                                
+    
+    
+                                                    <label class="input">
+                                                      {{pack.getRawValue().period}}
+                                                      <!-- <input type="text" class="form-control" formControlName="productName" > -->
+      
+                                                    </label>
+    
+                                                  
+                                                </td>
+    
+                                                <td>
+                                                  <label class="input">
+    
+    
+                                                    <input type="number" class="form-control" formControlName="usageRate"
+                                                      style="text-align: right">
+    
+                                                  </label>
+                                                </td>
+    
+    
+                                              </tr>
+                          
+                                            </tbody>
+                                          </table>
+    
+    
+    
+                                        </div>
+    
+    
+                                      </div>
+    
+    
+    
+                                    </div>
+                                  </ng-template>
+                                </div>
+
+                              </tab>
+                              </tabset>
+                          </tab>
+                        </tabset>
+
+                      </div>
+                    </section>
+                  </div>
+
+                </fieldset>
+
+                <footer>
+                  <a class="btn btn-default" (click)="Previousclick()" style="float: left;"><b>
+                      << Previous</b> </a> <a class="btn btn-default" style="float: right;"
+                        (click)="Saveforecastproductusage()"><b>Next >></b></a>
+                </footer>
+
+              </form>
+
+            </div>
+            <!-- end widget content -->
+
+          </div>
+          <!-- end widget div -->
+
+        </div>
+      </article>
+    </div>
+  </sa-widgets-grid>
+</div>

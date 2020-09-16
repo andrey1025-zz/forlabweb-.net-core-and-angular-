@@ -1,0 +1,194 @@
+<form class="smart-form" novalidate="novalidate" [formGroup]="datausage3">
+  <fieldset>
+      <div class="my-container">
+          <ng-template #customLoadingTemplate>
+              <div class="custom-class">
+                  <h3>
+                      Loading...
+                  </h3>
+                  <!-- <button (click)="showAlert()">
+                      Click me!
+                  </button> -->
+              </div>
+          </ng-template>
+          <!-- <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading> -->
+          <ngx-loading [show]="loading" [config]="{animationType: ngxLoadingAnimationTypes.chasingDots,
+             primaryColour: primaryColour, secondaryColour: secondaryColour, backdropBorderRadius: '3px'}"
+          [template]="loadingTemplate"></ngx-loading>
+      </div>
+      <div class="row">
+          <section class="col col-3">
+            <div class="row">
+                <section class="col col-8">
+            <div class="form-group" >
+              <div class="input-group">
+                <label class="control-label">Category Name
+
+                </label>
+                <label class="input">
+                  <input class="form-control" type="text" name="categoryname" formControlName="categoryname"></label>
+              </div>
+            
+            </div>
+            </section>
+            <section class="col col-4">
+                <div class="form-group" >
+              
+                    <label class="control-label">
+
+                    </label>
+                    <label class="input">
+                        <button type="button" class="btn btn-primary btn-sm" (click)="AddCategory()">Add
+                            </button>
+                      </label>
+                      </div>
+            </section>
+          </div>
+          <section>
+            <div class="table-responsive" style="overflow-y: auto;height: 200px;border-style: ridge;" formArrayName="_datausage" >
+                <strong> &nbsp;&nbsp;List of Category</strong>
+              <table  class="table table-bordered table-striped table-hover">
+                <tbody>
+                  <tr *ngFor="let item of categorylist;let i = index"   [class.active]="i == selectedRow"> 
+                    <td (click)="selectcategoryfordatausage3(item,i);">{{item.categoryname}}</td>
+                    <td>  <label class="input">
+                        <a type="button" (click)="deleteseletedcategory(item)">
+                            <i class="fa fa-trash-o" title="Delete Reported Site"></i>
+                        </a>
+                    </label></td>
+                  </tr>
+                </tbody>
+                </table>
+                </div>
+    
+        
+              </section>
+         
+         
+   
+      <section >
+          <button type="button" class="btn btn-primary btn-sm" (click)="openmodel()">
+              Select Site</button>
+            </section>
+            <section>
+        <div class="table-responsive" style="overflow-y: auto;height: 250px;border-style: ridge;" formArrayName="_datausage" >
+            <strong> &nbsp;&nbsp;List of Reported sites</strong>
+          <table  class="table table-bordered table-striped table-hover">
+            <tbody>
+              <tr *ngFor="let item of sitelist;"  > 
+                <td>{{item.siteName}}</td>
+                <td>  <label class="input">
+                    <a type="button" (click)="deleteseletedsitefromcategory(item)">
+                        <i class="fa fa-trash-o" title="Delete Reported Site"></i>
+                    </a>
+                </label></td>
+              </tr>
+            </tbody>
+            </table>
+            </div>
+</section>
+     
+          </section>
+      <section class="col col-9">
+          <section >
+              <div class="form-group" >
+          
+                  <label class="control-label">
+
+                  </label>
+                  <label class="input">
+          <button type="button" class="btn btn-primary btn-sm" (click)="openimportmodel()" >Import</button>
+            <button type="button" class="btn btn-primary btn-sm" (click)="openmodel2()" [disabled]="disaddproduct">Add
+              by Test</button>
+          <button type="button" class="btn btn-primary btn-sm" (click)="openconsumption()" [disabled]="disactualconsumption">Add
+              Actual Test Volume</button>
+        <button type="button" class="btn btn-primary btn-sm" [disabled]="disremoveconsumption" (click)="removeconsumption()">
+              Remove Test Volume</button>
+              </label>
+             
+        </div>
+        </section>
+
+
+        <div class="table-responsive" style="overflow: auto;height: 500px;border-style: ridge;margin-top: 26px" formArrayName="_datausage" >
+          <strong>&nbsp;&nbsp;Test Volume</strong>
+          <table  class="table table-bordered table-striped table-hover">
+         <thead>
+           <th>
+              <span  style="font-weight: bolder;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+           </th>
+           <th *ngFor="let item of controlArray" >   <span  style="font-weight: bolder;">{{item.duration}}  </span> </th>
+         </thead>
+      
+            </table>
+     
+          <table  class="table table-bordered table-striped table-hover">
+         
+          <tbody *ngFor="let comp of datausage3.get('_datausage')['controls']; let i=index"  [formGroupName]="i">
+
+              <tr >
+                  <td [attr.colspan]="colspan">
+                   <span  style="font-weight: bold;color: maroon">
+                      {{comp.get("productname").value}}
+                    </span>
+                    <!-- <input type="text" formControlName="productname"/> -->
+                    
+                  </td>
+                </tr>
+                <tr formArrayName="value" >
+                  
+
+  <!-- <tbody >-->
+    <div *ngFor="let project of comp.get('value').controls; let j=index"[formGroupName]="j"  > 
+        <td>
+            <label class="input">
+            <input type="text" formControlName="column1" [attr.disabled]="disabled"/>
+          </label>
+          </td>
+
+
+          <td *ngFor="let item of controlArray">
+            <label class="input">
+              <input type="text" formControlName="{{item.duration}}" [attr.maxlength]="8" [style.text-align]="right" (click)="Enableconsumptionbtn(i,j,item.duration)" (input)="getadjustedvolumn(i,j,item.duration)" />
+            </label>
+          </td>
+    </div>
+
+                </tr>
+
+           
+            </tbody>
+
+
+        </table>
+        </div>
+    
+         
+
+
+
+           
+     
+      </section>
+      </div>
+      </fieldset>
+
+      <footer>
+        <!-- <div class="form-actions"> -->
+          <!-- <div class="row">
+            <div class="col-md-6"> -->
+              <button type="button" class="btn btn-success" (click)="nextclick()" >
+               
+                Next
+                <i class="fa fa-arrow-right"></i>
+              </button>
+    
+              <button type="button" class="btn btn-primary"  (click)="Previousclick()">
+                  <i class="fa fa-arrow-left"></i>
+                Prev
+              </button>
+            <!-- </div>
+          </div> -->
+          </footer>
+      </form>
+

@@ -1,0 +1,287 @@
+
+
+              <form class="smart-form" novalidate="novalidate" [formGroup]="consumptionadd">
+                <header>
+               
+                </header>
+
+                <fieldset>
+                    
+                  <section>
+                  
+                        <div class="row">
+                          <div class="col-md-1"></div>
+    <div class="col-md-5">
+        <section>
+
+            <div class="form-group">
+                <label style="font-weight: bold;
+                                    font-size: larger;
+                                ">Forecast Infomation
+                </label>
+            </div>
+        </section>
+                        <section>
+
+                          <div class="form-group" [ngClass]="{'has-error':!consumptionadd.controls['ForecastNo'].valid &&  consumptionadd.controls['ForecastNo'].touched}">
+                           
+                              <label class="control-label">Forecast ID
+
+                              </label>
+                              <label class="input">
+                                <input class="form-control" type="text" name="ForecastNo" formControlName="ForecastNo"></label>
+                           
+                            <div class="note note-error" *ngIf="consumptionadd.controls['ForecastNo'].hasError('required') && consumptionadd.controls['ForecastNo'].touched">Forecast
+                              ID must not be empty</div>
+                            <div class="note note-error" *ngIf="consumptionadd.controls['ForecastNo'].hasError('maxlength') && consumptionadd.controls['ForecastNo'].touched">Maximun
+                              32 charaters are allowed</div>
+                          </div>
+
+
+                        </section>
+                        <div class="row">
+                        <section class="col col-6">
+                          <div class="form-group" [ngClass]="{'has-error':!consumptionadd.controls['scopeofforecast'].valid && consumptionadd.controls['scopeofforecast'].touched }">
+                            <label class="control-label">Scope of the Forecast
+
+                            </label>
+                        
+                            
+                            <label class="input">
+                              <select class="form-control" name="scopeofforecast" formControlName="scopeofforecast"
+                                (change)="displaytextscope($event)">
+                                <option value="NATIONAL">NATIONAL</option>
+                                <option value="CUSTOM">CUSTOM</option>
+                                <option value="GLOBAL">GLOBAL</option>
+
+                              </select>
+                            </label>
+                            </div>
+                            <div class="note note-error" *ngIf="consumptionadd.controls['scopeofforecast'].hasError('required') && consumptionadd.controls['scopeofforecast'].touched">Scope
+                                of Forecast must not be empty</div>
+                            </section>
+                            <section class="col col-6">
+                                <div class="form-group" [ngClass]="{'has-error':!validtxtscope}">
+                                    <label class="control-label">
+
+                                      </label>
+                                  
+                              <label class="input"> <input class="form-control" type="text" name="txtscope"
+                                  formControlName="txtscope" [style.display]="displayaattr"></label>
+                                  </div>
+                                  <div class="note note-error" *ngIf="!validtxtscope">Please enter custom scope</div>
+                       </section>
+                            </div>
+                           
+                         
+                       <div class="row">
+                        <section class="col col-6">
+
+                          <div class="form-group" [ngClass]="{'has-error':!consumptionadd.controls['Period'].valid && consumptionadd.controls['Period'].touched }">
+
+                            <label class="control-label">Reporting Period
+
+                            </label>
+                            <label class="input">
+                              <select name="Period" formControlName="Period" class="form-control" (change)=getmonthlist($event.target.value)>
+                                <option value="Bimonthly">Bimonthly</option>
+                                <option value="Monthly">Monthly</option>
+                                <option value="Quarterly">Quarterly</option>
+                                <option value="Yearly">Yearly</option>
+                              </select>
+                            </label>
+                          </div>
+                          <div class="note note-error" *ngIf="consumptionadd.controls['Period'].hasError('required') && consumptionadd.controls['Period'].touched">Period
+                            must not be empty</div>
+
+
+                        </section>
+                        <section class="col col-6">
+                                <div class="form-group" [ngClass]="{'has-error':!consumptionadd.controls['extension'].valid && consumptionadd.controls['extension'].touched }">
+      
+                                  <label class="control-label">Forecasting Period
+      
+                                  </label>
+                                  <label class="input">
+                                    <input type="text" class="form-control" formControlName="extension" pattern="[0-9]+"
+                                      minlength="1" maxlength="4" style="text-align: right">
+                                    <!-- <input type="number" name="PrevalenceRate" formControlName="PrevalenceRate" style="text-align: right"  maxlength="4"  /> -->
+                                  </label>
+                                </div>
+                                <div class="note note-error" *ngIf="consumptionadd.controls['extension'].hasError('required') && consumptionadd.controls['extension'].touched">Forecasting Period
+                                    must not be empty</div>
+        
+                              </section>
+                    </div>
+                        <div class="row">
+                        <section class="col col-6">
+
+                          <div class="form-group" [ngClass]="{'has-error':!consumptionadd.controls['Year'].valid && consumptionadd.controls['Year'].touched }">
+
+                            <label class="control-label">Start Date
+
+                            </label>
+                            <label class="input">
+                              <select name="Year" formControlName="Year" class="form-control">
+                                <option value="0" disable>--Select--</option>
+                                <option *ngFor="let Year of Yearlist" [value]="Year">{{Year}}</option>
+
+                              </select>
+                            </label>
+                          </div>
+                          <div class="note note-error" *ngIf="consumptionadd.controls['Year'].hasError('required') && consumptionadd.controls['Year'].touched">Year
+                            must not be empty</div>
+                            </section>
+                            <section class="col col-6">
+                          <div class="form-group" [ngClass]="{'has-error':!consumptionadd.controls['QuartMonth'].valid && consumptionadd.controls['QuartMonth'].touched }">
+                              <label class="control-label">
+
+                                </label>
+                            <label class="input">
+                              <select name="QuartMonth" formControlName="QuartMonth" class="form-control">
+                                <option value="0" disable>--Select--</option>
+                                <option *ngFor="let Month of Quatermonthlist" [value]="Month">{{Month}}</option>
+
+                              </select>
+                            </label>
+                          </div>
+                          <div class="note note-error" *ngIf="consumptionadd.controls['QuartMonth'].hasError('required') && consumptionadd.controls['QuartMonth'].touched">Month/Quarter
+                            must not be empty</div>
+
+
+                        </section>
+                      </div>
+                      <div class="row">
+                        <section class="col col-6">
+                          <div class="form-group">
+
+                            <label class="control-label">Forecast Date
+
+                            </label>
+                            <label class="input">
+                              <input class="form-control"  #dpYMD="bsDatepicker"
+                                bsDatepicker formControlName="forecastdate" [bsConfig]="{ dateInputFormat: 'DD-MMM-YYYY' }"
+                               >
+                            </label>
+                          </div>
+                        </section>
+                        <section class="col col-6">
+                          <div class="form-group">
+
+                            <label class="control-label">Last Modified Date
+
+                            </label>
+                            <label class="input">
+                              <input class="form-control" #dpYMD="bsDatepicker"
+                                bsDatepicker formControlName="LastUpdated" [bsConfig]="{ dateInputFormat: 'DD-MMM-YYYY' }"
+                                >
+
+                            </label>
+                          </div>
+                        </section>
+
+                    </div>
+
+
+                       
+                      </div>
+                      <div class="col-md-1"></div>
+                      <div class="col-md-4"  style="display: none">
+                          <section>
+
+                              <div class="form-group">
+                                  <label style="font-weight: bold;
+                                                      font-size: larger;
+                                                  ">Consumption Forecasting Methodology
+                                  </label>
+                              </div>
+                          </section>
+                          <section >
+                              <div class="form-group">
+                              <label class="input">
+                                  <textarea type="text" class="form-control" formControlName="txt" rows="16" cols="8" style="padding: 8px;">  </textarea>                                <!-- <input type="number" name="PrevalenceRate" formControlName="PrevalenceRate" style="text-align: right"  maxlength="4"  /> -->
+                                </label>
+                                </div>
+                          </section>
+
+                      </div>
+                      </div>
+                      <div class="row">
+                            <div class="col-md-1"></div>
+                          <div class="col-md-5">
+                          <section >
+                              <div class="radio">
+                                  <label>
+                                    <input type="radio" class="radiobox style-3" 
+                                           name="datausage" formControlName="datausage" value="DATA_USAGE1" (click)="changedatausges($event)"  >
+                                    <span>Consumption data available for all sites</span>
+                                  </label>
+                                </div>
+                                <div class="radio">
+                                  <label>
+                                    <input type="radio" class="radiobox style-3"  name="datausage" value="DATA_USAGE2"  formControlName="datausage"    (click)="changedatausges($event)">
+                                    <span>Consumption data available for reported sites</span>
+                                  </label>
+                                </div>			
+                                <div class="radio">
+                                    <label>
+                                      <input type="radio" class="radiobox style-3"  name="datausage" formControlName="datausage" value="DATA_USAGE3"   (click)="changedatausges($event)">
+                                      <span>Consumption data available for site category</span>
+                                    </label>
+                                  </div>			
+                          </section>
+
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-4" style="display: none">
+                          <section >
+                              <label class="input">
+                                  <textarea type="text" class="form-control" formControlName="txtdatausage" rows="5" cols="8" style="padding: 8px;">  </textarea>                                <!-- <input type="number" name="PrevalenceRate" formControlName="PrevalenceRate" style="text-align: right"  maxlength="4"  /> -->
+                                </label>
+                          </section>
+</div>
+                        </div>
+                      <!-- </div>
+                      <div id="consumptiondata">
+                          <app-consumptiondatausage1 [model1]="lgModal1"  [model]="lgModal"  [model3]="lgModal3"  *ngIf="consumptionadd.controls.datausage.value=='DATA_USAGE1'"></app-consumptiondatausage1>
+                          <app-consumptiondatausage2  [model]="lgModal" [model2]="lgModal2" [model1]="lgModal1"  [model3]="lgModal3"  *ngIf="consumptionadd.controls.datausage.value=='DATA_USAGE2'"></app-consumptiondatausage2>
+                          <app-consumptiondatausage3  [model]="lgModal" [model2]="lgModal2" [model1]="lgModal1"  [model3]="lgModal3"  *ngIf="consumptionadd.controls.datausage.value=='DATA_USAGE3'"></app-consumptiondatausage3>
+                        </div>
+
+</div> -->
+                   
+                  </section>
+                </fieldset>
+
+                <footer>
+
+                  <button type="button" class="btn btn-primary" (click)="save()" [disabled]="!consumptionadd.valid || !validtxtscope">
+                    <!-- <i class="fa fa-eye"></i> -->
+               
+                    {{btncaption}}
+                  </button>
+
+                
+                  <!-- </div>
+        </div> -->
+                </footer>
+                <!-- </div> -->
+
+              </form>
+      
+<div class="my-container">
+    <ng-template #customLoadingTemplate>
+        <div class="custom-class">
+            <h3>
+                Loading...
+            </h3>
+            <!-- <button (click)="showAlert()">
+                Click me!
+            </button> -->
+        </div>
+    </ng-template>
+    <!-- <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading> -->
+    <ngx-loading [show]="loading" [config]="{animationType: ngxLoadingAnimationTypes.chasingDots,
+       primaryColour: primaryColour, secondaryColour: secondaryColour, backdropBorderRadius: '3px'}"
+    [template]="loadingTemplate"></ngx-loading>
+</div>  
